@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Cliente.Service1 {
+namespace Cliente.LobbyService {
     using System.Runtime.Serialization;
     using System;
     
@@ -91,14 +91,14 @@ namespace Cliente.Service1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Service1.ILobby", CallbackContract=typeof(Cliente.Service1.ILobbyCallback))]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="LobbyService.ILobby", CallbackContract=typeof(Cliente.LobbyService.ILobbyCallback))]
     public interface ILobby {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobby/SendMessage")]
-        void SendMessage(Cliente.Service1.Message mensaje);
+        void SendMessage(Cliente.LobbyService.Message mensaje);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobby/SendMessage")]
-        System.Threading.Tasks.Task SendMessageAsync(Cliente.Service1.Message mensaje);
+        System.Threading.Tasks.Task SendMessageAsync(Cliente.LobbyService.Message mensaje);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobby/Connect", ReplyAction="http://tempuri.org/ILobby/ConnectResponse")]
         bool Connect(string lobbyCode, string username);
@@ -117,7 +117,7 @@ namespace Cliente.Service1 {
     public interface ILobbyCallback {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobby/GetMessage")]
-        void GetMessage(Cliente.Service1.Message message);
+        void GetMessage(Cliente.LobbyService.Message message);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobby/JoinLobby", ReplyAction="http://tempuri.org/ILobby/JoinLobbyResponse")]
         bool JoinLobby();
@@ -127,12 +127,12 @@ namespace Cliente.Service1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ILobbyChannel : Cliente.Service1.ILobby, System.ServiceModel.IClientChannel {
+    public interface ILobbyChannel : Cliente.LobbyService.ILobby, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class LobbyClient : System.ServiceModel.DuplexClientBase<Cliente.Service1.ILobby>, Cliente.Service1.ILobby {
+    public partial class LobbyClient : System.ServiceModel.DuplexClientBase<Cliente.LobbyService.ILobby>, Cliente.LobbyService.ILobby {
         
         public LobbyClient(System.ServiceModel.InstanceContext callbackInstance) : 
                 base(callbackInstance) {
@@ -154,11 +154,11 @@ namespace Cliente.Service1 {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void SendMessage(Cliente.Service1.Message mensaje) {
+        public void SendMessage(Cliente.LobbyService.Message mensaje) {
             base.Channel.SendMessage(mensaje);
         }
         
-        public System.Threading.Tasks.Task SendMessageAsync(Cliente.Service1.Message mensaje) {
+        public System.Threading.Tasks.Task SendMessageAsync(Cliente.LobbyService.Message mensaje) {
             return base.Channel.SendMessageAsync(mensaje);
         }
         

@@ -1,4 +1,4 @@
-﻿using Cliente.Service1;
+﻿using Cliente.LobbyService;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,10 +19,10 @@ namespace Cliente.Pantallas
 {
 
 
-    public partial class Lobby : UserControl, Service1.ILobbyCallback
+    public partial class Lobby : UserControl, LobbyService.ILobbyCallback
     {
 
-        private Service1.LobbyClient _servicio;
+        private LobbyService.LobbyClient _servicio;
         private ObservableCollection<Message> _messages;
 
 
@@ -33,12 +33,12 @@ namespace Cliente.Pantallas
             _messages = new ObservableCollection<Message>();
             MessagesListBox.ItemsSource = _messages;
             
-            _servicio = new Service1.LobbyClient(new System.ServiceModel.InstanceContext(this));
+            _servicio = new LobbyService.LobbyClient(new System.ServiceModel.InstanceContext(this));
 
 
         }
 
-        public void GetMessage(Service1.Message message)
+        public void GetMessage(LobbyService.Message message)
         {
             Message newMessage = new Message { UserName = message.UserName, Text = message.Text};
             _messages.Add(newMessage);
@@ -89,7 +89,7 @@ namespace Cliente.Pantallas
             if (Text != "")
             {
 
-               Service1.Message newMessage = new Service1.Message{ UserName = tbLobbyCode.Text, Text = Text, LobbyCode = codigoSala.Text};
+                LobbyService.Message newMessage = new LobbyService.Message{ UserName = tbLobbyCode.Text, Text = Text, LobbyCode = codigoSala.Text};
                 tbMessage.Text = "";
                _servicio.SendMessage(newMessage);
             }

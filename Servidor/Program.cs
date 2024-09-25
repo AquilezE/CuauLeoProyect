@@ -11,10 +11,17 @@ namespace Servidor
     internal class Program
     {
         static void Main(string[] args)
+
         {
-            using (ServiceHost host = new ServiceHost(typeof (Service1)))
+
+            using (ServiceHost LogInServiceHost = new ServiceHost(typeof(LogInService)))
+            using (ServiceHost LobbyServiceHost= new ServiceHost(typeof (LobbyService)))
             {
-                host.Open();
+                LogInServiceHost.Open();
+                Console.WriteLine("LogInServiceHost is running");
+                LobbyServiceHost.Open();
+                Console.WriteLine("LobbyServiceHost is running");
+
                 Console.WriteLine("Tamales");
                 Console.ReadLine();
             }

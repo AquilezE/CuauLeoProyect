@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="JDHVZ8Lsbwi5hN8GTDgMk5kX+BF5SfsIcm1anXpL4tU=">
+<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="8nf/jaY48l+WWLLM/mrsVdoE+znea0O8Ta1cwhuQEJQ=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_ILobby">
       <properties>
@@ -121,10 +121,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="NetTcpBinding_ILobby" contract="Service1.ILobby" bindingType="netTcpBinding" address="net.tcp://localhost:8000/Service1" bindingConfiguration="NetTcpBinding_ILobby">
+    <endpoint name="NetTcpBinding_ILobby" contract="LobbyService.ILobby" bindingType="netTcpBinding" address="net.tcp://localhost:8000/LobbyService" bindingConfiguration="NetTcpBinding_ILobby">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://localhost:8000/Service1</serializedValue>
+          <serializedValue>net.tcp://localhost:8000/LobbyService</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -136,7 +136,7 @@
           <serializedValue>NetTcpBinding_ILobby</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>Service1.ILobby</serializedValue>
+          <serializedValue>LobbyService.ILobby</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>

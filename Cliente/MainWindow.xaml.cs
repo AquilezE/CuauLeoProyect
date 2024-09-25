@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using Cliente.Pantallas;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -13,7 +14,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Cliente.Service1;
 
 namespace Cliente
 {
@@ -25,7 +25,7 @@ namespace Cliente
         public MainWindow()
         {
             InitializeComponent();
-            NavigateToMensajeador(new MenuPrincipal(), 1500,800);
+            NavigateToMensajeador(new LogIn());
         }
         public void NavigateToMensajeador(UserControl control, double ? newWidth = null, double ? newHeight = null)
         {

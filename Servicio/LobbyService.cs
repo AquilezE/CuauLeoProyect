@@ -10,7 +10,8 @@ using System.Text;
 namespace Servicio
 {
 
-    public class Service1 : ILobby
+    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
+    public class LobbyService : ILobby
     {
 
 
@@ -21,21 +22,17 @@ namespace Servicio
         public bool Connect(string lobbyCode, string username)
         {
             
-            // Check if the lobby exists
             if (lobbies.ContainsKey(lobbyCode))
             {
             
-                // Get the lobby from the dictionary
                 ConcurrentDictionary<string, ILobbyCallback> lobby = lobbies[lobbyCode];
 
-                // Check if the user is already in the lobby
                 if (lobby.ContainsKey(username))
                 {
                     return false;
                 }
                 else
                 {
-                    // Add the user to the lobby
                     var callback = OperationContext.Current.GetCallbackChannel<ILobbyCallback>();
                     lobby.TryAdd(username, callback);
                     return true;
@@ -43,7 +40,6 @@ namespace Servicio
             }
             else
             {
-                // Create a new lobby and add the user to it
                 var callback = OperationContext.Current.GetCallbackChannel<ILobbyCallback>();
                 ConcurrentDictionary<string, ILobbyCallback> lobby = new ConcurrentDictionary<string, ILobbyCallback>();
                 lobby.TryAdd(username, callback);
@@ -54,27 +50,20 @@ namespace Servicio
 
         public bool Disconnect(string lobbyCode, string username)
         {
-            // Check if the lobby exists
             if (lobbies.ContainsKey(lobbyCode))
             {
-                // Get the lobby from the dictionary
                 ConcurrentDictionary<string, ILobbyCallback> lobby = lobbies[lobbyCode];
-
-                // Check if the user is in the lobby
                 if (lobby.ContainsKey(username))
                 {
-                    // Remove the user from the lobby
                     ILobbyCallback callback;
                     lobby.TryRemove(username, out callback);
 
-                    // Check if the lobby is empty
                     if (lobby.IsEmpty)
                     {
-                        // Remove the lobby from the dictionary
                         ConcurrentDictionary<string, ILobbyCallback> removed;
                         lobbies.TryRemove(lobbyCode, out removed);
                     }
-
+                    
                     return true;
                 }
             }
@@ -84,24 +73,19 @@ namespace Servicio
 
         public void SendMessage(Message message)
         {
-            // Debugging: Print the incoming message details
+            // Debugging, we dk how to log brah
             Console.WriteLine($"Received message from {message.UserName}: {message.Text}");
 
-            // Get the callback channel for the current operation context
             var callback = OperationContext.Current.GetCallbackChannel<ILobbyCallback>();
 
-            // Check if the lobby exists
             if (lobbies.ContainsKey(message.LobbyCode))
             {
-                // Get the lobby from the dictionary
                 ConcurrentDictionary<string, ILobbyCallback> lobby = lobbies[message.LobbyCode];
 
-                //MIGHT BE REDUNDANT
-                // Check if the user is already in the lobby
-                
+                //MIGHT BE REDUNDANT ???                
                 if (!lobby.ContainsKey(message.UserName))
                 {
-                    // Try to add the user and their callback channel to the lobby
+
                     bool added = lobby.TryAdd(message.UserName, callback);
                     if (added)
                     {
@@ -114,19 +98,18 @@ namespace Servicio
                 }
                 else
                 {
-                    // Update the callback channel if it already exists
                     lobby[message.UserName] = callback;
                     Console.WriteLine($"User {message.UserName} callback updated in the lobby.");
                 }
 
-                // Print the current state of the lobby
+                //Debugging
                 Console.WriteLine($"Current users in lobby {message.LobbyCode}:");
                 foreach (var user in lobby)
                 {
                     Console.WriteLine($"User: {user.Key}");
                 }
 
-                // Send the message to all users in the lobby
+                //Send msgs to all users
                 foreach (var user in lobby)
                 {
                     try

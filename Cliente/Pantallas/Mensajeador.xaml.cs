@@ -1,4 +1,4 @@
-﻿using Cliente.Service1;
+﻿using Cliente.LobbyService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
