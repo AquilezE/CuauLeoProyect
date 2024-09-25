@@ -121,7 +121,7 @@ namespace Cliente.Pantallas
         public bool LeaveLobby()
         {
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.NavigateToMensajeador(new MenuPrincipal());
+            mainWindow.NavigateToMensajeador(new MenuPrincipal(), 600, 600);
             return true;
         }
 
