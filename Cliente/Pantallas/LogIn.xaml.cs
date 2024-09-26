@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -33,7 +34,7 @@ namespace Cliente.Pantallas
         public void InitializeService()
         {
             _servicio = new LogInService.LogInClient();
-            _servicio.Open();
+            //_servicio.Open();
         }
 
         private void btPlayAsGuest_Click(object sender, RoutedEventArgs e)
@@ -89,12 +90,14 @@ namespace Cliente.Pantallas
 
         private void btRegister_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.NavigateToMensajeador(new RegisterAccount());
         }
 
         private void ForgotPassword_Click(object sender, RoutedEventArgs e)
         {
-                
+                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.NavigateToMensajeador(new RecoverPassword());
         }
 
 

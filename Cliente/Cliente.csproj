@@ -91,10 +91,31 @@
     <Compile Include="Pantallas\RegisterAccount.xaml.cs">
       <DependentUpon>RegisterAccount.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControllers\Recover\RecoverCodeVerification.xaml.cs">
+      <DependentUpon>RecoverCodeVerification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControllers\Recover\RecoverEmail.xaml.cs">
+      <DependentUpon>RecoverEmail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControllers\Recover\RecoverNewPassword.xaml.cs">
+      <DependentUpon>RecoverNewPassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControllers\Recover\RecoverSuccesful.xaml.cs">
+      <DependentUpon>RecoverSuccesful.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControllers\Register\RegisterCodeVerification.xaml.cs">
+      <DependentUpon>RegisterCodeVerification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControllers\Register\RegisterAccountFields.xaml.cs">
+      <DependentUpon>RegisterAccountFields.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControllers\Message.xaml.cs">
       <DependentUpon>Message.xaml</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
+    <Compile Include="UserControllers\Register\RegisterSuccess.xaml.cs">
+      <DependentUpon>RegisterSuccess.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -131,7 +152,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControllers\Recover\RecoverCodeVerification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControllers\Recover\RecoverEmail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControllers\Recover\RecoverNewPassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControllers\Recover\RecoverSuccesful.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControllers\Register\RegisterCodeVerification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControllers\Register\RegisterAccountFields.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControllers\Message.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControllers\Register\RegisterSuccess.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

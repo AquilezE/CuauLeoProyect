@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Cliente.UserControllers;
+using Cliente.UserControllers.Recover;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,36 @@ namespace Cliente.Pantallas
     /// </summary>
     public partial class RecoverPassword : UserControl
     {
+
         public RecoverPassword()
         {
             InitializeComponent();
+            var recoverEmail = new RecoverEmail();
+            recoverEmail.EmailFilled += OnEmailSent;
+            RecoverPasswordContentControl.Content = recoverEmail;
         }
+
+        private void OnEmailSent(object sender, EventArgs e)
+        {
+            var registerCodeVerification = new RecoverCodeVerification();
+            registerCodeVerification.VerificationCompleted += OnVerificationCompleted;
+            RecoverPasswordContentControl.Content = registerCodeVerification;
+        }
+
+        private void OnVerificationCompleted(object sender, EventArgs e)
+        {
+            var recoverNewPassword= new RecoverNewPassword();
+            recoverNewPassword.PasswordChanged += OnPasswordChanged;
+            RecoverPasswordContentControl.Content = recoverNewPassword;
+            
+        }
+
+        private void OnPasswordChanged(object sender, EventArgs e)
+        {
+            RecoverPasswordContentControl.Content = new RecoverSuccesful();
+        }
+
+
+
     }
 }

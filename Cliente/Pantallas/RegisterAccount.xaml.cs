@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cliente.UserControllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +19,29 @@ namespace Cliente.Pantallas
     /// <summary>
     /// Interaction logic for RegisterAccount.xaml
     /// </summary>
+    /// 
+
+    //this will implement the IRegisterAccountService interface
     public partial class RegisterAccount : UserControl
     {
         public RegisterAccount()
         {
             InitializeComponent();
+            var registerAccountFields = new RegisterAccountFields();
+            registerAccountFields.RegistrationFilled += OnRegistrationFilled;
+            RegisterAccountContentControl.Content = registerAccountFields;
+        }
+
+        private void OnRegistrationFilled(object sender, EventArgs e)
+        {
+            var registerCodeVerification = new RegisterCodeVerification();
+            registerCodeVerification.VerificationCompleted += OnVerificationCompleted;
+            RegisterAccountContentControl.Content = registerCodeVerification;
+        }
+
+        private void OnVerificationCompleted(object sender, EventArgs e)
+        {
+            RegisterAccountContentControl.Content = new RegisterSuccess();
         }
     }
 }
