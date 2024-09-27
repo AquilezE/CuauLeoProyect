@@ -24,30 +24,5 @@ namespace Cliente.Pantallas
         {
             InitializeComponent();
         }
-
-        private void btCreateLobby_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btJoinLobby_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btFriends_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btStats_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btLogOut_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
