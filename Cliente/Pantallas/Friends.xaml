@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="Cliente.Pantallas.Friends"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Cliente.Pantallas"
+             mc:Ignorable="d" 
+             d:DesignHeight="950" d:DesignWidth="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="30*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+
+        <Label x:Name="lbManageFriends" Grid.Column="1" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="50" Content="Gestionar Amigos" />
+        <Button x:Name="btFriendsList" Grid.Column="1" Grid.Row="1" MinWidth="20" MinHeight="120" Margin="5 5 5 5" Content="Amigos" FontSize="40" Background="SaddleBrown" Click="btFriendsList_Click"/>
+        <Button x:Name="btFriendRequests" Grid.Column="1" Grid.Row="2" MinWidth="20" MinHeight="120" Margin="5 5 5 5" Content="Solicitudes de Amistad" FontSize="40" Background="SaddleBrown" Click="btFriendRequests_Click"/>
+        <Button x:Name="btAddFriend" Grid.Column="1" Grid.Row="3" MinWidth="20" MinHeight="120" Margin="5 5 5 5" Content="Añadir Amigo" FontSize="40" Background="SaddleBrown" Click="btAddFriend_Click"/>
+        <Button x:Name="btBlockList" Grid.Column="1" Grid.Row="4" MinWidth="20" MinHeight="120" Margin="5 5 5 5" Content="Bloqueados" FontSize="40" Background="SaddleBrown" Click="btBlockList_Click"/>
+        <Button x:Name="btGoBack" Grid.Column="1" Grid.Row="5" Width="200" Height="60" Margin="15 5 5 15" Content="Regresar" FontSize="25" Background="LightGoldenrodYellow" Foreground="Coral" Click="btGoBack_Click"/>
+    </Grid>
+</UserControl>

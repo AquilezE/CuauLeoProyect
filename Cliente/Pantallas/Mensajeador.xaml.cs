@@ -45,8 +45,8 @@ namespace Cliente
 
         public void irMenuPrincipal(object sender, RoutedEventArgs e)
         {
-            MainWindow main = (MainWindow)Application.Current.MainWindow;
-            main.NavigateToMensajeador(new MenuPrincipal(),600,600);
+            //MainWindow main = (MainWindow)Application.Current.MainWindow;
+            //main.NavigateToMensajeador(new MenuPrincipal(),600,600);
         }
     }
 }

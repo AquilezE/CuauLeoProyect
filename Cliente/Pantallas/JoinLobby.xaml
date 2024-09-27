@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="Cliente.Pantallas.JoinLobby"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Cliente.Pantallas"
+             mc:Ignorable="d" 
+             d:DesignHeight="650" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+
+        <Label x:Name="lbJoinLobby" Grid.Column="1" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="60" Content="Unirse a sala"/>
+        <Label x:Name="lbEnterCode" Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Bottom" FontSize="35" Content="Ingresa el código de la sala:"/>
+        <TextBox x:Name="tbLobbyCode" Grid.Column="1" Grid.Row="2" Width="500" Height="60" HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Bottom"/>
+        <Label x:Name="lbErrLobbyCode" Grid.Column="1" Grid.Row="3" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" FontSize="20" Foreground="Red" Content="Errores"/>
+        <Button x:Name="btJoinLobby" Grid.Column="1" Grid.Row="4" Width="200" Height="45" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 15 0 0" Background="SaddleBrown" Content="Unirse a sala" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btJoinLobby_Click"/>
+        <Button x:Name="btGoBack" Grid.Column="2" Grid.Row="5" Width="100" Height="45" Margin="0 0 20 20" Background="LightGoldenrodYellow" Foreground="Coral" Content="Regresar" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btGoBack_Click"/>
+    </Grid>
+</UserControl>

@@ -67,7 +67,7 @@ namespace Cliente.Pantallas
                         currentUser.Email = user.Email; 
 
                         MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-                        mainWindow.NavigateToMensajeador(new MenuPrincipal());
+                        mainWindow.NavigateToMensajeador(new MainMenu());
 
                     }
                     else

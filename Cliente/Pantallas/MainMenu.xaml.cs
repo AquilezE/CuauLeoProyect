@@ -18,11 +18,41 @@ namespace Cliente.Pantallas
     /// <summary>
     /// Lógica de interacción para MainMenu.xaml
     /// </summary>
-    public partial class MainMenu : Page
+    public partial class MainMenu : UserControl
     {
         public MainMenu()
         {
             InitializeComponent();
+        }
+
+        private void btCreateLobby_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = (MainWindow)Application.Current.MainWindow;
+            main.NavigateToMensajeador(new Lobby());
+        }
+
+        private void btJoinLobby_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.NavigateToMensajeador(new JoinLobby(), 650, 800);
+        }
+
+        private void btFriends_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.NavigateToMensajeador(new Friends(), 950, 1000);
+        }
+
+        private void btStats_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.NavigateToMensajeador(new Stats(), 650, 800);
+        }
+
+        private void btLogOut_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = (MainWindow)Application.Current.MainWindow;
+            main.NavigateToMensajeador(new LogIn());
         }
     }
 }
