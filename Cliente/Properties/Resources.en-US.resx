@@ -124,7 +124,7 @@
     <value>Username</value>
   </data>
   <data name="lbForgotPassword" xml:space="preserve">
-    <value>Forgot Paswword?</value>
+    <value>Forgot Password?</value>
   </data>
   <data name="globalRegister" xml:space="preserve">
     <value>Register</value>
@@ -172,7 +172,7 @@
     <value>Username is invalid</value>
   </data>
   <data name="lbErrUsernameExists" xml:space="preserve">
-    <value>Username Already Exists</value>
+    <value>Username already exists</value>
   </data>
   <data name="lbErrEmailInvalid" xml:space="preserve">
     <value>Email is invalid or already exists</value>
@@ -181,7 +181,7 @@
     <value>Password must have a number and a special character</value>
   </data>
   <data name="lbErrDiferentPassword" xml:space="preserve">
-    <value>Password must be the same</value>
+    <value>Passwords must be the same</value>
   </data>
   <data name="lbErrIncorrectCode" xml:space="preserve">
     <value>Incorrect code</value>
@@ -211,13 +211,13 @@
     <value>Log Out</value>
   </data>
   <data name="btLeaveLobby" xml:space="preserve">
-    <value>Leave Lobby</value>
+    <value>LeaveLobby</value>
   </data>
   <data name="lbLobby" xml:space="preserve">
     <value>Lobby</value>
   </data>
   <data name="btCopyCode" xml:space="preserve">
-    <value>Copy code</value>
+    <value>Copy Code</value>
   </data>
   <data name="lbPlayers" xml:space="preserve">
     <value>Players</value>
@@ -238,7 +238,7 @@
     <value>Kick</value>
   </data>
   <data name="btStartGame" xml:space="preserve">
-    <value>Start Game</value>
+    <value>StartGame</value>
   </data>
   <data name="lbErrEmptyMessage" xml:space="preserve">
     <value>You must type something to send a message</value>
@@ -247,10 +247,10 @@
     <value>Your message is too long, 300 characters max</value>
   </data>
   <data name="lbErrInvalidMessage" xml:space="preserve">
-    <value>Your message contains invalid characters, only alphanumeric!</value>
+    <value>Your message contains invalid characters, only alphanumeric! </value>
   </data>
   <data name="lbManageFriends" xml:space="preserve">
-    <value>Manage Friends</value>
+    <value>Manage friends</value>
   </data>
   <data name="btFriendList" xml:space="preserve">
     <value>Friend List</value>
@@ -262,7 +262,7 @@
     <value>Add Friends</value>
   </data>
   <data name="btBlockLists" xml:space="preserve">
-    <value>Block list</value>
+    <value>Block List</value>
   </data>
   <data name="btGoBack" xml:space="preserve">
     <value>Go Back</value>
@@ -274,10 +274,10 @@
     <value>Delete</value>
   </data>
   <data name="btBlockUser" xml:space="preserve">
-    <value>Block User</value>
+    <value>Block user</value>
   </data>
   <data name="lbOnline" xml:space="preserve">
-    <value>Online</value>
+    <value>&#x8;Online</value>
   </data>
   <data name="lbOffline" xml:space="preserve">
     <value>Offline</value>

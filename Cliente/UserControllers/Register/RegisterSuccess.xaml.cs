@@ -26,7 +26,7 @@ namespace Cliente.UserControllers
             InitializeComponent();
         }
 
-        private void btGotoLogIn_Click(object sender, RoutedEventArgs e)
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToMensajeador(new LogIn());

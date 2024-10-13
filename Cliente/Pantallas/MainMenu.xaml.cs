@@ -54,5 +54,15 @@ namespace Cliente.Pantallas
             MainWindow main = (MainWindow)Application.Current.MainWindow;
             main.NavigateToMensajeador(new LogIn());
         }
+
+        private void btnProfile_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnOptions_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

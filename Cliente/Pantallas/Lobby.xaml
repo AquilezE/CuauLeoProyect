@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Cliente.Pantallas"
              xmlns:userControllers="clr-namespace:Cliente.UserControllers"
+             xmlns:p="clr-namespace:Cliente.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1500">
     <Grid>
@@ -20,15 +21,15 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
             <Button Width="200" HorizontalAlignment="Left" Margin="50 0 0 0"
-            x:Name="btLeaveLobby" Content="Abandonar Sala" Click="btLeaveLobby_Click"/>
-            <Label Content="Sala" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+            x:Name="btLeaveLobby" Content="{x:Static p:Resources.btLeaveLobby}" Click="btLeaveLobby_Click"/>
+            <Label Content="Usuario" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
             <TextBox x:Name="codigoSala" Width="355" Height="50"/>
             <Button Height="30" x:Name="btnJoin" Click="btnJoin_Click" Background="Peru"/>
 
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="0"  Orientation="Horizontal">
-            <Label Content="UserName" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
-            <TextBox x:Name="tbLobbyCode" Width="30" Height="50" FontSize="30" Margin="20 0 0 0"/>
+            <Label Content="{x:Static p:Resources.lbLobby}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+            <TextBox x:Name="tbLobbyCode" Width="180" Height="50" FontSize="30" Margin="20 0 0 0"/>
 
         </StackPanel>
 
@@ -74,7 +75,11 @@
 
         <StackPanel Grid.Column="0" Grid.Row="2"  Orientation="Horizontal">
             <TextBox x:Name="tbMessage" Width="500" Height="50" FontSize="30" Margin="20 0 0 0" />
-            <Button Grid.Column="1" Grid.Row="3" Width="100" HorizontalAlignment="Right" Margin="25 0 25 0" x:Name="btSendMessage" Content="\ICONOENVIAR" Click="btSendMessage_Click"/>
+            <Button Grid.Column="1" Grid.Row="3" Width="100" HorizontalAlignment="Right" Margin="25 0 25 0" x:Name="btSendMessage" Click="btSendMessage_Click">
+                <Button.Content>
+                    <TextBlock FontFamily="Segoe UI Symbol" Text="&#x1f4e8;" FontSize="20"/>
+                </Button.Content>
+            </Button>
         
         </StackPanel>
 
@@ -82,20 +87,20 @@
             <Button Grid.Column="1" Grid.Row="3" Width="200" HorizontalAlignment="Right" Margin="25 0 50 0" x:Name="btKick" Content="Expulsar Jugador" Click="btKick_Click"/>
             
             <StackPanel Orientation="Horizontal">
-                <Button Grid.Column="1" Grid.Row="3" Width="200" HorizontalAlignment="Right" Margin="25 0 0 0" x:Name="btReady" Content="Listo" Click="btSendMessage_Click"/>
-                <Button Grid.Column="1" Grid.Row="3" Width="200" HorizontalAlignment="Right" Margin="25 0 25 0" x:Name="btInviteFriend" Content="Invitar Amigo" Click="btSendMessage_Click"/>
+                <Button Grid.Column="1" Grid.Row="3" Width="200" HorizontalAlignment="Right" Margin="25 0 0 0" x:Name="btReady" Content="{x:Static p:Resources.btImReady}" Click="btSendMessage_Click"/>
+                <Button Grid.Column="1" Grid.Row="3" Width="200" HorizontalAlignment="Right" Margin="25 0 25 0" x:Name="btInviteFriend" Content="{x:Static p:Resources.btInviteFriend}" Click="btSendMessage_Click"/>
             </StackPanel>
         </StackPanel>
 
-        <Label x:Name="lbMessageError" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="3" Content="AQUI VAN LOS MENSAJES DE ERROR SOBRE ERRORES&#xD;&#xA;"/>
+        <Label x:Name="lbMessageError" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="3" Content="{x:Static p:Resources.lbErrMessageTooLong}"/>
 
         <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0 0 25 0">
 
 
-                <Button  Width="200" HorizontalAlignment="Right" x:Name="btStartGame" Content="Start Game" Click="btStartGame_Click"/>
+            <Button  Width="200" HorizontalAlignment="Right" x:Name="btStartGame" Content="{x:Static p:Resources.btStartGame}" Click="btStartGame_Click"/>
 
             <StackPanel FlowDirection="LeftToRight" Orientation="Vertical" Width="522" >
-                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Error X" x:Name="lbErrGeneral" Height="89"/>
+                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{x:Static p:Resources.lbErrNoConection}" x:Name="lbErrGeneral" Height="89"/>
             </StackPanel>
         </StackPanel>
 

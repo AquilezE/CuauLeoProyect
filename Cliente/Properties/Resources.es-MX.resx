@@ -118,168 +118,170 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="globalLogin" xml:space="preserve">
-    <value>Log In</value>
+    <value>Iniciar Sesión</value>
   </data>
   <data name="globalUsername" xml:space="preserve">
-    <value>Username</value>
+    <value>Nombre de Usuario</value>
   </data>
   <data name="lbForgotPassword" xml:space="preserve">
-    <value>Forgot Paswword?</value>
+    <value>¿Olvidaste Tu Contraseña?</value>
   </data>
   <data name="globalRegister" xml:space="preserve">
-    <value>Register</value>
+    <value>Registrate</value>
   </data>
   <data name="btPlayAsGuest" xml:space="preserve">
-    <value>Play As Guest</value>
+    <value>Jugar como invitado</value>
   </data>
   <data name="lbSpanish" xml:space="preserve">
-    <value>Spanish</value>
+    <value>Español</value>
   </data>
   <data name="lbEnglish" xml:space="preserve">
-    <value>English</value>
+    <value>Inglés</value>
   </data>
   <data name="lbErrWrongLogin" xml:space="preserve">
-    <value>Incorrect user or password</value>
+    <value>Usuario o Contraseña fueron incorrectos</value>
   </data>
   <data name="lbErrNoConection" xml:space="preserve">
-    <value>Oops, we couldn't reach our server, check your conection or try again later!</value>
+    <value>Uju, no encontramos nuestro servidor, verifica tu coneccion o intentalo de nuevo despues!</value>
   </data>
   <data name="cbLanguage" xml:space="preserve">
-    <value>Language</value>
+    <value>Lenguaje</value>
   </data>
   <data name="globalPassword" xml:space="preserve">
-    <value>Password</value>
+    <value>Contraseña</value>
   </data>
   <data name="globalEmail" xml:space="preserve">
-    <value>Email</value>
+    <value>Correo Electrónico</value>
   </data>
   <data name="lbConfirmPassword" xml:space="preserve">
-    <value>Confirm Password</value>
+    <value>Confirmar Contraseña</value>
   </data>
   <data name="lbCodeSent" xml:space="preserve">
-    <value>A code has been sent to your email, please type it here:</value>
+    <value>Un codigo ha sido enviado a tu correo, escribelo aqui:</value>
   </data>
   <data name="lbClickHereResend" xml:space="preserve">
-    <value>If you haven't recieved your message, click here</value>
+    <value>Si no haz recibido el mensaje, haz click aqui
+</value>
   </data>
   <data name="lbAccountRegistered" xml:space="preserve">
-    <value>Your account has been registered successfully!</value>
+    <value>Tu cuenta ha sido registrada!</value>
   </data>
   <data name="lbClickHereLogin" xml:space="preserve">
-    <value>Click here to log in</value>
+    <value>Click aqui para iniciar sesion</value>
   </data>
   <data name="lbErrUsernameInvalid" xml:space="preserve">
-    <value>Username is invalid</value>
+    <value>Nombre Inválido</value>
   </data>
   <data name="lbErrUsernameExists" xml:space="preserve">
-    <value>Username Already Exists</value>
+    <value>Este nombre ya está ocupado</value>
   </data>
   <data name="lbErrEmailInvalid" xml:space="preserve">
-    <value>Email is invalid or already exists</value>
+    <value>Correo electrónico inválido o ya se encuentra ocupado</value>
   </data>
   <data name="lbErrWeakPassword" xml:space="preserve">
-    <value>Password must have a number and a special character</value>
+    <value>La contraseña debe tener un numero y un caracter especial</value>
   </data>
   <data name="lbErrDiferentPassword" xml:space="preserve">
-    <value>Password must be the same</value>
+    <value>Las contraseñas no coinciden</value>
   </data>
   <data name="lbErrIncorrectCode" xml:space="preserve">
-    <value>Incorrect code</value>
+    <value>Código Incorrecto</value>
   </data>
   <data name="btCreateLobby" xml:space="preserve">
-    <value>Create Lobby</value>
+    <value>Crear Sala</value>
   </data>
   <data name="btJoinLobby" xml:space="preserve">
-    <value>Join Lobby</value>
+    <value>Unirse a Sala</value>
   </data>
   <data name="btFriends" xml:space="preserve">
-    <value>Friends</value>
+    <value>Amigos</value>
   </data>
   <data name="btStats" xml:space="preserve">
-    <value>Stats</value>
+    <value>Estadísticas</value>
   </data>
   <data name="lbOptions" xml:space="preserve">
-    <value>Options</value>
+    <value>Opciones</value>
   </data>
   <data name="lbViewProfile" xml:space="preserve">
-    <value>View Profile</value>
+    <value>Ver Perfil</value>
   </data>
   <data name="lbErrNoDataBase" xml:space="preserve">
-    <value>Oops!, our database is not working, try again later!</value>
+    <value>Uju, nuestra base de datos no está funcionando, intentalo más tarde
+</value>
   </data>
   <data name="btLogOut" xml:space="preserve">
-    <value>Log Out</value>
+    <value>Cerrar Sesión</value>
   </data>
   <data name="btLeaveLobby" xml:space="preserve">
-    <value>Leave Lobby</value>
+    <value>Abandonar sala</value>
   </data>
   <data name="lbLobby" xml:space="preserve">
-    <value>Lobby</value>
+    <value>Sala</value>
   </data>
   <data name="btCopyCode" xml:space="preserve">
-    <value>Copy code</value>
+    <value>Copiar código</value>
   </data>
   <data name="lbPlayers" xml:space="preserve">
-    <value>Players</value>
+    <value>Jugadores</value>
   </data>
   <data name="lbReady" xml:space="preserve">
-    <value>Ready!</value>
+    <value>Listo!</value>
   </data>
   <data name="lbNotReady" xml:space="preserve">
-    <value>Not Ready</value>
+    <value>No Listo</value>
   </data>
   <data name="btImReady" xml:space="preserve">
-    <value>I'm Ready</value>
+    <value>Estoy Listo!</value>
   </data>
   <data name="btInviteFriend" xml:space="preserve">
-    <value>Invite Friend</value>
+    <value>Invitar Amigo</value>
   </data>
   <data name="btKick" xml:space="preserve">
-    <value>Kick</value>
+    <value>Expulsar</value>
   </data>
   <data name="btStartGame" xml:space="preserve">
-    <value>Start Game</value>
+    <value>Iniciar Partida</value>
   </data>
   <data name="lbErrEmptyMessage" xml:space="preserve">
-    <value>You must type something to send a message</value>
+    <value>Debes escribir algo para poder mandar un mensaje</value>
   </data>
   <data name="lbErrMessageTooLong" xml:space="preserve">
-    <value>Your message is too long, 300 characters max</value>
+    <value>Tu mensaje es muy largo, máximo 300 cáracteres</value>
   </data>
   <data name="lbErrInvalidMessage" xml:space="preserve">
-    <value>Your message contains invalid characters, only alphanumeric!</value>
+    <value>Tu mensaje contiene caracteres invalidos, solo alfanumericos!</value>
   </data>
   <data name="lbManageFriends" xml:space="preserve">
-    <value>Manage Friends</value>
+    <value>Gestionar Amigos</value>
   </data>
   <data name="btFriendList" xml:space="preserve">
-    <value>Friend List</value>
+    <value>Lista de Amigos</value>
   </data>
   <data name="btFriendRequest" xml:space="preserve">
-    <value>Friend Requests</value>
+    <value>Solicitudes de Amistad</value>
   </data>
   <data name="btAddFriend" xml:space="preserve">
-    <value>Add Friends</value>
+    <value>Añadir Amigos</value>
   </data>
   <data name="btBlockLists" xml:space="preserve">
-    <value>Block list</value>
+    <value>Lista de Bloqueados</value>
   </data>
   <data name="btGoBack" xml:space="preserve">
-    <value>Go Back</value>
+    <value>Regresar</value>
   </data>
   <data name="lbErrNoFriends" xml:space="preserve">
-    <value>Oops!, Looks like you have no friends :(</value>
+    <value>Uju!, Parece ser que no tienes amigos :(</value>
   </data>
   <data name="btDelete" xml:space="preserve">
-    <value>Delete</value>
+    <value>Eliminar</value>
   </data>
   <data name="btBlockUser" xml:space="preserve">
-    <value>Block User</value>
+    <value>Bloquear</value>
   </data>
   <data name="lbOnline" xml:space="preserve">
-    <value>Online</value>
+    <value>En Línea</value>
   </data>
   <data name="lbOffline" xml:space="preserve">
-    <value>Offline</value>
+    <value>Desconectado</value>
   </data>
 </root>

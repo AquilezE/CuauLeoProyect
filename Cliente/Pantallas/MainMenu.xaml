@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Cliente.Pantallas"
+             xmlns:p="clr-namespace:Cliente.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="950" d:DesignWidth="1300">
     <Grid >
@@ -15,7 +16,7 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="15*"/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="7*"/>
             <RowDefinition Height="20*"/>
             <RowDefinition Height="20*"/>
             <RowDefinition Height="20*"/>
@@ -23,15 +24,30 @@
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Column="0" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="AUI VA ICONO DE PERFIL"/>
-        <Label x:Name="lbViewProfile" Grid.Column="0" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Ver Perfil"/>
+        <Button x:Name="btnProfile" Grid.Column="0" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="Transparent" Click="btnProfile_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Image Source="/Images/profileIcon.png" Width="50" Height="50" Margin="138,0,137,-24"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        
+        <Label x:Name="lbViewProfile" Grid.Column="0" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Content="{x:Static p:Resources.lbViewProfile}" FontSize="25"/>
         <Label Grid.Column="1" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="50" Content="BEVOSOS" />
-        <Label Grid.Column="2" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="AQUI VA ICONO CONFIGURACION"/>
-        <Label x:Name="lbOptions" Grid.Column="2" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Configuración"/>
-        <Button x:Name="btCreateLobby" Grid.Column="1" Grid.Row="2" MinWidth="20" MinHeight="120" Margin="5 5 5 5" Content="Crear Sala" FontSize="50" Background="SaddleBrown" Click="btCreateLobby_Click"/>
-        <Button x:Name="btJoinLobby" Grid.Column="1" Grid.Row="3" MinWidth="20" MinHeight="120" Margin="5 5 5 5" Content="Unirse a Sala" FontSize="50" Background="SaddleBrown" Click="btJoinLobby_Click"/>
-        <Button x:Name="btFriends" Grid.Column="1" Grid.Row="4" MinWidth="20" MinHeight="120" Margin="5 5 5 5" Content="Amigos" FontSize="50" Background="SaddleBrown" Click="btFriends_Click"/>
-        <Button x:Name="btStats" Grid.Column="1" Grid.Row="5" MinWidth="20" MinHeight="120" Margin="5 5 5 5" Content="Estadísticas" FontSize="50" Background="SaddleBrown" Click="btStats_Click"/>
-        <Button x:Name="btLogOut" Grid.Column="0" Grid.Row="6" Width="200" Height="60" Margin="15 5 5 15" Content="Cerrar Sesion" FontSize="25" Background="LightGoldenrodYellow" Foreground="Coral" Click="btLogOut_Click"/>
+        
+        <Button x:Name="btnOptions" Grid.Column="2" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="Transparent" Click="btnOptions_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Image Source="/Images/configIcon.png" Width="50" Height="50" Margin="138,0,137,-24"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        
+        <Label x:Name="lbOptions" Grid.Column="2" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Content="{x:Static p:Resources.lbOptions}" FontSize="25"/>
+        <Button x:Name="btCreateLobby" Grid.Column="1" Grid.Row="2" MinWidth="20" MinHeight="120" Margin="5 5 5 5" Content="{x:Static p:Resources.btCreateLobby}" FontSize="50" Background="SaddleBrown" Click="btCreateLobby_Click"/>
+        <Button x:Name="btJoinLobby" Grid.Column="1" Grid.Row="3" MinWidth="20" MinHeight="120" Margin="5 5 5 5" Content="{x:Static p:Resources.btJoinLobby}" FontSize="50" Background="SaddleBrown" Click="btJoinLobby_Click"/>
+        <Button x:Name="btFriends" Grid.Column="1" Grid.Row="4" MinWidth="20" MinHeight="120" Margin="5 5 5 5" Content="{x:Static p:Resources.btFriends}" FontSize="50" Background="SaddleBrown" Click="btFriends_Click"/>
+        <Button x:Name="btStats" Grid.Column="1" Grid.Row="5" MinWidth="20" MinHeight="120" Margin="5 5 5 5" Content="{x:Static p:Resources.btStats}" FontSize="50" Background="SaddleBrown" Click="btStats_Click"/>
+        <Button x:Name="btLogOut" Grid.Column="0" Grid.Row="6" Width="200" Height="60" Margin="15 5 5 15" Content= "{x:Static p:Resources.btLogOut}" FontSize="25" Background="LightGoldenrodYellow" Foreground="Coral" Click="btLogOut_Click"/>
     </Grid>
 </UserControl>

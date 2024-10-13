@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Path = System.IO.Path;
 
 namespace Cliente.Pantallas
 {
@@ -100,7 +105,61 @@ namespace Cliente.Pantallas
                 mainWindow.NavigateToMensajeador(new RecoverPassword());
         }
 
+        private void ChangeLanguage(string cultureCode)
+        {
+            // Cambiar la cultura del hilo actual
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(cultureCode);
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureCode);
 
+            try
+            {
+                // Crear un ResourceManager para cargar los recursos
+                System.Resources.ResourceManager rm = new System.Resources.ResourceManager("Cliente.Properties.Resources", typeof(LogIn).Assembly);
+
+                // Obtener el recurso específico para la cultura
+                var resourceSet = rm.GetResourceSet(CultureInfo.CurrentUICulture, true, true);
+
+                if (resourceSet != null)
+                {
+                    // Limpiar y agregar el nuevo diccionario de recursos
+                    Application.Current.Resources.MergedDictionaries.Clear();
+                    foreach (DictionaryEntry entry in resourceSet)
+                    {
+                        Application.Current.Resources[entry.Key] = entry.Value;
+                    }
+
+                    // Actualizar la interfaz de usuario
+                    InitializeComponent();
+                }
+                else
+                {
+                    throw new FileNotFoundException($"Resource set not found for culture: {cultureCode}");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar el archivo de recursos: {ex.Message}");
+            }
+        }
+
+        private void cbLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox comboBox = sender as ComboBox;
+            ComboBoxItem selectedItem = comboBox.SelectedItem as ComboBoxItem;
+
+            if (selectedItem != null)
+            {
+                string selectedLanguage = selectedItem.Content.ToString();
+                if (selectedLanguage == "Inglés")
+                {
+                    ChangeLanguage("en-US");
+                }
+                else if (selectedLanguage == "Spanish")
+                {
+                    ChangeLanguage("es-MX");
+                }
+            }
+        }
 
 
     }

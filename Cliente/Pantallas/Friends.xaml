@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Cliente.Pantallas"
              mc:Ignorable="d" 
              d:DesignHeight="950" d:DesignWidth="1000">
-    <Grid>
+    <Grid Height="950" Width="1000">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30*"/>
             <ColumnDefinition Width="60*"/>
