@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Cliente.Pantallas"
+             xmlns:p="clr-namespace:Cliente.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="650" d:DesignWidth="800">
     <Grid>
@@ -21,11 +22,11 @@
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
 
-        <Label x:Name="lbJoinLobby" Grid.Column="1" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="60" Content="Unirse a sala"/>
-        <Label x:Name="lbEnterCode" Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Bottom" FontSize="35" Content="Ingresa el código de la sala:"/>
+        <Label x:Name="lbJoinLobby" Grid.Column="1" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="60" Content="{x:Static p:Resources.btJoinLobby}"/>
+        <Label x:Name="lbEnterCode" Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Bottom" FontSize="35" Content= "{x:Static p:Resources.lbEnterCode}"/>
         <TextBox x:Name="tbLobbyCode" Grid.Column="1" Grid.Row="2" Width="500" Height="60" HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Bottom"/>
-        <Label x:Name="lbErrLobbyCode" Grid.Column="1" Grid.Row="3" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" FontSize="20" Foreground="Red" Content="Errores"/>
-        <Button x:Name="btJoinLobby" Grid.Column="1" Grid.Row="4" Width="200" Height="45" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 15 0 0" Background="SaddleBrown" Content="Unirse a sala" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btJoinLobby_Click"/>
-        <Button x:Name="btGoBack" Grid.Column="2" Grid.Row="5" Width="100" Height="45" Margin="0 0 20 20" Background="LightGoldenrodYellow" Foreground="Coral" Content="Regresar" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btGoBack_Click"/>
+        <Label x:Name="lbErrLobbyCode" Grid.Column="1" Grid.Row="3" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" FontSize="20" Foreground="Red" Content="{x:Static p:Resources.lbErrLobbyNotFound}"/>
+        <Button x:Name="btJoinLobby" Grid.Column="1" Grid.Row="4" Width="200" Height="45" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 15 0 0" Background="SaddleBrown" Content="{x:Static p:Resources.btJoinLobby}" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btJoinLobby_Click"/>
+        <Button x:Name="btGoBack" Grid.Column="2" Grid.Row="5" Width="100" Height="45" Margin="0 0 20 20" Background="LightGoldenrodYellow" Foreground="Coral" Content="{x:Static p:Resources.btGoBack}" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btGoBack_Click"/>
     </Grid>
 </UserControl>

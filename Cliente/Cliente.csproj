@@ -228,7 +228,6 @@
     </Compile>
     <Resource Include="Images\configIcon.png" />
     <Resource Include="Images\profileIcon.png" />
-    <Resource Include="Pantallas\profileIcon.png" />
     <Content Include="Properties\Resources.en-US.resx" />
     <Content Include="Properties\Resources.es-MX.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">

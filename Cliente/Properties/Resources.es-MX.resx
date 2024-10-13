@@ -284,4 +284,106 @@
   <data name="lbOffline" xml:space="preserve">
     <value>Desconectado</value>
   </data>
+  <data name="btAccept" xml:space="preserve">
+    <value>Aceptar</value>
+  </data>
+  <data name="btDeny" xml:space="preserve">
+    <value>Rechazar</value>
+  </data>
+  <data name="lbNoFriendRequests" xml:space="preserve">
+    <value>Uju!, Parece que no tienes soicitudes de amistad :(</value>
+  </data>
+  <data name="lbFindUser" xml:space="preserve">
+    <value>Encontrar Usuario</value>
+  </data>
+  <data name="btSendFriendRequest" xml:space="preserve">
+    <value>Enviar Solicitud de Amistad</value>
+  </data>
+  <data name="lbErrUserNotFound" xml:space="preserve">
+    <value>Usuario no encontrad, Intentalo de nuevo más tarde!</value>
+  </data>
+  <data name="lbYourStats" xml:space="preserve">
+    <value>Tus Estadísticas!</value>
+  </data>
+  <data name="lbWins" xml:space="preserve">
+    <value>Victorias: </value>
+  </data>
+  <data name="lbAnihilatedBabies" xml:space="preserve">
+    <value>Bebés Asesinados: </value>
+  </data>
+  <data name="lbMonstersCreated" xml:space="preserve">
+    <value>Monstruos creados: </value>
+  </data>
+  <data name="lbErrNoStats" xml:space="preserve">
+    <value>Parece que no has jugado ninguna partida aún, ve a jugar!</value>
+  </data>
+  <data name="lbBlockedUsers" xml:space="preserve">
+    <value>Usuarios Bloqueados</value>
+  </data>
+  <data name="btUnblock" xml:space="preserve">
+    <value>Desbloquear</value>
+  </data>
+  <data name="lbErrNoBlockedUsers" xml:space="preserve">
+    <value>No has bloqueado a nadie aún!</value>
+  </data>
+  <data name="lbProfile" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="lbUserId" xml:space="preserve">
+    <value>ID Usuario</value>
+  </data>
+  <data name="btChangePassword" xml:space="preserve">
+    <value>Cambiar Contraseña</value>
+  </data>
+  <data name="btSave" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="lbNewUsername" xml:space="preserve">
+    <value>Nombre de usuario nuevo</value>
+  </data>
+  <data name="lbChosepfp" xml:space="preserve">
+    <value>Elige tu foto de perfil</value>
+  </data>
+  <data name="lbCurrentPassword" xml:space="preserve">
+    <value>Contraseña actual</value>
+  </data>
+  <data name="lbNewPassword" xml:space="preserve">
+    <value>Contraseña nueva</value>
+  </data>
+  <data name="btChange" xml:space="preserve">
+    <value>Cambiar</value>
+  </data>
+  <data name="lbWriteEmail" xml:space="preserve">
+    <value>Escribe tu correo para verificar que eres tu</value>
+  </data>
+  <data name="btSend" xml:space="preserve">
+    <value>Enviar</value>
+  </data>
+  <data name="btVerify" xml:space="preserve">
+    <value>Verificar</value>
+  </data>
+  <data name="lbSuccesPassword" xml:space="preserve">
+    <value>Tu contraseña ha sido cambiada!</value>
+  </data>
+  <data name="lbErrValidEmail" xml:space="preserve">
+    <value>Este correo no es válido</value>
+  </data>
+  <data name="lbEnterCode" xml:space="preserve">
+    <value>Ingresa tu código de sala:</value>
+  </data>
+  <data name="btJoin" xml:space="preserve">
+    <value>Unirse</value>
+  </data>
+  <data name="lbErrLobbyNotFound" xml:space="preserve">
+    <value>Esta sala no exíste, intentalo de nuevo!</value>
+  </data>
+  <data name="lbVolume" xml:space="preserve">
+    <value>Volumen</value>
+  </data>
+  <data name="btDarkMode" xml:space="preserve">
+    <value>Modo Obscuro</value>
+  </data>
+  <data name="btLightMode" xml:space="preserve">
+    <value>Modo Brillante</value>
+  </data>
 </root>

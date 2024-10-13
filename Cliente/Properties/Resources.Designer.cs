@@ -61,6 +61,15 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Accept.
+        /// </summary>
+        public static string btAccept {
+            get {
+                return ResourceManager.GetString("btAccept", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Add Friends.
         /// </summary>
         public static string btAddFriend {
@@ -88,6 +97,24 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Change.
+        /// </summary>
+        public static string btChange {
+            get {
+                return ResourceManager.GetString("btChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Change Password.
+        /// </summary>
+        public static string btChangePassword {
+            get {
+                return ResourceManager.GetString("btChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Copy code.
         /// </summary>
         public static string btCopyCode {
@@ -106,11 +133,29 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Dark Mode.
+        /// </summary>
+        public static string btDarkMode {
+            get {
+                return ResourceManager.GetString("btDarkMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Delete.
         /// </summary>
         public static string btDelete {
             get {
                 return ResourceManager.GetString("btDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Deny.
+        /// </summary>
+        public static string btDeny {
+            get {
+                return ResourceManager.GetString("btDeny", resourceCulture);
             }
         }
         
@@ -169,6 +214,15 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Join.
+        /// </summary>
+        public static string btJoin {
+            get {
+                return ResourceManager.GetString("btJoin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Join Lobby.
         /// </summary>
         public static string btJoinLobby {
@@ -196,6 +250,15 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Light Mode.
+        /// </summary>
+        public static string btLightMode {
+            get {
+                return ResourceManager.GetString("btLightMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Log Out.
         /// </summary>
         public static string btLogOut {
@@ -214,6 +277,33 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Save.
+        /// </summary>
+        public static string btSave {
+            get {
+                return ResourceManager.GetString("btSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Send.
+        /// </summary>
+        public static string btSend {
+            get {
+                return ResourceManager.GetString("btSend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Send friend request.
+        /// </summary>
+        public static string btSendFriendRequest {
+            get {
+                return ResourceManager.GetString("btSendFriendRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Start Game.
         /// </summary>
         public static string btStartGame {
@@ -228,6 +318,24 @@ namespace Cliente.Properties {
         public static string btStats {
             get {
                 return ResourceManager.GetString("btStats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Unblock.
+        /// </summary>
+        public static string btUnblock {
+            get {
+                return ResourceManager.GetString("btUnblock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Verify.
+        /// </summary>
+        public static string btVerify {
+            get {
+                return ResourceManager.GetString("btVerify", resourceCulture);
             }
         }
         
@@ -295,6 +403,33 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Anihilated babies: .
+        /// </summary>
+        public static string lbAnihilatedBabies {
+            get {
+                return ResourceManager.GetString("lbAnihilatedBabies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Blocked Users.
+        /// </summary>
+        public static string lbBlockedUsers {
+            get {
+                return ResourceManager.GetString("lbBlockedUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Choose your profile picture.
+        /// </summary>
+        public static string lbChosepfp {
+            get {
+                return ResourceManager.GetString("lbChosepfp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Click here to log in.
         /// </summary>
         public static string lbClickHereLogin {
@@ -331,11 +466,29 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Current Password.
+        /// </summary>
+        public static string lbCurrentPassword {
+            get {
+                return ResourceManager.GetString("lbCurrentPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a English.
         /// </summary>
         public static string lbEnglish {
             get {
                 return ResourceManager.GetString("lbEnglish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enter your lobby code:.
+        /// </summary>
+        public static string lbEnterCode {
+            get {
+                return ResourceManager.GetString("lbEnterCode", resourceCulture);
             }
         }
         
@@ -385,11 +538,29 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a This lobby doesn&apos;t exist, try again later!.
+        /// </summary>
+        public static string lbErrLobbyNotFound {
+            get {
+                return ResourceManager.GetString("lbErrLobbyNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Your message is too long, 300 characters max.
         /// </summary>
         public static string lbErrMessageTooLong {
             get {
                 return ResourceManager.GetString("lbErrMessageTooLong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You haven&apos;t blocked anyone yet!.
+        /// </summary>
+        public static string lbErrNoBlockedUsers {
+            get {
+                return ResourceManager.GetString("lbErrNoBlockedUsers", resourceCulture);
             }
         }
         
@@ -421,6 +592,15 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Looks like you haven&apos;t played any game, go play! .
+        /// </summary>
+        public static string lbErrNoStats {
+            get {
+                return ResourceManager.GetString("lbErrNoStats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Username Already Exists.
         /// </summary>
         public static string lbErrUsernameExists {
@@ -439,6 +619,24 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a User not found, try again later!.
+        /// </summary>
+        public static string lbErrUserNotFound {
+            get {
+                return ResourceManager.GetString("lbErrUserNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a This email isn&apos;t valid.
+        /// </summary>
+        public static string lbErrValidEmail {
+            get {
+                return ResourceManager.GetString("lbErrValidEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Password must have a number and a special character.
         /// </summary>
         public static string lbErrWeakPassword {
@@ -453,6 +651,15 @@ namespace Cliente.Properties {
         public static string lbErrWrongLogin {
             get {
                 return ResourceManager.GetString("lbErrWrongLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Find User.
+        /// </summary>
+        public static string lbFindUser {
+            get {
+                return ResourceManager.GetString("lbFindUser", resourceCulture);
             }
         }
         
@@ -480,6 +687,42 @@ namespace Cliente.Properties {
         public static string lbManageFriends {
             get {
                 return ResourceManager.GetString("lbManageFriends", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Monsters Created: .
+        /// </summary>
+        public static string lbMonstersCreated {
+            get {
+                return ResourceManager.GetString("lbMonstersCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a New Password.
+        /// </summary>
+        public static string lbNewPassword {
+            get {
+                return ResourceManager.GetString("lbNewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a New Username.
+        /// </summary>
+        public static string lbNewUsername {
+            get {
+                return ResourceManager.GetString("lbNewUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Oops!, Looks like you have no friend Requests.
+        /// </summary>
+        public static string lbNoFriendRequests {
+            get {
+                return ResourceManager.GetString("lbNoFriendRequests", resourceCulture);
             }
         }
         
@@ -529,6 +772,15 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Profile.
+        /// </summary>
+        public static string lbProfile {
+            get {
+                return ResourceManager.GetString("lbProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Ready!.
         /// </summary>
         public static string lbReady {
@@ -547,11 +799,65 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Your password has been changed successfully!.
+        /// </summary>
+        public static string lbSuccesPassword {
+            get {
+                return ResourceManager.GetString("lbSuccesPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a User ID.
+        /// </summary>
+        public static string lbUserId {
+            get {
+                return ResourceManager.GetString("lbUserId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a View Profile.
         /// </summary>
         public static string lbViewProfile {
             get {
                 return ResourceManager.GetString("lbViewProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Volume.
+        /// </summary>
+        public static string lbVolume {
+            get {
+                return ResourceManager.GetString("lbVolume", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Wins: .
+        /// </summary>
+        public static string lbWins {
+            get {
+                return ResourceManager.GetString("lbWins", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Write your email to verify its you.
+        /// </summary>
+        public static string lbWriteEmail {
+            get {
+                return ResourceManager.GetString("lbWriteEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Your Stats!.
+        /// </summary>
+        public static string lbYourStats {
+            get {
+                return ResourceManager.GetString("lbYourStats", resourceCulture);
             }
         }
     }
