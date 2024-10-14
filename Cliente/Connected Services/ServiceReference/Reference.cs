@@ -222,4 +222,124 @@ namespace Cliente.ServiceReference {
             return base.Channel.LogInAsync(email, password);
         }
     }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.ILobbyManager", CallbackContract=typeof(Cliente.ServiceReference.ILobbyManagerCallback))]
+    public interface ILobbyManager {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/NewLobbyCreated")]
+        void NewLobbyCreated(int UserId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/NewLobbyCreated")]
+        System.Threading.Tasks.Task NewLobbyCreatedAsync(int UserId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/JoinLobby")]
+        void JoinLobby(int lobbyId, int UserId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/JoinLobby")]
+        System.Threading.Tasks.Task JoinLobbyAsync(int lobbyId, int UserId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/SendMessage")]
+        void SendMessage(int lobbyId, int UserId, string message);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/SendMessage")]
+        System.Threading.Tasks.Task SendMessageAsync(int lobbyId, int UserId, string message);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/LeaveLobby")]
+        void LeaveLobby(int lobbyId, int UserId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/LeaveLobby")]
+        System.Threading.Tasks.Task LeaveLobbyAsync(int lobbyId, int UserId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/KickUser")]
+        void KickUser(int lobbyId, int UserId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/KickUser")]
+        System.Threading.Tasks.Task KickUserAsync(int lobbyId, int UserId);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ILobbyManagerCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/OnNewLobbyCreated", ReplyAction="http://tempuri.org/ILobbyManager/OnNewLobbyCreatedResponse")]
+        void OnNewLobbyCreated(int lobbyId, int UserId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/OnJoinLobby", ReplyAction="http://tempuri.org/ILobbyManager/OnJoinLobbyResponse")]
+        void OnJoinLobby(int lobbyId, int UserId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/OnLeaveLobby", ReplyAction="http://tempuri.org/ILobbyManager/OnLeaveLobbyResponse")]
+        void OnLeaveLobby(int lobbyId, int UserId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/OnSendMessage", ReplyAction="http://tempuri.org/ILobbyManager/OnSendMessageResponse")]
+        void OnSendMessage(int UserId, string message);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ILobbyManagerChannel : Cliente.ServiceReference.ILobbyManager, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class LobbyManagerClient : System.ServiceModel.DuplexClientBase<Cliente.ServiceReference.ILobbyManager>, Cliente.ServiceReference.ILobbyManager {
+        
+        public LobbyManagerClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
+        }
+        
+        public LobbyManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
+        }
+        
+        public LobbyManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public LobbyManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public LobbyManagerClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        public void NewLobbyCreated(int UserId) {
+            base.Channel.NewLobbyCreated(UserId);
+        }
+        
+        public System.Threading.Tasks.Task NewLobbyCreatedAsync(int UserId) {
+            return base.Channel.NewLobbyCreatedAsync(UserId);
+        }
+        
+        public void JoinLobby(int lobbyId, int UserId) {
+            base.Channel.JoinLobby(lobbyId, UserId);
+        }
+        
+        public System.Threading.Tasks.Task JoinLobbyAsync(int lobbyId, int UserId) {
+            return base.Channel.JoinLobbyAsync(lobbyId, UserId);
+        }
+        
+        public void SendMessage(int lobbyId, int UserId, string message) {
+            base.Channel.SendMessage(lobbyId, UserId, message);
+        }
+        
+        public System.Threading.Tasks.Task SendMessageAsync(int lobbyId, int UserId, string message) {
+            return base.Channel.SendMessageAsync(lobbyId, UserId, message);
+        }
+        
+        public void LeaveLobby(int lobbyId, int UserId) {
+            base.Channel.LeaveLobby(lobbyId, UserId);
+        }
+        
+        public System.Threading.Tasks.Task LeaveLobbyAsync(int lobbyId, int UserId) {
+            return base.Channel.LeaveLobbyAsync(lobbyId, UserId);
+        }
+        
+        public void KickUser(int lobbyId, int UserId) {
+            base.Channel.KickUser(lobbyId, UserId);
+        }
+        
+        public System.Threading.Tasks.Task KickUserAsync(int lobbyId, int UserId) {
+            return base.Channel.KickUserAsync(lobbyId, UserId);
+        }
+    }
 }

@@ -33,6 +33,39 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ILobbyManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1">
+        </msb:BinaryEncoding>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256>
+                </sp:Basic256>
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict>
+                </sp:Strict>
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing>
+        </wsaw:UsingAddressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import namespace="http://tempuri.org/" />
@@ -76,6 +109,45 @@
   <wsdl:message name="IUsersManager_LogIn_OutputMessage">
     <wsdl:part name="parameters" element="tns:LogInResponse" />
   </wsdl:message>
+  <wsdl:message name="ILobbyManager_NewLobbyCreated_InputMessage">
+    <wsdl:part name="parameters" element="tns:NewLobbyCreated" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_JoinLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:JoinLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_SendMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMessage" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_LeaveLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:LeaveLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_KickUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:KickUser" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_OnNewLobbyCreated_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnNewLobbyCreated" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_OnNewLobbyCreated_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnNewLobbyCreatedResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_OnJoinLobby_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnJoinLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_OnJoinLobby_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnJoinLobbyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_OnLeaveLobby_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnLeaveLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_OnLeaveLobby_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnLeaveLobbyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_OnSendMessage_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnSendMessage" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_OnSendMessage_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnSendMessageResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUsersManager">
     <wsdl:operation name="IsUsernameTaken">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/IsUsernameTaken" message="tns:IUsersManager_IsUsernameTaken_InputMessage" />
@@ -100,6 +172,39 @@
     <wsdl:operation name="LogIn">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/LogIn" message="tns:IUsersManager_LogIn_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/LogInResponse" message="tns:IUsersManager_LogIn_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ILobbyManager">
+    <wsdl:operation name="NewLobbyCreated">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/NewLobbyCreated" message="tns:ILobbyManager_NewLobbyCreated_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="JoinLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/JoinLobby" message="tns:ILobbyManager_JoinLobby_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/SendMessage" message="tns:ILobbyManager_SendMessage_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LeaveLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/LeaveLobby" message="tns:ILobbyManager_LeaveLobby_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="KickUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/KickUser" message="tns:ILobbyManager_KickUser_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnNewLobbyCreated">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnNewLobbyCreated" message="tns:ILobbyManager_OnNewLobbyCreated_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/OnNewLobbyCreatedResponse" message="tns:ILobbyManager_OnNewLobbyCreated_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnJoinLobby">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnJoinLobby" message="tns:ILobbyManager_OnJoinLobby_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/OnJoinLobbyResponse" message="tns:ILobbyManager_OnJoinLobby_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnLeaveLobby">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnLeaveLobby" message="tns:ILobbyManager_OnLeaveLobby_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/OnLeaveLobbyResponse" message="tns:ILobbyManager_OnLeaveLobby_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnSendMessage">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnSendMessage" message="tns:ILobbyManager_OnSendMessage_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/OnSendMessageResponse" message="tns:ILobbyManager_OnSendMessage_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUsersManager" type="tns:IUsersManager">
@@ -161,8 +266,88 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ILobbyManager" type="tns:ILobbyManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_ILobbyManager_policy">
+    </wsp:PolicyReference>
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="NewLobbyCreated">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/NewLobbyCreated" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="JoinLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/JoinLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/SendMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="LeaveLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/LeaveLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="KickUser">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/KickUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="OnNewLobbyCreated">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnNewLobbyCreated" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnJoinLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnJoinLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnLeaveLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnLeaveLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnSendMessage">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnSendMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="ServiceImplementation">
     <wsdl:port name="NetTcpBinding_IUsersManager" binding="tns:NetTcpBinding_IUsersManager">
+      <soap12:address location="net.tcp://localhost:8000/ServiceImplementation/Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8000/ServiceImplementation/Service</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>DESKTOP-JF4OTR7\52228</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ILobbyManager" binding="tns:NetTcpBinding_ILobbyManager">
       <soap12:address location="net.tcp://localhost:8000/ServiceImplementation/Service" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8000/ServiceImplementation/Service</wsa10:Address>

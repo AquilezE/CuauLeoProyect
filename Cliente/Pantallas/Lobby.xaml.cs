@@ -1,8 +1,9 @@
-﻿using Cliente.LobbyService;
+﻿using Cliente.ServiceReference;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,29 +20,27 @@ namespace Cliente.Pantallas
 {
 
 
-    public partial class Lobby : UserControl, LobbyService.ILobbyCallback
+    public partial class Lobby : UserControl, ILobbyManagerCallback
     {
 
-        private LobbyService.LobbyClient _servicio;
         private ObservableCollection<Message> _messages;
+        private ObservableCollection<User> _users;
+
+        private LobbyManagerClient _servicio;
+
 
 
         public Lobby()
         {
             InitializeComponent();
 
+            InstanceContext instanceContext = new InstanceContext(this);
+            _servicio = new LobbyManagerClient(instanceContext);
             _messages = new ObservableCollection<Message>();
             MessagesListBox.ItemsSource = _messages;
             
-            _servicio = new LobbyService.LobbyClient(new System.ServiceModel.InstanceContext(this));
 
 
-        }
-
-        public void GetMessage(LobbyService.Message message)
-        {
-            Message newMessage = new Message { UserName = message.UserName, Text = message.Text};
-            _messages.Add(newMessage);
         }
 
         private void btLeaveLobby_Click(object sender, RoutedEventArgs e)
@@ -51,7 +50,6 @@ namespace Cliente.Pantallas
             string lobbyCode = codigoSala.Text;
 
 
-            bool result = _servicio.Disconnect(lobbyCode, username);
 
             if (result)
             {
@@ -68,7 +66,6 @@ namespace Cliente.Pantallas
             string username = tbLobbyCode.Text;
             string lobbyCode = codigoSala.Text;
 
-            bool connected = _servicio.Connect(lobbyCode, username);
            
 
             if (connected)
@@ -84,20 +81,7 @@ namespace Cliente.Pantallas
 
         private void btSendMessage_Click(object sender, RoutedEventArgs e)
         {
-            string Text = tbMessage.Text;
-
-            if (Text != "")
-            {
-
-                LobbyService.Message newMessage = new LobbyService.Message{ UserName = tbLobbyCode.Text, Text = Text, LobbyCode = codigoSala.Text};
-                tbMessage.Text = "";
-               _servicio.SendMessage(newMessage);
-            }
-            else
-            {
-                lbMessageError.Content = "No se puede enviar un mensaje vacio";
-            }
-
+                
 
         }
 
@@ -111,13 +95,6 @@ namespace Cliente.Pantallas
 
         }
 
-        public bool JoinLobby()
-        {
-            lbErrGeneral.Content = "Te Uniste a la sala";
-            return true;
-        }
-
-
         public bool LeaveLobby()
         {
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
@@ -125,6 +102,24 @@ namespace Cliente.Pantallas
             return true;
         }
 
+        public void OnNewLobbyCreated(int lobbyId, int UserId)
+        {
+            throw new NotImplementedException();
+        }
 
+        public void OnJoinLobby(int lobbyId, int UserId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnLeaveLobby(int lobbyId, int UserId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnSendMessage(int UserId, string message)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
