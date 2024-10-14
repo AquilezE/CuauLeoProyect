@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace Cliente
 {
     /// <summary>
@@ -40,8 +41,7 @@ namespace Cliente
             {
                 this.SizeToContent = SizeToContent.WidthAndHeight;
             }
-
         }
 
-    }
+        }
 }
