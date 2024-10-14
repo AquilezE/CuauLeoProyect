@@ -18,6 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Path = System.IO.Path;
+using Cliente.ServiceReference;
 
 namespace Cliente.Pantallas
 {
@@ -27,22 +28,16 @@ namespace Cliente.Pantallas
     public partial class LogIn : UserControl
     {
 
-        private LogInService.LogInClient _servicio;
-
+        private UsersManagerClient _servicio;
 
         public LogIn()
         {
             LangUtils.Register();
             LangUtils.ChangeCulture("es-ES");
             InitializeComponent();
-            InitializeService();
+            _servicio = new UsersManagerClient();
         }
 
-        public void InitializeService()
-        {
-            _servicio = new LogInService.LogInClient();
-            //_servicio.Open();
-        }
 
         private void btPlayAsGuest_Click(object sender, RoutedEventArgs e)
         {
@@ -54,25 +49,15 @@ namespace Cliente.Pantallas
             string username = tbUsername.Text;
             string password = pbPassword.Password;
 
-            // TODO: Implement login logic using the username and password variables
 
-            // Example code to check if the username and password are not empty
             if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
             {
-                LogInService.User user;
-
+                
                 try
                 {
-                     user = _servicio.TryLogIn(username, password);
-                    if (user != null)
+
+                    if (SetSessionUser(username, password))
                     {
-
-                        User currentUser = User.Instance;
-
-                        currentUser.ID = user.ID;
-                        currentUser.Username = user.Username;
-                        currentUser.Email = user.Email; 
-
                         MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
                         mainWindow.NavigateToMensajeador(new MainMenu());
 
@@ -95,6 +80,25 @@ namespace Cliente.Pantallas
             }
         }
 
+
+        private bool SetSessionUser(string email, string password)
+        {
+            UserDto userDto = _servicio.LogIn(email,password);
+            User currentUser = User.Instance;
+            
+            if (userDto != null)
+            {
+                currentUser.ID = userDto.UserId;
+                currentUser.Username = userDto.Username;
+                currentUser.Email = userDto.Email;
+                currentUser.ProfilePictureId = userDto.ProfilePictureId;
+                return true;
+            }
+
+            return false;
+
+        }
+
         private void btRegister_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
@@ -109,10 +113,8 @@ namespace Cliente.Pantallas
 
         private void cbLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (cbLanguage.SelectedItem != null)
-            {             
-                ChangeCulture(cbLanguage.SelectedItem as string);
-            }
+            // Aquí obtienes el idioma seleccionado
+
         }
 
         public static void ChangeCulture(string culture)

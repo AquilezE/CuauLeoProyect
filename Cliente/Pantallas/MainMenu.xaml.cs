@@ -51,13 +51,19 @@ namespace Cliente.Pantallas
 
         private void btLogOut_Click(object sender, RoutedEventArgs e)
         {
+            User.Instance = null;
+
             MainWindow main = (MainWindow)Application.Current.MainWindow;
             main.NavigateToMensajeador(new LogIn());
         }
 
         private void btnProfile_Click(object sender, RoutedEventArgs e)
         {
-
+            Console.WriteLine("Profile");
+            Console.WriteLine(User.Instance.Username);
+            Console.WriteLine(User.Instance.ID);
+            Console.WriteLine(User.Instance.Email);
+            Console.WriteLine(User.Instance.ProfilePictureId);
         }
 
         private void btnOptions_Click(object sender, RoutedEventArgs e)

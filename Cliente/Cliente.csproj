@@ -141,6 +141,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\ServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Message.cs" />
     <Compile Include="Pantallas\Friends.xaml.cs">
       <DependentUpon>Friends.xaml</DependentUpon>
@@ -165,6 +170,11 @@
     </Compile>
     <Compile Include="Pantallas\Stats.xaml.cs">
       <DependentUpon>Stats.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.es-ES.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.es-ES.resx</DependentUpon>
     </Compile>
     <Compile Include="UserControllers\Recover\RecoverCodeVerification.xaml.cs">
       <DependentUpon>RecoverCodeVerification.xaml</DependentUpon>
@@ -292,8 +302,20 @@
     <Resource Include="Images\configIcon.png" />
     <Resource Include="Images\profileIcon.png" />
     <Resource Include="Notes.txt" />
+    <None Include="Connected Services\ServiceReference\Cliente.ServiceReference.UserDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference\configuration91.svcinfo" />
+    <None Include="Connected Services\ServiceReference\configuration.svcinfo" />
+    <None Include="Connected Services\ServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Properties\Resources.en-US.resx" />
-    <Content Include="Properties\Resources.es-ES.resx" />
+    <Content Include="Properties\Resources.es-ES.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.es-ES.Designer.cs</LastGenOutput>
+    </Content>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -321,6 +343,16 @@
     <None Include="Connected Services\LogInService\Servicio.Clases.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceReference\BevososService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference\service.wsdl" />
+    <None Include="Connected Services\ServiceReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -336,6 +368,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\LobbyService\" />
     <WCFMetadataStorage Include="Connected Services\LogInService\" />
+    <WCFMetadataStorage Include="Connected Services\ServiceReference\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\LobbyService\configuration91.svcinfo" />

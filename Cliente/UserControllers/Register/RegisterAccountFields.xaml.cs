@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cliente.ServiceReference;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,51 +21,67 @@ namespace Cliente.Pantallas
     /// </summary>
     public partial class RegisterAccountFields : UserControl
     {
-        public event EventHandler RegistrationFilled;
+        public event Action<string, string, string> RegistrationFilled;
+        private UsersManagerClient _service;
 
         public RegisterAccountFields()
         {
+            _service = new UsersManagerClient();
             InitializeComponent();
         }
 
-        private void btRegister_Click(object sender, RoutedEventArgs e)
+        private async void btRegister_Click(object sender, RoutedEventArgs e)
         {
-
-            if (true)
+            if (IsValidUsername(tbUsername.Text) &&
+                IsValidEmail(tbEmail.Text) &&
+                IsValidPassword(pbPassword.Password) &&
+                pbConfirmPassword.Password == pbPassword.Password)
             {
-                OnRegistrationCompleted(EventArgs.Empty);
-            }
+                // Call the async methods for server-side validation
+                bool isEmailTaken =  _service.IsEmailTaken(tbEmail.Text);
+                bool isUsernameTaken =  _service.IsUsernameTaken(tbUsername.Text);
 
+                if (isEmailTaken)
+                {
+                    lbErrEmail.Content = "Email is already taken.";
+                    return; 
+                }
+
+                if (isUsernameTaken)
+                {
+                    lbErrUsername.Content = "Username is already taken.";
+                    return;
+                }
+
+                OnRegistrationCompleted(tbUsername.Text, pbPassword.Password, tbEmail.Text);
+            }
+            else
+            {
+
+            }
         }
 
-        protected virtual void OnRegistrationCompleted(EventArgs e)
+        protected virtual void OnRegistrationCompleted(string username, string password, string email)
         {
-            RegistrationFilled?.Invoke(this, e);
+            _service.SendTokenAsync(email);
+            RegistrationFilled?.Invoke(username, password, email);
         }
 
         private void tbUsername_LostFocus(object sender, RoutedEventArgs e)
         {
             string username = tbUsername.Text;
-            bool isValid = true;
 
             if (string.IsNullOrWhiteSpace(username))
             {
                 lbErrUsername.Content = "Username cannot be empty.";
-                isValid = false;
             }
             else if (!IsValidUsername(username))
             {
                 lbErrUsername.Content = "Username can only contain letters, numbers, and underscores.";
-                isValid = false;
             }
             else
             {
                 lbErrUsername.Content = string.Empty;
-            }
-
-            if (isValid)
-            {
-                lbErrUsername.Content="shitvalid";
             }
         }
 
@@ -86,19 +103,26 @@ namespace Cliente.Pantallas
             }
         }
 
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         private void pbPassword_LostFocus(object sender, RoutedEventArgs e)
         {
-            string password = pbPassword.Password;
-            bool hasUpper = password.Any(char.IsUpper);
-            bool hasLower = password.Any(char.IsLower);
-            bool hasDigit = password.Any(char.IsDigit);
-            bool hasSpecialChar = password.Any(ch => !char.IsLetterOrDigit(ch));
-
-            if (!hasUpper || !hasLower || !hasDigit || !hasSpecialChar)
+            if (!IsValidPassword(pbPassword.Password))
             {
                 lbErrPassword.Content = "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
             }
-            else if (password.Length < 8)
+            else if (pbPassword.Password.Length < 8)
             {
                 lbErrPassword.Content = "Password must be at least 8 characters long.";
             }
@@ -106,6 +130,16 @@ namespace Cliente.Pantallas
             {
                 lbErrPassword.Content = string.Empty;
             }
+        }
+
+        private bool IsValidPassword(string password)
+        {
+            bool hasUpper = password.Any(char.IsUpper);
+            bool hasLower = password.Any(char.IsLower);
+            bool hasDigit = password.Any(char.IsDigit);
+            bool hasSpecialChar = password.Any(ch => !char.IsLetterOrDigit(ch));
+
+            return hasUpper && hasLower && hasDigit && hasSpecialChar && password.Length >= 8;
         }
 
         private void pbConfirmPassword_LostFocus(object sender, RoutedEventArgs e)
@@ -119,19 +153,6 @@ namespace Cliente.Pantallas
                 lbErrPasswordConfirmation.Content = string.Empty;
             }
         }
-
-        private bool IsValidEmail(string email)
-        {
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-    
     }
+
 }

@@ -12,6 +12,7 @@ namespace Cliente
         public int ID;
         public string Username;
         public string Email;
+        public int ProfilePictureId;
 
         private User()
         {
@@ -27,6 +28,10 @@ namespace Cliente
                     instance = new User();
                 }
                 return instance;
+            }
+            set
+            {
+                instance = value;
             }
         }
     }
