@@ -234,10 +234,10 @@ namespace Cliente.ServiceReference {
         System.Threading.Tasks.Task NewLobbyCreatedAsync(int UserId);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/JoinLobby")]
-        void JoinLobby(int lobbyId, int UserId);
+        void JoinLobby(int lobbyId, Cliente.ServiceReference.UserDto userDto);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/JoinLobby")]
-        System.Threading.Tasks.Task JoinLobbyAsync(int lobbyId, int UserId);
+        System.Threading.Tasks.Task JoinLobbyAsync(int lobbyId, Cliente.ServiceReference.UserDto userDto);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/SendMessage")]
         void SendMessage(int lobbyId, int UserId, string message);
@@ -265,7 +265,7 @@ namespace Cliente.ServiceReference {
         void OnNewLobbyCreated(int lobbyId, int UserId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/OnJoinLobby", ReplyAction="http://tempuri.org/ILobbyManager/OnJoinLobbyResponse")]
-        void OnJoinLobby(int lobbyId, int UserId);
+        void OnJoinLobby(int lobbyId, Cliente.ServiceReference.UserDto userDto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/OnLeaveLobby", ReplyAction="http://tempuri.org/ILobbyManager/OnLeaveLobbyResponse")]
         void OnLeaveLobby(int lobbyId, int UserId);
@@ -310,12 +310,12 @@ namespace Cliente.ServiceReference {
             return base.Channel.NewLobbyCreatedAsync(UserId);
         }
         
-        public void JoinLobby(int lobbyId, int UserId) {
-            base.Channel.JoinLobby(lobbyId, UserId);
+        public void JoinLobby(int lobbyId, Cliente.ServiceReference.UserDto userDto) {
+            base.Channel.JoinLobby(lobbyId, userDto);
         }
         
-        public System.Threading.Tasks.Task JoinLobbyAsync(int lobbyId, int UserId) {
-            return base.Channel.JoinLobbyAsync(lobbyId, UserId);
+        public System.Threading.Tasks.Task JoinLobbyAsync(int lobbyId, Cliente.ServiceReference.UserDto userDto) {
+            return base.Channel.JoinLobbyAsync(lobbyId, userDto);
         }
         
         public void SendMessage(int lobbyId, int UserId, string message) {

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Cliente.UserControllers"
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="800">
-    <Border Background="WhiteSmoke" CornerRadius="5" BorderBrush="#555555" BorderThickness=".5" Margin="5">
+    <Border Background="Transparent" CornerRadius="5" BorderBrush="#555555" BorderThickness=".5" Margin="5">
         <Border.Effect>
             <DropShadowEffect Color="Black" Direction="315" ShadowDepth="2" Opacity="0.5"/>
         </Border.Effect>
@@ -16,9 +16,9 @@
                 <ColumnDefinition Width="60*"/>
                 <ColumnDefinition Width="20*"/>
             </Grid.ColumnDefinitions>
-            
+
             <TextBlock Grid.Column="0" Text="{Binding UserName}" Margin="10 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="ForestGreen" FontWeight="Bold"/>
-            <TextBlock Grid.Column="1" Text="{Binding Text}" Margin="10 0 0 0" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" Width="376" />
+            <TextBlock Grid.Column="1" Text="{Binding MessageText}" Margin="10 0 0 0" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" Width="376" />
             
         </Grid>
     </Border>

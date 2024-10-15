@@ -27,8 +27,12 @@ namespace Cliente.Pantallas
 
         private void btCreateLobby_Click(object sender, RoutedEventArgs e)
         {
+            Lobby lobbyWindow = new Lobby();
+
+            lobbyWindow._servicio.NewLobbyCreated(User.Instance.ID);
+
             MainWindow main = (MainWindow)Application.Current.MainWindow;
-            main.NavigateToMensajeador(new Lobby());
+            main.NavigateToMensajeador(lobbyWindow);
         }
 
         private void btJoinLobby_Click(object sender, RoutedEventArgs e)

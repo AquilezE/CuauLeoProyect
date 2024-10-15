@@ -98,7 +98,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="lobbyId" type="xs:int" />
-        <xs:element minOccurs="0" name="UserId" type="xs:int" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/BevososService" minOccurs="0" name="userDto" nillable="true" type="q2:UserDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -144,7 +144,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="lobbyId" type="xs:int" />
-        <xs:element minOccurs="0" name="UserId" type="xs:int" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/BevososService" minOccurs="0" name="userDto" nillable="true" type="q3:UserDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

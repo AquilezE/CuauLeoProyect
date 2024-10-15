@@ -26,7 +26,10 @@ namespace Cliente.Pantallas
         private ObservableCollection<Message> _messages;
         private ObservableCollection<User> _users;
 
-        private LobbyManagerClient _servicio;
+        //Public?????
+        public LobbyManagerClient _servicio;
+
+        private int _lobbyId;
 
 
 
@@ -35,59 +38,62 @@ namespace Cliente.Pantallas
             InitializeComponent();
 
             InstanceContext instanceContext = new InstanceContext(this);
+            
             _servicio = new LobbyManagerClient(instanceContext);
             _messages = new ObservableCollection<Message>();
+            _users = new ObservableCollection<User>();
             MessagesListBox.ItemsSource = _messages;
             
-
-
         }
 
         private void btLeaveLobby_Click(object sender, RoutedEventArgs e)
         {
 
-            string username = tbLobbyCode.Text;
-            string lobbyCode = codigoSala.Text;
 
-
-
-            if (result)
-            {
-                LeaveLobby();    
-            }
-            else
-            {
-                lbErrGeneral.Content = "No se puede salir de la sala, intentalo de nuevo";
-            }
         }
 
         private void btnJoin_Click(object sender, RoutedEventArgs e)
         {
-            string username = tbLobbyCode.Text;
-            string lobbyCode = codigoSala.Text;
 
-           
-
-            if (connected)
-            {
-                JoinLobby();
-            }
-            else
-            {
-                lbErrGeneral.Content = "No se puede unir a la sala, intentalo de nuevo";
-            }
         }
 
 
         private void btSendMessage_Click(object sender, RoutedEventArgs e)
         {
-                
+            string message = tbMessage.Text.Trim();
 
+            if (!IsValidMessage(message))
+            {
+                lbErrGeneral.Content = _lobbyId.ToString();
+                return;
+
+            }
+            
+            Console.WriteLine($"_lobbyId in btSendMessage_Click: {_lobbyId}");
+            Console.WriteLine($"User.Instance.ID in btSendMessage_Click: {User.Instance.ID}");
+            Console.WriteLine($"message in btSendMessage_Click: {message}");
+            _servicio.SendMessage(_lobbyId, User.Instance.ID, message);
+        }
+
+        private bool IsValidMessage(string message)
+        {
+            if (string.IsNullOrEmpty(message))
+            {
+                return false;
+            }
+
+            if (message.Length > 200)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         private void btStartGame_Click(object sender, RoutedEventArgs e)
         {
-
+            Console.WriteLine("btStartGame_Click called");
+            Console.WriteLine($"_lobbyId in btStartGame_Click: {_lobbyId}");
         }
 
         private void btKick_Click(object sender, RoutedEventArgs e)
@@ -104,12 +110,27 @@ namespace Cliente.Pantallas
 
         public void OnNewLobbyCreated(int lobbyId, int UserId)
         {
-            throw new NotImplementedException();
+
+            
+            _lobbyId = lobbyId;
+            _users.Add(User.instance);
+            Console.WriteLine(_lobbyId);
+
+            tbLobbyCode.Text = lobbyId.ToString();
+            
         }
 
-        public void OnJoinLobby(int lobbyId, int UserId)
+        public void OnJoinLobby(int lobbyId, UserDto userDto)
         {
-            throw new NotImplementedException();
+            User user = new User(userDto);
+            _users.Add(user);
+            Console.WriteLine("OnJoinLobby called");
+            Console.WriteLine($"userDto in OnJoinLobby: {userDto.Username}");
+
+            _lobbyId = lobbyId;
+            tbLobbyCode.Text = lobbyId.ToString();
+
+            
         }
 
         public void OnLeaveLobby(int lobbyId, int UserId)
@@ -119,7 +140,22 @@ namespace Cliente.Pantallas
 
         public void OnSendMessage(int UserId, string message)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("OnSendMessage called");
+            Console.WriteLine($"message in OnSendMessage: {message}");
+
+            User user = _users.FirstOrDefault(u => u.ID == UserId);
+
+            if (user != null)
+            {
+                string username = user.Username;
+                _messages.Add(new Message(username, message, _lobbyId));
+            }
+            else
+            {
+                // Handle the case where the user is not found
+                // For example, you might add the message with a placeholder username
+                _messages.Add(new Message($"User {UserId}", message, _lobbyId));
+            }
         }
     }
 }
