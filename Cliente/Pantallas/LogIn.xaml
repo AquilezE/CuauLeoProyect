@@ -31,9 +31,9 @@
             <StackPanel Grid.Row="0" Orientation="Horizontal">
                 <Label Content="Bevosos" FontSize="40" Margin="50 0 150 0"/>
                 <ComboBox x:Name="cbLanguage" SelectedIndex="0" SelectionChanged="cbLanguage_SelectionChanged">
-                    <ComboBoxItem Content="{h:Lang cmbLanguage}"/>
-                    <ComboBoxItem Content="en"/>
-                    <ComboBoxItem Content="es"/>
+                    <ComboBoxItem IsEnabled="False" Content="{h:Lang cmbLanguage}"/>
+                    <ComboBoxItem Content="{h:Lang lblEnglish}"/>
+                    <ComboBoxItem Content="{h:Lang lblSpanish}"/>
                 </ComboBox>
             </StackPanel>
             <Label Grid.Row="1" Content="{h:Lang globalsLogin}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>

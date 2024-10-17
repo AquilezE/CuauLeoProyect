@@ -19,6 +19,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Path = System.IO.Path;
 using Cliente.ServiceReference;
+using static MaterialDesignThemes.Wpf.Theme;
 
 namespace Cliente.Pantallas
 {
@@ -29,16 +30,15 @@ namespace Cliente.Pantallas
     {
 
         private UsersManagerClient _servicio;
+        private bool isLoaded = false;
 
         public LogIn()
         {
             InitializeComponent();
-            LangUtils.Register();
-            ChangeCulture("es-ES");
-            cbLanguage.SelectionChanged -= cbLanguage_SelectionChanged;
-            cbLanguage.SelectedIndex = 0; // Set the default selection
-            cbLanguage.SelectionChanged += cbLanguage_SelectionChanged;
             _servicio = new UsersManagerClient();
+            LangUtils.Register();
+            ChangeCulture("en");
+            this.Loaded += (s, e) => isLoaded = true;
         }
 
 
@@ -116,22 +116,42 @@ namespace Cliente.Pantallas
 
         private void cbLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (!isLoaded)
+            {
+                return;
+            }
+
             ComboBoxItem selectedItem = cbLanguage.SelectedItem as ComboBoxItem;
             if (selectedItem != null)
             {
                 string culture = selectedItem.Content as string;
-                if (culture != "cmbLanguage" && culture != "Idioma" && culture != "Language")
-                {
-                    ChangeCulture(culture);
-                }
+                ChangeCulture(culture);
             }
         }
 
         private void ChangeCulture(string culture)
         {
-            Console.WriteLine("Changing culture to: " + culture);
-            LangUtils.ChangeCulture(culture);
-
+            try
+            {
+                switch (culture)
+                {
+                    case "Spanish":
+                        Console.WriteLine("Changing culture to: " + culture);
+                        LangUtils.ChangeCulture("es");
+                        break;
+                    case "Inglés":
+                        Console.WriteLine("Changing culture to: " + culture);
+                        LangUtils.ChangeCulture("en");
+                        break;
+                    default:
+                        LangUtils.ChangeCulture("en");
+                        break;
+                }
+            }
+            catch (CultureNotFoundException ex)
+            {
+                Console.WriteLine("Error changing culture: " + ex.Message);
+            }
         }
 
     }
