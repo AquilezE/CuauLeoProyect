@@ -31,15 +31,15 @@
             <StackPanel Grid.Row="0" Orientation="Horizontal">
                 <Label Content="Bevosos" FontSize="40" Margin="50 0 150 0"/>
                 <ComboBox x:Name="cbLanguage" SelectedIndex="0" SelectionChanged="cbLanguage_SelectionChanged">
-                    <ComboBoxItem Content="{h:Lang cbLanguage}"/>
-                    <ComboBoxItem Content="{h:Lang lbEnglish}"/>
-                    <ComboBoxItem Content="{h:Lang lbSpanish}"/>
+                    <ComboBoxItem Content="{h:Lang cmbLanguage}"/>
+                    <ComboBoxItem Content="en"/>
+                    <ComboBoxItem Content="es"/>
                 </ComboBox>
             </StackPanel>
-            <Label Grid.Row="1" Content="{h:Lang globalLogin}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <Label Grid.Row="2" Content="{h:Lang globalUsername}" FontSize="20" Margin="50,0,0,0"/>
+            <Label Grid.Row="1" Content="{h:Lang globalsLogin}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Grid.Row="2" Content="{h:Lang globalsUsername}" FontSize="20" Margin="50,0,0,0"/>
             <TextBox Grid.Row="3" x:Name="tbUsername" Margin="50,0,50,0"/>
-            <Label Grid.Row="4" Content="{h:Lang globalPassword}" FontSize="20" Margin="50,0,0,0"/>
+            <Label Grid.Row="4" Content="{h:Lang globalsPassword}" FontSize="20" Margin="50,0,0,0"/>
             <PasswordBox Grid.Row="5" x:Name="pbPassword" Margin="50,0,50,0"/>
 
             <Grid Grid.Row="6">
@@ -48,11 +48,11 @@
                     <ColumnDefinition Width="30*"/>
                     <ColumnDefinition Width="40*"/>
                 </Grid.ColumnDefinitions>
-                <Button Content="{h:Lang lbForgotPassword}" Background="Transparent" BorderThickness="0" Foreground="Blue" Click="ForgotPassword_Click"/>
-                <Button x:Name="btLogIn" Content="{h:Lang globalLogin}" Click="btLogIn_Click" Grid.Column="2" Margin="0 0 10 0"/>
+                <Button Content="{h:Lang lblForgotPassword}" Background="Transparent" BorderThickness="0" Foreground="Blue" Click="ForgotPassword_Click"/>
+                <Button x:Name="btLogIn" Content="{h:Lang globalsLogin}" Click="btLogIn_Click" Grid.Column="2" Margin="0 0 10 0"/>
             </Grid>
 
-            <Label Grid.Row="7" x:Name="lbErrLabel" d:Content="{h:Lang lbErrWrongLogin}" Foreground="Red" HorizontalContentAlignment="Center" VerticalAlignment="Center" Height="24"/>
+            <Label Grid.Row="7" x:Name="lbErrLabel" d:Content="{h:Lang lblErrWrongLogin}" Foreground="Red" HorizontalContentAlignment="Center" VerticalAlignment="Center" Height="24"/>
 
             <Grid Grid.Row="8">
                 <Grid.ColumnDefinitions>
@@ -60,8 +60,8 @@
                     <ColumnDefinition Width="30*"/>
                     <ColumnDefinition Width="40*"/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" x:Name="btRegister" Content="{h:Lang globalRegister}" Click="btRegister_Click" Margin="10 0 0 0"/>
-                <Button Grid.Column="2" x:Name="btPlayAsGuest" Content="{h:Lang btPlayAsGuest}" Click="btPlayAsGuest_Click" Margin="0 0 10 0"/>
+                <Button Grid.Column="0" x:Name="btRegister" Content="{h:Lang globalsRegister}" Click="btRegister_Click" Margin="10 0 0 0"/>
+                <Button Grid.Column="2" x:Name="btPlayAsGuest" Content="{h:Lang btnPlayAsGuest}" Click="btPlayAsGuest_Click" Margin="0 0 10 0"/>
             </Grid>
 
             <!-- Rest of the code -->

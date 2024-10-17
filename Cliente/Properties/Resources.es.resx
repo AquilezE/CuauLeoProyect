@@ -118,273 +118,273 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="btnAccept" xml:space="preserve">
-    <value>Accept</value>
+    <value>Aceptar</value>
   </data>
   <data name="btnAddFriend" xml:space="preserve">
-    <value>Add Friends</value>
+    <value>Añadir Amigos</value>
   </data>
   <data name="btnBlockLists" xml:space="preserve">
-    <value>Block List</value>
+    <value>Lista de Bloqueados</value>
   </data>
   <data name="btnBlockUser" xml:space="preserve">
-    <value>Block User</value>
+    <value>Bloquear</value>
   </data>
   <data name="btnChange" xml:space="preserve">
-    <value>Change</value>
+    <value>Cambiar</value>
   </data>
   <data name="btnChangePassword" xml:space="preserve">
-    <value>Change Password</value>
+    <value>Cambiar Contraseña</value>
   </data>
   <data name="btnCopyCode" xml:space="preserve">
-    <value>Copy Code</value>
+    <value>Copiar Código</value>
   </data>
   <data name="btnCreateLobby" xml:space="preserve">
-    <value>Create Lobby</value>
+    <value>Crear Sala</value>
   </data>
   <data name="btnDarkMode" xml:space="preserve">
-    <value>Dark Mode</value>
+    <value>Modo Obscuro</value>
   </data>
   <data name="btnDelete" xml:space="preserve">
-    <value>Delete</value>
+    <value>Eliminar</value>
   </data>
   <data name="btnDeny" xml:space="preserve">
-    <value>Deny</value>
+    <value>Rechazar</value>
   </data>
   <data name="btnFriendList" xml:space="preserve">
-    <value>Friend List</value>
+    <value>Lista de Amigos</value>
   </data>
   <data name="btnFriendRequest" xml:space="preserve">
-    <value>Friend Requests</value>
+    <value>Solicitudes de Amistad</value>
   </data>
   <data name="btnFriends" xml:space="preserve">
-    <value>Friends</value>
+    <value>Amigos</value>
   </data>
   <data name="btnGoBack" xml:space="preserve">
-    <value>Go Back</value>
+    <value>Regresar</value>
   </data>
   <data name="btnImReady" xml:space="preserve">
-    <value>I'm Ready</value>
+    <value>Estoy Listo</value>
   </data>
   <data name="btnInviteFriend" xml:space="preserve">
-    <value>Invite Friend</value>
+    <value>Invitar Amigo</value>
   </data>
   <data name="btnJoin" xml:space="preserve">
-    <value>Join</value>
+    <value>Unirse</value>
   </data>
   <data name="btnJoinLobby" xml:space="preserve">
-    <value>Join Lobby</value>
+    <value>Unirse a Sala</value>
   </data>
   <data name="btnKick" xml:space="preserve">
-    <value>Kick</value>
+    <value>Expulsar</value>
   </data>
   <data name="btnLeaveLobby" xml:space="preserve">
-    <value>Leave lobby</value>
+    <value>Abandonar Sala</value>
   </data>
   <data name="btnLightMode" xml:space="preserve">
-    <value>Light Mode</value>
+    <value>Modo Brillante</value>
   </data>
   <data name="btnLogOut" xml:space="preserve">
-    <value>Log Out</value>
+    <value>Cerrar Sesión</value>
   </data>
   <data name="btnPlayAsGuest" xml:space="preserve">
-    <value>Play As Guest</value>
+    <value>Jugar Como Invitado</value>
   </data>
   <data name="btnPlayAsGuest1" xml:space="preserve">
-    <value>Play As Guest</value>
+    <value>Jugar Como Invitado</value>
   </data>
   <data name="btnSave" xml:space="preserve">
-    <value>Save</value>
+    <value>Guardar</value>
   </data>
   <data name="btnSend" xml:space="preserve">
-    <value>Send</value>
+    <value>Enviar</value>
   </data>
   <data name="btnSendFriendRequest" xml:space="preserve">
-    <value>Send Friend Request</value>
+    <value>Enviar Solicitud</value>
   </data>
   <data name="btnStartGame" xml:space="preserve">
-    <value>Start Game</value>
+    <value>Iniciar Partida</value>
   </data>
   <data name="btnStats" xml:space="preserve">
-    <value>Stats</value>
+    <value>Estadísticas</value>
   </data>
   <data name="btnUnblock" xml:space="preserve">
-    <value>Unblock</value>
+    <value>Desbloquear</value>
   </data>
   <data name="btnVerify" xml:space="preserve">
-    <value>Verify</value>
+    <value>Verificar</value>
   </data>
   <data name="cmbLanguage" xml:space="preserve">
-    <value>Language</value>
+    <value>Idioma</value>
   </data>
   <data name="globalsEmail" xml:space="preserve">
-    <value>Email</value>
+    <value>Correo electrónico</value>
   </data>
   <data name="globalsLogin" xml:space="preserve">
-    <value>Log In</value>
+    <value>Iniciar Sesión</value>
   </data>
   <data name="globalsPassword" xml:space="preserve">
-    <value>Password</value>
+    <value>Contraseña</value>
   </data>
   <data name="globalsRegister" xml:space="preserve">
-    <value>Register</value>
+    <value>Regístrate</value>
   </data>
   <data name="globalsUsername" xml:space="preserve">
-    <value>Username</value>
+    <value>Nombre de Usuario</value>
   </data>
   <data name="lblAccountRegistered" xml:space="preserve">
-    <value>Your account has been registered successfully!</value>
+    <value>Tu cuenta ha sido registrada!</value>
   </data>
   <data name="lblAnihilatedBabies" xml:space="preserve">
-    <value>Anihilated Babies: </value>
+    <value>Bebés Asesinados: </value>
   </data>
   <data name="lblBlockedUsers" xml:space="preserve">
-    <value>Blocked Users</value>
+    <value>Usuarios Bloqueados</value>
   </data>
   <data name="lblChosepfp" xml:space="preserve">
-    <value>Choose your profile picture</value>
+    <value>Elige tu foto de perfil</value>
   </data>
   <data name="lblClickHereLogin" xml:space="preserve">
-    <value>CLick here to log in</value>
+    <value>Haz click aquí para iniciar sesión</value>
   </data>
   <data name="lblClickHereResend" xml:space="preserve">
-    <value>If you haven't recieved your message, click here</value>
+    <value>Si no haz recibido el mensaje, haz click aqui</value>
   </data>
   <data name="lblCodeSent" xml:space="preserve">
-    <value>A code has been sent to your email, please type it here:</value>
+    <value>Un codigo ha sido enviado a tu correo, escribelo aqui:</value>
   </data>
   <data name="lblConfirmPassword" xml:space="preserve">
-    <value>Confrim Password</value>
+    <value>Confirmar Contraseña</value>
   </data>
   <data name="lblCurrentPassword" xml:space="preserve">
-    <value>Current Password</value>
+    <value>Contraseña Actual</value>
   </data>
   <data name="lblEnglish" xml:space="preserve">
-    <value>English</value>
+    <value>Inglés</value>
   </data>
   <data name="lblEnterCode" xml:space="preserve">
-    <value>Enter your lobby code: </value>
+    <value>Ingresa tu código de sala: </value>
   </data>
   <data name="lblErrDiferentPassword" xml:space="preserve">
-    <value>Paswords must be the same</value>
+    <value>Las contraseñas deben coincidir</value>
   </data>
   <data name="lblErrEmailInvalid" xml:space="preserve">
-    <value>Email is invalid or already exists</value>
+    <value>Correo electrónico inválido o ya está ocupado</value>
   </data>
   <data name="lblErrEmptyMessage" xml:space="preserve">
-    <value>You must type something to send a message</value>
+    <value>Debes escribir algo para poder mandar un mensaje</value>
   </data>
   <data name="lblErrIncorrectCode" xml:space="preserve">
-    <value>Incorrect code</value>
+    <value>Código incorrecto</value>
   </data>
   <data name="lblErrInvalidMessage" xml:space="preserve">
-    <value>Your message contains invalid characters, only alphanumeric</value>
+    <value>Tu mensaje contiene caracteres invalidos, solo alfanumericos</value>
   </data>
   <data name="lblErrLobbyNotFound" xml:space="preserve">
-    <value>This lobby doesn't exist, try again!</value>
+    <value>Esta sala no existe, intentalo de nuevo!</value>
   </data>
   <data name="lblErrMessageTooLong" xml:space="preserve">
-    <value>Your message is too long, 300 characters max</value>
+    <value>Tu mensaje es muy largo, máximo 300 cáracteres</value>
   </data>
   <data name="lblErrNoBlockedUsers" xml:space="preserve">
-    <value>You haven't blocked anyone yet!</value>
+    <value>No has bloqueado a nadie aún!</value>
   </data>
   <data name="lblErrNoConection" xml:space="preserve">
-    <value>Oops, we couldn't reach our server, check your conection or try again later!</value>
+    <value>Uju, no encontramos nuestro servidor, verifica tu coneccion o intentalo de nuevo despues!</value>
   </data>
   <data name="lblErrNoDataBase" xml:space="preserve">
-    <value>Oops!, our database is not working, try again later!</value>
+    <value>Uju, nuestra base de datos no está funcionando, intentalo más tarde</value>
   </data>
   <data name="lblErrNoFriends" xml:space="preserve">
-    <value>Oops! looks like you have no friends :(</value>
+    <value>Uju, Parece que no tienes amigos :(</value>
   </data>
   <data name="lblErrNoStats" xml:space="preserve">
-    <value>Looks like you haven't played any game, go play! </value>
+    <value>Parece que no has jugado ninguna partida aún, ve a jugar!</value>
   </data>
   <data name="lblErrUsernameExists" xml:space="preserve">
-    <value>This username already exists</value>
+    <value>El nombre de usuario ya existe</value>
   </data>
   <data name="lblErrUsernameInvalid" xml:space="preserve">
-    <value>This username is invalid</value>
+    <value>Este nombre de usuario ya existe</value>
   </data>
   <data name="lblErrUserNotFound" xml:space="preserve">
-    <value>User not found, try again later</value>
+    <value>Usuario no encontrado, intentelo de nuevo mas tarde!</value>
   </data>
   <data name="lblErrInvalidEmail" xml:space="preserve">
-    <value>This Email is invalid or already exists</value>
+    <value>Este correo electrónico es inválido o ya existe</value>
   </data>
   <data name="lblErrWeakPassword" xml:space="preserve">
-    <value>Password must have a number and a special character</value>
+    <value>Contraseña debe tener un número y un caracter especial</value>
   </data>
   <data name="lblErrWrongLogin" xml:space="preserve">
-    <value>Incorrect username or password</value>
+    <value>Nombre de usuario o Contraseña fueron incorrectos</value>
   </data>
   <data name="lblFindUser" xml:space="preserve">
-    <value>Find User</value>
+    <value>Encontrar usuario</value>
   </data>
   <data name="lblForgotPassword" xml:space="preserve">
-    <value>Forgot Password?</value>
+    <value>¿Olvidaste tu contraseña?</value>
   </data>
   <data name="lblLobby" xml:space="preserve">
-    <value>Lobby</value>
+    <value>Sala</value>
   </data>
   <data name="lblManageFriends" xml:space="preserve">
-    <value>Manage Friends</value>
+    <value>Gestionar Amigos</value>
   </data>
   <data name="lblMonstersCreated" xml:space="preserve">
-    <value>Monsters Created: </value>
+    <value>Monstruos Creados: </value>
   </data>
   <data name="lblNewPassword" xml:space="preserve">
-    <value>New Password</value>
+    <value>Nueva Contraseña</value>
   </data>
   <data name="lblNewUsername" xml:space="preserve">
-    <value>New Username</value>
+    <value>Nuevo nombre de usuario</value>
   </data>
   <data name="lblErrNoFriendRequests" xml:space="preserve">
-    <value>Oops! looks like you have no friend requests :(</value>
+    <value>Uju, Parece que no tienes solicitudes de amistad :(</value>
   </data>
   <data name="lblNotReady" xml:space="preserve">
-    <value>Not Ready</value>
+    <value>No Listo</value>
   </data>
   <data name="lblOffline" xml:space="preserve">
-    <value>Offline</value>
+    <value>Desconectado</value>
   </data>
   <data name="lblOnline" xml:space="preserve">
-    <value>Online</value>
+    <value>En Línea</value>
   </data>
   <data name="lblOptions" xml:space="preserve">
-    <value>Options</value>
+    <value>Opciones</value>
   </data>
   <data name="lblPlayers" xml:space="preserve">
-    <value>Players</value>
+    <value>Jugadores</value>
   </data>
   <data name="lblProfile" xml:space="preserve">
-    <value>Profile</value>
+    <value>Perfil</value>
   </data>
   <data name="lblReady" xml:space="preserve">
-    <value>Ready!</value>
+    <value>Listo!</value>
   </data>
   <data name="lblSpanish" xml:space="preserve">
-    <value>Spanish</value>
+    <value>Español</value>
   </data>
   <data name="lblSuccesPassword" xml:space="preserve">
-    <value>Your password has been changed successfully!</value>
+    <value>Tu contraseña ha sido cambiada!</value>
   </data>
   <data name="lblUserId" xml:space="preserve">
-    <value>User ID</value>
+    <value>ID Usuario</value>
   </data>
   <data name="lblViewProfile" xml:space="preserve">
-    <value>ViewProfile</value>
+    <value>VerPerfil</value>
   </data>
   <data name="lblVolume" xml:space="preserve">
-    <value>Volume</value>
+    <value>Volumen</value>
   </data>
   <data name="lblWins" xml:space="preserve">
-    <value>Wins: </value>
+    <value>Victorias: </value>
   </data>
   <data name="lblWriteEmail" xml:space="preserve">
-    <value>Write your email to verify it's you</value>
+    <value>Ingresa tu correo electrónico para verificar que eres tu</value>
   </data>
   <data name="lblYourStats" xml:space="preserve">
-    <value>Your Stats!</value>
+    <value>Tus Estadísticas</value>
   </data>
 </root>

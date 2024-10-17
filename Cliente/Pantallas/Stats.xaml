@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Cliente.Pantallas"
              xmlns:p="clr-namespace:Cliente.Properties"
+             xmlns:h="http://schemas.hpod9.com/haley/mvvm"
              mc:Ignorable="d" 
              d:DesignHeight="650" d:DesignWidth="800">
     <Grid Height="650" Width="800">
@@ -16,23 +17,23 @@
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
 
-        <Label x:Name="lbStats" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" Content="{x:Static p:Resources.lbYourStats}"/>
+        <Label x:Name="lbStats" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" Content="{h:Lang lblYourStats}"/>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Label x:Name="lbWins" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="35" Content="{x:Static p:Resources.lbWins}"/>
+            <Label x:Name="lbWins" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="35" Content="{h:Lang lblWins}"/>
             <Label x:Name="lbWinsCounter" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20 0 0 0" FontSize="35" Content="100"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal">
-            <Label x:Name="lbBabies" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="35" Content="{x:Static p:Resources.lbAnihilatedBabies}"/>
+            <Label x:Name="lbBabies" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="35" Content="{h:Lang lblAnihilatedBabies}"/>
             <Label x:Name="lbBabiesCounter" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20 0 0 0" FontSize="35" Content="100"/>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal">
-            <Label x:Name="lbMonsters" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="35" Content="{x:Static p:Resources.lbMonstersCreated}"/>
+            <Label x:Name="lbMonsters" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="35" Content="{h:Lang lblMonstersCreated}"/>
             <Label x:Name="lbMonstersCounter" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20 0 0 0" FontSize="35" Content="100"/>
         </StackPanel>
 
-        <Button x:Name="btGoBack" Grid.Row="4" Height="45" Width="150" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 30 20" Background="LightGoldenrodYellow" Foreground="Coral" FontSize="20" Content="{x:Static p:Resources.btGoBack}" Click="btGoBack_Click"/>
+        <Button x:Name="btGoBack" Grid.Row="4" Height="45" Width="150" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 30 20" Background="LightGoldenrodYellow" Foreground="Coral" FontSize="20" Content="{h:Lang btnGoBack}" Click="btGoBack_Click"/>
     </Grid>
 </UserControl>
