@@ -120,7 +120,7 @@ namespace Cliente.Pantallas
             if (selectedItem != null)
             {
                 string culture = selectedItem.Content as string;
-                if (culture != "cmbLanguage")
+                if (culture != "cmbLanguage" && culture != "Idioma" && culture != "Language")
                 {
                     ChangeCulture(culture);
                 }
