@@ -113,15 +113,7 @@ namespace Cliente.Pantallas
 
         private void cbLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-            try
-            {
-                 throw new Exception("Error");
-            }catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
+            Console.WriteLine(cbLanguage.SelectedItem.ToString()); 
         }
 
         public static void ChangeCulture(string culture)
