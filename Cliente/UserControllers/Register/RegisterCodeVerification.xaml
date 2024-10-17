@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Cliente.UserControllers"
              xmlns:p="clr-namespace:Cliente.Properties"
+             xmlns:h="http://schemas.hpod9.com/haley/mvvm"
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="800">
     <Grid Width="800" Height="700">
@@ -17,14 +18,14 @@
             <Label Content="Bevosos" FontSize="40" HorizontalContentAlignment="Center" Margin="0,0,0,11"/>
             <Label HorizontalAlignment="Center" FontSize="30" MaxWidth="300" >
                 <Label.Content>
-                <AccessText TextAlignment="Center" TextWrapping="Wrap" Text="{x:Static p:Resources.lbCodeSent}"/>
+                <AccessText TextAlignment="Center" TextWrapping="Wrap" Text="{h:Lang lblCodeSent}"/>
                 </Label.Content>
             </Label>
             <TextBox x:Name="tbVerificactionCode" MaxWidth="300" Height="70"/>
-            <Button Content="{x:Static p:Resources.lbClickHereResend}" Background="Transparent" BorderThickness="0" Foreground="Blue" Click="ResendEmail_Click"/>
+            <Button Content="{h:Lang lblClickHereResend}" Background="Transparent" BorderThickness="0" Foreground="Blue" Click="ResendEmail_Click"/>
 
-            <Label x:Name="lbErrVerificactionCode" Margin="50,0,50,0" Content ="{x:Static p:Resources.lbErrIncorrectCode}" Foreground="Red" FontSize="6"/>
-            <Button x:Name="btRegister" Content="{x:Static p:Resources.globalRegister}" Click="btRegister_Click" Margin="0 30 0 0" Width="100"/>
+            <Label x:Name="lbErrVerificactionCode" Margin="50,0,50,0" Content ="{h:Lang lblErrIncorrectCode}" Foreground="Red" FontSize="6"/>
+            <Button x:Name="btRegister" Content="{h:Lang globalsRegister}" Click="btRegister_Click" Margin="0 30 0 0" Width="100"/>
         </StackPanel>
 
         <Label Grid.Row="1" Content="AQUI VA LA IMAGEN"/>

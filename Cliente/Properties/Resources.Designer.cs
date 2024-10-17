@@ -63,801 +63,810 @@ namespace Cliente.Properties {
         /// <summary>
         ///   Busca una cadena traducida similar a Accept.
         /// </summary>
-        public static string btAccept {
+        public static string btnAccept {
             get {
-                return ResourceManager.GetString("btAccept", resourceCulture);
+                return ResourceManager.GetString("btnAccept", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Add Friends.
         /// </summary>
-        public static string btAddFriend {
+        public static string btnAddFriend {
             get {
-                return ResourceManager.GetString("btAddFriend", resourceCulture);
+                return ResourceManager.GetString("btnAddFriend", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Block list.
+        ///   Busca una cadena traducida similar a Block List.
         /// </summary>
-        public static string btBlockLists {
+        public static string btnBlockLists {
             get {
-                return ResourceManager.GetString("btBlockLists", resourceCulture);
+                return ResourceManager.GetString("btnBlockLists", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Block User.
         /// </summary>
-        public static string btBlockUser {
+        public static string btnBlockUser {
             get {
-                return ResourceManager.GetString("btBlockUser", resourceCulture);
+                return ResourceManager.GetString("btnBlockUser", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Change.
         /// </summary>
-        public static string btChange {
+        public static string btnChange {
             get {
-                return ResourceManager.GetString("btChange", resourceCulture);
+                return ResourceManager.GetString("btnChange", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Change Password.
         /// </summary>
-        public static string btChangePassword {
+        public static string btnChangePassword {
             get {
-                return ResourceManager.GetString("btChangePassword", resourceCulture);
+                return ResourceManager.GetString("btnChangePassword", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Copy code.
+        ///   Busca una cadena traducida similar a Copy Code.
         /// </summary>
-        public static string btCopyCode {
+        public static string btnCopyCode {
             get {
-                return ResourceManager.GetString("btCopyCode", resourceCulture);
+                return ResourceManager.GetString("btnCopyCode", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Create Lobby.
         /// </summary>
-        public static string btCreateLobby {
+        public static string btnCreateLobby {
             get {
-                return ResourceManager.GetString("btCreateLobby", resourceCulture);
+                return ResourceManager.GetString("btnCreateLobby", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Dark Mode.
         /// </summary>
-        public static string btDarkMode {
+        public static string btnDarkMode {
             get {
-                return ResourceManager.GetString("btDarkMode", resourceCulture);
+                return ResourceManager.GetString("btnDarkMode", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Delete.
         /// </summary>
-        public static string btDelete {
+        public static string btnDelete {
             get {
-                return ResourceManager.GetString("btDelete", resourceCulture);
+                return ResourceManager.GetString("btnDelete", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Deny.
         /// </summary>
-        public static string btDeny {
+        public static string btnDeny {
             get {
-                return ResourceManager.GetString("btDeny", resourceCulture);
+                return ResourceManager.GetString("btnDeny", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Friend List.
         /// </summary>
-        public static string btFriendList {
+        public static string btnFriendList {
             get {
-                return ResourceManager.GetString("btFriendList", resourceCulture);
+                return ResourceManager.GetString("btnFriendList", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Friend Requests.
         /// </summary>
-        public static string btFriendRequest {
+        public static string btnFriendRequest {
             get {
-                return ResourceManager.GetString("btFriendRequest", resourceCulture);
+                return ResourceManager.GetString("btnFriendRequest", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Friends.
         /// </summary>
-        public static string btFriends {
+        public static string btnFriends {
             get {
-                return ResourceManager.GetString("btFriends", resourceCulture);
+                return ResourceManager.GetString("btnFriends", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Go Back.
         /// </summary>
-        public static string btGoBack {
+        public static string btnGoBack {
             get {
-                return ResourceManager.GetString("btGoBack", resourceCulture);
+                return ResourceManager.GetString("btnGoBack", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a I&apos;m Ready.
         /// </summary>
-        public static string btImReady {
+        public static string btnImReady {
             get {
-                return ResourceManager.GetString("btImReady", resourceCulture);
+                return ResourceManager.GetString("btnImReady", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Invite Friend.
         /// </summary>
-        public static string btInviteFriend {
+        public static string btnInviteFriend {
             get {
-                return ResourceManager.GetString("btInviteFriend", resourceCulture);
+                return ResourceManager.GetString("btnInviteFriend", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Join.
         /// </summary>
-        public static string btJoin {
+        public static string btnJoin {
             get {
-                return ResourceManager.GetString("btJoin", resourceCulture);
+                return ResourceManager.GetString("btnJoin", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Join Lobby.
         /// </summary>
-        public static string btJoinLobby {
+        public static string btnJoinLobby {
             get {
-                return ResourceManager.GetString("btJoinLobby", resourceCulture);
+                return ResourceManager.GetString("btnJoinLobby", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Kick.
         /// </summary>
-        public static string btKick {
+        public static string btnKick {
             get {
-                return ResourceManager.GetString("btKick", resourceCulture);
+                return ResourceManager.GetString("btnKick", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Leave Lobby.
+        ///   Busca una cadena traducida similar a Leave lobby.
         /// </summary>
-        public static string btLeaveLobby {
+        public static string btnLeaveLobby {
             get {
-                return ResourceManager.GetString("btLeaveLobby", resourceCulture);
+                return ResourceManager.GetString("btnLeaveLobby", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Light Mode.
         /// </summary>
-        public static string btLightMode {
+        public static string btnLightMode {
             get {
-                return ResourceManager.GetString("btLightMode", resourceCulture);
+                return ResourceManager.GetString("btnLightMode", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Log Out.
         /// </summary>
-        public static string btLogOut {
+        public static string btnLogOut {
             get {
-                return ResourceManager.GetString("btLogOut", resourceCulture);
+                return ResourceManager.GetString("btnLogOut", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Play As Guest.
         /// </summary>
-        public static string btPlayAsGuest {
+        public static string btnPlayAsGuest {
             get {
-                return ResourceManager.GetString("btPlayAsGuest", resourceCulture);
+                return ResourceManager.GetString("btnPlayAsGuest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Play As Guest.
+        /// </summary>
+        public static string btnPlayAsGuest1 {
+            get {
+                return ResourceManager.GetString("btnPlayAsGuest1", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Save.
         /// </summary>
-        public static string btSave {
+        public static string btnSave {
             get {
-                return ResourceManager.GetString("btSave", resourceCulture);
+                return ResourceManager.GetString("btnSave", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Send.
         /// </summary>
-        public static string btSend {
+        public static string btnSend {
             get {
-                return ResourceManager.GetString("btSend", resourceCulture);
+                return ResourceManager.GetString("btnSend", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Send friend request.
+        ///   Busca una cadena traducida similar a Send Friend Request.
         /// </summary>
-        public static string btSendFriendRequest {
+        public static string btnSendFriendRequest {
             get {
-                return ResourceManager.GetString("btSendFriendRequest", resourceCulture);
+                return ResourceManager.GetString("btnSendFriendRequest", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Start Game.
         /// </summary>
-        public static string btStartGame {
+        public static string btnStartGame {
             get {
-                return ResourceManager.GetString("btStartGame", resourceCulture);
+                return ResourceManager.GetString("btnStartGame", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Stats.
         /// </summary>
-        public static string btStats {
+        public static string btnStats {
             get {
-                return ResourceManager.GetString("btStats", resourceCulture);
+                return ResourceManager.GetString("btnStats", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Unblock.
         /// </summary>
-        public static string btUnblock {
+        public static string btnUnblock {
             get {
-                return ResourceManager.GetString("btUnblock", resourceCulture);
+                return ResourceManager.GetString("btnUnblock", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Verify.
         /// </summary>
-        public static string btVerify {
+        public static string btnVerify {
             get {
-                return ResourceManager.GetString("btVerify", resourceCulture);
+                return ResourceManager.GetString("btnVerify", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Language.
         /// </summary>
-        public static string cbLanguage {
+        public static string cmbLanguage {
             get {
-                return ResourceManager.GetString("cbLanguage", resourceCulture);
+                return ResourceManager.GetString("cmbLanguage", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Email.
         /// </summary>
-        public static string globalEmail {
+        public static string globalsEmail {
             get {
-                return ResourceManager.GetString("globalEmail", resourceCulture);
+                return ResourceManager.GetString("globalsEmail", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Log In.
         /// </summary>
-        public static string globalLogin {
+        public static string globalsLogin {
             get {
-                return ResourceManager.GetString("globalLogin", resourceCulture);
+                return ResourceManager.GetString("globalsLogin", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Password.
         /// </summary>
-        public static string globalPassword {
+        public static string globalsPassword {
             get {
-                return ResourceManager.GetString("globalPassword", resourceCulture);
+                return ResourceManager.GetString("globalsPassword", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Register.
         /// </summary>
-        public static string globalRegister {
+        public static string globalsRegister {
             get {
-                return ResourceManager.GetString("globalRegister", resourceCulture);
+                return ResourceManager.GetString("globalsRegister", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Username.
         /// </summary>
-        public static string globalUsername {
+        public static string globalsUsername {
             get {
-                return ResourceManager.GetString("globalUsername", resourceCulture);
+                return ResourceManager.GetString("globalsUsername", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Your account has been registered successfully!.
         /// </summary>
-        public static string lbAccountRegistered {
+        public static string lblAccountRegistered {
             get {
-                return ResourceManager.GetString("lbAccountRegistered", resourceCulture);
+                return ResourceManager.GetString("lblAccountRegistered", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Anihilated babies: .
+        ///   Busca una cadena traducida similar a Anihilated Babies: .
         /// </summary>
-        public static string lbAnihilatedBabies {
+        public static string lblAnihilatedBabies {
             get {
-                return ResourceManager.GetString("lbAnihilatedBabies", resourceCulture);
+                return ResourceManager.GetString("lblAnihilatedBabies", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Blocked Users.
         /// </summary>
-        public static string lbBlockedUsers {
+        public static string lblBlockedUsers {
             get {
-                return ResourceManager.GetString("lbBlockedUsers", resourceCulture);
+                return ResourceManager.GetString("lblBlockedUsers", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Choose your profile picture.
         /// </summary>
-        public static string lbChosepfp {
+        public static string lblChosepfp {
             get {
-                return ResourceManager.GetString("lbChosepfp", resourceCulture);
+                return ResourceManager.GetString("lblChosepfp", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Click here to log in.
+        ///   Busca una cadena traducida similar a CLick here to log in.
         /// </summary>
-        public static string lbClickHereLogin {
+        public static string lblClickHereLogin {
             get {
-                return ResourceManager.GetString("lbClickHereLogin", resourceCulture);
+                return ResourceManager.GetString("lblClickHereLogin", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a If you haven&apos;t recieved your message, click here.
         /// </summary>
-        public static string lbClickHereResend {
+        public static string lblClickHereResend {
             get {
-                return ResourceManager.GetString("lbClickHereResend", resourceCulture);
+                return ResourceManager.GetString("lblClickHereResend", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a A code has been sent to your email, please type it here:.
         /// </summary>
-        public static string lbCodeSent {
+        public static string lblCodeSent {
             get {
-                return ResourceManager.GetString("lbCodeSent", resourceCulture);
+                return ResourceManager.GetString("lblCodeSent", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Confirm Password.
+        ///   Busca una cadena traducida similar a Confrim Password.
         /// </summary>
-        public static string lbConfirmPassword {
+        public static string lblConfirmPassword {
             get {
-                return ResourceManager.GetString("lbConfirmPassword", resourceCulture);
+                return ResourceManager.GetString("lblConfirmPassword", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Current Password.
         /// </summary>
-        public static string lbCurrentPassword {
+        public static string lblCurrentPassword {
             get {
-                return ResourceManager.GetString("lbCurrentPassword", resourceCulture);
+                return ResourceManager.GetString("lblCurrentPassword", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a English.
         /// </summary>
-        public static string lbEnglish {
+        public static string lblEnglish {
             get {
-                return ResourceManager.GetString("lbEnglish", resourceCulture);
+                return ResourceManager.GetString("lblEnglish", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Enter your lobby code:.
+        ///   Busca una cadena traducida similar a Enter your lobby code: .
         /// </summary>
-        public static string lbEnterCode {
+        public static string lblEnterCode {
             get {
-                return ResourceManager.GetString("lbEnterCode", resourceCulture);
+                return ResourceManager.GetString("lblEnterCode", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Password must be the same.
+        ///   Busca una cadena traducida similar a Paswords must be the same.
         /// </summary>
-        public static string lbErrDiferentPassword {
+        public static string lblErrDiferentPassword {
             get {
-                return ResourceManager.GetString("lbErrDiferentPassword", resourceCulture);
+                return ResourceManager.GetString("lblErrDiferentPassword", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Email is invalid or already exists.
         /// </summary>
-        public static string lbErrEmailInvalid {
+        public static string lblErrEmailInvalid {
             get {
-                return ResourceManager.GetString("lbErrEmailInvalid", resourceCulture);
+                return ResourceManager.GetString("lblErrEmailInvalid", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a You must type something to send a message.
         /// </summary>
-        public static string lbErrEmptyMessage {
+        public static string lblErrEmptyMessage {
             get {
-                return ResourceManager.GetString("lbErrEmptyMessage", resourceCulture);
+                return ResourceManager.GetString("lblErrEmptyMessage", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Incorrect code.
         /// </summary>
-        public static string lbErrIncorrectCode {
+        public static string lblErrIncorrectCode {
             get {
-                return ResourceManager.GetString("lbErrIncorrectCode", resourceCulture);
+                return ResourceManager.GetString("lblErrIncorrectCode", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Your message contains invalid characters, only alphanumeric!.
+        ///   Busca una cadena traducida similar a This Email is invalid or already exists.
         /// </summary>
-        public static string lbErrInvalidMessage {
+        public static string lblErrInvalidEmail {
             get {
-                return ResourceManager.GetString("lbErrInvalidMessage", resourceCulture);
+                return ResourceManager.GetString("lblErrInvalidEmail", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a This lobby doesn&apos;t exist, try again later!.
+        ///   Busca una cadena traducida similar a Your message contains invalid characters, only alphanumeric.
         /// </summary>
-        public static string lbErrLobbyNotFound {
+        public static string lblErrInvalidMessage {
             get {
-                return ResourceManager.GetString("lbErrLobbyNotFound", resourceCulture);
+                return ResourceManager.GetString("lblErrInvalidMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a This lobby doesn&apos;t exist, try again!.
+        /// </summary>
+        public static string lblErrLobbyNotFound {
+            get {
+                return ResourceManager.GetString("lblErrLobbyNotFound", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Your message is too long, 300 characters max.
         /// </summary>
-        public static string lbErrMessageTooLong {
+        public static string lblErrMessageTooLong {
             get {
-                return ResourceManager.GetString("lbErrMessageTooLong", resourceCulture);
+                return ResourceManager.GetString("lblErrMessageTooLong", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a You haven&apos;t blocked anyone yet!.
         /// </summary>
-        public static string lbErrNoBlockedUsers {
+        public static string lblErrNoBlockedUsers {
             get {
-                return ResourceManager.GetString("lbErrNoBlockedUsers", resourceCulture);
+                return ResourceManager.GetString("lblErrNoBlockedUsers", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Oops, we couldn&apos;t reach our server, check your conection or try again later!.
         /// </summary>
-        public static string lbErrNoConection {
+        public static string lblErrNoConection {
             get {
-                return ResourceManager.GetString("lbErrNoConection", resourceCulture);
+                return ResourceManager.GetString("lblErrNoConection", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Oops!, our database is not working, try again later!.
         /// </summary>
-        public static string lbErrNoDataBase {
+        public static string lblErrNoDataBase {
             get {
-                return ResourceManager.GetString("lbErrNoDataBase", resourceCulture);
+                return ResourceManager.GetString("lblErrNoDataBase", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Oops!, Looks like you have no friends :(.
+        ///   Busca una cadena traducida similar a Oops! looks like you have no friend requests :(.
         /// </summary>
-        public static string lbErrNoFriends {
+        public static string lblErrNoFriendRequests {
             get {
-                return ResourceManager.GetString("lbErrNoFriends", resourceCulture);
+                return ResourceManager.GetString("lblErrNoFriendRequests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Oops! looks like you have no friends :(.
+        /// </summary>
+        public static string lblErrNoFriends {
+            get {
+                return ResourceManager.GetString("lblErrNoFriends", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Looks like you haven&apos;t played any game, go play! .
         /// </summary>
-        public static string lbErrNoStats {
+        public static string lblErrNoStats {
             get {
-                return ResourceManager.GetString("lbErrNoStats", resourceCulture);
+                return ResourceManager.GetString("lblErrNoStats", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Username Already Exists.
+        ///   Busca una cadena traducida similar a This username already exists.
         /// </summary>
-        public static string lbErrUsernameExists {
+        public static string lblErrUsernameExists {
             get {
-                return ResourceManager.GetString("lbErrUsernameExists", resourceCulture);
+                return ResourceManager.GetString("lblErrUsernameExists", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Username is invalid.
+        ///   Busca una cadena traducida similar a This username is invalid.
         /// </summary>
-        public static string lbErrUsernameInvalid {
+        public static string lblErrUsernameInvalid {
             get {
-                return ResourceManager.GetString("lbErrUsernameInvalid", resourceCulture);
+                return ResourceManager.GetString("lblErrUsernameInvalid", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a User not found, try again later!.
+        ///   Busca una cadena traducida similar a User not found, try again later.
         /// </summary>
-        public static string lbErrUserNotFound {
+        public static string lblErrUserNotFound {
             get {
-                return ResourceManager.GetString("lbErrUserNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a This email isn&apos;t valid.
-        /// </summary>
-        public static string lbErrValidEmail {
-            get {
-                return ResourceManager.GetString("lbErrValidEmail", resourceCulture);
+                return ResourceManager.GetString("lblErrUserNotFound", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Password must have a number and a special character.
         /// </summary>
-        public static string lbErrWeakPassword {
+        public static string lblErrWeakPassword {
             get {
-                return ResourceManager.GetString("lbErrWeakPassword", resourceCulture);
+                return ResourceManager.GetString("lblErrWeakPassword", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Incorrect user or password.
+        ///   Busca una cadena traducida similar a Incorrect username or password.
         /// </summary>
-        public static string lbErrWrongLogin {
+        public static string lblErrWrongLogin {
             get {
-                return ResourceManager.GetString("lbErrWrongLogin", resourceCulture);
+                return ResourceManager.GetString("lblErrWrongLogin", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Find User.
         /// </summary>
-        public static string lbFindUser {
+        public static string lblFindUser {
             get {
-                return ResourceManager.GetString("lbFindUser", resourceCulture);
+                return ResourceManager.GetString("lblFindUser", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Forgot Paswword?.
+        ///   Busca una cadena traducida similar a Forgot Password?.
         /// </summary>
-        public static string lbForgotPassword {
+        public static string lblForgotPassword {
             get {
-                return ResourceManager.GetString("lbForgotPassword", resourceCulture);
+                return ResourceManager.GetString("lblForgotPassword", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Lobby.
         /// </summary>
-        public static string lbLobby {
+        public static string lblLobby {
             get {
-                return ResourceManager.GetString("lbLobby", resourceCulture);
+                return ResourceManager.GetString("lblLobby", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Manage Friends.
         /// </summary>
-        public static string lbManageFriends {
+        public static string lblManageFriends {
             get {
-                return ResourceManager.GetString("lbManageFriends", resourceCulture);
+                return ResourceManager.GetString("lblManageFriends", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Monsters Created: .
         /// </summary>
-        public static string lbMonstersCreated {
+        public static string lblMonstersCreated {
             get {
-                return ResourceManager.GetString("lbMonstersCreated", resourceCulture);
+                return ResourceManager.GetString("lblMonstersCreated", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a New Password.
         /// </summary>
-        public static string lbNewPassword {
+        public static string lblNewPassword {
             get {
-                return ResourceManager.GetString("lbNewPassword", resourceCulture);
+                return ResourceManager.GetString("lblNewPassword", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a New Username.
         /// </summary>
-        public static string lbNewUsername {
+        public static string lblNewUsername {
             get {
-                return ResourceManager.GetString("lbNewUsername", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Oops!, Looks like you have no friend Requests.
-        /// </summary>
-        public static string lbNoFriendRequests {
-            get {
-                return ResourceManager.GetString("lbNoFriendRequests", resourceCulture);
+                return ResourceManager.GetString("lblNewUsername", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Not Ready.
         /// </summary>
-        public static string lbNotReady {
+        public static string lblNotReady {
             get {
-                return ResourceManager.GetString("lbNotReady", resourceCulture);
+                return ResourceManager.GetString("lblNotReady", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Offline.
         /// </summary>
-        public static string lbOffline {
+        public static string lblOffline {
             get {
-                return ResourceManager.GetString("lbOffline", resourceCulture);
+                return ResourceManager.GetString("lblOffline", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Online.
         /// </summary>
-        public static string lbOnline {
+        public static string lblOnline {
             get {
-                return ResourceManager.GetString("lbOnline", resourceCulture);
+                return ResourceManager.GetString("lblOnline", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Options.
         /// </summary>
-        public static string lbOptions {
+        public static string lblOptions {
             get {
-                return ResourceManager.GetString("lbOptions", resourceCulture);
+                return ResourceManager.GetString("lblOptions", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Players.
         /// </summary>
-        public static string lbPlayers {
+        public static string lblPlayers {
             get {
-                return ResourceManager.GetString("lbPlayers", resourceCulture);
+                return ResourceManager.GetString("lblPlayers", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Profile.
         /// </summary>
-        public static string lbProfile {
+        public static string lblProfile {
             get {
-                return ResourceManager.GetString("lbProfile", resourceCulture);
+                return ResourceManager.GetString("lblProfile", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Ready!.
         /// </summary>
-        public static string lbReady {
+        public static string lblReady {
             get {
-                return ResourceManager.GetString("lbReady", resourceCulture);
+                return ResourceManager.GetString("lblReady", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Spanish.
         /// </summary>
-        public static string lbSpanish {
+        public static string lblSpanish {
             get {
-                return ResourceManager.GetString("lbSpanish", resourceCulture);
+                return ResourceManager.GetString("lblSpanish", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Your password has been changed successfully!.
         /// </summary>
-        public static string lbSuccesPassword {
+        public static string lblSuccesPassword {
             get {
-                return ResourceManager.GetString("lbSuccesPassword", resourceCulture);
+                return ResourceManager.GetString("lblSuccesPassword", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a User ID.
         /// </summary>
-        public static string lbUserId {
+        public static string lblUserId {
             get {
-                return ResourceManager.GetString("lbUserId", resourceCulture);
+                return ResourceManager.GetString("lblUserId", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a View Profile.
+        ///   Busca una cadena traducida similar a ViewProfile.
         /// </summary>
-        public static string lbViewProfile {
+        public static string lblViewProfile {
             get {
-                return ResourceManager.GetString("lbViewProfile", resourceCulture);
+                return ResourceManager.GetString("lblViewProfile", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Volume.
         /// </summary>
-        public static string lbVolume {
+        public static string lblVolume {
             get {
-                return ResourceManager.GetString("lbVolume", resourceCulture);
+                return ResourceManager.GetString("lblVolume", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Wins: .
         /// </summary>
-        public static string lbWins {
+        public static string lblWins {
             get {
-                return ResourceManager.GetString("lbWins", resourceCulture);
+                return ResourceManager.GetString("lblWins", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Write your email to verify its you.
+        ///   Busca una cadena traducida similar a Write your email to verify it&apos;s you.
         /// </summary>
-        public static string lbWriteEmail {
+        public static string lblWriteEmail {
             get {
-                return ResourceManager.GetString("lbWriteEmail", resourceCulture);
+                return ResourceManager.GetString("lblWriteEmail", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Your Stats!.
         /// </summary>
-        public static string lbYourStats {
+        public static string lblYourStats {
             get {
-                return ResourceManager.GetString("lbYourStats", resourceCulture);
+                return ResourceManager.GetString("lblYourStats", resourceCulture);
             }
         }
     }

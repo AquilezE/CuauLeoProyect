@@ -32,9 +32,12 @@ namespace Cliente.Pantallas
 
         public LogIn()
         {
-            LangUtils.Register();
-            LangUtils.ChangeCulture("es-ES");
             InitializeComponent();
+            LangUtils.Register();
+            ChangeCulture("es-ES");
+            cbLanguage.SelectionChanged -= cbLanguage_SelectionChanged;
+            cbLanguage.SelectedIndex = 0; // Set the default selection
+            cbLanguage.SelectionChanged += cbLanguage_SelectionChanged;
             _servicio = new UsersManagerClient();
         }
 
@@ -52,7 +55,7 @@ namespace Cliente.Pantallas
 
             if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
             {
-                
+
                 try
                 {
 
@@ -83,9 +86,9 @@ namespace Cliente.Pantallas
 
         private bool SetSessionUser(string email, string password)
         {
-            UserDto userDto = _servicio.LogIn(email,password);
+            UserDto userDto = _servicio.LogIn(email, password);
             User currentUser = User.Instance;
-            
+
             if (userDto != null)
             {
                 currentUser.ID = userDto.UserId;
@@ -107,26 +110,28 @@ namespace Cliente.Pantallas
 
         private void ForgotPassword_Click(object sender, RoutedEventArgs e)
         {
-                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-                mainWindow.NavigateToMensajeador(new RecoverPassword());
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.NavigateToMensajeador(new RecoverPassword());
         }
 
         private void cbLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Console.WriteLine(cbLanguage.SelectedItem.ToString()); 
+            ComboBoxItem selectedItem = cbLanguage.SelectedItem as ComboBoxItem;
+            if (selectedItem != null)
+            {
+                string culture = selectedItem.Content as string;
+                if (culture != "cmbLanguage")
+                {
+                    ChangeCulture(culture);
+                }
+            }
         }
 
-        public static void ChangeCulture(string culture)
+        private void ChangeCulture(string culture)
         {
-            if (culture == "Spanish")
-            {
-                LangUtils.ChangeCulture("es-ES");
+            Console.WriteLine("Changing culture to: " + culture);
+            LangUtils.ChangeCulture(culture);
 
-            }
-            else if (culture == "Inglés")
-            {
-                LangUtils.ChangeCulture("en-EN");
-            }
         }
 
     }

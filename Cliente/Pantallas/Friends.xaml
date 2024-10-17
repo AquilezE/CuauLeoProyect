@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Cliente.Pantallas"
              xmlns:p="clr-namespace:Cliente.Properties"
+             xmlns:h="http://schemas.hpod9.com/haley/mvvm"
              mc:Ignorable="d" 
              d:DesignHeight="950" d:DesignWidth="1000">
     <Grid Height="950" Width="1000">
@@ -23,11 +24,11 @@
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
 
-        <Label x:Name="lbManageFriends" Grid.Column="1" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="50" Content="{x:Static p:Resources.lbManageFriends}" />
-        <Button x:Name="btFriendsList" Grid.Column="1" Grid.Row="1" MinWidth="20" MinHeight="120" Margin="5 5 5 5" Content="{x:Static p:Resources.btFriendList}" FontSize="40" Background="SaddleBrown" Click="btFriendsList_Click"/>
-        <Button x:Name="btFriendRequests" Grid.Column="1" Grid.Row="2" MinWidth="20" MinHeight="120" Margin="5 5 5 5" Content="{x:Static p:Resources.btFriendRequest}" FontSize="40" Background="SaddleBrown" Click="btFriendRequests_Click"/>
-        <Button x:Name="btAddFriend" Grid.Column="1" Grid.Row="3" MinWidth="20" MinHeight="120" Margin="5 5 5 5" Content="{x:Static p:Resources.btAddFriend}" FontSize="40" Background="SaddleBrown" Click="btAddFriend_Click"/>
-        <Button x:Name="btBlockList" Grid.Column="1" Grid.Row="4" MinWidth="20" MinHeight="120" Margin="5 5 5 5" Content="{x:Static p:Resources.btBlockLists}" FontSize="40" Background="SaddleBrown" Click="btBlockList_Click"/>
-        <Button x:Name="btGoBack" Grid.Column="1" Grid.Row="5" Width="200" Height="60" Margin="15 5 5 15" Content="{x:Static p:Resources.btGoBack}" FontSize="25" Background="LightGoldenrodYellow" Foreground="Coral" Click="btGoBack_Click"/>
+        <Label x:Name="lbManageFriends" Grid.Column="1" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="50" Content="{h:Lang lblManageFriends}" />
+        <Button x:Name="btFriendsList" Grid.Column="1" Grid.Row="1" MinWidth="20" MinHeight="120" Margin="5 5 5 5" Content="{h:Lang btnFriendList}" FontSize="40" Background="SaddleBrown" Click="btFriendsList_Click"/>
+        <Button x:Name="btFriendRequests" Grid.Column="1" Grid.Row="2" MinWidth="20" MinHeight="120" Margin="5 5 5 5" Content="{h:Lang btnFriendRequest}" FontSize="40" Background="SaddleBrown" Click="btFriendRequests_Click"/>
+        <Button x:Name="btAddFriend" Grid.Column="1" Grid.Row="3" MinWidth="20" MinHeight="120" Margin="5 5 5 5" Content="{h:Lang btnAddFriend}" FontSize="40" Background="SaddleBrown" Click="btAddFriend_Click"/>
+        <Button x:Name="btBlockList" Grid.Column="1" Grid.Row="4" MinWidth="20" MinHeight="120" Margin="5 5 5 5" Content="{h:Lang btnBlockLists}" FontSize="40" Background="SaddleBrown" Click="btBlockList_Click"/>
+        <Button x:Name="btGoBack" Grid.Column="1" Grid.Row="5" Width="200" Height="60" Margin="15 5 5 15" Content="{h:Lang btnGoBack}" FontSize="25" Background="LightGoldenrodYellow" Foreground="Coral" Click="btGoBack_Click"/>
     </Grid>
 </UserControl>
