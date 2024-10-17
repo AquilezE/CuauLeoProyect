@@ -32,7 +32,7 @@ namespace Cliente.UserControllers.Recover
         public void btGotoLogIn_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.NavigateToMensajeador(new LogIn());
+            mainWindow.NavigateToView(new LogIn());
         }
     }
 }

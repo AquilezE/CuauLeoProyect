@@ -38,7 +38,9 @@
   </xs:element>
   <xs:element name="SendTokenResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SendTokenResult" type="xs:boolean" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="VerifyToken">
@@ -90,7 +92,7 @@
   <xs:element name="NewLobbyCreated">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="UserId" type="xs:int" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/BevososService" minOccurs="0" name="userDto" nillable="true" type="q2:UserDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -98,7 +100,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="lobbyId" type="xs:int" />
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/BevososService" minOccurs="0" name="userDto" nillable="true" type="q2:UserDto" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/BevososService" minOccurs="0" name="userDto" nillable="true" type="q3:UserDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -144,7 +146,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="lobbyId" type="xs:int" />
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/BevososService" minOccurs="0" name="userDto" nillable="true" type="q3:UserDto" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/BevososService" minOccurs="0" name="userDto" nillable="true" type="q4:UserDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -177,6 +179,47 @@
   <xs:element name="OnSendMessageResponse">
     <xs:complexType>
       <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnLobbyUsersUpdate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="lobbyId" type="xs:int" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/BevososService" minOccurs="0" name="users" nillable="true" type="q5:ArrayOfUserDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnLobbyUsersUpdateResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsLobbyOpen">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="lobbyId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsLobbyOpenResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsLobbyOpenResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsLobbyFull">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="lobbyId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsLobbyFullResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsLobbyFullResult" type="xs:boolean" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
 </xs:schema>

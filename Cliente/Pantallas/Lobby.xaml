@@ -24,7 +24,7 @@
             <Button Width="200" HorizontalAlignment="Left" Margin="50 0 0 0"
             x:Name="btLeaveLobby" Content="{h:Lang btnLeaveLobby}" Click="btLeaveLobby_Click"/>
             <Label Content="Usuario" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
-            <TextBox x:Name="codigoSala" Width="355" Height="50"/>
+            <TextBox x:Name="tbUserName" Width="355" Height="50"/>
             <Button Height="30" x:Name="btnJoin" Click="btnJoin_Click" Background="Peru"/>
 
         </StackPanel>

@@ -123,10 +123,10 @@ namespace Cliente.ServiceReference {
         System.Threading.Tasks.Task<bool> IsEmailTakenAsync(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsersManager/SendToken", ReplyAction="http://tempuri.org/IUsersManager/SendTokenResponse")]
-        void SendToken(string email);
+        bool SendToken(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsersManager/SendToken", ReplyAction="http://tempuri.org/IUsersManager/SendTokenResponse")]
-        System.Threading.Tasks.Task SendTokenAsync(string email);
+        System.Threading.Tasks.Task<bool> SendTokenAsync(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsersManager/VerifyToken", ReplyAction="http://tempuri.org/IUsersManager/VerifyTokenResponse")]
         bool VerifyToken(string email, string token);
@@ -190,11 +190,11 @@ namespace Cliente.ServiceReference {
             return base.Channel.IsEmailTakenAsync(email);
         }
         
-        public void SendToken(string email) {
-            base.Channel.SendToken(email);
+        public bool SendToken(string email) {
+            return base.Channel.SendToken(email);
         }
         
-        public System.Threading.Tasks.Task SendTokenAsync(string email) {
+        public System.Threading.Tasks.Task<bool> SendTokenAsync(string email) {
             return base.Channel.SendTokenAsync(email);
         }
         
@@ -228,10 +228,10 @@ namespace Cliente.ServiceReference {
     public interface ILobbyManager {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/NewLobbyCreated")]
-        void NewLobbyCreated(int UserId);
+        void NewLobbyCreated(Cliente.ServiceReference.UserDto userDto);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/NewLobbyCreated")]
-        System.Threading.Tasks.Task NewLobbyCreatedAsync(int UserId);
+        System.Threading.Tasks.Task NewLobbyCreatedAsync(Cliente.ServiceReference.UserDto userDto);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/JoinLobby")]
         void JoinLobby(int lobbyId, Cliente.ServiceReference.UserDto userDto);
@@ -272,6 +272,9 @@ namespace Cliente.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/OnSendMessage", ReplyAction="http://tempuri.org/ILobbyManager/OnSendMessageResponse")]
         void OnSendMessage(int UserId, string message);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManager/OnLobbyUsersUpdate", ReplyAction="http://tempuri.org/ILobbyManager/OnLobbyUsersUpdateResponse")]
+        void OnLobbyUsersUpdate(int lobbyId, Cliente.ServiceReference.UserDto[] users);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -302,12 +305,12 @@ namespace Cliente.ServiceReference {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void NewLobbyCreated(int UserId) {
-            base.Channel.NewLobbyCreated(UserId);
+        public void NewLobbyCreated(Cliente.ServiceReference.UserDto userDto) {
+            base.Channel.NewLobbyCreated(userDto);
         }
         
-        public System.Threading.Tasks.Task NewLobbyCreatedAsync(int UserId) {
-            return base.Channel.NewLobbyCreatedAsync(UserId);
+        public System.Threading.Tasks.Task NewLobbyCreatedAsync(Cliente.ServiceReference.UserDto userDto) {
+            return base.Channel.NewLobbyCreatedAsync(userDto);
         }
         
         public void JoinLobby(int lobbyId, Cliente.ServiceReference.UserDto userDto) {
@@ -340,6 +343,67 @@ namespace Cliente.ServiceReference {
         
         public System.Threading.Tasks.Task KickUserAsync(int lobbyId, int UserId) {
             return base.Channel.KickUserAsync(lobbyId, UserId);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.ILobbyChecker")]
+    public interface ILobbyChecker {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyChecker/IsLobbyOpen", ReplyAction="http://tempuri.org/ILobbyChecker/IsLobbyOpenResponse")]
+        bool IsLobbyOpen(int lobbyId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyChecker/IsLobbyOpen", ReplyAction="http://tempuri.org/ILobbyChecker/IsLobbyOpenResponse")]
+        System.Threading.Tasks.Task<bool> IsLobbyOpenAsync(int lobbyId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyChecker/IsLobbyFull", ReplyAction="http://tempuri.org/ILobbyChecker/IsLobbyFullResponse")]
+        bool IsLobbyFull(int lobbyId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyChecker/IsLobbyFull", ReplyAction="http://tempuri.org/ILobbyChecker/IsLobbyFullResponse")]
+        System.Threading.Tasks.Task<bool> IsLobbyFullAsync(int lobbyId);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ILobbyCheckerChannel : Cliente.ServiceReference.ILobbyChecker, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class LobbyCheckerClient : System.ServiceModel.ClientBase<Cliente.ServiceReference.ILobbyChecker>, Cliente.ServiceReference.ILobbyChecker {
+        
+        public LobbyCheckerClient() {
+        }
+        
+        public LobbyCheckerClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public LobbyCheckerClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public LobbyCheckerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public LobbyCheckerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public bool IsLobbyOpen(int lobbyId) {
+            return base.Channel.IsLobbyOpen(lobbyId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsLobbyOpenAsync(int lobbyId) {
+            return base.Channel.IsLobbyOpenAsync(lobbyId);
+        }
+        
+        public bool IsLobbyFull(int lobbyId) {
+            return base.Channel.IsLobbyFull(lobbyId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsLobbyFullAsync(int lobbyId) {
+            return base.Channel.IsLobbyFullAsync(lobbyId);
         }
     }
 }

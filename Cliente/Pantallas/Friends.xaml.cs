@@ -48,7 +48,7 @@ namespace Cliente.Pantallas
         private void btGoBack_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.NavigateToMensajeador(new MainMenu());
+            mainWindow.NavigateToView(new MainMenu());
         }
     }
 }

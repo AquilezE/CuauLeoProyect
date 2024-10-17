@@ -36,7 +36,7 @@ namespace Cliente.Pantallas
             LangUtils.Register();
             ChangeCulture("es-ES");
             cbLanguage.SelectionChanged -= cbLanguage_SelectionChanged;
-            cbLanguage.SelectedIndex = 0; // Set the default selection
+            cbLanguage.SelectedIndex = 0; 
             cbLanguage.SelectionChanged += cbLanguage_SelectionChanged;
             _servicio = new UsersManagerClient();
         }
@@ -62,7 +62,7 @@ namespace Cliente.Pantallas
                     if (SetSessionUser(username, password))
                     {
                         MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-                        mainWindow.NavigateToMensajeador(new MainMenu());
+                        mainWindow.NavigateToView(new MainMenu());
 
                     }
                     else
@@ -72,7 +72,7 @@ namespace Cliente.Pantallas
                 }
                 catch (Exception ex)
                 {
-                    lbErrLabel.Content = "Error: " + ex.Message;
+                    lbErrLabel.Content = "An error occurred while trying to log in. Please try again later";
                 }
 
 
@@ -86,32 +86,40 @@ namespace Cliente.Pantallas
 
         private bool SetSessionUser(string email, string password)
         {
-            UserDto userDto = _servicio.LogIn(email, password);
-            User currentUser = User.Instance;
-
-            if (userDto != null)
+            try
             {
+                UserDto userDto = _servicio.LogIn(email, password);
+                if (userDto == null)
+                {
+                    return false;
+                }
+
+                
+                User currentUser = User.Instance;
                 currentUser.ID = userDto.UserId;
                 currentUser.Username = userDto.Username;
                 currentUser.Email = userDto.Email;
                 currentUser.ProfilePictureId = userDto.ProfilePictureId;
+
                 return true;
             }
-
-            return false;
+            catch (Exception)
+            {
+                throw;
+            }
 
         }
 
         private void btRegister_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.NavigateToMensajeador(new RegisterAccount());
+            mainWindow.NavigateToView(new RegisterAccount());
         }
 
         private void ForgotPassword_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.NavigateToMensajeador(new RecoverPassword());
+            mainWindow.NavigateToView(new RecoverPassword());
         }
 
         private void cbLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -130,7 +138,14 @@ namespace Cliente.Pantallas
         private void ChangeCulture(string culture)
         {
             Console.WriteLine("Changing culture to: " + culture);
+            try
+            { 
             LangUtils.ChangeCulture(culture);
+            }catch(CultureNotFoundException ex)
+            {
+                LangUtils.ChangeCulture("en");
+                Console.WriteLine("Changing culture to: " + culture);
+            }
 
         }
 

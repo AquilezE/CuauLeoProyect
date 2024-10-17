@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cliente.ServiceReference;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,28 +30,38 @@ namespace Cliente.Pantallas
         {
             Lobby lobbyWindow = new Lobby();
 
-            lobbyWindow._servicio.NewLobbyCreated(User.Instance.ID);
+
+            //How convenient is it to add a cast to the User class?
+            UserDto userDto = new UserDto
+            {
+                UserId = User.Instance.ID,
+                Username = User.Instance.Username,
+                Email = User.Instance.Email,
+                ProfilePictureId = User.Instance.ProfilePictureId
+            };
+
+            lobbyWindow._servicio.NewLobbyCreated(userDto);
 
             MainWindow main = (MainWindow)Application.Current.MainWindow;
-            main.NavigateToMensajeador(lobbyWindow);
+            main.NavigateToView(lobbyWindow);
         }
 
         private void btJoinLobby_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.NavigateToMensajeador(new JoinLobby(), 650, 800);
+            mainWindow.NavigateToView(new JoinLobby(), 650, 800);
         }
 
         private void btFriends_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.NavigateToMensajeador(new Friends(), 950, 1000);
+            mainWindow.NavigateToView(new Friends(), 950, 1000);
         }
 
         private void btStats_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.NavigateToMensajeador(new Stats(), 650, 800);
+            mainWindow.NavigateToView(new Stats(), 650, 800);
         }
 
         private void btLogOut_Click(object sender, RoutedEventArgs e)
@@ -58,7 +69,7 @@ namespace Cliente.Pantallas
             User.Instance = null;
 
             MainWindow main = (MainWindow)Application.Current.MainWindow;
-            main.NavigateToMensajeador(new LogIn());
+            main.NavigateToView(new LogIn());
         }
 
         private void btnProfile_Click(object sender, RoutedEventArgs e)

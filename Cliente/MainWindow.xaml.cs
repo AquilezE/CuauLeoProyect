@@ -26,9 +26,9 @@ namespace Cliente
         public MainWindow()
         {
             InitializeComponent();
-            NavigateToMensajeador(new LogIn());
+            NavigateToView(new LogIn());
         }
-        public void NavigateToMensajeador(UserControl control, double ? newWidth = null, double ? newHeight = null)
+        public void NavigateToView(UserControl control, double ? newWidth = null, double ? newHeight = null)
         {
             MainContentControl.Content = control;
             if (newWidth != null && newHeight != null)

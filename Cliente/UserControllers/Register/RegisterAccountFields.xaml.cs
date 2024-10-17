@@ -32,19 +32,35 @@ namespace Cliente.Pantallas
 
         private async void btRegister_Click(object sender, RoutedEventArgs e)
         {
+            btRegister.IsEnabled = false;
+
+
+            int cooldownDuration = 2000;
+
+
+            var timer = new System.Timers.Timer(cooldownDuration);
+            timer.Elapsed += (s, args) =>
+            {
+                Dispatcher.Invoke(() => btRegister.IsEnabled = true);
+                timer.Stop(); 
+                timer.Dispose(); 
+            };
+            timer.Start();
+
+
             if (IsValidUsername(tbUsername.Text) &&
                 IsValidEmail(tbEmail.Text) &&
                 IsValidPassword(pbPassword.Password) &&
                 pbConfirmPassword.Password == pbPassword.Password)
             {
-                // Call the async methods for server-side validation
-                bool isEmailTaken =  _service.IsEmailTaken(tbEmail.Text);
-                bool isUsernameTaken =  _service.IsUsernameTaken(tbUsername.Text);
+
+                bool isEmailTaken = await _service.IsEmailTakenAsync(tbEmail.Text);
+                bool isUsernameTaken = await _service.IsUsernameTakenAsync(tbUsername.Text);
 
                 if (isEmailTaken)
                 {
                     lbErrEmail.Content = "Email is already taken.";
-                    return; 
+                    return;
                 }
 
                 if (isUsernameTaken)
@@ -152,6 +168,12 @@ namespace Cliente.Pantallas
             {
                 lbErrPasswordConfirmation.Content = string.Empty;
             }
+        }
+
+        private void btCancel_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.NavigateToView(new LogIn());
         }
     }
 

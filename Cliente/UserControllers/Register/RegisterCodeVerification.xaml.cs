@@ -1,4 +1,5 @@
-﻿using Cliente.ServiceReference;
+﻿using Cliente.Pantallas;
+using Cliente.ServiceReference;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,9 @@ namespace Cliente.UserControllers
         private string _username;
         private string _password;
 
+        private int _retryCounter = 0;
+        private const int MAX_RETRIES = 3;
+
         public RegisterCodeVerification(string email, string username, string password)
         {
             _service = new UsersManagerClient();
@@ -37,31 +41,71 @@ namespace Cliente.UserControllers
             _password = password;
         }
 
-        private void btRegister_Click(object sender, RoutedEventArgs e)
+        private async void btRegister_Click(object sender, RoutedEventArgs e)
         {
 
-            if (IsTokenValidFormat(tbVerificactionCode.Text))
+            btRegister.IsEnabled = false;
+
+            try
             {
-
-                bool isCodeValid = _service.VerifyToken(_email, tbVerificactionCode.Text);
-
-                if (isCodeValid)
+                if (IsTokenValidFormat(tbVerificactionCode.Text))
                 {
-                    if (_service.RegisterUser(_email, _username, _password)) 
-                    { 
-                    OnVerificationCompleted(EventArgs.Empty);
-                    }else lbErrVerificactionCode.Content = "Error registering user";
+
+                    bool isCodeValid = await _service.VerifyTokenAsync(_email, tbVerificactionCode.Text);
+
+                    if (isCodeValid)
+                    {
+
+                        bool isRegistered = await _service.RegisterUserAsync(_email, _username, _password);
+
+                        if (isRegistered)
+                        {
+                            OnVerificationCompleted(EventArgs.Empty);
+                        }
+                        else
+                        {
+                            lbErrVerificactionCode.Content = "Registration failed. The username or email may already be taken";
+                        }
+                    }
+                    else
+                    {
+                        HandleFailedVerification();
+                    }
                 }
                 else
                 {
-
-                    tbVerificactionCode.Clear();
-                    tbVerificactionCode.Focus();
-                    lbErrVerificactionCode.Content = "Invalid code YOU NEED TO INTERNATIONALIZE THIS PAL";
+                    lbErrVerificactionCode.Content = "Invalid code format"; 
                 }
+            }
+            catch(Exception ex)
+            {
+                lbErrVerificactionCode.Content = "An error ocurred while verifying the code, Please try again later";
+            }
+            finally
+            {
+               btRegister.IsEnabled = true;
             }
         }
 
+
+        private void HandleFailedVerification()
+        {
+            tbVerificactionCode.Clear();
+            tbVerificactionCode.Focus();
+
+            _retryCounter++;
+
+            if (_retryCounter >= MAX_RETRIES)
+            {
+                lbErrVerificactionCode.Content = "Too many failed attempts. Please request a new verification code.";
+                btRegister.IsEnabled = false; 
+            }
+
+            else
+            {
+                lbErrVerificactionCode.Content = "Invalid code. Please try again.";
+            }
+        }
         protected virtual void OnVerificationCompleted(EventArgs e)
         {
             VerificationCompleted?.Invoke(this, e);
@@ -82,9 +126,53 @@ namespace Cliente.UserControllers
         }
 
 
-        private void ResendEmail_Click(object sender, RoutedEventArgs e)
+        private async void ResendEmail_Click(object sender, RoutedEventArgs e)
         {
+            lbResendEmail.IsEnabled = false;
 
+            lbResendEmail.Content = "Sending...";
+
+            try
+            {
+                bool emailSent = await _service.SendTokenAsync(_email);
+
+                if (emailSent)
+                {
+                    lbErrVerificactionCode.Content = "Verification email has been resent.";
+                }
+                else
+                {
+                    lbErrVerificactionCode.Content = "Failed to resend the email. Please try again later.";
+                }
+            }
+            catch (Exception ex)
+            {
+               
+                lbErrVerificactionCode.Content = "An error occurred while resending the email.";
+            }
+            finally
+            {
+                
+                const int cooldownPeriod = 30000; 
+                var timer = new System.Timers.Timer(cooldownPeriod);
+                timer.Elapsed += (s, args) =>
+                {
+                    Dispatcher.Invoke(() =>
+                    {
+                        lbResendEmail.IsEnabled = true; 
+                        lbResendEmail.Content = "Click aqui para reenviar tu codigo";
+                    });
+                    timer.Stop();
+                    timer.Dispose();
+                };
+                timer.Start();
+            }
+        }
+
+        private void btCancel_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.NavigateToView(new LogIn());
         }
     }
 }

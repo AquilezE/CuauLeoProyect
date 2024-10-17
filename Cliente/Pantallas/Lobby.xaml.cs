@@ -43,6 +43,7 @@ namespace Cliente.Pantallas
             _messages = new ObservableCollection<Message>();
             _users = new ObservableCollection<User>();
             MessagesListBox.ItemsSource = _messages;
+            tbUserName.Text = User.Instance.Username;
             
         }
 
@@ -104,7 +105,7 @@ namespace Cliente.Pantallas
         public bool LeaveLobby()
         {
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.NavigateToMensajeador(new MainMenu());
+            mainWindow.NavigateToView(new MainMenu());
             return true;
         }
 
@@ -117,31 +118,30 @@ namespace Cliente.Pantallas
             Console.WriteLine(_lobbyId);
 
             tbLobbyCode.Text = lobbyId.ToString();
-            
+            tbUserName.Text = User.Instance.Username;
+
+
         }
 
         public void OnJoinLobby(int lobbyId, UserDto userDto)
         {
             User user = new User(userDto);
             _users.Add(user);
-            Console.WriteLine("OnJoinLobby called");
-            Console.WriteLine($"userDto in OnJoinLobby: {userDto.Username}");
-
             _lobbyId = lobbyId;
             tbLobbyCode.Text = lobbyId.ToString();
-
-            
         }
 
         public void OnLeaveLobby(int lobbyId, int UserId)
         {
-            throw new NotImplementedException();
+            var user = _users.FirstOrDefault(u => u.ID == UserId);
+            if (user != null)
+            {
+                _users.Remove(user);
+            }
         }
 
         public void OnSendMessage(int UserId, string message)
         {
-            Console.WriteLine("OnSendMessage called");
-            Console.WriteLine($"message in OnSendMessage: {message}");
 
             User user = _users.FirstOrDefault(u => u.ID == UserId);
 
@@ -152,10 +152,33 @@ namespace Cliente.Pantallas
             }
             else
             {
-                // Handle the case where the user is not found
-                // For example, you might add the message with a placeholder username
                 _messages.Add(new Message($"User {UserId}", message, _lobbyId));
             }
+        }
+
+        public void OnLobbyUsersUpdate(int lobbyId, UserDto[] users)
+        {
+            _lobbyId = lobbyId;
+
+            _users.Clear();
+
+            foreach (var userDto in users)
+            {
+                User user = new User(userDto);
+                _users.Add(user);
+            }
+
+            foreach (var userDto in _users)
+            {
+                Console.WriteLine(userDto.Username);
+            }
+
+            if (!_users.Any(u => u.ID == User.Instance.ID))
+            {
+                _users.Add(User.Instance);
+            }
+
+            tbLobbyCode.Text = lobbyId.ToString();
         }
     }
 }
