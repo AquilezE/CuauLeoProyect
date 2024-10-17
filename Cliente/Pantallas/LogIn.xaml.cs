@@ -114,7 +114,6 @@ namespace Cliente.Pantallas
         private void cbLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Console.WriteLine(cbLanguage.SelectedItem.ToString()); 
-
         }
 
         public static void ChangeCulture(string culture)
