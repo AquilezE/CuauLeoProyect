@@ -113,7 +113,14 @@ namespace Cliente.Pantallas
 
         private void cbLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // Aquí obtienes el idioma seleccionado
+
+            try
+            {
+                 throw new Exception("Error");
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
 
