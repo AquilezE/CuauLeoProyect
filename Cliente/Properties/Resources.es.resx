@@ -387,4 +387,7 @@
   <data name="lblYourStats" xml:space="preserve">
     <value>Tus Estadísticas</value>
   </data>
+  <data name="lblChangeProfile" xml:space="preserve">
+    <value>Modifica tu perfil</value>
+  </data>
 </root>
