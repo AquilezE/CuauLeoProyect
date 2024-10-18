@@ -74,6 +74,9 @@ namespace Cliente.Pantallas
 
         private void btnProfile_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow main = (MainWindow)Application.Current.MainWindow;
+            main.NavigateToView(new Profile());
+
             Console.WriteLine("Profile");
             Console.WriteLine(User.Instance.Username);
             Console.WriteLine(User.Instance.ID);
