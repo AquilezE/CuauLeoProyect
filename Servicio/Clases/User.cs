@@ -17,5 +17,8 @@ namespace Servicio.Clases
         [DataMember]
         public string Email { get; set; }
 
+        [DataMember]
+        public int ProfilePictureId { get; set; }
+
     }
 }
