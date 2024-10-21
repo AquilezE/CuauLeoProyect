@@ -69,11 +69,9 @@ namespace Cliente.Pantallas
                 return;
 
             }
-            
-            Console.WriteLine($"_lobbyId in btSendMessage_Click: {_lobbyId}");
-            Console.WriteLine($"User.Instance.ID in btSendMessage_Click: {User.Instance.ID}");
-            Console.WriteLine($"message in btSendMessage_Click: {message}");
+
             _servicio.SendMessage(_lobbyId, User.Instance.ID, message);
+            tbMessage.Text = string.Empty;
         }
 
         private bool IsValidMessage(string message)

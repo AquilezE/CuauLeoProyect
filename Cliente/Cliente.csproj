@@ -162,6 +162,9 @@
     <Compile Include="Pantallas\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pantallas\Profile.xaml.cs">
+      <DependentUpon>Profile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\RecoverPassword.xaml.cs">
       <DependentUpon>RecoverPassword.xaml</DependentUpon>
     </Compile>
@@ -244,6 +247,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pantallas\Lobby.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pantallas\Profile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -402,7 +409,33 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\kanyepfp.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\travispfp.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cartipfp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\kendrickpfp.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\kittypfp.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\melodypfp.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\kuromipfp.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cinamonpfp.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\defaultpfp.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -430,6 +430,15 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Change your profile.
+        /// </summary>
+        public static string lblChangeProfile {
+            get {
+                return ResourceManager.GetString("lblChangeProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Choose your profile picture.
         /// </summary>
         public static string lblChosepfp {
