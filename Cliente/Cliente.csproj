@@ -410,31 +410,31 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\kanyepfp.jpg" />
+    <Resource Include="Images\pfp2.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\travispfp.jpg" />
+    <Resource Include="Images\pfp3.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\cartipfp.png" />
+    <Resource Include="Images\pfp5.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\kendrickpfp.jpg" />
+    <Resource Include="Images\pfp6.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\kittypfp.jpg" />
+    <Resource Include="Images\pfp7.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\melodypfp.jpg" />
+    <Resource Include="Images\pfp8.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\kuromipfp.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\cinamonpfp.jpg" />
+    <Resource Include="Images\pfp9.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\defaultpfp.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pfp4.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />

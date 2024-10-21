@@ -30,6 +30,16 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IProfileManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1">
+        </msb:BinaryEncoding>
+        <wsaw:UsingAddressing>
+        </wsaw:UsingAddressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import namespace="http://tempuri.org/" />
@@ -136,6 +146,15 @@
   <wsdl:message name="ILobbyChecker_IsLobbyFull_OutputMessage">
     <wsdl:part name="parameters" element="tns:IsLobbyFullResponse" />
   </wsdl:message>
+  <wsdl:message name="IProfileManager_UpdateProfile_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProfile" />
+  </wsdl:message>
+  <wsdl:message name="IProfileManager_OnProfileUpdate_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnProfileUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IProfileManager_OnProfileUpdate_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnProfileUpdateResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUsersManager">
     <wsdl:operation name="IsUsernameTaken">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/IsUsernameTaken" message="tns:IUsersManager_IsUsernameTaken_InputMessage" />
@@ -211,6 +230,15 @@
     <wsdl:operation name="IsLobbyFull">
       <wsdl:input wsaw:Action="http://tempuri.org/ILobbyChecker/IsLobbyFull" message="tns:ILobbyChecker_IsLobbyFull_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyChecker/IsLobbyFullResponse" message="tns:ILobbyChecker_IsLobbyFull_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IProfileManager">
+    <wsdl:operation name="UpdateProfile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProfileManager/UpdateProfile" message="tns:IProfileManager_UpdateProfile_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnProfileUpdate">
+      <wsdl:output wsaw:Action="http://tempuri.org/IProfileManager/OnProfileUpdate" message="tns:IProfileManager_OnProfileUpdate_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IProfileManager/OnProfileUpdateResponse" message="tns:IProfileManager_OnProfileUpdate_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUsersManager" type="tns:IUsersManager">
@@ -384,6 +412,26 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IProfileManager" type="tns:IProfileManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IProfileManager_policy">
+    </wsp:PolicyReference>
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="UpdateProfile">
+      <soap12:operation soapAction="http://tempuri.org/IProfileManager/UpdateProfile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="OnProfileUpdate">
+      <soap12:operation soapAction="http://tempuri.org/IProfileManager/OnProfileUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="ServiceImplementation">
     <wsdl:port name="NetTcpBinding_IUsersManager" binding="tns:NetTcpBinding_IUsersManager">
       <soap12:address location="net.tcp://localhost:8000/ServiceImplementation/Service" />
@@ -398,6 +446,12 @@
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ILobbyChecker" binding="tns:NetTcpBinding_ILobbyChecker">
+      <soap12:address location="net.tcp://localhost:8000/ServiceImplementation/Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8000/ServiceImplementation/Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IProfileManager" binding="tns:NetTcpBinding_IProfileManager">
       <soap12:address location="net.tcp://localhost:8000/ServiceImplementation/Service" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8000/ServiceImplementation/Service</wsa10:Address>
