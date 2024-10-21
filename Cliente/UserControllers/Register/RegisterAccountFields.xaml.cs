@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,6 +33,7 @@ namespace Cliente.Pantallas
 
         private async void btRegister_Click(object sender, RoutedEventArgs e)
         {
+
             btRegister.IsEnabled = false;
 
 
@@ -123,12 +125,22 @@ namespace Cliente.Pantallas
         {
             try
             {
+                string pattern = @"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$";
+
+                if (!Regex.IsMatch(email, pattern))
+                {
+                    return false;
+                }
+
                 var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
+                string domain = addr.Host;
+
+                return domain.IndexOf("..") == -1 && domain.All(c => Char.IsLetterOrDigit(c) || c == '-' || c == '.');
             }
             catch
             {
-                return false;
+
+            return false; 
             }
         }
 
@@ -150,6 +162,13 @@ namespace Cliente.Pantallas
 
         private bool IsValidPassword(string password)
         {
+
+            if (password.Contains(' '))
+            {
+                return false;
+            }
+
+
             bool hasUpper = password.Any(char.IsUpper);
             bool hasLower = password.Any(char.IsLower);
             bool hasDigit = password.Any(char.IsDigit);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,29 +13,74 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Cliente.ServiceReference;
+
 
 namespace Cliente.UserControllers.Recover
 {
-    /// <summary>
-    /// Interaction logic for RecoverEmail.xaml
-    /// </summary>
     public partial class RecoverEmail : UserControl
     {
-        public event EventHandler EmailFilled;
+        public event Action<string> EmailFilled;
+        private UsersManagerClient _service;
 
         public RecoverEmail()
         {
+            _service = new UsersManagerClient();
             InitializeComponent();
         }
 
-        protected virtual void OnEmailFilled(EventArgs e)
+        protected virtual void OnEmailFilled(string email)
         {
-            EmailFilled?.Invoke(this, e);
+            EmailFilled?.Invoke(email);
         }
 
         private void btSendEmail_Click(object sender, RoutedEventArgs e)
         {
-            OnEmailFilled(e);
+
+            string email = tbEmail.Text.Trim();
+
+            if (IsValidEmail(email))
+            {
+                _service.SendTokenAsync(email);
+                OnEmailFilled(email);
+            }
+            else
+            {
+                lbErrEmailCode.Content = "Invalid email";
+            }
+
+
+        }
+
+
+        private bool IsValidEmail(string email)
+        {
+
+            
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                return false;
+            }
+
+            try
+            {
+                string pattern = @"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$";
+
+                if (!Regex.IsMatch(email, pattern))
+                {
+                    return false;
+                }
+
+                var addr = new System.Net.Mail.MailAddress(email);
+                string domain = addr.Host;
+
+                return domain.IndexOf("..") == -1 && domain.All(c => Char.IsLetterOrDigit(c) || c == '-' || c == '.');
+            }
+            catch
+            {
+
+                return false;
+            }
         }
     }
 }
