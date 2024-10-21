@@ -145,6 +145,12 @@ namespace Cliente.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsersManager/LogIn", ReplyAction="http://tempuri.org/IUsersManager/LogInResponse")]
         System.Threading.Tasks.Task<Cliente.ServiceReference.UserDto> LogInAsync(string email, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsersManager/RecoverPassword", ReplyAction="http://tempuri.org/IUsersManager/RecoverPasswordResponse")]
+        bool RecoverPassword(string email, string newPasswordHash);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsersManager/RecoverPassword", ReplyAction="http://tempuri.org/IUsersManager/RecoverPasswordResponse")]
+        System.Threading.Tasks.Task<bool> RecoverPasswordAsync(string email, string newPasswordHash);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -220,6 +226,14 @@ namespace Cliente.ServiceReference {
         
         public System.Threading.Tasks.Task<Cliente.ServiceReference.UserDto> LogInAsync(string email, string password) {
             return base.Channel.LogInAsync(email, password);
+        }
+        
+        public bool RecoverPassword(string email, string newPasswordHash) {
+            return base.Channel.RecoverPassword(email, newPasswordHash);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RecoverPasswordAsync(string email, string newPasswordHash) {
+            return base.Channel.RecoverPasswordAsync(email, newPasswordHash);
         }
     }
     

@@ -23,6 +23,8 @@ namespace Cliente.Pantallas
     public partial class RecoverPassword : UserControl
     {
 
+        private string _email;
+
         public RecoverPassword()
         {
             InitializeComponent();
@@ -31,16 +33,17 @@ namespace Cliente.Pantallas
             RecoverPasswordContentControl.Content = recoverEmail;
         }
 
-        private void OnEmailSent(object sender, EventArgs e)
+        private void OnEmailSent(string email)
         {
-            var registerCodeVerification = new RecoverCodeVerification();
+            _email = email;
+            var registerCodeVerification = new RecoverCodeVerification(email);
             registerCodeVerification.VerificationCompleted += OnVerificationCompleted;
             RecoverPasswordContentControl.Content = registerCodeVerification;
         }
 
         private void OnVerificationCompleted(object sender, EventArgs e)
         {
-            var recoverNewPassword= new RecoverNewPassword();
+            var recoverNewPassword = new RecoverNewPassword(_email);
             recoverNewPassword.PasswordChanged += OnPasswordChanged;
             RecoverPasswordContentControl.Content = recoverNewPassword;
             

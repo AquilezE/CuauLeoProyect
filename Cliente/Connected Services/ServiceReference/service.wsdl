@@ -5,29 +5,6 @@
       <wsp:All>
         <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1">
         </msb:BinaryEncoding>
-        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <wsp:Policy>
-            <sp:TransportToken>
-              <wsp:Policy>
-                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
-                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
-                </msf:WindowsTransportSecurity>
-              </wsp:Policy>
-            </sp:TransportToken>
-            <sp:AlgorithmSuite>
-              <wsp:Policy>
-                <sp:Basic256>
-                </sp:Basic256>
-              </wsp:Policy>
-            </sp:AlgorithmSuite>
-            <sp:Layout>
-              <wsp:Policy>
-                <sp:Strict>
-                </sp:Strict>
-              </wsp:Policy>
-            </sp:Layout>
-          </wsp:Policy>
-        </sp:TransportBinding>
         <wsaw:UsingAddressing>
         </wsaw:UsingAddressing>
       </wsp:All>
@@ -38,29 +15,6 @@
       <wsp:All>
         <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1">
         </msb:BinaryEncoding>
-        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <wsp:Policy>
-            <sp:TransportToken>
-              <wsp:Policy>
-                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
-                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
-                </msf:WindowsTransportSecurity>
-              </wsp:Policy>
-            </sp:TransportToken>
-            <sp:AlgorithmSuite>
-              <wsp:Policy>
-                <sp:Basic256>
-                </sp:Basic256>
-              </wsp:Policy>
-            </sp:AlgorithmSuite>
-            <sp:Layout>
-              <wsp:Policy>
-                <sp:Strict>
-                </sp:Strict>
-              </wsp:Policy>
-            </sp:Layout>
-          </wsp:Policy>
-        </sp:TransportBinding>
         <wsaw:UsingAddressing>
         </wsaw:UsingAddressing>
       </wsp:All>
@@ -71,29 +25,6 @@
       <wsp:All>
         <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1">
         </msb:BinaryEncoding>
-        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <wsp:Policy>
-            <sp:TransportToken>
-              <wsp:Policy>
-                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
-                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
-                </msf:WindowsTransportSecurity>
-              </wsp:Policy>
-            </sp:TransportToken>
-            <sp:AlgorithmSuite>
-              <wsp:Policy>
-                <sp:Basic256>
-                </sp:Basic256>
-              </wsp:Policy>
-            </sp:AlgorithmSuite>
-            <sp:Layout>
-              <wsp:Policy>
-                <sp:Strict>
-                </sp:Strict>
-              </wsp:Policy>
-            </sp:Layout>
-          </wsp:Policy>
-        </sp:TransportBinding>
         <wsaw:UsingAddressing>
         </wsaw:UsingAddressing>
       </wsp:All>
@@ -141,6 +72,12 @@
   </wsdl:message>
   <wsdl:message name="IUsersManager_LogIn_OutputMessage">
     <wsdl:part name="parameters" element="tns:LogInResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_RecoverPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecoverPassword" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_RecoverPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecoverPasswordResponse" />
   </wsdl:message>
   <wsdl:message name="ILobbyManager_NewLobbyCreated_InputMessage">
     <wsdl:part name="parameters" element="tns:NewLobbyCreated" />
@@ -223,6 +160,10 @@
     <wsdl:operation name="LogIn">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/LogIn" message="tns:IUsersManager_LogIn_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/LogInResponse" message="tns:IUsersManager_LogIn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecoverPassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/RecoverPassword" message="tns:IUsersManager_RecoverPassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/RecoverPasswordResponse" message="tns:IUsersManager_RecoverPassword_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ILobbyManager">
@@ -323,6 +264,15 @@
     </wsdl:operation>
     <wsdl:operation name="LogIn">
       <soap12:operation soapAction="http://tempuri.org/IUsersManager/LogIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecoverPassword">
+      <soap12:operation soapAction="http://tempuri.org/IUsersManager/RecoverPassword" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -439,27 +389,18 @@
       <soap12:address location="net.tcp://localhost:8000/ServiceImplementation/Service" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8000/ServiceImplementation/Service</wsa10:Address>
-        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-JF4OTR7\52228</Upn>
-        </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ILobbyManager" binding="tns:NetTcpBinding_ILobbyManager">
       <soap12:address location="net.tcp://localhost:8000/ServiceImplementation/Service" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8000/ServiceImplementation/Service</wsa10:Address>
-        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-JF4OTR7\52228</Upn>
-        </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ILobbyChecker" binding="tns:NetTcpBinding_ILobbyChecker">
       <soap12:address location="net.tcp://localhost:8000/ServiceImplementation/Service" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8000/ServiceImplementation/Service</wsa10:Address>
-        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-JF4OTR7\52228</Upn>
-        </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>

@@ -307,6 +307,9 @@
     <Resource Include="Images\configIcon.png" />
     <Resource Include="Images\profileIcon.png" />
     <Resource Include="Notes.txt" />
+    <None Include="Connected Services\ServiceReference\BevososService.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceReference\Cliente.ServiceReference.UserDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -349,9 +352,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\LogInService\Servicio.Clases.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceReference\BevososService.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceReference\service.wsdl" />
