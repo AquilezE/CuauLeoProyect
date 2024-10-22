@@ -149,11 +149,20 @@
   <wsdl:message name="IProfileManager_UpdateProfile_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateProfile" />
   </wsdl:message>
+  <wsdl:message name="IProfileManager_ChangePassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangePassword" />
+  </wsdl:message>
   <wsdl:message name="IProfileManager_OnProfileUpdate_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnProfileUpdate" />
   </wsdl:message>
   <wsdl:message name="IProfileManager_OnProfileUpdate_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnProfileUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProfileManager_OnPasswordChange_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnPasswordChange" />
+  </wsdl:message>
+  <wsdl:message name="IProfileManager_OnPasswordChange_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnPasswordChangeResponse" />
   </wsdl:message>
   <wsdl:portType name="IUsersManager">
     <wsdl:operation name="IsUsernameTaken">
@@ -236,9 +245,16 @@
     <wsdl:operation name="UpdateProfile">
       <wsdl:input wsaw:Action="http://tempuri.org/IProfileManager/UpdateProfile" message="tns:IProfileManager_UpdateProfile_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProfileManager/ChangePassword" message="tns:IProfileManager_ChangePassword_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="OnProfileUpdate">
       <wsdl:output wsaw:Action="http://tempuri.org/IProfileManager/OnProfileUpdate" message="tns:IProfileManager_OnProfileUpdate_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/IProfileManager/OnProfileUpdateResponse" message="tns:IProfileManager_OnProfileUpdate_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnPasswordChange">
+      <wsdl:output wsaw:Action="http://tempuri.org/IProfileManager/OnPasswordChange" message="tns:IProfileManager_OnPasswordChange_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IProfileManager/OnPasswordChangeResponse" message="tns:IProfileManager_OnPasswordChange_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUsersManager" type="tns:IUsersManager">
@@ -422,8 +438,23 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <soap12:operation soapAction="http://tempuri.org/IProfileManager/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="OnProfileUpdate">
       <soap12:operation soapAction="http://tempuri.org/IProfileManager/OnProfileUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnPasswordChange">
+      <soap12:operation soapAction="http://tempuri.org/IProfileManager/OnPasswordChange" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

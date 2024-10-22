@@ -1,4 +1,5 @@
 ﻿using Cliente.ServiceReference;
+using Cliente.UserControllers.ChangePassword;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace Cliente.Pantallas
     {
         private ProfileManagerClient _servicio;
         private static string newUsername;
-        private static int newProfilePictureId;
+        private static int newProfilePictureId = 0;
 
         public Profile()
         {
@@ -115,8 +116,9 @@ namespace Cliente.Pantallas
             lbUsername.Content = User.Instance.Username;
             lbEmail.Content = User.Instance.Email;  
             lbUserId.Content = User.Instance.ID;
+            tbNewUsername.Text = "";
 
-            if (User.Instance.ProfilePictureId != 1)
+            if (User.Instance.ProfilePictureId != 1 || User.Instance.ProfilePictureId != 0)
             {
                 imgProfilePicture.Source = new BitmapImage(new Uri("pack://application:,,,/Images/pfp" + User.Instance.ProfilePictureId + ".jpg"));
             }
@@ -131,23 +133,55 @@ namespace Cliente.Pantallas
         private void btSave_Click(object sender, RoutedEventArgs e)
         {
             SetNewUserName();
-            _servicio.UpdateProfile(User.Instance.ID, newUsername, newProfilePictureId);
-        }
+            lbErrInvalidUsername.Content = "";
+            lbErrNothingChanged.Content = "";
 
+            if (newUsername == "" && newProfilePictureId == 0)
+            {
+                //TODO: Make localization of errors
+                lbErrNothingChanged.Content = "You didn't made any change";
+            }
+            else if (newUsername != "" && newProfilePictureId !=0)
+            {
+                _servicio.UpdateProfile(User.Instance.ID, newUsername, newProfilePictureId);
+            }
+            else if (newUsername == "" && newProfilePictureId != 0)
+            {
+                _servicio.UpdateProfile(User.instance.ID, "Not changed", newProfilePictureId);
+            }
+            else if(newUsername != "" && newProfilePictureId == 0)
+            {
+                _servicio.UpdateProfile(User.instance.ID, newUsername, User.Instance.ProfilePictureId);
+            }
+        }
         public void OnProfileUpdate(string username, int profilePictureId, string error)
-        {
-            if (error != null)
+        { 
+            if(username != "Not changed")
             {
                 User.instance.Username = username;
+            }
                 User.instance.ProfilePictureId = profilePictureId;
                 LoadUserInfo();
                 ResetAllBorders();
-            }
-            else
-            {
-                lbErrInvalidUsername.Content = error;
-            }
 
+                lbErrInvalidUsername.Content = error;
+        }
+
+        private void btChangePassword_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.NavigateToView(new ChangePassword(),800, 750);
+        }
+
+        private void btGoBack_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.NavigateToView(new MainMenu());
+        }
+
+        public void OnPasswordChange(string error)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -390,4 +390,7 @@
   <data name="lblChangeProfile" xml:space="preserve">
     <value>Change your profile</value>
   </data>
+  <data name="lblChange" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
 </root>
