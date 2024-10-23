@@ -430,6 +430,12 @@ namespace Cliente.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IProfileManager/UpdateProfile")]
         System.Threading.Tasks.Task UpdateProfileAsync(int userId, string username, int profilePictureId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IProfileManager/ChangePassword")]
+        void ChangePassword(int userId, string oldPassword, string newPassword);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IProfileManager/ChangePassword")]
+        System.Threading.Tasks.Task ChangePasswordAsync(int userId, string oldPassword, string newPassword);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -437,6 +443,9 @@ namespace Cliente.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfileManager/OnProfileUpdate", ReplyAction="http://tempuri.org/IProfileManager/OnProfileUpdateResponse")]
         void OnProfileUpdate(string username, int profilePictureId, string error);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfileManager/OnPasswordChange", ReplyAction="http://tempuri.org/IProfileManager/OnPasswordChangeResponse")]
+        void OnPasswordChange(string error);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -473,6 +482,14 @@ namespace Cliente.ServiceReference {
         
         public System.Threading.Tasks.Task UpdateProfileAsync(int userId, string username, int profilePictureId) {
             return base.Channel.UpdateProfileAsync(userId, username, profilePictureId);
+        }
+        
+        public void ChangePassword(int userId, string oldPassword, string newPassword) {
+            base.Channel.ChangePassword(userId, oldPassword, newPassword);
+        }
+        
+        public System.Threading.Tasks.Task ChangePasswordAsync(int userId, string oldPassword, string newPassword) {
+            return base.Channel.ChangePasswordAsync(userId, oldPassword, newPassword);
         }
     }
 }
