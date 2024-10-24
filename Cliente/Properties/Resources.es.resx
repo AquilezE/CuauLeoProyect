@@ -393,4 +393,13 @@
   <data name="lblChange" xml:space="preserve">
     <value>Cambiar contraseña</value>
   </data>
+  <data name="btnOk" xml:space="preserve">
+    <value>Aceptar</value>
+  </data>
+  <data name="lblChangePasswordSucces" xml:space="preserve">
+    <value>Tu contraseña ha sido cambiada exitosamente!!</value>
+  </data>
+  <data name="lblClickHereContinue" xml:space="preserve">
+    <value>Haz click aquí para continuar</value>
+  </data>
 </root>

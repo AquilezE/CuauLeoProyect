@@ -23,14 +23,14 @@ namespace Cliente.Pantallas
     /// </summary>
     public partial class Profile : UserControl, IProfileManagerCallback
     {
-        private ProfileManagerClient _servicio;
+        private ProfileManagerClient _service;
         private static string newUsername;
         private static int newProfilePictureId = 0;
 
         public Profile()
         {
             InstanceContext instanceContext = new InstanceContext(this);
-            _servicio = new ProfileManagerClient(instanceContext);
+            _service = new ProfileManagerClient(instanceContext);
             InitializeComponent();
             LoadUserInfo();
         }
@@ -143,15 +143,15 @@ namespace Cliente.Pantallas
             }
             else if (newUsername != "" && newProfilePictureId !=0)
             {
-                _servicio.UpdateProfile(User.Instance.ID, newUsername, newProfilePictureId);
+                _service.UpdateProfile(User.Instance.ID, newUsername, newProfilePictureId);
             }
             else if (newUsername == "" && newProfilePictureId != 0)
             {
-                _servicio.UpdateProfile(User.instance.ID, "Not changed", newProfilePictureId);
+                _service.UpdateProfile(User.instance.ID, "Not changed", newProfilePictureId);
             }
             else if(newUsername != "" && newProfilePictureId == 0)
             {
-                _servicio.UpdateProfile(User.instance.ID, newUsername, User.Instance.ProfilePictureId);
+                _service.UpdateProfile(User.instance.ID, newUsername, User.Instance.ProfilePictureId);
             }
         }
         public void OnProfileUpdate(string username, int profilePictureId, string error)
