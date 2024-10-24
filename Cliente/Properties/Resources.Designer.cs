@@ -268,6 +268,15 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Ok!.
+        /// </summary>
+        public static string btnOk {
+            get {
+                return ResourceManager.GetString("btnOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Play As Guest.
         /// </summary>
         public static string btnPlayAsGuest {
@@ -439,6 +448,15 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Your password has been changed successfully!!.
+        /// </summary>
+        public static string lblChangePasswordSucces {
+            get {
+                return ResourceManager.GetString("lblChangePasswordSucces", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Change your profile.
         /// </summary>
         public static string lblChangeProfile {
@@ -453,6 +471,15 @@ namespace Cliente.Properties {
         public static string lblChosepfp {
             get {
                 return ResourceManager.GetString("lblChosepfp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Click here to continue.
+        /// </summary>
+        public static string lblClickHereContinue {
+            get {
+                return ResourceManager.GetString("lblClickHereContinue", resourceCulture);
             }
         }
         
