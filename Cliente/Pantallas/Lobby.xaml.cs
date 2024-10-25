@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using Cliente.UserControllers;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -26,11 +27,12 @@ namespace Cliente.Pantallas
         private ObservableCollection<Message> _messages;
         private ObservableCollection<User> _users;
 
-        //Public?????
+
         public LobbyManagerClient _servicio;
-
         private int _lobbyId;
-
+        
+        private int _currentLeaderId;
+        private bool _isLeader => _currentLeaderId == User.Instance.ID;
 
 
         public Lobby()
@@ -43,19 +45,20 @@ namespace Cliente.Pantallas
             _messages = new ObservableCollection<Message>();
             _users = new ObservableCollection<User>();
             MessagesListBox.ItemsSource = _messages;
+            UsersListBox.ItemsSource = _users;
             tbUserName.Text = User.Instance.Username;
             
         }
 
         private void btLeaveLobby_Click(object sender, RoutedEventArgs e)
         {
-
-
+            _servicio.LeaveLobby(_lobbyId, User.Instance.ID);
+            LeaveLobby();
         }
 
         private void btnJoin_Click(object sender, RoutedEventArgs e)
-        {
-
+       {
+            throw new NotImplementedException();
         }
 
 
@@ -95,9 +98,70 @@ namespace Cliente.Pantallas
             Console.WriteLine($"_lobbyId in btStartGame_Click: {_lobbyId}");
         }
 
+        private void UserLobby_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (sender is UserLobby userLobbyControl)
+            {
+                userLobbyControl.KickRequested += OnKickRequested;
+            }
+        }
+
+
+        private void OnKickRequested(object sender, User userToKick)
+        {
+            if (userToKick != null)
+            {
+                var result = MessageBox.Show($"Are you sure you want to kick {userToKick.Username}?", "Kick User", MessageBoxButton.YesNo);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    _users.Remove(userToKick);
+
+                    _servicio.KickUser(_lobbyId, User.Instance.ID, userToKick.ID, "You have been kicked.");
+                }
+            }
+        }
+
+        private void UserDisplay_KickButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (_isLeader)
+            {
+                // Get the UserDisplay control that raised the event
+                var userDisplay = sender as UserLobby;
+                if (userDisplay != null)
+                {
+                    // Get the User object from the DataContext
+                    var user = userDisplay.DataContext as User;
+                    if (user != null && user.ID != User.Instance.ID)
+                    {
+                        // Prompt for kick reason
+                        var kickDialog = new KickPlayerDialog
+                        {
+                            Owner = Window.GetWindow(this)
+                        };
+
+                        bool? result = kickDialog.ShowDialog();
+
+                        if (result == true)
+                        {
+                            string reason = kickDialog.KickReason;
+                            _servicio.KickUser(_lobbyId, User.Instance.ID, user.ID, reason);
+                        }
+                    }
+                }
+            }
+        }
+
         private void btKick_Click(object sender, RoutedEventArgs e)
         {
-
+            if (_isLeader && sender is Button button && button.Tag is int targetUserId)
+            {
+                var kickDialog = new KickPlayerDialog();
+                if (kickDialog.ShowDialog() == true)
+                {
+                    _servicio.KickUser(_lobbyId, User.Instance.ID, targetUserId, kickDialog.KickReason);
+                }
+            }
         }
 
         public bool LeaveLobby()
@@ -136,6 +200,20 @@ namespace Cliente.Pantallas
             {
                 _users.Remove(user);
             }
+        }
+
+        public void OnKicked(int lobbyId, string reason)
+        {
+            MessageBox.Show($"You were kicked from the lobby: {reason}", "Kicked", MessageBoxButton.OK, MessageBoxImage.Information);
+            LeaveLobby();
+        }
+
+
+
+        public void OnLeaderChanged(int lobbyId, int newLeaderId)
+        {
+            _currentLeaderId = newLeaderId;
+            btKick.Visibility = _isLeader ? Visibility.Visible : Visibility.Collapsed;
         }
 
         public void OnSendMessage(int UserId, string message)
