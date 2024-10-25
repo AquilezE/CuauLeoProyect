@@ -15,12 +15,11 @@ using System.Windows.Shapes;
 
 namespace Cliente.UserControllers
 {
-    /// <summary>
-    /// Interaction logic for UserLobby.xaml
-    /// </summary>
+
     public partial class UserLobby : UserControl
     {
-        public event EventHandler<User> KickRequested;
+        public event EventHandler<User> KickRequested; 
+
         public UserLobby()
         {
             InitializeComponent();

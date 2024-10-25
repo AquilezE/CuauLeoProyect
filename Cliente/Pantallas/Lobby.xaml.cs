@@ -122,47 +122,6 @@ namespace Cliente.Pantallas
             }
         }
 
-        private void UserDisplay_KickButtonClick(object sender, RoutedEventArgs e)
-        {
-            if (_isLeader)
-            {
-                // Get the UserDisplay control that raised the event
-                var userDisplay = sender as UserLobby;
-                if (userDisplay != null)
-                {
-                    // Get the User object from the DataContext
-                    var user = userDisplay.DataContext as User;
-                    if (user != null && user.ID != User.Instance.ID)
-                    {
-                        // Prompt for kick reason
-                        var kickDialog = new KickPlayerDialog
-                        {
-                            Owner = Window.GetWindow(this)
-                        };
-
-                        bool? result = kickDialog.ShowDialog();
-
-                        if (result == true)
-                        {
-                            string reason = kickDialog.KickReason;
-                            _servicio.KickUser(_lobbyId, User.Instance.ID, user.ID, reason);
-                        }
-                    }
-                }
-            }
-        }
-
-        private void btKick_Click(object sender, RoutedEventArgs e)
-        {
-            if (_isLeader && sender is Button button && button.Tag is int targetUserId)
-            {
-                var kickDialog = new KickPlayerDialog();
-                if (kickDialog.ShowDialog() == true)
-                {
-                    _servicio.KickUser(_lobbyId, User.Instance.ID, targetUserId, kickDialog.KickReason);
-                }
-            }
-        }
 
         public bool LeaveLobby()
         {
@@ -213,7 +172,6 @@ namespace Cliente.Pantallas
         public void OnLeaderChanged(int lobbyId, int newLeaderId)
         {
             _currentLeaderId = newLeaderId;
-            btKick.Visibility = _isLeader ? Visibility.Visible : Visibility.Collapsed;
         }
 
         public void OnSendMessage(int UserId, string message)
@@ -255,6 +213,11 @@ namespace Cliente.Pantallas
             }
 
             tbLobbyCode.Text = lobbyId.ToString();
+        }
+
+        private void btKick_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
