@@ -16,11 +16,18 @@ using System.Windows.Shapes;
 namespace Cliente.UserControllers
 {
 
-    public partial class Message : UserControl
+    public partial class UserLobby : UserControl
     {
-        public Message()
+        public event EventHandler<User> KickRequested; 
+
+        public UserLobby()
         {
             InitializeComponent();
+        }
+
+        private void KickButton_Click(object sender, RoutedEventArgs e)
+        {
+            KickRequested?.Invoke(this, DataContext as User);
         }
     }
 }

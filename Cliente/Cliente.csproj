@@ -195,6 +195,7 @@
     <Compile Include="UserControllers\ChangePassword\ChangePasswordSuccess.xaml.cs">
       <DependentUpon>ChangePasswordSuccess.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControllers\KickPlayerDialog.cs" />
     <Compile Include="UserControllers\Recover\RecoverCodeVerification.xaml.cs">
       <DependentUpon>RecoverCodeVerification.xaml</DependentUpon>
     </Compile>
@@ -219,6 +220,9 @@
     <Compile Include="User.cs" />
     <Compile Include="UserControllers\Register\RegisterSuccess.xaml.cs">
       <DependentUpon>RegisterSuccess.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControllers\UserLobby.xaml.cs">
+      <DependentUpon>UserLobby.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -312,6 +316,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControllers\UserLobby.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pantallas\Mensajeador.xaml.cs">
@@ -328,7 +336,7 @@
     <Resource Include="Images\configIcon.png" />
     <Resource Include="Images\profileIcon.png" />
     <Resource Include="Notes.txt" />
-    <None Include="Connected Services\ServiceReference\BevososService.xsd">
+    <None Include="Connected Services\ServiceReference\BevososService.DTOs.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceReference\Cliente.ServiceReference.UserDto.datasource">
@@ -445,7 +453,7 @@
     <Resource Include="Images\pfp9.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\defaultpfp.jpg" />
+    <Resource Include="Images\pfp1.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\pfp4.jpg" />

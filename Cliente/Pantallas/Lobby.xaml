@@ -73,6 +73,21 @@
             </ItemsControl.Template>
         </ItemsControl>
 
+        <ItemsControl Grid.Column="1" Grid.Row="1" x:Name="UsersListBox" ItemsSource="{Binding _users}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <!-- Use the UserLobby control -->
+                    <userControllers:UserLobby Loaded="UserLobby_Loaded"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+
 
         <StackPanel Grid.Column="0" Grid.Row="2"  Orientation="Horizontal">
             <TextBox x:Name="tbMessage" Width="500" Height="50" FontSize="30" Margin="20 0 0 0" />
