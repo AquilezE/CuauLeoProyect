@@ -163,14 +163,16 @@ namespace Cliente.Pantallas
                 User.instance.ProfilePictureId = profilePictureId;
                 LoadUserInfo();
                 ResetAllBorders();
-
+                
+                newUsername = "";
+                newProfilePictureId = 0;
                 lbErrInvalidUsername.Content = error;
         }
 
         private void btChangePassword_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.NavigateToView(new ChangePassword(),800, 750);
+            mainWindow.NavigateToView(new ChangePassword(),750, 800);
         }
 
         private void btGoBack_Click(object sender, RoutedEventArgs e)

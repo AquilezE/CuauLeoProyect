@@ -1,4 +1,5 @@
-﻿using Cliente.ServiceReference;
+﻿using Cliente.Pantallas;
+using Cliente.ServiceReference;
 using ProtoBuf.Meta;
 using System;
 using System.Collections.Generic;
@@ -118,5 +119,10 @@ namespace Cliente.UserControllers.ChangePassword
             throw new NotImplementedException();
         }
 
+        private void btGoBack_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.NavigateToView(new Profile(), 800, 700);
+        }
     }
 }

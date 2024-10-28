@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cliente.UserControllers.FriendsList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,8 @@ namespace Cliente.Pantallas
 
         private void btFriendsList_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow main = (MainWindow)Application.Current.MainWindow;
+            main.NavigateToView(new FriendList());
         }
 
         private void btFriendRequests_Click(object sender, RoutedEventArgs e)

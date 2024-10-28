@@ -146,6 +146,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Friend.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Pantallas\Friends.xaml.cs">
       <DependentUpon>Friends.xaml</DependentUpon>
@@ -194,6 +195,12 @@
     </Compile>
     <Compile Include="UserControllers\ChangePassword\ChangePasswordSuccess.xaml.cs">
       <DependentUpon>ChangePasswordSuccess.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControllers\Friend.xaml.cs">
+      <DependentUpon>Friend.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControllers\FriendsList\FriendList.xaml.cs">
+      <DependentUpon>FriendList.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControllers\Recover\RecoverCodeVerification.xaml.cs">
       <DependentUpon>RecoverCodeVerification.xaml</DependentUpon>
@@ -280,6 +287,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControllers\Friend.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControllers\FriendsList\FriendList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControllers\Recover\RecoverCodeVerification.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -328,7 +343,7 @@
     <Resource Include="Images\configIcon.png" />
     <Resource Include="Images\profileIcon.png" />
     <Resource Include="Notes.txt" />
-    <None Include="Connected Services\ServiceReference\BevososService.xsd">
+    <None Include="Connected Services\ServiceReference\BevososService.DTOs.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceReference\Cliente.ServiceReference.UserDto.datasource">

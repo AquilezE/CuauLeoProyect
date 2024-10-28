@@ -55,7 +55,7 @@ namespace Cliente.Pantallas
         private void btFriends_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.NavigateToView(new Friends(), 950, 1000);
+            mainWindow.NavigateToView(new Friends());
         }
 
         private void btStats_Click(object sender, RoutedEventArgs e)
