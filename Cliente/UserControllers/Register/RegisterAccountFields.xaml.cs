@@ -125,12 +125,6 @@ namespace Cliente.Pantallas
         {
             try
             {
-                string pattern = @"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$";
-
-                if (!Regex.IsMatch(email, pattern))
-                {
-                    return false;
-                }
 
                 var addr = new System.Net.Mail.MailAddress(email);
                 string domain = addr.Host;

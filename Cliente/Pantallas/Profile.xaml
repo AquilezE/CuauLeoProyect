@@ -52,7 +52,7 @@
             <TextBox x:Name="tbNewUsername" Grid.Row="2" FontSize="15"/>
             <Label x:Name="lbErrInvalidUsername" Grid.Row="3" Content="" FontSize="8" Foreground="Red"/>
             <Label Grid.Row="4" Content="{h:Lang lblChosepfp}" FontSize="25"/>
-            <Button x:Name="btChangePassword" Grid.Row="6" Content="{h:Lang btnChangePassword}" Width="150" HorizontalAlignment="Right" Margin="0 0 15 0" Click="btChangePassword_Click"/>
+            <Button x:Name="btChangePassword" Grid.Row="6" Content="{h:Lang btnChangePassword}" Width="150" HorizontalAlignment="Right" Margin="0 10 15 0" Click="btChangePassword_Click"/>
             <StackPanel Grid.Row="7" Orientation="Vertical">
                 <Button x:Name="btSave" Content="{h:Lang btnSave}" Width="150" HorizontalAlignment="Right" Margin="0 10 15 0" Click="btSave_Click"/>
                 <Label x:Name="lbErrNothingChanged" Foreground="Red" Content="" HorizontalAlignment="Right" Margin="0 10 15 0"/>
