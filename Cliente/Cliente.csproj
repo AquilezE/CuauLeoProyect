@@ -196,12 +196,14 @@
     <Compile Include="UserControllers\ChangePassword\ChangePasswordSuccess.xaml.cs">
       <DependentUpon>ChangePasswordSuccess.xaml</DependentUpon>
     </Compile>
+
     <Compile Include="UserControllers\Friend.xaml.cs">
       <DependentUpon>Friend.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControllers\FriendsList\FriendList.xaml.cs">
       <DependentUpon>FriendList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControllers\KickPlayerDialog.cs" />
     <Compile Include="UserControllers\Recover\RecoverCodeVerification.xaml.cs">
       <DependentUpon>RecoverCodeVerification.xaml</DependentUpon>
     </Compile>
@@ -226,6 +228,9 @@
     <Compile Include="User.cs" />
     <Compile Include="UserControllers\Register\RegisterSuccess.xaml.cs">
       <DependentUpon>RegisterSuccess.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControllers\UserLobby.xaml.cs">
+      <DependentUpon>UserLobby.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -324,6 +329,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControllers\Register\RegisterSuccess.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControllers\UserLobby.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -460,7 +469,7 @@
     <Resource Include="Images\pfp9.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\defaultpfp.jpg" />
+    <Resource Include="Images\pfp1.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\pfp4.jpg" />

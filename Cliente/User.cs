@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Cliente
 {
-    internal class User
+    public class User
     {
         public static User instance;
         public int ID;

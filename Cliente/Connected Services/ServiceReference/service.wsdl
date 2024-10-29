@@ -107,32 +107,23 @@
   <wsdl:message name="ILobbyManager_OnNewLobbyCreated_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnNewLobbyCreated" />
   </wsdl:message>
-  <wsdl:message name="ILobbyManager_OnNewLobbyCreated_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:OnNewLobbyCreatedResponse" />
-  </wsdl:message>
   <wsdl:message name="ILobbyManager_OnJoinLobby_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnJoinLobby" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyManager_OnJoinLobby_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:OnJoinLobbyResponse" />
   </wsdl:message>
   <wsdl:message name="ILobbyManager_OnLeaveLobby_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnLeaveLobby" />
   </wsdl:message>
-  <wsdl:message name="ILobbyManager_OnLeaveLobby_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:OnLeaveLobbyResponse" />
-  </wsdl:message>
   <wsdl:message name="ILobbyManager_OnSendMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnSendMessage" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyManager_OnSendMessage_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:OnSendMessageResponse" />
   </wsdl:message>
   <wsdl:message name="ILobbyManager_OnLobbyUsersUpdate_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnLobbyUsersUpdate" />
   </wsdl:message>
-  <wsdl:message name="ILobbyManager_OnLobbyUsersUpdate_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:OnLobbyUsersUpdateResponse" />
+  <wsdl:message name="ILobbyManager_OnLeaderChanged_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnLeaderChanged" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_OnKicked_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnKicked" />
   </wsdl:message>
   <wsdl:message name="ILobbyChecker_IsLobbyOpen_InputMessage">
     <wsdl:part name="parameters" element="tns:IsLobbyOpen" />
@@ -212,23 +203,24 @@
     </wsdl:operation>
     <wsdl:operation name="OnNewLobbyCreated">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnNewLobbyCreated" message="tns:ILobbyManager_OnNewLobbyCreated_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/OnNewLobbyCreatedResponse" message="tns:ILobbyManager_OnNewLobbyCreated_InputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="OnJoinLobby">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnJoinLobby" message="tns:ILobbyManager_OnJoinLobby_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/OnJoinLobbyResponse" message="tns:ILobbyManager_OnJoinLobby_InputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="OnLeaveLobby">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnLeaveLobby" message="tns:ILobbyManager_OnLeaveLobby_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/OnLeaveLobbyResponse" message="tns:ILobbyManager_OnLeaveLobby_InputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="OnSendMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnSendMessage" message="tns:ILobbyManager_OnSendMessage_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/OnSendMessageResponse" message="tns:ILobbyManager_OnSendMessage_InputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="OnLobbyUsersUpdate">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnLobbyUsersUpdate" message="tns:ILobbyManager_OnLobbyUsersUpdate_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/OnLobbyUsersUpdateResponse" message="tns:ILobbyManager_OnLobbyUsersUpdate_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnLeaderChanged">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnLeaderChanged" message="tns:ILobbyManager_OnLeaderChanged_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnKicked">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnKicked" message="tns:ILobbyManager_OnKicked_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ILobbyChecker">
@@ -361,45 +353,42 @@
     </wsdl:operation>
     <wsdl:operation name="OnNewLobbyCreated">
       <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnNewLobbyCreated" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="OnJoinLobby">
       <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnJoinLobby" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="OnLeaveLobby">
       <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnLeaveLobby" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="OnSendMessage">
       <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnSendMessage" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="OnLobbyUsersUpdate">
       <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnLobbyUsersUpdate" style="document" />
-      <wsdl:input>
+      <wsdl:output>
         <soap12:body use="literal" />
-      </wsdl:input>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnLeaderChanged">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnLeaderChanged" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnKicked">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnKicked" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
