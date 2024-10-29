@@ -67,6 +67,7 @@ namespace Cliente.Pantallas
         private void btLogOut_Click(object sender, RoutedEventArgs e)
         {
             User.Instance = null;
+            Social.instance = null;
 
             MainWindow main = (MainWindow)Application.Current.MainWindow;
             main.NavigateToView(new LogIn());

@@ -106,6 +106,115 @@ namespace Cliente.ServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="FriendDTO", Namespace="http://schemas.datacontract.org/2004/07/BevososService.DTOs")]
+    [System.SerializableAttribute()]
+    public partial class FriendDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int FriendIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FriendNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int FriendshipIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsConnectedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ProfilePictureIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int FriendId {
+            get {
+                return this.FriendIdField;
+            }
+            set {
+                if ((this.FriendIdField.Equals(value) != true)) {
+                    this.FriendIdField = value;
+                    this.RaisePropertyChanged("FriendId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FriendName {
+            get {
+                return this.FriendNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FriendNameField, value) != true)) {
+                    this.FriendNameField = value;
+                    this.RaisePropertyChanged("FriendName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int FriendshipId {
+            get {
+                return this.FriendshipIdField;
+            }
+            set {
+                if ((this.FriendshipIdField.Equals(value) != true)) {
+                    this.FriendshipIdField = value;
+                    this.RaisePropertyChanged("FriendshipId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsConnected {
+            get {
+                return this.IsConnectedField;
+            }
+            set {
+                if ((this.IsConnectedField.Equals(value) != true)) {
+                    this.IsConnectedField = value;
+                    this.RaisePropertyChanged("IsConnected");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ProfilePictureId {
+            get {
+                return this.ProfilePictureIdField;
+            }
+            set {
+                if ((this.ProfilePictureIdField.Equals(value) != true)) {
+                    this.ProfilePictureIdField = value;
+                    this.RaisePropertyChanged("ProfilePictureId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IUsersManager")]
     public interface IUsersManager {
@@ -496,6 +605,61 @@ namespace Cliente.ServiceReference {
         
         public System.Threading.Tasks.Task ChangePasswordAsync(int userId, string oldPassword, string newPassword) {
             return base.Channel.ChangePasswordAsync(userId, oldPassword, newPassword);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.ISocialManager", CallbackContract=typeof(Cliente.ServiceReference.ISocialManagerCallback))]
+    public interface ISocialManager {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/GetFriends", ReplyAction="http://tempuri.org/ISocialManager/GetFriendsResponse")]
+        Cliente.ServiceReference.FriendDTO[] GetFriends(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/GetFriends", ReplyAction="http://tempuri.org/ISocialManager/GetFriendsResponse")]
+        System.Threading.Tasks.Task<Cliente.ServiceReference.FriendDTO[]> GetFriendsAsync(int userId);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ISocialManagerCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ISocialManager/OnFriendNew")]
+        void OnFriendNew(Cliente.ServiceReference.FriendDTO[] friends);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ISocialManagerChannel : Cliente.ServiceReference.ISocialManager, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class SocialManagerClient : System.ServiceModel.DuplexClientBase<Cliente.ServiceReference.ISocialManager>, Cliente.ServiceReference.ISocialManager {
+        
+        public SocialManagerClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
+        }
+        
+        public SocialManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
+        }
+        
+        public SocialManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public SocialManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public SocialManagerClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        public Cliente.ServiceReference.FriendDTO[] GetFriends(int userId) {
+            return base.Channel.GetFriends(userId);
+        }
+        
+        public System.Threading.Tasks.Task<Cliente.ServiceReference.FriendDTO[]> GetFriendsAsync(int userId) {
+            return base.Channel.GetFriendsAsync(userId);
         }
     }
 }

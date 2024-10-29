@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Cliente.Pantallas;
+using Cliente.ServiceReference;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -24,14 +26,18 @@ namespace Cliente.UserControllers.FriendsList
         private ObservableCollection<Cliente.Friend> _friends;
         public FriendList()
         {
-            _friends = new ObservableCollection<Cliente.Friend>();
             InitializeComponent();
             FriendsListBox.ItemsSource = _friends;
+            _friends = new ObservableCollection<Cliente.Friend>();
+
         }
 
         private void btGoBack_Click(object sender, RoutedEventArgs e)
         {
-            _friends.Add(new Cliente.Friend(1, 1, "Yeezy", "9" ,true));
+            foreach (Cliente.Friend friend in Social.Instance.friendList)
+            {
+                _friends.Add(friend);
+            }
         }
     }
 }

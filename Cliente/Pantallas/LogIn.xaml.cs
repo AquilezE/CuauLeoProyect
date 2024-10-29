@@ -101,6 +101,10 @@ namespace Cliente.Pantallas
                 currentUser.Email = userDto.Email;
                 currentUser.ProfilePictureId = userDto.ProfilePictureId;
 
+                Social social = Social.Instance;
+                social.friendList.Clear();
+                social.GetFriends();
+
                 return true;
             }
             catch (Exception)
