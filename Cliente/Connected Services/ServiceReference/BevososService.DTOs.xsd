@@ -15,4 +15,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfUserDto" nillable="true" type="tns:ArrayOfUserDto" />
+  <xs:complexType name="ArrayOfFriendDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FriendDTO" nillable="true" type="tns:FriendDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFriendDTO" nillable="true" type="tns:ArrayOfFriendDTO" />
+  <xs:complexType name="FriendDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FriendId" type="xs:int" />
+      <xs:element minOccurs="0" name="FriendName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FriendshipId" type="xs:int" />
+      <xs:element minOccurs="0" name="IsConnected" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ProfilePictureId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FriendDTO" nillable="true" type="tns:FriendDTO" />
 </xs:schema>

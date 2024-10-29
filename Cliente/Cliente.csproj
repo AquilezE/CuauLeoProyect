@@ -190,6 +190,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Social.cs" />
     <Compile Include="UserControllers\ChangePassword\ChangePassword.xaml.cs">
       <DependentUpon>ChangePassword.xaml</DependentUpon>
     </Compile>
@@ -354,6 +355,9 @@
     <Resource Include="Notes.txt" />
     <None Include="Connected Services\ServiceReference\BevososService.DTOs.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference\Cliente.ServiceReference.FriendDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference\Cliente.ServiceReference.UserDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
