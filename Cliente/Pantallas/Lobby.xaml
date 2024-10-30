@@ -76,8 +76,9 @@
         <ItemsControl Grid.Column="1" Grid.Row="1" x:Name="UsersListBox" ItemsSource="{Binding _users}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <!-- Use the UserLobby control -->
-                    <userControllers:UserLobby Loaded="UserLobby_Loaded"/>
+                    <userControllers:UserLobby Loaded="UserLobby_Loaded"
+                                               IsLeader="{Binding IsLeader, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                               CurrentUserId="{Binding CurrentUserId, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
 
@@ -100,11 +101,10 @@
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
-            <Button Grid.Column="1" Grid.Row="3" Width="200" HorizontalAlignment="Right" Margin="25 0 50 0" x:Name="btKick" Content="{h:Lang btnKick}" Click="btKick_Click"/>
             
             <StackPanel Orientation="Horizontal">
+                <Button Grid.Column="1" Grid.Row="3" Width="200" HorizontalAlignment="Right" Margin="25 0 300 0" x:Name="btInviteFriend" Content="{h:Lang btnInviteFriend}" Click="btSendMessage_Click"/>
                 <Button Grid.Column="1" Grid.Row="3" Width="200" HorizontalAlignment="Right" Margin="25 0 0 0" x:Name="btReady" Content="{h:Lang btnImReady}" Click="btSendMessage_Click"/>
-                <Button Grid.Column="1" Grid.Row="3" Width="200" HorizontalAlignment="Right" Margin="25 0 25 0" x:Name="btInviteFriend" Content="{h:Lang btnInviteFriend}" Click="btSendMessage_Click"/>
             </StackPanel>
         </StackPanel>
 

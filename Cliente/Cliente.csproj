@@ -146,6 +146,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Converters\KickButtonVisibilityConverter.cs" />
     <Compile Include="Friend.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Pantallas\Friends.xaml.cs">
@@ -197,7 +198,6 @@
     <Compile Include="UserControllers\ChangePassword\ChangePasswordSuccess.xaml.cs">
       <DependentUpon>ChangePasswordSuccess.xaml</DependentUpon>
     </Compile>
-
     <Compile Include="UserControllers\Friend.xaml.cs">
       <DependentUpon>Friend.xaml</DependentUpon>
     </Compile>
@@ -478,6 +478,7 @@
   <ItemGroup>
     <Resource Include="Images\pfp4.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

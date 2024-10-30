@@ -16,13 +16,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace Cliente.Pantallas
 {
 
 
-    public partial class Lobby : UserControl, ILobbyManagerCallback
+    public partial class Lobby : UserControl, ILobbyManagerCallback, INotifyPropertyChanged
     {
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         private ObservableCollection<Message> _messages;
         private ObservableCollection<User> _users;
@@ -30,17 +38,33 @@ namespace Cliente.Pantallas
 
         public LobbyManagerClient _servicio;
         private int _lobbyId;
-        
+
         private int _currentLeaderId;
-        private bool _isLeader => _currentLeaderId == User.Instance.ID;
+
+        public int CurrentLeaderId
+        {
+            get => _currentLeaderId;
+            set
+            {
+                if (_currentLeaderId != value)
+                {
+                    _currentLeaderId = value;
+                    OnPropertyChanged(nameof(CurrentLeaderId));
+                    OnPropertyChanged(nameof(IsLeader)); 
+                }
+            }
+        }
+        public bool IsLeader => _currentLeaderId == User.Instance.ID;
+        public int CurrentUserId => User.Instance.ID;
+
 
 
         public Lobby()
         {
             InitializeComponent();
+            DataContext = this;
 
             InstanceContext instanceContext = new InstanceContext(this);
-            
             _servicio = new LobbyManagerClient(instanceContext);
             _messages = new ObservableCollection<Message>();
             _users = new ObservableCollection<User>();
@@ -58,7 +82,9 @@ namespace Cliente.Pantallas
 
         private void btnJoin_Click(object sender, RoutedEventArgs e)
        {
-            throw new NotImplementedException();
+            MessageBox.Show($"The current leader's number is: {CurrentLeaderId}, your ID is {User.instance.ID}", "Current Leader", MessageBoxButton.OK, MessageBoxImage.Information);
+
+
         }
 
 
@@ -136,6 +162,7 @@ namespace Cliente.Pantallas
             
             _lobbyId = lobbyId;
             _users.Add(User.instance);
+            CurrentLeaderId = UserId;
             Console.WriteLine(_lobbyId);
 
             tbLobbyCode.Text = lobbyId.ToString();
@@ -171,7 +198,7 @@ namespace Cliente.Pantallas
 
         public void OnLeaderChanged(int lobbyId, int newLeaderId)
         {
-            _currentLeaderId = newLeaderId;
+            CurrentLeaderId = newLeaderId;
         }
 
         public void OnSendMessage(int UserId, string message)

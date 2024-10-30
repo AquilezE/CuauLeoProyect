@@ -10,10 +10,10 @@ namespace Cliente
     public class User
     {
         public static User instance;
-        public int ID;
-        public string Username;
-        public string Email;
-        public int ProfilePictureId;
+        public int ID { get; set; }
+        public string Username { get; set; }
+        public string Email { get; set; } 
+        public int ProfilePictureId { get; set; }
 
         public User(UserDto userDto)
         {
