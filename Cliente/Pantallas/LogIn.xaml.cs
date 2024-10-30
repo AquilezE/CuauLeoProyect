@@ -104,6 +104,10 @@ namespace Cliente.Pantallas
                 Social social = Social.Instance;
                 social.friendList.Clear();
                 social.GetFriends();
+                social.friendRequests.Clear();
+                social.GetFriendRequests();
+                social.blockedUsersList.Clear();
+                social.GetBlockedUsers();
 
                 return true;
             }

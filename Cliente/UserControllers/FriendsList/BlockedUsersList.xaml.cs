@@ -1,5 +1,4 @@
 ﻿using Cliente.Pantallas;
-using Cliente.ServiceReference;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,16 +18,16 @@ using System.Windows.Shapes;
 namespace Cliente.UserControllers.FriendsList
 {
     /// <summary>
-    /// Lógica de interacción para FriendList.xaml
+    /// Lógica de interacción para BlockedUsersList.xaml
     /// </summary>
-    public partial class FriendList : UserControl
+    public partial class BlockedUsersList : UserControl
     {
-        private ObservableCollection<Cliente.Friend> _friends;
-        public FriendList()
+        private ObservableCollection<Cliente.Blocked> _blockedList;
+        public BlockedUsersList()
         {
             InitializeComponent();
-            _friends = Social.Instance.friendList;
-            FriendsListBox.ItemsSource = _friends;
+            _blockedList = Social.Instance.blockedUsersList;
+            BlockedUsersListBox.ItemsSource = _blockedList;
         }
 
         private void btGoBack_Click(object sender, RoutedEventArgs e)
