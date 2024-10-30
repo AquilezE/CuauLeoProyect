@@ -302,10 +302,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetBlockedUsers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBlockedUsersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="GetBlockedUsersResult" nillable="true" type="q8:ArrayOfBlockedDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="OnFriendNew">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="friends" nillable="true" type="q8:ArrayOfFriendDTO" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="friends" nillable="true" type="q9:ArrayOfFriendDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

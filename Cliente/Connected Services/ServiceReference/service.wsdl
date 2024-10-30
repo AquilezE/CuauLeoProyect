@@ -177,6 +177,12 @@
   <wsdl:message name="ISocialManager_GetFriendRequests_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetFriendRequestsResponse" />
   </wsdl:message>
+  <wsdl:message name="ISocialManager_GetBlockedUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBlockedUsers" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_GetBlockedUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBlockedUsersResponse" />
+  </wsdl:message>
   <wsdl:message name="ISocialManager_OnFriendNew_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnFriendNew" />
   </wsdl:message>
@@ -282,6 +288,10 @@
     <wsdl:operation name="GetFriendRequests">
       <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/GetFriendRequests" message="tns:ISocialManager_GetFriendRequests_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/GetFriendRequestsResponse" message="tns:ISocialManager_GetFriendRequests_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBlockedUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/GetBlockedUsers" message="tns:ISocialManager_GetBlockedUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/GetBlockedUsersResponse" message="tns:ISocialManager_GetBlockedUsers_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="OnFriendNew">
       <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/OnFriendNew" message="tns:ISocialManager_OnFriendNew_OutputCallbackMessage" />
@@ -505,6 +515,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetFriendRequests">
       <soap12:operation soapAction="http://tempuri.org/ISocialManager/GetFriendRequests" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBlockedUsers">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/GetBlockedUsers" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

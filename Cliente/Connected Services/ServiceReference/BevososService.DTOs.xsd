@@ -46,4 +46,19 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="FriendRequestDTO" nillable="true" type="tns:FriendRequestDTO" />
+  <xs:complexType name="ArrayOfBlockedDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BlockedDTO" nillable="true" type="tns:BlockedDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBlockedDTO" nillable="true" type="tns:ArrayOfBlockedDTO" />
+  <xs:complexType name="BlockedDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BlockId" type="xs:int" />
+      <xs:element minOccurs="0" name="BlockedId" type="xs:int" />
+      <xs:element minOccurs="0" name="BlockerUsername" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProfilePictureId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BlockedDTO" nillable="true" type="tns:BlockedDTO" />
 </xs:schema>

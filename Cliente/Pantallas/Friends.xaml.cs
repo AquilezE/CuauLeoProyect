@@ -45,7 +45,8 @@ namespace Cliente.Pantallas
 
         private void btBlockList_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow main = (MainWindow)Application.Current.MainWindow;
+            main.NavigateToView(new Cliente.UserControllers.FriendsList.BlockedUsersList());
         }
 
         private void btGoBack_Click(object sender, RoutedEventArgs e)
