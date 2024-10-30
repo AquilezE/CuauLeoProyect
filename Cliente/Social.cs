@@ -15,11 +15,13 @@ namespace Cliente
 
         public static Social instance;
         public ObservableCollection<Friend> friendList { get; set; }
+        public ObservableCollection<FriendRequest> friendRequests { get; set; }
 
         public Social()
         {
             socialManagerClient = new SocialManagerClient(new System.ServiceModel.InstanceContext(this));
             friendList = new ObservableCollection<Friend>();
+            friendRequests = new ObservableCollection<FriendRequest>();
         }
 
         public static Social Instance
@@ -47,6 +49,16 @@ namespace Cliente
                 friendList.Add(new Friend(friend));
             }
 
+        }
+
+        public void GetFriendRequests()
+        {
+            FriendRequestDTO[] friendRequests = socialManagerClient.GetFriendRequests(User.Instance.ID);
+            foreach (FriendRequestDTO friendRequest in friendRequests)
+            {
+                Console.WriteLine(friendRequest.SenderName);
+                this.friendRequests.Add(new FriendRequest(friendRequest));
+            }
         }
 
         public void OnFriendNew(FriendDTO[] friends)

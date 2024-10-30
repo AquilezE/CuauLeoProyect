@@ -34,7 +34,8 @@ namespace Cliente.Pantallas
 
         private void btFriendRequests_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow main = (MainWindow)Application.Current.MainWindow;
+            main.NavigateToView(new Cliente.UserControllers.FriendsList.FriendRequests());
         }
 
         private void btAddFriend_Click(object sender, RoutedEventArgs e)
