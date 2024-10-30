@@ -16,12 +16,14 @@ namespace Cliente
         public static Social instance;
         public ObservableCollection<Friend> friendList { get; set; }
         public ObservableCollection<FriendRequest> friendRequests { get; set; }
+        public ObservableCollection<Blocked> blockedUsersList { get; set; }
 
         public Social()
         {
             socialManagerClient = new SocialManagerClient(new System.ServiceModel.InstanceContext(this));
             friendList = new ObservableCollection<Friend>();
             friendRequests = new ObservableCollection<FriendRequest>();
+            blockedUsersList = new ObservableCollection<Blocked>();
         }
 
         public static Social Instance
@@ -58,6 +60,16 @@ namespace Cliente
             {
                 Console.WriteLine(friendRequest.SenderName);
                 this.friendRequests.Add(new FriendRequest(friendRequest));
+            }
+        }
+
+        public void GetBlockedUsers()
+        {
+            BlockedDTO[] blockedUsers = socialManagerClient.GetBlockedUsers(User.Instance.ID);
+            foreach (BlockedDTO blockedUser in blockedUsers)
+            {
+                Console.WriteLine(blockedUser.BlockerUsername);
+                blockedUsersList.Add(new Blocked(blockedUser));
             }
         }
 

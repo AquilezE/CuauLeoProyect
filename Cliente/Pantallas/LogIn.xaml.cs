@@ -106,6 +106,8 @@ namespace Cliente.Pantallas
                 social.GetFriends();
                 social.friendRequests.Clear();
                 social.GetFriendRequests();
+                social.blockedUsersList.Clear();
+                social.GetBlockedUsers();
 
                 return true;
             }

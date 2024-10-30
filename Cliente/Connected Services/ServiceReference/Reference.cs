@@ -308,6 +308,99 @@ namespace Cliente.ServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BlockedDTO", Namespace="http://schemas.datacontract.org/2004/07/BevososService.DTOs")]
+    [System.SerializableAttribute()]
+    public partial class BlockedDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int BlockIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int BlockedIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BlockerUsernameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ProfilePictureIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int BlockId {
+            get {
+                return this.BlockIdField;
+            }
+            set {
+                if ((this.BlockIdField.Equals(value) != true)) {
+                    this.BlockIdField = value;
+                    this.RaisePropertyChanged("BlockId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int BlockedId {
+            get {
+                return this.BlockedIdField;
+            }
+            set {
+                if ((this.BlockedIdField.Equals(value) != true)) {
+                    this.BlockedIdField = value;
+                    this.RaisePropertyChanged("BlockedId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BlockerUsername {
+            get {
+                return this.BlockerUsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BlockerUsernameField, value) != true)) {
+                    this.BlockerUsernameField = value;
+                    this.RaisePropertyChanged("BlockerUsername");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ProfilePictureId {
+            get {
+                return this.ProfilePictureIdField;
+            }
+            set {
+                if ((this.ProfilePictureIdField.Equals(value) != true)) {
+                    this.ProfilePictureIdField = value;
+                    this.RaisePropertyChanged("ProfilePictureId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IUsersManager")]
     public interface IUsersManager {
@@ -716,6 +809,12 @@ namespace Cliente.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/GetFriendRequests", ReplyAction="http://tempuri.org/ISocialManager/GetFriendRequestsResponse")]
         System.Threading.Tasks.Task<Cliente.ServiceReference.FriendRequestDTO[]> GetFriendRequestsAsync(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/GetBlockedUsers", ReplyAction="http://tempuri.org/ISocialManager/GetBlockedUsersResponse")]
+        Cliente.ServiceReference.BlockedDTO[] GetBlockedUsers(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/GetBlockedUsers", ReplyAction="http://tempuri.org/ISocialManager/GetBlockedUsersResponse")]
+        System.Threading.Tasks.Task<Cliente.ServiceReference.BlockedDTO[]> GetBlockedUsersAsync(int userId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -767,6 +866,14 @@ namespace Cliente.ServiceReference {
         
         public System.Threading.Tasks.Task<Cliente.ServiceReference.FriendRequestDTO[]> GetFriendRequestsAsync(int userId) {
             return base.Channel.GetFriendRequestsAsync(userId);
+        }
+        
+        public Cliente.ServiceReference.BlockedDTO[] GetBlockedUsers(int userId) {
+            return base.Channel.GetBlockedUsers(userId);
+        }
+        
+        public System.Threading.Tasks.Task<Cliente.ServiceReference.BlockedDTO[]> GetBlockedUsersAsync(int userId) {
+            return base.Channel.GetBlockedUsersAsync(userId);
         }
     }
 }
