@@ -17,9 +17,10 @@
 
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Label Content="{h:Lang btnFriendList}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 10 0 0" FontSize="20" FontWeight="Bold"/>
-            <TextBox Width="200" Height="30" HorizontalAlignment="Right" Margin="300 0 0 0"/>
+            <TextBox Width="200" Height="30" HorizontalAlignment="Right" Margin="300 0 0 0"
+             Text="{Binding filterSearchName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         </StackPanel>
-        
+
         <Button x:Name="btGoBack" Grid.Row="2" Width="150" Height="40" Margin="0 10 15 5" Content="{h:Lang btnGoBack}" FontSize="25" Background="LightGoldenrodYellow" Foreground="Coral" Click="btGoBack_Click" HorizontalAlignment="Right"/>
 
         <ItemsControl Grid.Row="1" MinWidth="750" MinHeight="400" x:Name="FriendsListBox" ItemsSource="{Binding _friends}">
@@ -38,7 +39,7 @@
             </ItemsControl.Resources>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <userControllers:Friend />
+                    <userControllers:Friend Loaded="FriendLoaded"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
 
