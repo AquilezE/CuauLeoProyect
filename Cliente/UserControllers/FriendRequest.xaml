@@ -22,8 +22,8 @@
 
             <Image Grid.Column="0" Source="{Binding SenderProfilePicturePath}" Margin="0 0 0 10" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" />
             <TextBlock Grid.Column="1" Text="{Binding SenderName}" Margin="10 0 0 0" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" Width="376" />
-            <Button Grid.Column="2" Content="{h:Lang btnAccept}" Width="100" Background="GreenYellow"/>
-            <Button Grid.Column="3" Content="{h:Lang btnDelete}" Width="100" Background="IndianRed"/>
+            <Button x:Name="btAccept" Grid.Column="2" Content="{h:Lang btnAccept}" Width="100" Background="GreenYellow" Click="btAccept_Click"/>
+            <Button x:Name="btDecline" Grid.Column="3" Content="{h:Lang btnDelete}" Width="100" Background="IndianRed" Click="btDecline_Click"/>
         </Grid>
     </Border>
 </UserControl>

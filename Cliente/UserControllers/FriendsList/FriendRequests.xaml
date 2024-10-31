@@ -37,7 +37,7 @@
             </ItemsControl.Resources>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <userControllers:FriendRequest />
+                    <userControllers:FriendRequest Loaded="FriendRequestLoaded"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
 

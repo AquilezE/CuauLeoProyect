@@ -37,7 +37,7 @@
             </ItemsControl.Resources>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <userControllers:BlockedUser />
+                    <userControllers:BlockedUser Loaded="BlockedUserLoaded"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
 

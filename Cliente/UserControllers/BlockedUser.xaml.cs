@@ -20,9 +20,15 @@ namespace Cliente.UserControllers
     /// </summary>
     public partial class BlockedUser : UserControl
     {
+        public event EventHandler<Cliente.Blocked> unblockUser;
         public BlockedUser()
         {
             InitializeComponent();
+        }
+
+        private void btUnblock_Click(object sender, RoutedEventArgs e)
+        {
+            unblockUser?.Invoke(this, DataContext as Cliente.Blocked);
         }
     }
 }

@@ -22,8 +22,8 @@
 
             <Image Grid.Column="0" Source="{Binding ProfilePicturePath}" Margin="0 0 0 10" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" />
             <TextBlock Grid.Column="1" Text="{Binding FriendName}" Margin="10 0 0 0" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" Width="376" />
-            <Button Grid.Column="2" Content="{h:Lang btnDelete}" Width="100" Background="IndianRed"/>
-            <Button Grid.Column="3" Content="{h:Lang btnBlockUser}" Width="100" Background="IndianRed"/>
+            <Button x:Name="btDelete" Grid.Column="2" Content="{h:Lang btnDelete}" Width="100" Background="IndianRed" Click="btDelete_Click"/>
+            <Button x:Name="btBlockUser" Grid.Column="3" Content="{h:Lang btnBlockUser}" Width="100" Background="IndianRed" Click="btBlockUser_Click"/>
         </Grid>
     </Border>
 </UserControl>
