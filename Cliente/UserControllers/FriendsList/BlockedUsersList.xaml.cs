@@ -22,7 +22,7 @@ namespace Cliente.UserControllers.FriendsList
     /// <summary>
     /// Lógica de interacción para BlockedUsersList.xaml
     /// </summary>
-    public partial class BlockedUsersList : UserControl, ISocialManagerCallback
+    public partial class BlockedUsersList : UserControl
     {
         private ObservableCollection<Cliente.Blocked> _blockedList;
         private SocialManagerClient _socialManager;
@@ -30,7 +30,7 @@ namespace Cliente.UserControllers.FriendsList
         {
             InitializeComponent();
             _socialManager = new SocialManagerClient(new System.ServiceModel.InstanceContext(this));
-            _blockedList = Social.Instance.blockedUsersList;
+            _blockedList = Social.Instance.BlockedUsersList;
             BlockedUsersListBox.ItemsSource = _blockedList;
         }
 

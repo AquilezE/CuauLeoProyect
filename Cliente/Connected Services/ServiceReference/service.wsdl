@@ -165,6 +165,24 @@
   <wsdl:message name="IProfileManager_OnPasswordChange_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnPasswordChangeResponse" />
   </wsdl:message>
+  <wsdl:message name="ISocialManager_Connect_InputMessage">
+    <wsdl:part name="parameters" element="tns:Connect" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_Connect_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConnectResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_Disconnect_InputMessage">
+    <wsdl:part name="parameters" element="tns:Disconnect" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_Disconnect_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DisconnectResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_SendFriendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_SendFriendRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendFriendRequestResponse" />
+  </wsdl:message>
   <wsdl:message name="ISocialManager_AcceptFriendRequest_InputMessage">
     <wsdl:part name="parameters" element="tns:AcceptFriendRequest" />
   </wsdl:message>
@@ -213,8 +231,17 @@
   <wsdl:message name="ISocialManager_GetBlockedUsers_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetBlockedUsersResponse" />
   </wsdl:message>
-  <wsdl:message name="ISocialManager_OnFriendNew_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:OnFriendNew" />
+  <wsdl:message name="ISocialManager_OnFriendOnline_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnFriendOnline" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_OnFriendOffline_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnFriendOffline" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_OnNewFriend_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnNewFriend" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_OnNewFriendRequest_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnNewFriendRequest" />
   </wsdl:message>
   <wsdl:portType name="IUsersManager">
     <wsdl:operation name="IsUsernameTaken">
@@ -311,6 +338,18 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ISocialManager">
+    <wsdl:operation name="Connect">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/Connect" message="tns:ISocialManager_Connect_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/ConnectResponse" message="tns:ISocialManager_Connect_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Disconnect">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/Disconnect" message="tns:ISocialManager_Disconnect_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/DisconnectResponse" message="tns:ISocialManager_Disconnect_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/SendFriendRequest" message="tns:ISocialManager_SendFriendRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/SendFriendRequestResponse" message="tns:ISocialManager_SendFriendRequest_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="AcceptFriendRequest">
       <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/AcceptFriendRequest" message="tns:ISocialManager_AcceptFriendRequest_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/AcceptFriendRequestResponse" message="tns:ISocialManager_AcceptFriendRequest_OutputMessage" />
@@ -343,8 +382,17 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/GetBlockedUsers" message="tns:ISocialManager_GetBlockedUsers_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/GetBlockedUsersResponse" message="tns:ISocialManager_GetBlockedUsers_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="OnFriendNew">
-      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/OnFriendNew" message="tns:ISocialManager_OnFriendNew_OutputCallbackMessage" />
+    <wsdl:operation name="OnFriendOnline">
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/OnFriendOnline" message="tns:ISocialManager_OnFriendOnline_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnFriendOffline">
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/OnFriendOffline" message="tns:ISocialManager_OnFriendOffline_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnNewFriend">
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/OnNewFriend" message="tns:ISocialManager_OnNewFriend_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnNewFriendRequest">
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/OnNewFriendRequest" message="tns:ISocialManager_OnNewFriendRequest_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUsersManager" type="tns:IUsersManager">
@@ -554,6 +602,33 @@
     <wsp:PolicyReference URI="#NetTcpBinding_ISocialManager_policy">
     </wsp:PolicyReference>
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="Connect">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/Connect" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Disconnect">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/Disconnect" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/SendFriendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AcceptFriendRequest">
       <soap12:operation soapAction="http://tempuri.org/ISocialManager/AcceptFriendRequest" style="document" />
       <wsdl:input>
@@ -626,8 +701,26 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="OnFriendNew">
-      <soap12:operation soapAction="http://tempuri.org/ISocialManager/OnFriendNew" style="document" />
+    <wsdl:operation name="OnFriendOnline">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/OnFriendOnline" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnFriendOffline">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/OnFriendOffline" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnNewFriend">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/OnNewFriend" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnNewFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/OnNewFriendRequest" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

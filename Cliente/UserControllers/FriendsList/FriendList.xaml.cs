@@ -20,32 +20,31 @@ using System.Windows.Shapes;
 
 namespace Cliente.UserControllers.FriendsList
 {
-    public partial class FriendList : UserControl, ISocialManagerCallback, INotifyPropertyChanged
+    public partial class FriendList : UserControl, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private ObservableCollection<Cliente.Friend> _friends;
+
         private ICollectionView _friendsFiltered;
-        private SocialManagerClient _socialManager;
+        public ICollectionView FriendsFiltered => _friendsFiltered;
+
         private string _filterSearchName;
 
         public FriendList()
         {
             InitializeComponent();
-            DataContext = this;
-            _socialManager = new SocialManagerClient(new System.ServiceModel.InstanceContext(this));
-            _friends = Social.Instance.friendList;
+            DataContext = Social.Instance;
 
-            _friendsFiltered = CollectionViewSource.GetDefaultView(_friends);
+            _friendsFiltered = CollectionViewSource.GetDefaultView(Social.Instance.FriendList);
             _friendsFiltered.Filter = FilterFriends;
 
-            FriendsListBox.ItemsSource = _friendsFiltered;
+
         }
 
-        public string filterSearchName{ get => _filterSearchName;
+        public string FilterSearchName{ get => _filterSearchName;
             set
             {
                 _filterSearchName = value;
-                OnPropertyChanged(nameof(filterSearchName));
+                OnPropertyChanged(nameof(FilterSearchName));
                 _friendsFiltered.Refresh();
             }
         }
@@ -54,20 +53,15 @@ namespace Cliente.UserControllers.FriendsList
         {
             if (filteredFriend is Cliente.Friend friend)
             {
-                if (string.IsNullOrEmpty(filterSearchName))
+                if (string.IsNullOrEmpty(FilterSearchName))
                     return true;
 
-                var filterCriteria = filterSearchName.ToLower();
+                var filterCriteria = FilterSearchName.ToLower();
                 return friend.FriendName.ToLower().Contains(filterCriteria);
             }
             return false;
         }
 
-        public void OnFriendNew(FriendDTO[] friends)
-        {
-            //delete
-            throw new NotImplementedException();
-        }
 
         private void btGoBack_Click(object sender, RoutedEventArgs e)
         {
@@ -90,10 +84,10 @@ namespace Cliente.UserControllers.FriendsList
             {
                 try
                 {
-                    bool result = _socialManager.BlockFriend(User.Instance.ID, e.FriendId);
+                    bool result = Social.Instance.socialManagerClient.BlockFriend(User.Instance.ID, e.FriendId);
                     if (result)
                     {
-                        _friends.Remove(e);
+                        Social.Instance.FriendList.Remove(e);
                         Social.Instance.GetBlockedUsers();
                     }
                     else
@@ -114,10 +108,10 @@ namespace Cliente.UserControllers.FriendsList
             {
                 try
                 {
-                    bool result = _socialManager.DeleteFriend(User.Instance.ID, e.FriendId);
+                    bool result = Social.Instance.socialManagerClient.DeleteFriend(User.Instance.ID, e.FriendId);
                     if (result)
                     {
-                        _friends.Remove(e);
+                        Social.Instance.FriendList.Remove(e);
                     }
                     else
                     {
@@ -131,5 +125,14 @@ namespace Cliente.UserControllers.FriendsList
             }
         }
         protected void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        private void buttonDELETELATER_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var item in Social.Instance.FriendList)
+            {
+                Console.WriteLine(item.FriendName);
+                Console.WriteLine(item.IsConnected);
+            }
+        }
     }
 }

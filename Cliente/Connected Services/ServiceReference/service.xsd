@@ -274,6 +274,45 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="Connect">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConnectResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Disconnect">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DisconnectResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendFriendRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+        <xs:element minOccurs="0" name="requesteeUserName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendFriendRequestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SendFriendRequestResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="AcceptFriendRequest">
     <xs:complexType>
       <xs:sequence>
@@ -391,10 +430,31 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="OnFriendNew">
+  <xs:element name="OnFriendOnline">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="friends" nillable="true" type="q9:ArrayOfFriendDTO" />
+        <xs:element minOccurs="0" name="friendId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnFriendOffline">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="friendId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnNewFriend">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="friend" nillable="true" type="q9:FriendDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnNewFriendRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="friendRequest" nillable="true" type="q10:FriendRequestDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

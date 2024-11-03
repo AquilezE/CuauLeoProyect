@@ -22,7 +22,7 @@ namespace Cliente.UserControllers.FriendsList
     /// <summary>
     /// Lógica de interacción para FriendRequests.xaml
     /// </summary>
-    public partial class FriendRequests : UserControl, ISocialManagerCallback
+    public partial class FriendRequests : UserControl
     {
         private ObservableCollection<Cliente.FriendRequest> _friendRequests;
         private SocialManagerClient _socialManager;
@@ -30,7 +30,7 @@ namespace Cliente.UserControllers.FriendsList
         {
             InitializeComponent();
             _socialManager = new SocialManagerClient(new System.ServiceModel.InstanceContext(this));
-            _friendRequests = Social.Instance.friendRequests;
+            _friendRequests = Social.Instance.FriendRequests;
             FriendRequestsListBox.ItemsSource = _friendRequests;
         }
 

@@ -102,12 +102,17 @@ namespace Cliente.Pantallas
                 currentUser.ProfilePictureId = userDto.ProfilePictureId;
 
                 Social social = Social.Instance;
-                social.friendList.Clear();
+
+                
+                
+                Social.Instance.socialManagerClient.Connect(currentUser.ID);
+                social.FriendList.Clear();
                 social.GetFriends();
-                social.friendRequests.Clear();
+                social.FriendRequests.Clear();
                 social.GetFriendRequests();
-                social.blockedUsersList.Clear();
+                social.BlockedUsersList.Clear();
                 social.GetBlockedUsers();
+                
 
                 return true;
             }

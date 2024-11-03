@@ -6,18 +6,38 @@ using Cliente.ServiceReference;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
+using System.ComponentModel;
 
 
 namespace Cliente
 {
-    public class Friend
+    public class Friend: INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        private bool isConnected;
 
         public string FriendName { get; set; }
         public int FriendShipId { get; set; }
         public int FriendId { get; set; }
         public string ProfilePicturePath { get; set; }
-        public bool IsConnected { get; set; }
+        public bool IsConnected
+        {
+            get => isConnected;
+            set
+            {
+                if (isConnected != value)
+                {
+                    isConnected = value;
+                    OnPropertyChanged(nameof(IsConnected));
+                }
+            }
+        }
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         public Friend(int friendshipId, int friendId, string friendName, string profilePicturePath, bool isConnected)
         {
