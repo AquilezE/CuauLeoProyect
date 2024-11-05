@@ -177,6 +177,12 @@
   <wsdl:message name="ISocialManager_Disconnect_OutputMessage">
     <wsdl:part name="parameters" element="tns:DisconnectResponse" />
   </wsdl:message>
+  <wsdl:message name="ISocialManager_IsConnected_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsConnected" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_IsConnected_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsConnectedResponse" />
+  </wsdl:message>
   <wsdl:message name="ISocialManager_SendFriendRequest_InputMessage">
     <wsdl:part name="parameters" element="tns:SendFriendRequest" />
   </wsdl:message>
@@ -206,6 +212,12 @@
   </wsdl:message>
   <wsdl:message name="ISocialManager_UnblockUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:UnblockUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_BlockUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:BlockUser" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_BlockUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BlockUserResponse" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_DeleteFriend_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteFriend" />
@@ -355,6 +367,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/Disconnect" message="tns:ISocialManager_Disconnect_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/DisconnectResponse" message="tns:ISocialManager_Disconnect_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="IsConnected">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/IsConnected" message="tns:ISocialManager_IsConnected_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/IsConnectedResponse" message="tns:ISocialManager_IsConnected_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="SendFriendRequest">
       <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/SendFriendRequest" message="tns:ISocialManager_SendFriendRequest_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/SendFriendRequestResponse" message="tns:ISocialManager_SendFriendRequest_OutputMessage" />
@@ -374,6 +390,10 @@
     <wsdl:operation name="UnblockUser">
       <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/UnblockUser" message="tns:ISocialManager_UnblockUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/UnblockUserResponse" message="tns:ISocialManager_UnblockUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BlockUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/BlockUser" message="tns:ISocialManager_BlockUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/BlockUserResponse" message="tns:ISocialManager_BlockUser_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteFriend">
       <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/DeleteFriend" message="tns:ISocialManager_DeleteFriend_InputMessage" />
@@ -636,6 +656,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="IsConnected">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/IsConnected" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SendFriendRequest">
       <soap12:operation soapAction="http://tempuri.org/ISocialManager/SendFriendRequest" style="document" />
       <wsdl:input>
@@ -674,6 +703,15 @@
     </wsdl:operation>
     <wsdl:operation name="UnblockUser">
       <soap12:operation soapAction="http://tempuri.org/ISocialManager/UnblockUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BlockUser">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/BlockUser" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
