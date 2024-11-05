@@ -207,17 +207,17 @@
   <wsdl:message name="ISocialManager_UnblockUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:UnblockUserResponse" />
   </wsdl:message>
-  <wsdl:message name="ISocialManager_GetFriends_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetFriends" />
-  </wsdl:message>
-  <wsdl:message name="ISocialManager_GetFriends_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetFriendsResponse" />
-  </wsdl:message>
   <wsdl:message name="ISocialManager_DeleteFriend_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteFriend" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_DeleteFriend_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteFriendResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_GetFriends_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFriends" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_GetFriends_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFriendsResponse" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_GetFriendRequests_InputMessage">
     <wsdl:part name="parameters" element="tns:GetFriendRequests" />
@@ -242,6 +242,9 @@
   </wsdl:message>
   <wsdl:message name="ISocialManager_OnNewFriendRequest_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnNewFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_OnFriendshipDeleted_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnFriendshipDeleted" />
   </wsdl:message>
   <wsdl:portType name="IUsersManager">
     <wsdl:operation name="IsUsernameTaken">
@@ -366,13 +369,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/UnblockUser" message="tns:ISocialManager_UnblockUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/UnblockUserResponse" message="tns:ISocialManager_UnblockUser_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetFriends">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/GetFriends" message="tns:ISocialManager_GetFriends_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/GetFriendsResponse" message="tns:ISocialManager_GetFriends_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="DeleteFriend">
       <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/DeleteFriend" message="tns:ISocialManager_DeleteFriend_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/DeleteFriendResponse" message="tns:ISocialManager_DeleteFriend_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFriends">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/GetFriends" message="tns:ISocialManager_GetFriends_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/GetFriendsResponse" message="tns:ISocialManager_GetFriends_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetFriendRequests">
       <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/GetFriendRequests" message="tns:ISocialManager_GetFriendRequests_InputMessage" />
@@ -393,6 +396,9 @@
     </wsdl:operation>
     <wsdl:operation name="OnNewFriendRequest">
       <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/OnNewFriendRequest" message="tns:ISocialManager_OnNewFriendRequest_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnFriendshipDeleted">
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/OnFriendshipDeleted" message="tns:ISocialManager_OnFriendshipDeleted_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUsersManager" type="tns:IUsersManager">
@@ -665,8 +671,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetFriends">
-      <soap12:operation soapAction="http://tempuri.org/ISocialManager/GetFriends" style="document" />
+    <wsdl:operation name="DeleteFriend">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/DeleteFriend" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -674,8 +680,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="DeleteFriend">
-      <soap12:operation soapAction="http://tempuri.org/ISocialManager/DeleteFriend" style="document" />
+    <wsdl:operation name="GetFriends">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/GetFriends" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -721,6 +727,12 @@
     </wsdl:operation>
     <wsdl:operation name="OnNewFriendRequest">
       <soap12:operation soapAction="http://tempuri.org/ISocialManager/OnNewFriendRequest" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnFriendshipDeleted">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/OnFriendshipDeleted" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

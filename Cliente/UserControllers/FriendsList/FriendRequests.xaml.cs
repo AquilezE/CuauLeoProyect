@@ -25,11 +25,9 @@ namespace Cliente.UserControllers.FriendsList
     public partial class FriendRequests : UserControl
     {
         private ObservableCollection<Cliente.FriendRequest> _friendRequests;
-        private SocialManagerClient _socialManager;
         public FriendRequests()
         {
             InitializeComponent();
-            _socialManager = new SocialManagerClient(new System.ServiceModel.InstanceContext(this));
             _friendRequests = Social.Instance.FriendRequests;
             FriendRequestsListBox.ItemsSource = _friendRequests;
         }
@@ -59,20 +57,12 @@ namespace Cliente.UserControllers.FriendsList
         {
             if (e != null)
             {
-                try{
-                bool result = _socialManager.AcceptFriendRequest(User.Instance.ID,e.SenderId,e.FriendRequestId);
+                try
+                {
+                    Social.Instance.socialManagerClient.AcceptFriendRequestAsync(User.Instance.ID, e.SenderId, e.FriendRequestId);
 
-                    if (result)
-                    {
-                        Social.Instance.GetFriends();
-                        _friendRequests.Remove(e);
-                    }
-                    else
-                    {
-                        MessageBox.Show("An error ocurred while Accepting Friend Request");
-                    }
                 }
-                catch(CommunicationException ex)
+                catch (CommunicationException ex)
                 {
                     MessageBox.Show("An error ocurred while Accepting Friend Request");
                 }
@@ -84,7 +74,7 @@ namespace Cliente.UserControllers.FriendsList
             if (e != null)
             {
                 try{
-                bool result =  _socialManager.DeclineFriendRequest(e.FriendRequestId);
+                bool result = Social.Instance.socialManagerClient.DeclineFriendRequest(e.FriendRequestId);
 
                     if (result)
                     {

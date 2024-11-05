@@ -324,9 +324,7 @@
   </xs:element>
   <xs:element name="AcceptFriendRequestResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="AcceptFriendRequestResult" type="xs:boolean" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="DeclineFriendRequest">
@@ -373,20 +371,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetFriends">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="userId" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetFriendsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="GetFriendsResult" nillable="true" type="q6:ArrayOfFriendDTO" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="DeleteFriend">
     <xs:complexType>
       <xs:sequence>
@@ -399,6 +383,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="DeleteFriendResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFriends">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFriendsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="GetFriendsResult" nillable="true" type="q6:ArrayOfFriendDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -455,6 +453,13 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="friendRequest" nillable="true" type="q10:FriendRequestDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnFriendshipDeleted">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="friendId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

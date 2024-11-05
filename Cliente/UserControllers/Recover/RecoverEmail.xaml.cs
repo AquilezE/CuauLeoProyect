@@ -38,11 +38,18 @@ namespace Cliente.UserControllers.Recover
         {
 
             string email = tbEmail.Text.Trim();
-
+           
             if (IsValidEmail(email))
             {
+                if (_service.IsEmailTaken(email)) { 
+
                 _service.SendTokenAsync(email);
                 OnEmailFilled(email);
+                
+                }else
+                {
+                    lbErrEmailCode.Content = "Email not found";
+                }
             }
             else
             {

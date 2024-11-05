@@ -122,6 +122,17 @@ namespace Cliente
         {
             var newFriend = new Friend(friendDto);
             FriendList.Add(newFriend);
+            FriendRequests.Remove(FriendRequests.FirstOrDefault(f => f.SenderId == friendDto.FriendId));
+
+        }
+
+        public void OnFriendshipDeleted(int userId)
+        {
+            object friend = FriendList.FirstOrDefault(f => f.FriendId == userId);
+            if (friend != null)
+            {
+                FriendList.Remove((Friend)friend);
+            }
         }
 
         public void Logout()

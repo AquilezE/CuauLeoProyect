@@ -817,10 +817,10 @@ namespace Cliente.ServiceReference {
         System.Threading.Tasks.Task<bool> SendFriendRequestAsync(int userId, string requesteeUserName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/AcceptFriendRequest", ReplyAction="http://tempuri.org/ISocialManager/AcceptFriendRequestResponse")]
-        bool AcceptFriendRequest(int userId, int friendId, int requestId);
+        void AcceptFriendRequest(int userId, int friendId, int requestId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/AcceptFriendRequest", ReplyAction="http://tempuri.org/ISocialManager/AcceptFriendRequestResponse")]
-        System.Threading.Tasks.Task<bool> AcceptFriendRequestAsync(int userId, int friendId, int requestId);
+        System.Threading.Tasks.Task AcceptFriendRequestAsync(int userId, int friendId, int requestId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/DeclineFriendRequest", ReplyAction="http://tempuri.org/ISocialManager/DeclineFriendRequestResponse")]
         bool DeclineFriendRequest(int requestId);
@@ -840,17 +840,17 @@ namespace Cliente.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/UnblockUser", ReplyAction="http://tempuri.org/ISocialManager/UnblockUserResponse")]
         System.Threading.Tasks.Task<bool> UnblockUserAsync(int userId, int friendId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/GetFriends", ReplyAction="http://tempuri.org/ISocialManager/GetFriendsResponse")]
-        Cliente.ServiceReference.FriendDTO[] GetFriends(int userId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/GetFriends", ReplyAction="http://tempuri.org/ISocialManager/GetFriendsResponse")]
-        System.Threading.Tasks.Task<Cliente.ServiceReference.FriendDTO[]> GetFriendsAsync(int userId);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/DeleteFriend", ReplyAction="http://tempuri.org/ISocialManager/DeleteFriendResponse")]
         bool DeleteFriend(int userId, int friendId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/DeleteFriend", ReplyAction="http://tempuri.org/ISocialManager/DeleteFriendResponse")]
         System.Threading.Tasks.Task<bool> DeleteFriendAsync(int userId, int friendId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/GetFriends", ReplyAction="http://tempuri.org/ISocialManager/GetFriendsResponse")]
+        Cliente.ServiceReference.FriendDTO[] GetFriends(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/GetFriends", ReplyAction="http://tempuri.org/ISocialManager/GetFriendsResponse")]
+        System.Threading.Tasks.Task<Cliente.ServiceReference.FriendDTO[]> GetFriendsAsync(int userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/GetFriendRequests", ReplyAction="http://tempuri.org/ISocialManager/GetFriendRequestsResponse")]
         Cliente.ServiceReference.FriendRequestDTO[] GetFriendRequests(int userId);
@@ -879,6 +879,9 @@ namespace Cliente.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ISocialManager/OnNewFriendRequest")]
         void OnNewFriendRequest(Cliente.ServiceReference.FriendRequestDTO friendRequest);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ISocialManager/OnFriendshipDeleted")]
+        void OnFriendshipDeleted(int friendId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -933,11 +936,11 @@ namespace Cliente.ServiceReference {
             return base.Channel.SendFriendRequestAsync(userId, requesteeUserName);
         }
         
-        public bool AcceptFriendRequest(int userId, int friendId, int requestId) {
-            return base.Channel.AcceptFriendRequest(userId, friendId, requestId);
+        public void AcceptFriendRequest(int userId, int friendId, int requestId) {
+            base.Channel.AcceptFriendRequest(userId, friendId, requestId);
         }
         
-        public System.Threading.Tasks.Task<bool> AcceptFriendRequestAsync(int userId, int friendId, int requestId) {
+        public System.Threading.Tasks.Task AcceptFriendRequestAsync(int userId, int friendId, int requestId) {
             return base.Channel.AcceptFriendRequestAsync(userId, friendId, requestId);
         }
         
@@ -965,20 +968,20 @@ namespace Cliente.ServiceReference {
             return base.Channel.UnblockUserAsync(userId, friendId);
         }
         
-        public Cliente.ServiceReference.FriendDTO[] GetFriends(int userId) {
-            return base.Channel.GetFriends(userId);
-        }
-        
-        public System.Threading.Tasks.Task<Cliente.ServiceReference.FriendDTO[]> GetFriendsAsync(int userId) {
-            return base.Channel.GetFriendsAsync(userId);
-        }
-        
         public bool DeleteFriend(int userId, int friendId) {
             return base.Channel.DeleteFriend(userId, friendId);
         }
         
         public System.Threading.Tasks.Task<bool> DeleteFriendAsync(int userId, int friendId) {
             return base.Channel.DeleteFriendAsync(userId, friendId);
+        }
+        
+        public Cliente.ServiceReference.FriendDTO[] GetFriends(int userId) {
+            return base.Channel.GetFriends(userId);
+        }
+        
+        public System.Threading.Tasks.Task<Cliente.ServiceReference.FriendDTO[]> GetFriendsAsync(int userId) {
+            return base.Channel.GetFriendsAsync(userId);
         }
         
         public Cliente.ServiceReference.FriendRequestDTO[] GetFriendRequests(int userId) {
