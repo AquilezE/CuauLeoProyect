@@ -40,7 +40,8 @@ namespace Cliente.Pantallas
 
         private void btAddFriend_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow main = (MainWindow)Application.Current.MainWindow;
+            main.NavigateToView(new AddFriend());
         }
 
         private void btBlockList_Click(object sender, RoutedEventArgs e)

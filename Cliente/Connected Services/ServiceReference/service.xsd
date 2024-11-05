@@ -302,7 +302,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="userId" type="xs:int" />
-        <xs:element minOccurs="0" name="requesteeUserName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="requesteeId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -428,6 +428,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetUsersFoundByName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUsersFoundByNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="GetUsersFoundByNameResult" nillable="true" type="q9:ArrayOfUserDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="OnFriendOnline">
     <xs:complexType>
       <xs:sequence>
@@ -445,14 +459,14 @@
   <xs:element name="OnNewFriend">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="friend" nillable="true" type="q9:FriendDTO" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="friend" nillable="true" type="q10:FriendDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="OnNewFriendRequest">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="friendRequest" nillable="true" type="q10:FriendRequestDTO" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="friendRequest" nillable="true" type="q11:FriendRequestDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

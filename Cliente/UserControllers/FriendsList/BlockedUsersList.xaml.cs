@@ -25,11 +25,10 @@ namespace Cliente.UserControllers.FriendsList
     public partial class BlockedUsersList : UserControl
     {
         private ObservableCollection<Cliente.Blocked> _blockedList;
-        private SocialManagerClient _socialManager;
         public BlockedUsersList()
         {
             InitializeComponent();
-            _socialManager = new SocialManagerClient(new System.ServiceModel.InstanceContext(this));
+            DataContext = Social.Instance;
             _blockedList = Social.Instance.BlockedUsersList;
             BlockedUsersListBox.ItemsSource = _blockedList;
         }
@@ -54,9 +53,9 @@ namespace Cliente.UserControllers.FriendsList
             {
                 try
                 {
-                    bool result = _socialManager.UnblockUser(User.Instance.ID, e.BlockedId);
+                    bool result = Social.Instance.socialManagerClient.UnblockUser(User.Instance.ID, e.BlockedId);
                     if (result) {
-                        _blockedList.Remove(e);
+                        Social.Instance.BlockedUsersList.Remove(e);
                     }
                     else
                     {

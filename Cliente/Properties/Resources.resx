@@ -402,4 +402,7 @@
   <data name="lblClickHereContinue" xml:space="preserve">
     <value>Click here to continue</value>
   </data>
+  <data name="btnSearch" xml:space="preserve">
+    <value>Search</value>
+  </data>
 </root>

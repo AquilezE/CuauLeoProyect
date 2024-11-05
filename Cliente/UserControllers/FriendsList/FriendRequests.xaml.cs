@@ -28,6 +28,7 @@ namespace Cliente.UserControllers.FriendsList
         public FriendRequests()
         {
             InitializeComponent();
+            DataContext = Social.Instance;
             _friendRequests = Social.Instance.FriendRequests;
             FriendRequestsListBox.ItemsSource = _friendRequests;
         }
@@ -78,7 +79,7 @@ namespace Cliente.UserControllers.FriendsList
 
                     if (result)
                     {
-                        _friendRequests.Remove(e);
+                        Social.Instance.FriendRequests.Remove(e);
                     }
                     else
                     {

@@ -203,11 +203,17 @@
     <Compile Include="UserControllers\ChangePassword\ChangePasswordSuccess.xaml.cs">
       <DependentUpon>ChangePasswordSuccess.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControllers\FindUserItem.xaml.cs">
+      <DependentUpon>FindUserItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControllers\Friend.xaml.cs">
       <DependentUpon>Friend.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControllers\FriendRequest.xaml.cs">
       <DependentUpon>FriendRequest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControllers\FriendsList\AddFriend.xaml.cs">
+      <DependentUpon>AddFriend.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControllers\FriendsList\BlockedUsersList.xaml.cs">
       <DependentUpon>BlockedUsersList.xaml</DependentUpon>
@@ -247,6 +253,7 @@
     <Compile Include="UserControllers\UserLobby.xaml.cs">
       <DependentUpon>UserLobby.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserFound.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -311,11 +318,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControllers\FindUserItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControllers\Friend.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControllers\FriendRequest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControllers\FriendsList\AddFriend.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
