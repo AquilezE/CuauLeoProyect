@@ -810,6 +810,12 @@ namespace Cliente.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/Disconnect", ReplyAction="http://tempuri.org/ISocialManager/DisconnectResponse")]
         System.Threading.Tasks.Task DisconnectAsync(int userId);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/IsConnected", ReplyAction="http://tempuri.org/ISocialManager/IsConnectedResponse")]
+        bool IsConnected(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/IsConnected", ReplyAction="http://tempuri.org/ISocialManager/IsConnectedResponse")]
+        System.Threading.Tasks.Task<bool> IsConnectedAsync(string email);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/SendFriendRequest", ReplyAction="http://tempuri.org/ISocialManager/SendFriendRequestResponse")]
         bool SendFriendRequest(int userId, int requesteeId);
         
@@ -840,6 +846,12 @@ namespace Cliente.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/UnblockUser", ReplyAction="http://tempuri.org/ISocialManager/UnblockUserResponse")]
         System.Threading.Tasks.Task<bool> UnblockUserAsync(int userId, int friendId);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/BlockUser", ReplyAction="http://tempuri.org/ISocialManager/BlockUserResponse")]
+        bool BlockUser(int userId, int friendId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/BlockUser", ReplyAction="http://tempuri.org/ISocialManager/BlockUserResponse")]
+        System.Threading.Tasks.Task<bool> BlockUserAsync(int userId, int friendId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/DeleteFriend", ReplyAction="http://tempuri.org/ISocialManager/DeleteFriendResponse")]
         bool DeleteFriend(int userId, int friendId);
         
@@ -865,10 +877,10 @@ namespace Cliente.ServiceReference {
         System.Threading.Tasks.Task<Cliente.ServiceReference.BlockedDTO[]> GetBlockedUsersAsync(int userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/GetUsersFoundByName", ReplyAction="http://tempuri.org/ISocialManager/GetUsersFoundByNameResponse")]
-        Cliente.ServiceReference.UserDto[] GetUsersFoundByName(string name);
+        Cliente.ServiceReference.UserDto[] GetUsersFoundByName(int userId, string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/GetUsersFoundByName", ReplyAction="http://tempuri.org/ISocialManager/GetUsersFoundByNameResponse")]
-        System.Threading.Tasks.Task<Cliente.ServiceReference.UserDto[]> GetUsersFoundByNameAsync(string name);
+        System.Threading.Tasks.Task<Cliente.ServiceReference.UserDto[]> GetUsersFoundByNameAsync(int userId, string name);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -934,6 +946,14 @@ namespace Cliente.ServiceReference {
             return base.Channel.DisconnectAsync(userId);
         }
         
+        public bool IsConnected(string email) {
+            return base.Channel.IsConnected(email);
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsConnectedAsync(string email) {
+            return base.Channel.IsConnectedAsync(email);
+        }
+        
         public bool SendFriendRequest(int userId, int requesteeId) {
             return base.Channel.SendFriendRequest(userId, requesteeId);
         }
@@ -974,6 +994,14 @@ namespace Cliente.ServiceReference {
             return base.Channel.UnblockUserAsync(userId, friendId);
         }
         
+        public bool BlockUser(int userId, int friendId) {
+            return base.Channel.BlockUser(userId, friendId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> BlockUserAsync(int userId, int friendId) {
+            return base.Channel.BlockUserAsync(userId, friendId);
+        }
+        
         public bool DeleteFriend(int userId, int friendId) {
             return base.Channel.DeleteFriend(userId, friendId);
         }
@@ -1006,12 +1034,12 @@ namespace Cliente.ServiceReference {
             return base.Channel.GetBlockedUsersAsync(userId);
         }
         
-        public Cliente.ServiceReference.UserDto[] GetUsersFoundByName(string name) {
-            return base.Channel.GetUsersFoundByName(name);
+        public Cliente.ServiceReference.UserDto[] GetUsersFoundByName(int userId, string name) {
+            return base.Channel.GetUsersFoundByName(userId, name);
         }
         
-        public System.Threading.Tasks.Task<Cliente.ServiceReference.UserDto[]> GetUsersFoundByNameAsync(string name) {
-            return base.Channel.GetUsersFoundByNameAsync(name);
+        public System.Threading.Tasks.Task<Cliente.ServiceReference.UserDto[]> GetUsersFoundByNameAsync(int userId, string name) {
+            return base.Channel.GetUsersFoundByNameAsync(userId, name);
         }
     }
 }

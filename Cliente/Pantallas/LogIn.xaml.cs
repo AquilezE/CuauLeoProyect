@@ -88,6 +88,14 @@ namespace Cliente.Pantallas
         {
             try
             {
+                Social social = Social.Instance;
+
+                if (Social.Instance.socialManagerClient.IsConnected(email))
+                {
+                    Social.Instance = null;
+                    return false;
+                }
+
                 UserDto userDto = _servicio.LogIn(email, password);
                 if (userDto == null)
                 {
@@ -100,9 +108,6 @@ namespace Cliente.Pantallas
                 currentUser.Username = userDto.Username;
                 currentUser.Email = userDto.Email;
                 currentUser.ProfilePictureId = userDto.ProfilePictureId;
-
-                Social social = Social.Instance;
-
                 
                 
                 Social.Instance.socialManagerClient.Connect(currentUser.ID);

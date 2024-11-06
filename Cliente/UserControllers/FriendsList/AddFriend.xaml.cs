@@ -50,11 +50,11 @@ namespace Cliente.UserControllers.FriendsList
             {
                 try
                 {
-                    bool result = Social.Instance.socialManagerClient.BlockFriend(User.Instance.ID, e.ID);
+                    bool result = Social.Instance.socialManagerClient.BlockUser(User.Instance.ID, e.ID);
                     if (result)
                     {
                         UsersFound.Remove(e);
-                        //Social.Instance.BlockedUsersList.Add(new Blocked(e));
+                        Social.Instance.GetBlockedUsers();
                     }
                     else
                     {
@@ -97,7 +97,7 @@ namespace Cliente.UserControllers.FriendsList
             string search = tbSearchUser.Text;
             if (!string.IsNullOrEmpty(search))
             {
-                UserDto[] usersFound = Social.Instance.socialManagerClient.GetUsersFoundByName(search);
+                UserDto[] usersFound = Social.Instance.socialManagerClient.GetUsersFoundByName(User.Instance.ID,search);
                 foreach (UserDto userFound in usersFound)
                 {
                     Console.WriteLine(userFound.Username);
