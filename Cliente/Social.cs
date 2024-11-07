@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.ServiceModel;
+using Cliente.UserControllers;
 
 namespace Cliente
 {
@@ -116,6 +117,8 @@ namespace Cliente
         {
             var newFriendRequest = new FriendRequest(friendRequestDto);
             FriendRequests.Add(newFriendRequest);
+            NotificationDialog notification = new NotificationDialog();
+            notification.ShowInfoNotification("The user "+ friendRequestDto.SenderName +" sent you a friend request!");
         }
 
         public void OnNewFriend(FriendDTO friendDto)
@@ -123,7 +126,8 @@ namespace Cliente
             var newFriend = new Friend(friendDto);
             FriendList.Add(newFriend);
             FriendRequests.Remove(FriendRequests.FirstOrDefault(f => f.SenderId == friendDto.FriendId));
-
+            NotificationDialog notification = new NotificationDialog();
+            notification.ShowSuccessNotification("You are now friends with " + friendDto.FriendName);
         }
 
         public void OnFriendshipDeleted(int userId)
