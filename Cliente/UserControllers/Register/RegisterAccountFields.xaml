@@ -57,19 +57,19 @@
 
             <Label Grid.Row="2" Content="{h:Lang globalsUsername}" FontSize="20" Margin="50,0,0,0"/>
             <TextBox Grid.Row="3" x:Name="tbUsername" Margin="50,0,50,0" LostFocus="tbUsername_LostFocus"/>
-            <Label Grid.Row="4" x:Name="lbErrUsername" Margin="50,0,50,0" Content = "{h:Lang lblErrUsernameInvalid}" Foreground="Red" FontSize="6"/>
+            <Label Grid.Row="4" x:Name="lbErrUsername" Margin="50,0,50,0" Content = "" Foreground="Red" FontSize="6"/>
 
             <Label Grid.Row="5" Content="{h:Lang globalsEmail}" FontSize="20" Margin="50,0,0,0"/>
             <TextBox Grid.Row="6" x:Name="tbEmail" Margin="50,0,50,0" LostFocus="tbEmail_LostFocus"/>
-            <Label Grid.Row="7" x:Name="lbErrEmail" Margin="50,0,50,0" Content ="{h:Lang lblErrEmailInvalid}" Foreground="Red" FontSize="6"/>
+            <Label Grid.Row="7" x:Name="lbErrEmail" Margin="50,0,50,0" Content ="" Foreground="Red" FontSize="6"/>
 
             <Label Grid.Row="8" Content="{h:Lang globalsPassword}" FontSize="20" Margin="50,0,0,0"/>
             <PasswordBox Grid.Row="9" x:Name="pbPassword" Margin="50,0,50,0" LostFocus="pbPassword_LostFocus"/>
-            <Label Grid.Row="10" x:Name="lbErrPassword" Margin="50,0,50,0" Content ="{h:Lang lblErrWeakPassword}" Foreground="Red" FontSize="6"/>
+            <Label Grid.Row="10" x:Name="lbErrPassword" Margin="50,0,50,0" Content ="" Foreground="Red" FontSize="6"/>
 
             <Label Grid.Row="11" Content="{h:Lang lblConfirmPassword}" FontSize="20" Margin="50,0,0,0"/>
             <PasswordBox Grid.Row="12" x:Name="pbConfirmPassword" Margin="50,0,50,0" LostFocus="pbConfirmPassword_LostFocus"/>
-            <Label Grid.Row="13" x:Name="lbErrPasswordConfirmation" Margin="50,0,50,0" Content ="{h:Lang lblErrDiferentPassword}" Foreground="Red" FontSize="6"/>
+            <Label Grid.Row="13" x:Name="lbErrPasswordConfirmation" Margin="50,0,50,0" Content ="" Foreground="Red" FontSize="6"/>
 
             <Border Grid.Row="14" >
                 <StackPanel Orientation="Horizontal">
