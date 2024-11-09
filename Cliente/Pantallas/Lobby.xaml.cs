@@ -13,9 +13,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Haley.Utils;
 using System.ComponentModel;
 
 namespace Cliente.Pantallas
@@ -70,7 +68,7 @@ namespace Cliente.Pantallas
             _users = new ObservableCollection<User>();
             MessagesListBox.ItemsSource = _messages;
             UsersListBox.ItemsSource = _users;
-            tbUserName.Text = User.Instance.Username;
+            lbUserName.Content = User.Instance.Username;
             
         }
 
@@ -80,38 +78,32 @@ namespace Cliente.Pantallas
             LeaveLobby();
         }
 
-        private void btnJoin_Click(object sender, RoutedEventArgs e)
-       {
-            MessageBox.Show($"The current leader's number is: {CurrentLeaderId}, your ID is {User.instance.ID}", "Current Leader", MessageBoxButton.OK, MessageBoxImage.Information);
-
-
-        }
-
-
         private void btSendMessage_Click(object sender, RoutedEventArgs e)
         {
             string message = tbMessage.Text.Trim();
 
             if (!IsValidMessage(message))
             {
-                lbErrGeneral.Content = _lobbyId.ToString();
                 return;
 
             }
 
             _servicio.SendMessage(_lobbyId, User.Instance.ID, message);
             tbMessage.Text = string.Empty;
+            lbMessageError.Content = string.Empty;
         }
 
         private bool IsValidMessage(string message)
         {
             if (string.IsNullOrEmpty(message))
             {
+                lbMessageError.Content = LangUtils.Translate("lblErrEmptyMessage");
                 return false;
             }
 
             if (message.Length > 200)
             {
+                lbMessageError.Content = LangUtils.Translate("lblErrMessageTooLong");
                 return false;
             }
 
@@ -120,8 +112,7 @@ namespace Cliente.Pantallas
 
         private void btStartGame_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("btStartGame_Click called");
-            Console.WriteLine($"_lobbyId in btStartGame_Click: {_lobbyId}");
+
         }
 
         private void UserLobby_Loaded(object sender, RoutedEventArgs e)
@@ -137,16 +128,24 @@ namespace Cliente.Pantallas
         {
             if (userToKick != null)
             {
-                var result = MessageBox.Show($"Are you sure you want to kick {userToKick.Username}?", "Kick User", MessageBoxButton.YesNo);
-
-                if (result == MessageBoxResult.Yes)
+                KickUserDialog kickDialog = new KickUserDialog(userToKick.Username)
                 {
+                    Owner = Window.GetWindow(this) 
+                };
+
+                bool? result = kickDialog.ShowDialog();
+
+                if (result == true)
+                {
+                    string reason = kickDialog.KickReason;
+
                     _users.Remove(userToKick);
 
-                    _servicio.KickUser(_lobbyId, User.Instance.ID, userToKick.ID, "You have been kicked.");
+                    _servicio.KickUser(_lobbyId, User.Instance.ID, userToKick.ID, reason);
                 }
             }
         }
+
 
 
         public bool LeaveLobby()
@@ -166,7 +165,7 @@ namespace Cliente.Pantallas
             Console.WriteLine(_lobbyId);
 
             tbLobbyCode.Text = lobbyId.ToString();
-            tbUserName.Text = User.Instance.Username;
+            lbUserName.Content = User.Instance.Username;
 
 
         }
@@ -190,8 +189,11 @@ namespace Cliente.Pantallas
 
         public void OnKicked(int lobbyId, string reason)
         {
-            MessageBox.Show($"You were kicked from the lobby: {reason}", "Kicked", MessageBoxButton.OK, MessageBoxImage.Information);
             LeaveLobby();
+            NotificationDialog notification = new NotificationDialog();
+            //INTERNATIONALIZATION NEEDED
+            notification.ShowErrorNotification($"You were kicked from the lobby: {reason}");
+
         }
 
 
@@ -213,8 +215,15 @@ namespace Cliente.Pantallas
             }
             else
             {
+                //INTERNATIONALIZATION NEEDED
                 _messages.Add(new Message($"User {UserId}", message, _lobbyId));
             }
+
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                ScrollToBottom();
+            }), System.Windows.Threading.DispatcherPriority.Background);
+
         }
 
         public void OnLobbyUsersUpdate(int lobbyId, UserDto[] users)
@@ -246,5 +255,32 @@ namespace Cliente.Pantallas
         {
             
         }
+
+        private void ScrollToBottom()
+        {
+            ScrollViewer scrollViewer = FindVisualChild<ScrollViewer>(MessagesListBox);
+            if (scrollViewer != null)
+            {
+                scrollViewer.ScrollToEnd();
+            }
+        }
+
+        private T FindVisualChild<T>(DependencyObject obj) where T : DependencyObject
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(obj, i);
+                if (child != null && child is T)
+                    return (T)child;
+                else
+                {
+                    T childOfChild = FindVisualChild<T>(child);
+                    if (childOfChild != null)
+                        return childOfChild;
+                }
+            }
+            return null;
+        }
+
     }
 }

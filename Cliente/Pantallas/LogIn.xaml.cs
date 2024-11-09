@@ -67,12 +67,12 @@ namespace Cliente.Pantallas
                     }
                     else
                     {
-                        lbErrLabel.Content = "Invalid username or password";
+                        lbErrLabel.Content = LangUtils.Translate("lblErrWrongLogin");
                     }
                 }
                 catch (Exception ex)
                 {
-                    lbErrLabel.Content = "An error occurred while trying to log in. Please try again later";
+                    lbErrLabel.Content = LangUtils.Translate("lblErrNoConection");
                 }
 
 
@@ -164,13 +164,16 @@ namespace Cliente.Pantallas
                     case "Spanish":
                         Console.WriteLine("Changing culture to: " + culture);
                         LangUtils.ChangeCulture("es");
+                        lbErrLabel.Content = string.Empty;
                         break;
                     case "Inglés":
                         Console.WriteLine("Changing culture to: " + culture);
                         LangUtils.ChangeCulture("en");
+                        lbErrLabel.Content = string.Empty;
                         break;
                     default:
                         LangUtils.ChangeCulture("en");
+                        lbErrLabel.Content = string.Empty;
                         break;
                 }
             }

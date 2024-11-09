@@ -43,6 +43,16 @@ namespace Cliente.UserControllers
             _notifier.ShowSuccess(message);
         }
 
+        public void ShowWarningNotification(string message)
+        {
+            _notifier.ShowWarning(message);
+        }
+
+        public void ShowErrorNotification(string message)
+        {
+            _notifier.ShowError(message);
+        }
+
         public void Dispose()
         {
             _notifier.Dispose();

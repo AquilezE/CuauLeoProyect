@@ -1,5 +1,6 @@
 ﻿using Cliente.Pantallas;
 using Cliente.ServiceReference;
+using Haley.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,7 +65,7 @@ namespace Cliente.UserControllers
                         }
                         else
                         {
-                            lbErrVerificactionCode.Content = "Registration failed. The username or email may already be taken";
+                            lbErrVerificactionCode.Content = LangUtils.Translate("lblErrUserOrEmailTaken");
                         }
                     }
                     else
@@ -74,12 +75,12 @@ namespace Cliente.UserControllers
                 }
                 else
                 {
-                    lbErrVerificactionCode.Content = "Invalid code format"; 
+                    lbErrVerificactionCode.Content = LangUtils.Translate("lblErrIncorrectCode");
                 }
             }
             catch(Exception ex)
             {
-                lbErrVerificactionCode.Content = "An error ocurred while verifying the code, Please try again later";
+                lbErrVerificactionCode.Content = LangUtils.Translate("lblErrNoConection");
             }
             finally
             {
@@ -97,13 +98,13 @@ namespace Cliente.UserControllers
 
             if (_retryCounter >= MAX_RETRIES)
             {
-                lbErrVerificactionCode.Content = "Too many failed attempts. Please request a new verification code.";
+                lbErrVerificactionCode.Content = LangUtils.Translate("lblErrManyCodeAttempts");
                 btRegister.IsEnabled = false; 
             }
 
             else
             {
-                lbErrVerificactionCode.Content = "Invalid code. Please try again.";
+                lbErrVerificactionCode.Content = LangUtils.Translate("lblErrIncorrectCode");
             }
         }
         protected virtual void OnVerificationCompleted(EventArgs e)
@@ -130,7 +131,7 @@ namespace Cliente.UserControllers
         {
             lbResendEmail.IsEnabled = false;
 
-            lbResendEmail.Content = "Sending...";
+            lbResendEmail.Content = LangUtils.Translate("lblResendingCode");
 
             try
             {
@@ -138,7 +139,7 @@ namespace Cliente.UserControllers
 
                 if (emailSent)
                 {
-                    lbErrVerificactionCode.Content = "Verification email has been resent.";
+                    lbErrVerificactionCode.Content = LangUtils.Translate("lblCodeResent");
                 }
                 else
                 {
@@ -148,7 +149,7 @@ namespace Cliente.UserControllers
             catch (Exception ex)
             {
                
-                lbErrVerificactionCode.Content = "An error occurred while resending the email.";
+                lbErrVerificactionCode.Content = LangUtils.Translate("lblErrNoConection");
             }
             finally
             {
@@ -160,7 +161,7 @@ namespace Cliente.UserControllers
                     Dispatcher.Invoke(() =>
                     {
                         lbResendEmail.IsEnabled = true; 
-                        lbResendEmail.Content = "Click aqui para reenviar tu codigo";
+                        lbResendEmail.Content = LangUtils.Translate("lblClickHereResend");
                     });
                     timer.Stop();
                     timer.Dispose();

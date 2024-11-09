@@ -1,4 +1,5 @@
 ﻿using Cliente.ServiceReference;
+using Haley.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,13 +62,13 @@ namespace Cliente.Pantallas
 
                 if (isEmailTaken)
                 {
-                    lbErrEmail.Content = "Email is already taken.";
+                    lbErrEmail.Content = LangUtils.Translate("lblErrEmailExists");
                     return;
                 }
 
                 if (isUsernameTaken)
                 {
-                    lbErrUsername.Content = "Username is already taken.";
+                    lbErrUsername.Content = LangUtils.Translate("lblErrUsernameExists");
                     return;
                 }
 
@@ -91,7 +92,7 @@ namespace Cliente.Pantallas
 
             if (string.IsNullOrWhiteSpace(username))
             {
-                lbErrUsername.Content = "Username cannot be empty.";
+                lbErrUsername.Content = LangUtils.Translate("lblErrUsernameInvalid");
             }
             else if (!IsValidUsername(username))
             {
@@ -106,14 +107,14 @@ namespace Cliente.Pantallas
         private bool IsValidUsername(string username)
         {
             string pattern = @"^[a-zA-Z0-9_]+$";
-            return System.Text.RegularExpressions.Regex.IsMatch(username, pattern);
+            return Regex.IsMatch(username, pattern);
         }
 
         private void tbEmail_LostFocus(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(tbEmail.Text) || !IsValidEmail(tbEmail.Text))
             {
-                lbErrEmail.Content = "Invalid email format.";
+                lbErrEmail.Content = LangUtils.Translate("lblErrEmailInvalid");
             }
             else
             {
@@ -142,7 +143,7 @@ namespace Cliente.Pantallas
         {
             if (!IsValidPassword(pbPassword.Password))
             {
-                lbErrPassword.Content = "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
+                lbErrPassword.Content = LangUtils.Translate("lblErrWeakPassword");
             }
             else if (pbPassword.Password.Length < 8)
             {
@@ -175,7 +176,7 @@ namespace Cliente.Pantallas
         {
             if (pbConfirmPassword.Password != pbPassword.Password)
             {
-                lbErrPasswordConfirmation.Content = "Passwords do not match.";
+                lbErrPasswordConfirmation.Content = LangUtils.Translate("lblErrDiferentPassword");
             }
             else
             {

@@ -156,6 +156,7 @@
     <Compile Include="Converters\KickButtonVisibilityConverter.cs" />
     <Compile Include="Friend.cs" />
     <Compile Include="FriendRequest.cs" />
+    <Compile Include="GameLogic.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Pantallas\Friends.xaml.cs">
       <DependentUpon>Friends.xaml</DependentUpon>
@@ -231,6 +232,9 @@
       <DependentUpon>FriendRequests.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControllers\KickPlayerDialog.cs" />
+    <Compile Include="UserControllers\KickUserDialog.xaml.cs">
+      <DependentUpon>KickUserDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControllers\NotificationDialog.cs" />
     <Compile Include="UserControllers\Recover\RecoverCodeVerification.xaml.cs">
       <DependentUpon>RecoverCodeVerification.xaml</DependentUpon>
@@ -350,6 +354,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControllers\FriendsList\FriendRequests.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControllers\KickUserDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
