@@ -26,6 +26,7 @@
     <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="403b4ed5-240c-4384-817e-e8b03d3ddbdd" SourceId="1" SourceUrl="net.tcp://localhost:8000/ServiceImplementation/mex" />
     <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="55971916-2410-4574-8234-60d36d9d7d90" SourceId="1" SourceUrl="net.tcp://localhost:8000/ServiceImplementation/mex" />
     <MetadataFile FileName="BevososService.DTOs.xsd" MetadataType="Schema" ID="94891108-2390-4313-a3b9-87294a47818b" SourceId="1" SourceUrl="net.tcp://localhost:8000/ServiceImplementation/mex" />
+    <MetadataFile FileName="System.Collections.Generic.xsd" MetadataType="Schema" ID="02f3d8e5-cf28-46e6-93a9-88a6bf99d542" SourceId="1" SourceUrl="net.tcp://localhost:8000/ServiceImplementation/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

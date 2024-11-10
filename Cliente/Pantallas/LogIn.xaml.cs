@@ -20,6 +20,7 @@ using System.Windows.Shapes;
 using Path = System.IO.Path;
 using Cliente.ServiceReference;
 using static MaterialDesignThemes.Wpf.Theme;
+using Cliente.GameUserControllers;
 
 namespace Cliente.Pantallas
 {
@@ -44,7 +45,7 @@ namespace Cliente.Pantallas
 
         private void btPlayAsGuest_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void btLogIn_Click(object sender, RoutedEventArgs e)

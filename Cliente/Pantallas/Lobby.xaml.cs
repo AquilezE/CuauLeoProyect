@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using Haley.Utils;
 using System.ComponentModel;
+using Cliente.GameUserControllers;
 
 namespace Cliente.Pantallas
 {
@@ -91,6 +92,7 @@ namespace Cliente.Pantallas
             _servicio.SendMessage(_lobbyId, User.Instance.ID, message);
             tbMessage.Text = string.Empty;
             lbMessageError.Content = string.Empty;
+
         }
 
         private bool IsValidMessage(string message)
@@ -112,7 +114,13 @@ namespace Cliente.Pantallas
 
         private void btStartGame_Click(object sender, RoutedEventArgs e)
         {
+            if (IsLeader)
+            {
 
+                //Needa shit ton of validation i'm afraid
+                _servicio.StartGame(_lobbyId);
+
+            }
         }
 
         private void UserLobby_Loaded(object sender, RoutedEventArgs e)
@@ -122,7 +130,6 @@ namespace Cliente.Pantallas
                 userLobbyControl.KickRequested += OnKickRequested;
             }
         }
-
 
         private void OnKickRequested(object sender, User userToKick)
         {
@@ -145,8 +152,6 @@ namespace Cliente.Pantallas
                 }
             }
         }
-
-
 
         public bool LeaveLobby()
         {
@@ -195,8 +200,6 @@ namespace Cliente.Pantallas
             notification.ShowErrorNotification($"You were kicked from the lobby: {reason}");
 
         }
-
-
 
         public void OnLeaderChanged(int lobbyId, int newLeaderId)
         {
@@ -282,5 +285,27 @@ namespace Cliente.Pantallas
             return null;
         }
 
+
+
+        public void GameStarted(int gameId)
+        {
+            GameLogic.Instance.GameId = gameId;
+
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            GameBoard gameBoard = new GameBoard();
+            mainWindow.NavigateToView(gameBoard);
+
+        }
+
+        private void btInviteFriend_Click(object sender, RoutedEventArgs e)
+        {
+            if (!IsLeader)
+            {
+                return;
+            }
+            InviteFriends inviteFriends = new InviteFriends(_lobbyId);
+            inviteFriends.ShowDialog();
+
+        }
     }
 }

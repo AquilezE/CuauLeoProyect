@@ -28,9 +28,30 @@ namespace Cliente
             InitializeComponent();
             NavigateToView(new LogIn());
         }
+
+        public void NavigateToView(UserControl control, bool isFullscreen)
+        {
+            if (isFullscreen)
+            {
+                MainContentControl.Content = control;
+                this.WindowState = WindowState.Maximized;
+                this.WindowStyle = WindowStyle.None;
+                Width= SystemParameters.PrimaryScreenWidth;
+                Height = SystemParameters.PrimaryScreenHeight;
+
+                this.ResizeMode = ResizeMode.NoResize;
+
+
+
+            }
+
+        }
+
         public void NavigateToView(UserControl control, double ? newWidth = null, double ? newHeight = null)
         {
             MainContentControl.Content = control;
+
+
             if (newWidth != null && newHeight != null)
             {
                 this.Height = newHeight.Value;

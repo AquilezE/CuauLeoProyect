@@ -146,6 +146,13 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="StartGame">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="lobbyId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="OnNewLobbyCreated">
     <xs:complexType>
       <xs:sequence>
@@ -200,6 +207,18 @@
         <xs:element minOccurs="0" name="lobbyId" type="xs:int" />
         <xs:element minOccurs="0" name="reason" nillable="true" type="xs:string" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GameStarted">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="lobbyId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GameStartedResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="IsLobbyOpen">
@@ -472,6 +491,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="InviteFriendToLobby">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inviterName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+        <xs:element minOccurs="0" name="lobbyId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InviteFriendToLobbyResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="OnFriendOnline">
     <xs:complexType>
       <xs:sequence>
@@ -505,6 +538,42 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="friendId" type="xs:int" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NotifyGameInvited">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inviterName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="lobbyId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JoinGame">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="matchCode" type="xs:int" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="userDto" nillable="true" type="q12:UserDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DrawCard">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="matchCode" type="xs:int" />
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReceiveGameState">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="gameState" nillable="true" type="q13:GameStateDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReceiveGameStateResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>
