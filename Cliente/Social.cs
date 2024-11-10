@@ -118,6 +118,8 @@ namespace Cliente
             var newFriendRequest = new FriendRequest(friendRequestDto);
             FriendRequests.Add(newFriendRequest);
             NotificationDialog notification = new NotificationDialog();
+
+            //FALTA INTERNACIONALIZAR
             notification.ShowInfoNotification("The user "+ friendRequestDto.SenderName +" sent you a friend request!");
         }
 
@@ -127,7 +129,17 @@ namespace Cliente
             FriendList.Add(newFriend);
             FriendRequests.Remove(FriendRequests.FirstOrDefault(f => f.SenderId == friendDto.FriendId));
             NotificationDialog notification = new NotificationDialog();
+
+            //FALTA INTERNACIONALIZAR
             notification.ShowSuccessNotification("You are now friends with " + friendDto.FriendName);
+        }
+
+        public void NotifyGameInvited(string inviterName, int lobbyId)
+        {
+            NotificationDialog notification = new NotificationDialog();
+
+            //FALTA INTERNACIONALIZAR
+            notification.ShowInfoNotification(inviterName + " invited you to a game! Lobby code: " + lobbyId);
         }
 
         public void OnFriendshipDeleted(int userId)

@@ -157,6 +157,9 @@
     <Compile Include="Friend.cs" />
     <Compile Include="FriendRequest.cs" />
     <Compile Include="GameLogic.cs" />
+    <Compile Include="GameUserControllers\GameBoard.xaml.cs">
+      <DependentUpon>GameBoard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Message.cs" />
     <Compile Include="Pantallas\Friends.xaml.cs">
       <DependentUpon>Friends.xaml</DependentUpon>
@@ -231,6 +234,12 @@
     <Compile Include="UserControllers\FriendsList\FriendRequests.xaml.cs">
       <DependentUpon>FriendRequests.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControllers\FriendToInvite.xaml.cs">
+      <DependentUpon>FriendToInvite.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControllers\InviteFriends.xaml.cs">
+      <DependentUpon>InviteFriends.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControllers\KickPlayerDialog.cs" />
     <Compile Include="UserControllers\KickUserDialog.xaml.cs">
       <DependentUpon>KickUserDialog.xaml</DependentUpon>
@@ -265,6 +274,10 @@
       <DependentUpon>UserLobby.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserFound.cs" />
+    <Page Include="GameUserControllers\GameBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -354,6 +367,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControllers\FriendsList\FriendRequests.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControllers\FriendToInvite.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControllers\InviteFriends.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -476,6 +497,9 @@
     <None Include="Connected Services\ServiceReference\service1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceReference\System.Collections.Generic.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -544,7 +568,9 @@
   <ItemGroup>
     <Resource Include="Images\pfp4.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\GameImages\GameBoard.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

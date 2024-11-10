@@ -17,5 +17,6 @@ namespace Cliente
         {
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("es-ES");
         }
+
     }
 }

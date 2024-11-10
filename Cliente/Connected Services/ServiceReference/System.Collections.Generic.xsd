@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/System.Collections.Generic" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/BevososService.DTOs" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfKeyValuePairOfintPlayerStateDTOc2z18OO1">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValuePairOfintPlayerStateDTOc2z18OO1" type="tns:KeyValuePairOfintPlayerStateDTOc2z18OO1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValuePairOfintPlayerStateDTOc2z18OO1" nillable="true" type="tns:ArrayOfKeyValuePairOfintPlayerStateDTOc2z18OO1" />
+  <xs:complexType name="KeyValuePairOfintPlayerStateDTOc2z18OO1">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="KeyValuePairOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="int" Namespace="http://www.w3.org/2001/XMLSchema">
+          </GenericParameter>
+          <GenericParameter Name="PlayerStateDTO" Namespace="http://schemas.datacontract.org/2004/07/BevososService.DTOs">
+          </GenericParameter>
+        </GenericType>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="key" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/BevososService.DTOs" name="value" nillable="true" type="q1:PlayerStateDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="KeyValuePairOfintPlayerStateDTOc2z18OO1" nillable="true" type="tns:KeyValuePairOfintPlayerStateDTOc2z18OO1" />
+</xs:schema>
