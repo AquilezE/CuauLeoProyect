@@ -293,7 +293,7 @@ namespace Cliente.Pantallas
 
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
             GameBoard gameBoard = new GameBoard();
-            mainWindow.NavigateToView(gameBoard);
+            mainWindow.NavigateToView(gameBoard, true);
 
         }
 

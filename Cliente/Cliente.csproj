@@ -138,6 +138,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Blocked.cs" />
+    <Compile Include="Card.cs" />
     <Compile Include="Connected Services\LobbyService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -157,6 +158,12 @@
     <Compile Include="Friend.cs" />
     <Compile Include="FriendRequest.cs" />
     <Compile Include="GameLogic.cs" />
+    <Compile Include="GameUserControllers\Card.xaml.cs">
+      <DependentUpon>Card.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameUserControllers\CardsViewer.xaml.cs">
+      <DependentUpon>CardsViewer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GameUserControllers\GameBoard.xaml.cs">
       <DependentUpon>GameBoard.xaml</DependentUpon>
     </Compile>
@@ -274,6 +281,14 @@
       <DependentUpon>UserLobby.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserFound.cs" />
+    <Page Include="GameUserControllers\Card.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameUserControllers\CardsViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GameUserControllers\GameBoard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -570,6 +585,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\GameImages\GameBoard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Cards\Card1.png" />
+    <Resource Include="Cards\Card5.png" />
+    <Resource Include="Cards\Card2.png" />
+    <Resource Include="Cards\Card3.png" />
+    <Resource Include="Cards\Card4.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />

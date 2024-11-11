@@ -116,11 +116,11 @@
   <wsdl:message name="ILobbyManager_JoinLobby_InputMessage">
     <wsdl:part name="parameters" element="tns:JoinLobby" />
   </wsdl:message>
-  <wsdl:message name="ILobbyManager_SendMessage_InputMessage">
-    <wsdl:part name="parameters" element="tns:SendMessage" />
-  </wsdl:message>
   <wsdl:message name="ILobbyManager_LeaveLobby_InputMessage">
     <wsdl:part name="parameters" element="tns:LeaveLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_SendMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMessage" />
   </wsdl:message>
   <wsdl:message name="ILobbyManager_KickUser_InputMessage">
     <wsdl:part name="parameters" element="tns:KickUser" />
@@ -131,29 +131,26 @@
   <wsdl:message name="ILobbyManager_OnNewLobbyCreated_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnNewLobbyCreated" />
   </wsdl:message>
-  <wsdl:message name="ILobbyManager_OnJoinLobby_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:OnJoinLobby" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyManager_OnLeaveLobby_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:OnLeaveLobby" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyManager_OnSendMessage_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:OnSendMessage" />
-  </wsdl:message>
   <wsdl:message name="ILobbyManager_OnLobbyUsersUpdate_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnLobbyUsersUpdate" />
   </wsdl:message>
   <wsdl:message name="ILobbyManager_OnLeaderChanged_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnLeaderChanged" />
   </wsdl:message>
+  <wsdl:message name="ILobbyManager_OnJoinLobby_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnJoinLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_OnLeaveLobby_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnLeaveLobby" />
+  </wsdl:message>
   <wsdl:message name="ILobbyManager_OnKicked_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnKicked" />
   </wsdl:message>
+  <wsdl:message name="ILobbyManager_OnSendMessage_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnSendMessage" />
+  </wsdl:message>
   <wsdl:message name="ILobbyManager_GameStarted_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GameStarted" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyManager_GameStarted_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:GameStartedResponse" />
   </wsdl:message>
   <wsdl:message name="ILobbyChecker_IsLobbyOpen_InputMessage">
     <wsdl:part name="parameters" element="tns:IsLobbyOpen" />
@@ -176,26 +173,14 @@
   <wsdl:message name="IProfileManager_OnProfileUpdate_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnProfileUpdate" />
   </wsdl:message>
-  <wsdl:message name="IProfileManager_OnProfileUpdate_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:OnProfileUpdateResponse" />
-  </wsdl:message>
   <wsdl:message name="IProfileManager_OnPasswordChange_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnPasswordChange" />
-  </wsdl:message>
-  <wsdl:message name="IProfileManager_OnPasswordChange_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:OnPasswordChangeResponse" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_Connect_InputMessage">
     <wsdl:part name="parameters" element="tns:Connect" />
   </wsdl:message>
-  <wsdl:message name="ISocialManager_Connect_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ConnectResponse" />
-  </wsdl:message>
   <wsdl:message name="ISocialManager_Disconnect_InputMessage">
     <wsdl:part name="parameters" element="tns:Disconnect" />
-  </wsdl:message>
-  <wsdl:message name="ISocialManager_Disconnect_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DisconnectResponse" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_IsConnected_InputMessage">
     <wsdl:part name="parameters" element="tns:IsConnected" />
@@ -211,9 +196,6 @@
   </wsdl:message>
   <wsdl:message name="ISocialManager_AcceptFriendRequest_InputMessage">
     <wsdl:part name="parameters" element="tns:AcceptFriendRequest" />
-  </wsdl:message>
-  <wsdl:message name="ISocialManager_AcceptFriendRequest_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AcceptFriendRequestResponse" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_DeclineFriendRequest_InputMessage">
     <wsdl:part name="parameters" element="tns:DeclineFriendRequest" />
@@ -272,9 +254,6 @@
   <wsdl:message name="ISocialManager_InviteFriendToLobby_InputMessage">
     <wsdl:part name="parameters" element="tns:InviteFriendToLobby" />
   </wsdl:message>
-  <wsdl:message name="ISocialManager_InviteFriendToLobby_OutputMessage">
-    <wsdl:part name="parameters" element="tns:InviteFriendToLobbyResponse" />
-  </wsdl:message>
   <wsdl:message name="ISocialManager_OnFriendOnline_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnFriendOnline" />
   </wsdl:message>
@@ -284,11 +263,11 @@
   <wsdl:message name="ISocialManager_OnNewFriend_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnNewFriend" />
   </wsdl:message>
-  <wsdl:message name="ISocialManager_OnNewFriendRequest_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:OnNewFriendRequest" />
-  </wsdl:message>
   <wsdl:message name="ISocialManager_OnFriendshipDeleted_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnFriendshipDeleted" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_OnNewFriendRequest_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnNewFriendRequest" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_NotifyGameInvited_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:NotifyGameInvited" />
@@ -301,9 +280,6 @@
   </wsdl:message>
   <wsdl:message name="IGameManager_ReceiveGameState_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveGameState" />
-  </wsdl:message>
-  <wsdl:message name="IGameManager_ReceiveGameState_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ReceiveGameStateResponse" />
   </wsdl:message>
   <wsdl:portType name="IUsersManager">
     <wsdl:operation name="IsUsernameTaken">
@@ -342,11 +318,11 @@
     <wsdl:operation name="JoinLobby">
       <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/JoinLobby" message="tns:ILobbyManager_JoinLobby_InputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="SendMessage">
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/SendMessage" message="tns:ILobbyManager_SendMessage_InputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="LeaveLobby">
       <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/LeaveLobby" message="tns:ILobbyManager_LeaveLobby_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/SendMessage" message="tns:ILobbyManager_SendMessage_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="KickUser">
       <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/KickUser" message="tns:ILobbyManager_KickUser_InputMessage" />
@@ -357,27 +333,26 @@
     <wsdl:operation name="OnNewLobbyCreated">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnNewLobbyCreated" message="tns:ILobbyManager_OnNewLobbyCreated_OutputCallbackMessage" />
     </wsdl:operation>
-    <wsdl:operation name="OnJoinLobby">
-      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnJoinLobby" message="tns:ILobbyManager_OnJoinLobby_OutputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="OnLeaveLobby">
-      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnLeaveLobby" message="tns:ILobbyManager_OnLeaveLobby_OutputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="OnSendMessage">
-      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnSendMessage" message="tns:ILobbyManager_OnSendMessage_OutputCallbackMessage" />
-    </wsdl:operation>
     <wsdl:operation name="OnLobbyUsersUpdate">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnLobbyUsersUpdate" message="tns:ILobbyManager_OnLobbyUsersUpdate_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="OnLeaderChanged">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnLeaderChanged" message="tns:ILobbyManager_OnLeaderChanged_OutputCallbackMessage" />
     </wsdl:operation>
+    <wsdl:operation name="OnJoinLobby">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnJoinLobby" message="tns:ILobbyManager_OnJoinLobby_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnLeaveLobby">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnLeaveLobby" message="tns:ILobbyManager_OnLeaveLobby_OutputCallbackMessage" />
+    </wsdl:operation>
     <wsdl:operation name="OnKicked">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnKicked" message="tns:ILobbyManager_OnKicked_OutputCallbackMessage" />
     </wsdl:operation>
+    <wsdl:operation name="OnSendMessage">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnSendMessage" message="tns:ILobbyManager_OnSendMessage_OutputCallbackMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GameStarted">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/GameStarted" message="tns:ILobbyManager_GameStarted_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/GameStartedResponse" message="tns:ILobbyManager_GameStarted_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ILobbyChecker">
@@ -399,21 +374,17 @@
     </wsdl:operation>
     <wsdl:operation name="OnProfileUpdate">
       <wsdl:output wsaw:Action="http://tempuri.org/IProfileManager/OnProfileUpdate" message="tns:IProfileManager_OnProfileUpdate_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IProfileManager/OnProfileUpdateResponse" message="tns:IProfileManager_OnProfileUpdate_InputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="OnPasswordChange">
       <wsdl:output wsaw:Action="http://tempuri.org/IProfileManager/OnPasswordChange" message="tns:IProfileManager_OnPasswordChange_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IProfileManager/OnPasswordChangeResponse" message="tns:IProfileManager_OnPasswordChange_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ISocialManager">
     <wsdl:operation name="Connect">
       <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/Connect" message="tns:ISocialManager_Connect_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/ConnectResponse" message="tns:ISocialManager_Connect_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Disconnect">
       <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/Disconnect" message="tns:ISocialManager_Disconnect_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/DisconnectResponse" message="tns:ISocialManager_Disconnect_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="IsConnected">
       <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/IsConnected" message="tns:ISocialManager_IsConnected_InputMessage" />
@@ -425,7 +396,6 @@
     </wsdl:operation>
     <wsdl:operation name="AcceptFriendRequest">
       <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/AcceptFriendRequest" message="tns:ISocialManager_AcceptFriendRequest_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/AcceptFriendRequestResponse" message="tns:ISocialManager_AcceptFriendRequest_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeclineFriendRequest">
       <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/DeclineFriendRequest" message="tns:ISocialManager_DeclineFriendRequest_InputMessage" />
@@ -465,7 +435,6 @@
     </wsdl:operation>
     <wsdl:operation name="InviteFriendToLobby">
       <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/InviteFriendToLobby" message="tns:ISocialManager_InviteFriendToLobby_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/InviteFriendToLobbyResponse" message="tns:ISocialManager_InviteFriendToLobby_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="OnFriendOnline">
       <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/OnFriendOnline" message="tns:ISocialManager_OnFriendOnline_OutputCallbackMessage" />
@@ -476,11 +445,11 @@
     <wsdl:operation name="OnNewFriend">
       <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/OnNewFriend" message="tns:ISocialManager_OnNewFriend_OutputCallbackMessage" />
     </wsdl:operation>
-    <wsdl:operation name="OnNewFriendRequest">
-      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/OnNewFriendRequest" message="tns:ISocialManager_OnNewFriendRequest_OutputCallbackMessage" />
-    </wsdl:operation>
     <wsdl:operation name="OnFriendshipDeleted">
       <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/OnFriendshipDeleted" message="tns:ISocialManager_OnFriendshipDeleted_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnNewFriendRequest">
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/OnNewFriendRequest" message="tns:ISocialManager_OnNewFriendRequest_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="NotifyGameInvited">
       <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/NotifyGameInvited" message="tns:ISocialManager_NotifyGameInvited_OutputCallbackMessage" />
@@ -495,7 +464,6 @@
     </wsdl:operation>
     <wsdl:operation name="ReceiveGameState">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/ReceiveGameState" message="tns:IGameManager_ReceiveGameState_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/ReceiveGameStateResponse" message="tns:IGameManager_ReceiveGameState_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUsersManager" type="tns:IUsersManager">
@@ -582,14 +550,14 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="SendMessage">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/SendMessage" style="document" />
+    <wsdl:operation name="LeaveLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/LeaveLobby" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="LeaveLobby">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/LeaveLobby" style="document" />
+    <wsdl:operation name="SendMessage">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/SendMessage" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -612,24 +580,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="OnJoinLobby">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnJoinLobby" style="document" />
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="OnLeaveLobby">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnLeaveLobby" style="document" />
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="OnSendMessage">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnSendMessage" style="document" />
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="OnLobbyUsersUpdate">
       <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnLobbyUsersUpdate" style="document" />
       <wsdl:output>
@@ -642,17 +592,32 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="OnJoinLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnJoinLobby" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnLeaveLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnLeaveLobby" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="OnKicked">
       <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnKicked" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="OnSendMessage">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnSendMessage" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GameStarted">
       <soap12:operation soapAction="http://tempuri.org/ILobbyManager/GameStarted" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -699,18 +664,12 @@
     </wsdl:operation>
     <wsdl:operation name="OnProfileUpdate">
       <soap12:operation soapAction="http://tempuri.org/IProfileManager/OnProfileUpdate" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="OnPasswordChange">
       <soap12:operation soapAction="http://tempuri.org/IProfileManager/OnPasswordChange" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -725,18 +684,12 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="Disconnect">
       <soap12:operation soapAction="http://tempuri.org/ISocialManager/Disconnect" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="IsConnected">
       <soap12:operation soapAction="http://tempuri.org/ISocialManager/IsConnected" style="document" />
@@ -761,9 +714,6 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="DeclineFriendRequest">
       <soap12:operation soapAction="http://tempuri.org/ISocialManager/DeclineFriendRequest" style="document" />
@@ -851,9 +801,6 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="OnFriendOnline">
       <soap12:operation soapAction="http://tempuri.org/ISocialManager/OnFriendOnline" style="document" />
@@ -873,14 +820,14 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="OnNewFriendRequest">
-      <soap12:operation soapAction="http://tempuri.org/ISocialManager/OnNewFriendRequest" style="document" />
+    <wsdl:operation name="OnFriendshipDeleted">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/OnFriendshipDeleted" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="OnFriendshipDeleted">
-      <soap12:operation soapAction="http://tempuri.org/ISocialManager/OnFriendshipDeleted" style="document" />
+    <wsdl:operation name="OnNewFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/OnNewFriendRequest" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -910,9 +857,6 @@
     </wsdl:operation>
     <wsdl:operation name="ReceiveGameState">
       <soap12:operation soapAction="http://tempuri.org/IGameManager/ReceiveGameState" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

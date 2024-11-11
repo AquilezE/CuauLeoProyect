@@ -30,6 +30,11 @@ namespace Cliente.GameUserControllers
             this.DataContext = GameLogic.Instance;
 
             this.Loaded += GameBoard_Loaded;
+
+            var cardsViewer = new CardsViewer();
+            extensiblePanelContentControl.Content = cardsViewer;
+
+            //var player = GameLogic.Instance.CurrentGameState.playerState[0].Value;
         }
 
         private void GameBoard_Loaded(object sender, RoutedEventArgs e)
@@ -56,15 +61,19 @@ namespace Cliente.GameUserControllers
             }
         }
 
-
-
-
-
-
         private void DrawThisFuckingCard(object sender, RoutedEventArgs e)
         {
             gameManagerClient.DrawCard(GameLogic.Instance.GameId, User.Instance.ID);
         }
 
+        private void imgPlayer1Monster_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void imgPlayer1Cards_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }
