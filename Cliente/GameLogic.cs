@@ -45,10 +45,15 @@ namespace Cliente
 
         public int GameId { get; set; }
 
+        public ObservableCollection<GameCard> Player1Hand { get; set; } = new ObservableCollection<GameCard>();
+        public ObservableCollection<GameCard> Player2Hand { get; set; } = new ObservableCollection<GameCard>();
+        public ObservableCollection<GameCard> Player3Hand { get; set; } = new ObservableCollection<GameCard>();
+        public ObservableCollection<GameCard> Player4Hand { get; set; } = new ObservableCollection<GameCard>();
+
         public ObservableCollection<CardDTO> BabyDeck { get; set; } = new ObservableCollection<CardDTO>();
         public ObservableCollection<CardDTO> Hand { get; set; } = new ObservableCollection<CardDTO>();
         public ObservableCollection<MonsterDTO> Monster { get; set; } = new ObservableCollection<MonsterDTO>();
-
+        public ObservableCollection<GameCard> CardListViewer { get; set; } = new ObservableCollection<GameCard>();
         private string _lastCardDrawn;
 
         public string LastCardDrawn
@@ -97,6 +102,49 @@ namespace Cliente
             }
         }
 
+        public void ConfigureAllPlayerHands()
+        {
+            if (GameLogic.Instance.CurrentGameState.playerState[0].Value != null)
+            {
+                var player2 = GameLogic.Instance.CurrentGameState.playerState[1].Value;
+                foreach (CardDTO card in player1.Hand)
+                {
+                    GameCard gameCard = new GameCard(card);
+                    Player1Hand.Add(gameCard);
+                }
+            }
+
+            
+            if ( GameLogic.Instance.CurrentGameState.playerState[1].Value != null)
+            {
+                var player2 = GameLogic.Instance.CurrentGameState.playerState[1].Value;
+                foreach (CardDTO card in player2.Hand)
+                {
+                    GameCard gameCard = new GameCard(card);
+                    Player2Hand.Add(gameCard);
+                }
+            }
+
+            if (GameLogic.Instance.CurrentGameState.playerState[2].Value != null)
+            {
+                var player3 = GameLogic.Instance.CurrentGameState.playerState[2].Value;
+                foreach (CardDTO card in player3.Hand)
+                {
+                    GameCard gameCard = new GameCard(card);
+                    Player3Hand.Add(gameCard);
+                }
+            }
+
+            if (GameLogic.Instance.CurrentGameState.playerState[3].Value != null)
+            {
+                var player4 = GameLogic.Instance.CurrentGameState.playerState[3].Value;
+                foreach (CardDTO card in player4.Hand)
+                {
+                    GameCard gameCard = new GameCard(card);
+                    Player4Hand.Add(gameCard);
+                }
+            }
+        }
 
         public void ReceiveGameState(GameStateDTO gameState)
         {
@@ -115,6 +163,18 @@ namespace Cliente
             }
 
             CurrentGameState = gameState;
+
+            Player1Hand = new ObservableCollection<GameCard>();
+            var player = GameLogic.Instance.CurrentGameState.playerState[0].Value;
+            foreach (CardDTO card in player.Hand)
+            {
+                GameCard gameCard = new GameCard(card);
+                Player1Hand.Add(gameCard);
+            }
+
+            ConfigureAllPlayerHands();
+            GameLogic.Instance.CardListViewer = Player1Hand;
+
         }
 
         private void UpdatePropertiesFromGameState(GameStateDTO gameState)

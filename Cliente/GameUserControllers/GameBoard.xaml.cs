@@ -1,6 +1,7 @@
 ﻿using Cliente.ServiceReference;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
@@ -22,6 +23,8 @@ namespace Cliente.GameUserControllers
     /// </summary>
     public partial class GameBoard : UserControl
     {
+        private List<int> playerMapping = new List<int>();
+
         public GameManagerClient gameManagerClient;
 
         public GameBoard()
@@ -34,7 +37,6 @@ namespace Cliente.GameUserControllers
             var cardsViewer = new CardsViewer();
             extensiblePanelContentControl.Content = cardsViewer;
 
-            //var player = GameLogic.Instance.CurrentGameState.playerState[0].Value;
         }
 
         private void GameBoard_Loaded(object sender, RoutedEventArgs e)
@@ -61,9 +63,22 @@ namespace Cliente.GameUserControllers
             }
         }
 
+        private void MapPlayers()
+        {
+            foreach(var player in GameLogic.Instance.CurrentGameState.playerState)
+            {
+                if (player.Value.User.UserId != User.Instance.ID)
+                {
+                    playerMapping.Add(player.Value.User.UserId);
+                }
+
+            }
+        }
+
         private void DrawThisFuckingCard(object sender, RoutedEventArgs e)
         {
             gameManagerClient.DrawCard(GameLogic.Instance.GameId, User.Instance.ID);
+            GameLogic.Instance.CardListViewer.Add(new GameCard("pack://application:,,,/Cards/Card2.jpg"));
         }
 
         private void imgPlayer1Monster_MouseDown(object sender, MouseButtonEventArgs e)

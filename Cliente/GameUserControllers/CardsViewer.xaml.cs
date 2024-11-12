@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -21,29 +22,11 @@ namespace Cliente.GameUserControllers
     /// </summary>
     public partial class CardsViewer : UserControl
     {
-        private ObservableCollection<Cliente.Card> _CardList;
         public CardsViewer()
         {
             InitializeComponent();
-            _CardList = new ObservableCollection<Cliente.Card>();
-            CardsListBox.ItemsSource = _CardList;
-            AddFirstCards();
-        }
-
-        public void AddFirstCards()
-        {
-            Cliente.Card carta1 = new Cliente.Card("pack://application:,,,/Cards/Card1.png");
-            Cliente.Card carta2 = new Cliente.Card("pack://application:,,,/Cards/Card2.png");
-            Cliente.Card carta3 = new Cliente.Card("pack://application:,,,/Cards/Card3.png");
-            Cliente.Card carta4 = new Cliente.Card("pack://application:,,,/Cards/Card4.png");
-            Cliente.Card carta5 = new Cliente.Card("pack://application:,,,/Cards/Card5.png");
-
-            _CardList.Add(carta1);
-            _CardList.Add(carta2);
-            _CardList.Add(carta3);
-            _CardList.Add(carta4);
-            _CardList.Add(carta5);
-
+            this.DataContext = GameLogic.Instance;
+            //AddFirstCards();
         }
 
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -64,5 +47,7 @@ namespace Cliente.GameUserControllers
                 e.Handled = true; // Prevent vertical scrolling
             }
         }
+
+
     }
 }
