@@ -138,7 +138,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Blocked.cs" />
-    <Compile Include="Card.cs" />
+    <Compile Include="GameCard.cs" />
     <Compile Include="Connected Services\LobbyService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -158,8 +158,8 @@
     <Compile Include="Friend.cs" />
     <Compile Include="FriendRequest.cs" />
     <Compile Include="GameLogic.cs" />
-    <Compile Include="GameUserControllers\Card.xaml.cs">
-      <DependentUpon>Card.xaml</DependentUpon>
+    <Compile Include="GameUserControllers\CardUserController.xaml.cs">
+      <DependentUpon>CardUserController.xaml</DependentUpon>
     </Compile>
     <Compile Include="GameUserControllers\CardsViewer.xaml.cs">
       <DependentUpon>CardsViewer.xaml</DependentUpon>
@@ -281,7 +281,7 @@
       <DependentUpon>UserLobby.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserFound.cs" />
-    <Page Include="GameUserControllers\Card.xaml">
+    <Page Include="GameUserControllers\CardUserController.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -588,10 +588,93 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Cards\Card1.png" />
-    <Resource Include="Cards\Card5.png" />
+    <Resource Include="Cards\Card10.png" />
+    <Resource Include="Cards\Card11.png" />
+    <Resource Include="Cards\Card12.png" />
+    <Resource Include="Cards\Card13.png" />
+    <Resource Include="Cards\Card14.png" />
+    <Resource Include="Cards\Card15.png" />
+    <Resource Include="Cards\Card16.png" />
+    <Resource Include="Cards\Card17.png" />
+    <Resource Include="Cards\Card18.png" />
+    <Resource Include="Cards\Card19.png" />
     <Resource Include="Cards\Card2.png" />
+    <Resource Include="Cards\Card20.png" />
+    <Resource Include="Cards\Card21.png" />
+    <Resource Include="Cards\Card22.png" />
+    <Resource Include="Cards\Card23.png" />
+    <Resource Include="Cards\Card24.png" />
+    <Resource Include="Cards\Card25.png" />
+    <Resource Include="Cards\Card26.png" />
+    <Resource Include="Cards\Card27.png" />
+    <Resource Include="Cards\Card28.png" />
+    <Resource Include="Cards\Card29.png" />
     <Resource Include="Cards\Card3.png" />
+    <Resource Include="Cards\Card30.png" />
+    <Resource Include="Cards\Card31.png" />
+    <Resource Include="Cards\Card32.png" />
+    <Resource Include="Cards\Card33.png" />
+    <Resource Include="Cards\Card34.png" />
+    <Resource Include="Cards\Card35.png" />
+    <Resource Include="Cards\Card36.png" />
+    <Resource Include="Cards\Card37.png" />
+    <Resource Include="Cards\Card38.png" />
+    <Resource Include="Cards\Card39.png" />
     <Resource Include="Cards\Card4.png" />
+    <Resource Include="Cards\Card40.png" />
+    <Resource Include="Cards\Card41.png" />
+    <Resource Include="Cards\Card42.png" />
+    <Resource Include="Cards\Card43.png" />
+    <Resource Include="Cards\Card44.png" />
+    <Resource Include="Cards\Card45.png" />
+    <Resource Include="Cards\Card46.png" />
+    <Resource Include="Cards\Card47.png" />
+    <Resource Include="Cards\Card48.png" />
+    <Resource Include="Cards\Card49.png" />
+    <Resource Include="Cards\Card5.png" />
+    <Resource Include="Cards\Card50.png" />
+    <Resource Include="Cards\Card51.png" />
+    <Resource Include="Cards\Card52.png" />
+    <Resource Include="Cards\Card53.png" />
+    <Resource Include="Cards\Card54.png" />
+    <Resource Include="Cards\Card55.png" />
+    <Resource Include="Cards\Card56.png" />
+    <Resource Include="Cards\Card57.png" />
+    <Resource Include="Cards\Card58.png" />
+    <Resource Include="Cards\Card59.png" />
+    <Resource Include="Cards\Card6.png" />
+    <Resource Include="Cards\Card60.png" />
+    <Resource Include="Cards\Card61.png" />
+    <Resource Include="Cards\Card62.png" />
+    <Resource Include="Cards\Card63.png" />
+    <Resource Include="Cards\Card64.png" />
+    <Resource Include="Cards\Card65.png" />
+    <Resource Include="Cards\Card66.png" />
+    <Resource Include="Cards\Card67.png" />
+    <Resource Include="Cards\Card68.png" />
+    <Resource Include="Cards\Card69.png" />
+    <Resource Include="Cards\Card7.png" />
+    <Resource Include="Cards\Card70.png" />
+    <Resource Include="Cards\Card71.png" />
+    <Resource Include="Cards\Card72.png" />
+    <Resource Include="Cards\Card73.png" />
+    <Resource Include="Cards\Card74.png" />
+    <Resource Include="Cards\Card75.png" />
+    <Resource Include="Cards\Card76.png" />
+    <Resource Include="Cards\Card77.png" />
+    <Resource Include="Cards\Card78.png" />
+    <Resource Include="Cards\Card79.png" />
+    <Resource Include="Cards\Card8.png" />
+    <Resource Include="Cards\Card80.png" />
+    <Resource Include="Cards\Card81.png" />
+    <Resource Include="Cards\Card82.png" />
+    <Resource Include="Cards\Card83.png" />
+    <Resource Include="Cards\Card84.png" />
+    <Resource Include="Cards\Card85.png" />
+    <Resource Include="Cards\Card86.png" />
+    <Resource Include="Cards\Card87.png" />
+    <Resource Include="Cards\Card88.png" />
+    <Resource Include="Cards\Card9.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />

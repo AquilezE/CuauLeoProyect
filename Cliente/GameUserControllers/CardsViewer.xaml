@@ -56,12 +56,12 @@
                       VerticalScrollBarVisibility="Disabled"
                       PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
             <!-- ItemsControl to display cards -->
-            <ItemsControl x:Name="CardsListBox" ItemsSource="{Binding _CardList}">
+            <ItemsControl x:Name="CardsListBox" ItemsSource="{Binding GameLogic.Instance.CardListViewer}">
                 <!-- Define the ItemTemplate -->
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <!-- Assuming 'Card' is a UserControl that represents a single card -->
-                        <local:Card />
+                        <local:CardUserController />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
                 <!-- Use a Horizontal StackPanel for layout -->

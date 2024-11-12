@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Cliente
 {
-    public class Card
+    public class GameCard
     {
         public string CardPath { get; set; }
 
-        public Card(string cardPath) 
+        public GameCard(string cardPath) 
         {
             CardPath = cardPath;
         }
 
-        public Card(CardDTO cardDto)
+        public GameCard(CardDTO cardDto)
         {
             CardPath = "pack://application:,,,/Cards/Card" + cardDto.CardId + ".png";
         }

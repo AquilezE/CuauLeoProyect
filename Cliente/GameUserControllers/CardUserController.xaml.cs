@@ -18,9 +18,9 @@ namespace Cliente.GameUserControllers
     /// <summary>
     /// Lógica de interacción para Card.xaml
     /// </summary>
-    public partial class Card : UserControl
+    public partial class CardUserController : UserControl
     {
-        public Card()
+        public CardUserController()
         {
             InitializeComponent();
         }
