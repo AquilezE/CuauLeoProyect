@@ -65,7 +65,7 @@
       <xsd:import namespace="http://tempuri.org/" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/BevososService.DTOs" />
-      <xsd:import namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUsersManager_IsUsernameTaken_InputMessage">
@@ -278,6 +278,9 @@
   <wsdl:message name="IGameManager_DrawCard_InputMessage">
     <wsdl:part name="parameters" element="tns:DrawCard" />
   </wsdl:message>
+  <wsdl:message name="IGameManager_PlayCard_InputMessage">
+    <wsdl:part name="parameters" element="tns:PlayCard" />
+  </wsdl:message>
   <wsdl:message name="IGameManager_ReceiveGameState_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveGameState" />
   </wsdl:message>
@@ -461,6 +464,9 @@
     </wsdl:operation>
     <wsdl:operation name="DrawCard">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/DrawCard" message="tns:IGameManager_DrawCard_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PlayCard">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/PlayCard" message="tns:IGameManager_PlayCard_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ReceiveGameState">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/ReceiveGameState" message="tns:IGameManager_ReceiveGameState_OutputCallbackMessage" />
@@ -851,6 +857,12 @@
     </wsdl:operation>
     <wsdl:operation name="DrawCard">
       <soap12:operation soapAction="http://tempuri.org/IGameManager/DrawCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="PlayCard">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/PlayCard" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -1,0 +1,10 @@
+﻿<Window x:Class="Cliente.UserControllers.VideoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Video Playback" Height="450" Width="800">
+    <Grid>
+        <MediaElement Name="videoPlayer" Source="C:\Users\52228\source\repos\CuauLeoProyect\Cliente\Images\WasPops.mp4"
+                      LoadedBehavior="Manual" UnloadedBehavior="Manual"
+                      Stretch="Uniform" MediaEnded="VideoPlayer_MediaEnded" />
+    </Grid>
+</Window>

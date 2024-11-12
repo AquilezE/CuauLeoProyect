@@ -23,7 +23,6 @@ namespace Cliente.GameUserControllers
     /// </summary>
     public partial class GameBoard : UserControl
     {
-        private List<int> playerMapping = new List<int>();
 
         public GameManagerClient gameManagerClient;
 
@@ -36,6 +35,8 @@ namespace Cliente.GameUserControllers
 
             var cardsViewer = new CardsViewer();
             extensiblePanelContentControl.Content = cardsViewer;
+
+            this.AddHandler(CardUserController.CardClickedEvent, new RoutedEventHandler(Card_Clicked));
 
         }
 
@@ -63,30 +64,47 @@ namespace Cliente.GameUserControllers
             }
         }
 
-        private void MapPlayers()
+        private void Card_Clicked(object sender, RoutedEventArgs e)
         {
-            foreach(var player in GameLogic.Instance.CurrentGameState.playerState)
+            var cardControl = e.OriginalSource as CardUserController;
+            if (cardControl != null)
             {
-                if (player.Value.User.UserId != User.Instance.ID)
-                {
-                    playerMapping.Add(player.Value.User.UserId);
-                }
+                var cardData = cardControl.DataContext;
+                
+                var card = cardData as GameCard;
 
+                gameManagerClient.PlayCard(User.Instance.ID,GameLogic.Instance.GameId,card.CardId);
+
+                Console.WriteLine($"Card clicked: {card.CardId}");
             }
         }
 
-        private void DrawThisFuckingCard(object sender, RoutedEventArgs e)
+        private void DrawCard(object sender, RoutedEventArgs e)
         {
             gameManagerClient.DrawCard(GameLogic.Instance.GameId, User.Instance.ID);
-            GameLogic.Instance.CardListViewer.Add(new GameCard("pack://application:,,,/Cards/Card2.jpg"));
         }
 
         private void imgPlayer1Monster_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            
         }
 
         private void imgPlayer1Cards_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void imgBabieLando_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void imgBabieWata_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void imgBabieAir_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
         }

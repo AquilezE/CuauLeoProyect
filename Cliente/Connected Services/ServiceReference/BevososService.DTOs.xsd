@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BevososService.DTOs" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BevososService.DTOs" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:complexType name="UserDto">
     <xs:sequence>
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
@@ -68,7 +68,7 @@
       <xs:element minOccurs="0" name="BabyDeck" nillable="true" type="tns:ArrayOfCardDTO" />
       <xs:element minOccurs="0" name="CurrentPlayerId" type="xs:int" />
       <xs:element minOccurs="0" name="GameStateId" type="xs:int" />
-      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="playerState" nillable="true" type="q1:ArrayOfKeyValuePairOfintPlayerStateDTOc2z18OO1" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="playerState" nillable="true" type="q1:ArrayOfKeyValueOfintPlayerStateDTOc2z18OO1" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="GameStateDTO" nillable="true" type="tns:GameStateDTO" />

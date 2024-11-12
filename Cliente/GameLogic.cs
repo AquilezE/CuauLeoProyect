@@ -15,14 +15,17 @@ namespace Cliente
     public class GameLogic : INotifyPropertyChanged, IGameManagerCallback
     {
         public event PropertyChangedEventHandler PropertyChanged;
-
         protected void OnPropertyChanged(string propertyName) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         private static GameLogic _instance;
+
+        public List<int> playerMapping = new List<int>();
+
+
+
         private static readonly object _lock = new object();
 
-        // Singleton Instance
         public static GameLogic Instance
         {
             get
@@ -41,19 +44,23 @@ namespace Cliente
             }
         }
 
-        private GameStateDTO _currentGameState;
 
+
+
+        private GameStateDTO _currentGameState;
         public int GameId { get; set; }
 
-        public ObservableCollection<GameCard> Player1Hand { get; set; } = new ObservableCollection<GameCard>();
-        public ObservableCollection<GameCard> Player2Hand { get; set; } = new ObservableCollection<GameCard>();
-        public ObservableCollection<GameCard> Player3Hand { get; set; } = new ObservableCollection<GameCard>();
-        public ObservableCollection<GameCard> Player4Hand { get; set; } = new ObservableCollection<GameCard>();
+        //public ObservableCollection<GameCard> Player1Hand { get; set; } = new ObservableCollection<GameCard>();
+        //public ObservableCollection<GameCard> Player2Hand { get; set; } = new ObservableCollection<GameCard>();
+        //public ObservableCollection<GameCard> Player3Hand { get; set; } = new ObservableCollection<GameCard>();
+        //public ObservableCollection<GameCard> Player4Hand { get; set; } = new ObservableCollection<GameCard>();
 
-        public ObservableCollection<CardDTO> BabyDeck { get; set; } = new ObservableCollection<CardDTO>();
+        public ObservableCollection<GameCard> BabyDeck { get; set; } = new ObservableCollection<GameCard>();
         public ObservableCollection<CardDTO> Hand { get; set; } = new ObservableCollection<CardDTO>();
         public ObservableCollection<MonsterDTO> Monster { get; set; } = new ObservableCollection<MonsterDTO>();
         public ObservableCollection<GameCard> CardListViewer { get; set; } = new ObservableCollection<GameCard>();
+
+
         private string _lastCardDrawn;
 
         public string LastCardDrawn
@@ -90,7 +97,7 @@ namespace Cliente
                 OnPropertyChanged(nameof(ActionsRemaining));
             }
         }
-       
+
         public GameStateDTO CurrentGameState
         {
             get => _currentGameState;
@@ -102,49 +109,50 @@ namespace Cliente
             }
         }
 
-        public void ConfigureAllPlayerHands()
-        {
-            if (GameLogic.Instance.CurrentGameState.playerState[0].Value != null)
-            {
-                var player2 = GameLogic.Instance.CurrentGameState.playerState[1].Value;
-                foreach (CardDTO card in player1.Hand)
-                {
-                    GameCard gameCard = new GameCard(card);
-                    Player1Hand.Add(gameCard);
-                }
-            }
+        //public void ConfigureAllPlayerHands()
+        //{
 
-            
-            if ( GameLogic.Instance.CurrentGameState.playerState[1].Value != null)
-            {
-                var player2 = GameLogic.Instance.CurrentGameState.playerState[1].Value;
-                foreach (CardDTO card in player2.Hand)
-                {
-                    GameCard gameCard = new GameCard(card);
-                    Player2Hand.Add(gameCard);
-                }
-            }
+        //    Player1Hand.Clear();
+        //    Player2Hand.Clear();
+        //    Player3Hand.Clear();
+        //    Player4Hand.Clear();
 
-            if (GameLogic.Instance.CurrentGameState.playerState[2].Value != null)
-            {
-                var player3 = GameLogic.Instance.CurrentGameState.playerState[2].Value;
-                foreach (CardDTO card in player3.Hand)
-                {
-                    GameCard gameCard = new GameCard(card);
-                    Player3Hand.Add(gameCard);
-                }
-            }
+        //    foreach (var player in CurrentGameState.playerState)
+        //    {
+        //        var hand = player.Value.Hand;
+        //        var playerHand = new ObservableCollection<GameCard>();
 
-            if (GameLogic.Instance.CurrentGameState.playerState[3].Value != null)
-            {
-                var player4 = GameLogic.Instance.CurrentGameState.playerState[3].Value;
-                foreach (CardDTO card in player4.Hand)
-                {
-                    GameCard gameCard = new GameCard(card);
-                    Player4Hand.Add(gameCard);
-                }
-            }
-        }
+        //        foreach (var card in hand)
+        //        {
+        //            playerHand.Add(new GameCard(card));
+        //        }
+
+        //        if (player.Key == User.Instance.ID)
+        //        {
+        //            Hand = playerHand;
+        //        }
+        //        else if (playerMapping.Count > 0 && player.Key == playerMapping[0])
+        //        {
+        //            Player1Hand = playerHand;
+        //        }
+        //        else if (playerMapping.Count > 1 && player.Key == playerMapping[1])
+        //        {
+        //            Player2Hand = playerHand;
+        //        }
+        //        else if (playerMapping.Count > 2 && player.Key == playerMapping[2])
+        //        {
+        //            Player3Hand = playerHand;
+        //        }
+        //        else if (playerMapping.Count > 3 && player.Key == playerMapping[3])
+        //        {
+        //            Player4Hand = playerHand;
+        //        }
+        //    }
+
+
+
+
+
 
         public void ReceiveGameState(GameStateDTO gameState)
         {
@@ -164,18 +172,25 @@ namespace Cliente
 
             CurrentGameState = gameState;
 
-            Player1Hand = new ObservableCollection<GameCard>();
-            var player = GameLogic.Instance.CurrentGameState.playerState[0].Value;
-            foreach (CardDTO card in player.Hand)
-            {
-                GameCard gameCard = new GameCard(card);
-                Player1Hand.Add(gameCard);
-            }
+            MapPlayers();
 
-            ConfigureAllPlayerHands();
-            GameLogic.Instance.CardListViewer = Player1Hand;
+
+            //ConfigureAllPlayerHands();
 
         }
+
+
+        private void MapPlayers()
+        {
+            foreach (var player in CurrentGameState.playerState)
+            {
+                if (player.Value.User.UserId != User.Instance.ID)
+                {
+                    playerMapping.Add(player.Value.User.UserId);
+                }
+            }
+        }
+
 
         private void UpdatePropertiesFromGameState(GameStateDTO gameState)
         {
@@ -190,36 +205,29 @@ namespace Cliente
             BabyDeck.Clear();
             foreach (var card in gameState.BabyDeck)
             {
-                BabyDeck.Add(card);
+                BabyDeck.Add(new GameCard(card));
             }
 
 
             var currentPlayerState = gameState.playerState
                 .FirstOrDefault(ps => ps.Key == CurrentPlayerId).Value;
-           
-
-                    var newCard = gameState.playerState.FirstOrDefault(ps => ps.Key == User.Instance.ID).Value.Hand.Last(); ;
-                    LastCardDrawn = newCard != null ? $"Card ID: {newCard.CardId}" : "No card drawn";
-                Console.WriteLine(LastCardDrawn);
 
 
+            var newCard = gameState.playerState.FirstOrDefault(ps => ps.Key == User.Instance.ID).Value.Hand.Last(); ;
+            LastCardDrawn = newCard != null ? $"Card ID: {newCard.CardId}" : "No card drawn";
+            Console.WriteLine(LastCardDrawn);
 
 
-            Hand.Clear();
-                foreach (var card in currentPlayerState.Hand)
-                {
-                    Hand.Add(card);
-                }
+            CardListViewer.Clear();
 
-
-                Monster.Clear();
-                foreach (var monster in currentPlayerState.Monsters)
-                {
-                    Monster.Add(monster);
-                }
-
+            foreach (var card in CurrentGameState.playerState[User.Instance.ID].Hand)
+            {
+                CardListViewer.Add(new GameCard(card));
             }
+
+
         }
     }
+}
 
 

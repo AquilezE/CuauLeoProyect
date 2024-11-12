@@ -449,6 +449,9 @@
     <Resource Include="Images\configIcon.png" />
     <Resource Include="Images\profileIcon.png" />
     <Resource Include="Notes.txt" />
+    <None Include="Connected Services\ServiceReference\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceReference\BevososService.DTOs.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -510,9 +513,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceReference\service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceReference\System.Collections.Generic.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />

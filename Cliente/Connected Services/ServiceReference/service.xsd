@@ -529,6 +529,15 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="PlayCard">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+        <xs:element minOccurs="0" name="matchCode" type="xs:int" />
+        <xs:element minOccurs="0" name="cardId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ReceiveGameState">
     <xs:complexType>
       <xs:sequence>
