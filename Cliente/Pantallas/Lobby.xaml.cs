@@ -32,7 +32,7 @@ namespace Cliente.Pantallas
         }
 
         private ObservableCollection<Message> _messages;
-        private ObservableCollection<User> _users;
+        private ObservableCollection<UserLobby> _users;
 
 
         public LobbyManagerClient _servicio;
@@ -66,7 +66,7 @@ namespace Cliente.Pantallas
             InstanceContext instanceContext = new InstanceContext(this);
             _servicio = new LobbyManagerClient(instanceContext);
             _messages = new ObservableCollection<Message>();
-            _users = new ObservableCollection<User>();
+            _users = new ObservableCollection<UserLobby>();
             MessagesListBox.ItemsSource = _messages;
             UsersListBox.ItemsSource = _users;
             lbUserName.Content = User.Instance.Username;
@@ -117,21 +117,35 @@ namespace Cliente.Pantallas
             if (IsLeader)
             {
 
-                //Needa shit ton of validation i'm afraid
-                _servicio.StartGame(_lobbyId);
+                if(_users.Count < 2)
+                {
+                    NotificationDialog notification = new NotificationDialog();
+                    //INTERNATIONALIZATION NEEDED
+                    notification.ShowErrorNotification("You need at least 2 players to start the game");
+                    return;
+                }
+                if(_users.Any(u => u.IsReady == false))
+                {
+                    NotificationDialog notification = new NotificationDialog();
+                    //INTERNATIONALIZATION NEEDED
+                    notification.ShowErrorNotification("Not all players are ready");
+                    return;
+                }
 
+                _servicio.StartGame(_lobbyId);
             }
         }
 
+
         private void UserLobby_Loaded(object sender, RoutedEventArgs e)
         {
-            if (sender is UserLobby userLobbyControl)
+            if (sender is UserControllers.UserLobby userLobbyControl)
             {
                 userLobbyControl.KickRequested += OnKickRequested;
             }
         }
 
-        private void OnKickRequested(object sender, User userToKick)
+        private void OnKickRequested(object sender, UserLobby userToKick)
         {
             if (userToKick != null)
             {
@@ -165,7 +179,7 @@ namespace Cliente.Pantallas
 
             
             _lobbyId = lobbyId;
-            _users.Add(User.instance);
+            _users.Add(new UserLobby(User.Instance));
             CurrentLeaderId = UserId;
             Console.WriteLine(_lobbyId);
 
@@ -177,7 +191,7 @@ namespace Cliente.Pantallas
 
         public void OnJoinLobby(int lobbyId, UserDto userDto)
         {
-            User user = new User(userDto);
+            UserLobby user = new UserLobby(userDto);
             _users.Add(user);
             _lobbyId = lobbyId;
             tbLobbyCode.Text = lobbyId.ToString();
@@ -209,7 +223,7 @@ namespace Cliente.Pantallas
         public void OnSendMessage(int UserId, string message)
         {
 
-            User user = _users.FirstOrDefault(u => u.ID == UserId);
+            UserLobby user = _users.FirstOrDefault(u => u.ID == UserId);
 
             if (user != null)
             {
@@ -237,7 +251,7 @@ namespace Cliente.Pantallas
 
             foreach (var userDto in users)
             {
-                User user = new User(userDto);
+                UserLobby user = new UserLobby(userDto);
                 _users.Add(user);
             }
 
@@ -248,7 +262,7 @@ namespace Cliente.Pantallas
 
             if (!_users.Any(u => u.ID == User.Instance.ID))
             {
-                _users.Add(User.Instance);
+                _users.Add(new UserLobby(User.Instance));
             }
 
             tbLobbyCode.Text = lobbyId.ToString();
@@ -257,6 +271,17 @@ namespace Cliente.Pantallas
         private void btKick_Click(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        private void btInviteFriend_Click(object sender, RoutedEventArgs e)
+        {
+            if (!IsLeader)
+            {
+                return;
+            }
+            InviteFriends inviteFriends = new InviteFriends(_lobbyId);
+            inviteFriends.ShowDialog();
+
         }
 
         private void ScrollToBottom()
@@ -285,8 +310,6 @@ namespace Cliente.Pantallas
             return null;
         }
 
-
-
         public void GameStarted(int gameId)
         {
             GameLogic.Instance.GameId = gameId;
@@ -297,15 +320,22 @@ namespace Cliente.Pantallas
 
         }
 
-        private void btInviteFriend_Click(object sender, RoutedEventArgs e)
+        public void OnReadyStatusChanged(int userId, bool isReady)
         {
-            if (!IsLeader)
-            {
-                return;
-            }
-            InviteFriends inviteFriends = new InviteFriends(_lobbyId);
-            inviteFriends.ShowDialog();
 
+           var user = _users.FirstOrDefault(u => u.ID == userId);
+            if (user != null)
+            {
+                user.IsReady = isReady;
+                Console.WriteLine(isReady);
+            }
         }
+
+        private void btReady_Click(object sender, RoutedEventArgs e)
+        {
+            _servicio.ChangeReadyStatus(_lobbyId, User.Instance.ID);
+        }
+    
+
     }
 }

@@ -23,6 +23,8 @@ namespace Cliente
             ProfilePictureId = userDto.ProfilePictureId;
         }
 
+
+
         private User()
         {
 

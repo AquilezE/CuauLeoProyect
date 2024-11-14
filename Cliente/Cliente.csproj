@@ -138,6 +138,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Blocked.cs" />
+    <Compile Include="Converters\ReadyCheckVisibilityConverter.cs" />
     <Compile Include="GameCard.cs" />
     <Compile Include="Connected Services\LobbyService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -281,6 +282,7 @@
       <DependentUpon>UserLobby.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserFound.cs" />
+    <Compile Include="UserLobby.cs" />
     <Page Include="GameUserControllers\CardUserController.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -26,6 +26,9 @@ namespace Cliente.ServiceReference {
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsReadyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ProfilePictureIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -53,6 +56,19 @@ namespace Cliente.ServiceReference {
                 if ((object.ReferenceEquals(this.EmailField, value) != true)) {
                     this.EmailField = value;
                     this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsReady {
+            get {
+                return this.IsReadyField;
+            }
+            set {
+                if ((this.IsReadyField.Equals(value) != true)) {
+                    this.IsReadyField = value;
+                    this.RaisePropertyChanged("IsReady");
                 }
             }
         }
@@ -847,6 +863,12 @@ namespace Cliente.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/StartGame")]
         System.Threading.Tasks.Task StartGameAsync(int lobbyId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/ChangeReadyStatus")]
+        void ChangeReadyStatus(int lobbyId, int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/ChangeReadyStatus")]
+        System.Threading.Tasks.Task ChangeReadyStatusAsync(int lobbyId, int userId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -872,6 +894,9 @@ namespace Cliente.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/OnSendMessage")]
         void OnSendMessage(int userId, string message);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/OnReadyStatusChanged")]
+        void OnReadyStatusChanged(int userId, bool isReady);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/GameStarted")]
         void GameStarted(int gameId);
@@ -951,6 +976,14 @@ namespace Cliente.ServiceReference {
         
         public System.Threading.Tasks.Task StartGameAsync(int lobbyId) {
             return base.Channel.StartGameAsync(lobbyId);
+        }
+        
+        public void ChangeReadyStatus(int lobbyId, int userId) {
+            base.Channel.ChangeReadyStatus(lobbyId, userId);
+        }
+        
+        public System.Threading.Tasks.Task ChangeReadyStatusAsync(int lobbyId, int userId) {
+            return base.Channel.ChangeReadyStatusAsync(lobbyId, userId);
         }
     }
     

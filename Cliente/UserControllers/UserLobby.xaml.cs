@@ -18,7 +18,7 @@ namespace Cliente.UserControllers
 
     public partial class UserLobby : UserControl
     {
-        public event EventHandler<User> KickRequested;
+        public event EventHandler<Cliente.UserLobby> KickRequested;
 
 
         public static readonly DependencyProperty IsLeaderProperty =
@@ -47,7 +47,7 @@ namespace Cliente.UserControllers
 
         private void KickButton_Click(object sender, RoutedEventArgs e)
         {
-            KickRequested?.Invoke(this, DataContext as User);
+            KickRequested?.Invoke(this, DataContext as Cliente.UserLobby);
         }
     }
 }

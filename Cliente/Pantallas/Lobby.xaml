@@ -117,7 +117,7 @@
             
             <StackPanel Orientation="Horizontal">
                 <Button Grid.Column="1" Grid.Row="3" Width="200" HorizontalAlignment="Right" Margin="25 0 140 0" x:Name="btInviteFriend" Content="{h:Lang btnInviteFriend}" Click="btInviteFriend_Click"/>
-                <Button Grid.Column="1" Grid.Row="3" Width="200" HorizontalAlignment="Right" Margin="0 0 0 0" x:Name="btReady" Content="{h:Lang btnImReady}" Click="btSendMessage_Click"/>
+                <Button Grid.Column="1" Grid.Row="3" Width="200" HorizontalAlignment="Right" Margin="0 0 0 0" x:Name="btReady" Content="{h:Lang btnImReady}" Click="btReady_Click"/>
             </StackPanel>
         </StackPanel>
 

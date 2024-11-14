@@ -128,6 +128,9 @@
   <wsdl:message name="ILobbyManager_StartGame_InputMessage">
     <wsdl:part name="parameters" element="tns:StartGame" />
   </wsdl:message>
+  <wsdl:message name="ILobbyManager_ChangeReadyStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeReadyStatus" />
+  </wsdl:message>
   <wsdl:message name="ILobbyManager_OnNewLobbyCreated_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnNewLobbyCreated" />
   </wsdl:message>
@@ -148,6 +151,9 @@
   </wsdl:message>
   <wsdl:message name="ILobbyManager_OnSendMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnSendMessage" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_OnReadyStatusChanged_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnReadyStatusChanged" />
   </wsdl:message>
   <wsdl:message name="ILobbyManager_GameStarted_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GameStarted" />
@@ -333,6 +339,9 @@
     <wsdl:operation name="StartGame">
       <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/StartGame" message="tns:ILobbyManager_StartGame_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ChangeReadyStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/ChangeReadyStatus" message="tns:ILobbyManager_ChangeReadyStatus_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="OnNewLobbyCreated">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnNewLobbyCreated" message="tns:ILobbyManager_OnNewLobbyCreated_OutputCallbackMessage" />
     </wsdl:operation>
@@ -353,6 +362,9 @@
     </wsdl:operation>
     <wsdl:operation name="OnSendMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnSendMessage" message="tns:ILobbyManager_OnSendMessage_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnReadyStatusChanged">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnReadyStatusChanged" message="tns:ILobbyManager_OnReadyStatusChanged_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="GameStarted">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/GameStarted" message="tns:ILobbyManager_GameStarted_OutputCallbackMessage" />
@@ -580,6 +592,12 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="ChangeReadyStatus">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ChangeReadyStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="OnNewLobbyCreated">
       <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnNewLobbyCreated" style="document" />
       <wsdl:output>
@@ -618,6 +636,12 @@
     </wsdl:operation>
     <wsdl:operation name="OnSendMessage">
       <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnSendMessage" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnReadyStatusChanged">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnReadyStatusChanged" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

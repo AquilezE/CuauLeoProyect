@@ -153,6 +153,14 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ChangeReadyStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="lobbyId" type="xs:int" />
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="OnNewLobbyCreated">
     <xs:complexType>
       <xs:sequence>
@@ -206,6 +214,14 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="userId" type="xs:int" />
         <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnReadyStatusChanged">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+        <xs:element minOccurs="0" name="isReady" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
