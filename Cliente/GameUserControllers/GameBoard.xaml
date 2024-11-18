@@ -26,13 +26,16 @@
         <Label x:Name="PrintCardDrawnID" Content="{Binding LastCardDrawn}" HorizontalAlignment="Center" Margin="0,880,0,0" VerticalAlignment="Top"/>
 
         <Image x:Name="imgPlayer1Cards" Grid.Row="2" Grid.Column="1" Height="175" Width="160" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50 0 0 25" MouseDown="imgPlayer1Cards_MouseDown"/>
-        <Image x:Name="imgPlayer1Monster" Grid.Row="2" Grid.Column="1" Height="175" Width="160" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="250 0 0 25" MouseDown="imgPlayer1Monster_MouseDown"/>
-        <ContentControl Grid.Row="1" Grid.Column="1" x:Name="extensiblePanelContentControl" HorizontalAlignment="Right" Width="600" Height="300" Grid.ColumnSpan="2" Margin="0,496,349,0" Grid.RowSpan="2" />
+        <Button x:Name="btnPlayer1Monster" Grid.Row="2" Grid.Column="1" Height="175" Width="160" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="250 0 0 25" Background="Transparent" BorderBrush="Transparent" Click="btnPlayer1Monster_Click"/>
+        <Button x:Name="btnPlayer2Monster" Grid.Row="1" Grid.Column="0" Height="160" Width="175" Margin="-140 0 0 -80" Click="btnPlayer2Monster_Click" Background="Transparent" BorderBrush="Transparent"/>
+        <ContentControl Grid.Row="1" Grid.Column="1" x:Name="extensiblePanelCards" HorizontalAlignment="Right" Width="600" Height="300" Grid.ColumnSpan="2" Margin="0,496,349,0" Grid.RowSpan="2" />
 
         <Image x:Name="imgBabieLando" Source="{Binding BabyDeck[0].CardPath}"  Grid.Row="1" Grid.Column="1" Height="379" Width="243" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="365,65,0,0" MouseDown="imgBabieLando_MouseDown"/>
         <Image x:Name="imgBabieWata" Source="{Binding BabyDeck[1].CardPath}" Grid.Row="1" Grid.Column="1" Height="366" Width="246" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="645,0,0,79" MouseDown="imgBabieWata_MouseDown"/>
         <Image x:Name="imgBabieAir" Source="{Binding BabyDeck[2].CardPath}" Grid.Row="1" Grid.Column="1" Height="367" Width="249" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="922,0,0,79" MouseDown="imgBabieAir_MouseDown"/>
 
+        <ContentControl Grid.Row="1" Grid.Column="1" x:Name="extensiblePanelMonstersPlayer1" Height="500" Width="1200" HorizontalAlignment="Right" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0,296,0,0" Loaded="extensiblePanelMonstersPlayer1_Loaded"/>
+        <ContentControl Grid.Column="0" x:Name="extensiblePanelMonstersPlayer2" Height="1080" Width="600" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="0,0,971,0" Grid.RowSpan="3" Loaded="extensiblePanelMonstersPlayer2_Loaded" />
 
     </Grid>
 </UserControl>
