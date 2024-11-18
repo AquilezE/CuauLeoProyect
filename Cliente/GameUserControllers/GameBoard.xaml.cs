@@ -34,7 +34,11 @@ namespace Cliente.GameUserControllers
             this.Loaded += GameBoard_Loaded;
 
             var cardsViewer = new CardsViewer();
-            extensiblePanelContentControl.Content = cardsViewer;
+            extensiblePanelCards.Content = cardsViewer;
+            var monstersViewer = new MonstersViewer();
+            extensiblePanelMonstersPlayer1.Content = monstersViewer;
+            var monstersViewer2 = new MonstersViewerVertical();
+            extensiblePanelMonstersPlayer2.Content = monstersViewer2;
 
             this.AddHandler(CardUserController.CardClickedEvent, new RoutedEventHandler(Card_Clicked));
 
@@ -107,6 +111,51 @@ namespace Cliente.GameUserControllers
         private void imgBabieAir_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
+        }
+
+        private void extensiblePanelMonstersPlayer2_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (extensiblePanelMonstersPlayer2.Content is MonstersViewerVertical monstersViewerVertical)
+            {
+                monstersViewerVertical.closePanel += OnClosePanel;
+            }
+            else
+            {
+                Console.WriteLine("Content not initialized or not of type MonstersViewerVertical.");
+            }
+        }
+
+        private void extensiblePanelMonstersPlayer1_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (extensiblePanelMonstersPlayer1.Content is MonstersViewer monstersViewer)
+            {
+                monstersViewer.closePanel += OnClosePanelPlayer1;
+            }
+            else
+            {
+                Console.WriteLine("Content not initialized or not of type MonstersViewerVertical.");
+            }
+        }
+
+
+        private void OnClosePanel(object sender, MonstersViewerVertical e)
+        {
+            extensiblePanelMonstersPlayer2.Margin = new Thickness(0, -1200, -1200, 0);
+        }
+
+        private void btnPlayer2Monster_Click(object sender, RoutedEventArgs e)
+        {
+            extensiblePanelMonstersPlayer2.Margin = new Thickness(0, 0, 971, 0);
+        }
+
+        private void btnPlayer1Monster_Click(object sender, RoutedEventArgs e)
+        {
+            extensiblePanelMonstersPlayer1.Margin = new Thickness(0, 296, 0, 0);
+        }
+
+        private void OnClosePanelPlayer1(object sender, MonstersViewer e)
+        {
+            extensiblePanelMonstersPlayer1.Margin = new Thickness(0, -1200, -1200, 0);
         }
     }
 }

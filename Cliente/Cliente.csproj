@@ -168,6 +168,12 @@
     <Compile Include="GameUserControllers\GameBoard.xaml.cs">
       <DependentUpon>GameBoard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GameUserControllers\MonstersViewer.xaml.cs">
+      <DependentUpon>MonstersViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameUserControllers\MonstersViewerVertical.xaml.cs">
+      <DependentUpon>MonstersViewerVertical.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Message.cs" />
     <Compile Include="Pantallas\Friends.xaml.cs">
       <DependentUpon>Friends.xaml</DependentUpon>
@@ -292,6 +298,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GameUserControllers\GameBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameUserControllers\MonstersViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameUserControllers\MonstersViewerVertical.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -677,6 +691,19 @@
     <Resource Include="Cards\Card87.png" />
     <Resource Include="Cards\Card88.png" />
     <Resource Include="Cards\Card9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\GameImages\MonstersViewer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Cards\BodyOxo.png" />
+    <Resource Include="Cards\LandHead1.png" />
+    <Resource Include="Cards\LeftHand.png" />
+    <Resource Include="Cards\Legs.png" />
+    <Resource Include="Cards\RightHand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\GameImages\MonstersViewerVertical.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />
