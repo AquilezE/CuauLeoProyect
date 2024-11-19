@@ -65,11 +65,12 @@
   <xs:element name="BlockedDTO" nillable="true" type="tns:BlockedDTO" />
   <xs:complexType name="GameStateDTO">
     <xs:sequence>
-      <xs:element minOccurs="0" name="ActionsRemaining" type="xs:int" />
       <xs:element minOccurs="0" name="BabyDeck" nillable="true" type="tns:ArrayOfCardDTO" />
       <xs:element minOccurs="0" name="CurrentPlayerId" type="xs:int" />
       <xs:element minOccurs="0" name="GameStateId" type="xs:int" />
-      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="playerState" nillable="true" type="q1:ArrayOfKeyValueOfintPlayerStateDTOc2z18OO1" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PlayerActionsRemaining" nillable="true" type="q1:ArrayOfKeyValueOfintint" />
+      <xs:element minOccurs="0" name="TurnTimeRemainingInSeconds" type="xs:int" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="playerState" nillable="true" type="q2:ArrayOfKeyValueOfintPlayerStateDTOc2z18OO1" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="GameStateDTO" nillable="true" type="tns:GameStateDTO" />

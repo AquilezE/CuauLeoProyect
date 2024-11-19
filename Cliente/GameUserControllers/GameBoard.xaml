@@ -37,5 +37,33 @@
         <ContentControl Grid.Row="1" Grid.Column="1" x:Name="extensiblePanelMonstersPlayer1" Height="500" Width="1200" HorizontalAlignment="Right" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0,296,0,0" Loaded="extensiblePanelMonstersPlayer1_Loaded"/>
         <ContentControl Grid.Column="0" x:Name="extensiblePanelMonstersPlayer2" Height="1080" Width="600" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="0,0,971,0" Grid.RowSpan="3" Loaded="extensiblePanelMonstersPlayer2_Loaded" />
 
+        <StackPanel Grid.Row="2" Grid.Column="2" >
+            <TextBlock Text="{Binding TurnTimeRemainingInSeconds}" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   Foreground="Black" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Top" 
+                   Margin="0,20,0,0"/>
+            <TextBlock Text="{Binding CurrentPlayerId}" 
+               FontSize="16" 
+               FontWeight="Bold" 
+               HorizontalAlignment="Left" 
+               Foreground="Black"
+               VerticalAlignment="Top" 
+               Margin="150,20,0,0"/>
+            <TextBlock Text="Actions Remaining: " 
+               FontSize="16" 
+               FontWeight="Bold" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Top" 
+               Margin="20,20,0,0"/>
+            <TextBlock Text="{Binding PlayerActionsRemaining}" 
+               FontSize="16" 
+               FontWeight="Bold" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Top" 
+               Margin="150,20,0,0"/>
+        </StackPanel>
     </Grid>
 </UserControl>

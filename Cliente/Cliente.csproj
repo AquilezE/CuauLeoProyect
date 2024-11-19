@@ -168,6 +168,9 @@
     <Compile Include="GameUserControllers\GameBoard.xaml.cs">
       <DependentUpon>GameBoard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GameUserControllers\MonsterSelectionWindow.xaml.cs">
+      <DependentUpon>MonsterSelectionWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GameUserControllers\MonstersViewer.xaml.cs">
       <DependentUpon>MonstersViewer.xaml</DependentUpon>
     </Compile>
@@ -298,6 +301,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GameUserControllers\GameBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameUserControllers\MonsterSelectionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

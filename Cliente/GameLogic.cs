@@ -7,6 +7,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace Cliente
 {
@@ -14,18 +16,31 @@ namespace Cliente
 
     public class GameLogic : INotifyPropertyChanged, IGameManagerCallback
     {
+
+
+        public event Action<CardDTO> BodyPartSelectionRequested;
+        public event Action<CardDTO> ToolSelectionRequested;
+        public event Action<CardDTO> HatSelectionRequested;
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         private static GameLogic _instance;
+        private static readonly object _lock = new object();
+        private int _pendingCardId;
+        private GameStateDTO _currentGameState;
+        private string _lastCardDrawn;
+        private int _currentPlayerId;
+        private int _actionsRemaining;
+        private int _turnTimeRemainingInSeconds;
+        private int _playerActionsRemaining;
+
+        private DispatcherTimer _turnTimer;
+
+
 
         public List<int> playerMapping = new List<int>();
-
-
-
-        private static readonly object _lock = new object();
-
         public static GameLogic Instance
         {
             get
@@ -43,25 +58,13 @@ namespace Cliente
                 return _instance;
             }
         }
-
-
-
-
-        private GameStateDTO _currentGameState;
         public int GameId { get; set; }
-
-        //public ObservableCollection<GameCard> Player1Hand { get; set; } = new ObservableCollection<GameCard>();
-        //public ObservableCollection<GameCard> Player2Hand { get; set; } = new ObservableCollection<GameCard>();
-        //public ObservableCollection<GameCard> Player3Hand { get; set; } = new ObservableCollection<GameCard>();
-        //public ObservableCollection<GameCard> Player4Hand { get; set; } = new ObservableCollection<GameCard>();
-
         public ObservableCollection<GameCard> BabyDeck { get; set; } = new ObservableCollection<GameCard>();
         public ObservableCollection<CardDTO> Hand { get; set; } = new ObservableCollection<CardDTO>();
         public ObservableCollection<MonsterDTO> Monster { get; set; } = new ObservableCollection<MonsterDTO>();
         public ObservableCollection<GameCard> CardListViewer { get; set; } = new ObservableCollection<GameCard>();
 
 
-        private string _lastCardDrawn;
 
         public string LastCardDrawn
         {
@@ -72,9 +75,6 @@ namespace Cliente
                 OnPropertyChanged(nameof(LastCardDrawn));
             }
         }
-
-        private int _currentPlayerId;
-
         public int CurrentPlayerId
         {
             get => _currentPlayerId;
@@ -84,10 +84,6 @@ namespace Cliente
                 OnPropertyChanged(nameof(CurrentPlayerId));
             }
         }
-
-
-        private int _actionsRemaining;
-
         public int ActionsRemaining
         {
             get => _actionsRemaining;
@@ -97,7 +93,30 @@ namespace Cliente
                 OnPropertyChanged(nameof(ActionsRemaining));
             }
         }
-
+        public int TurnTimeRemainingInSeconds
+        {
+            get => _turnTimeRemainingInSeconds;
+            set
+            {
+                if (_turnTimeRemainingInSeconds != value)
+                {
+                    _turnTimeRemainingInSeconds = value;
+                    OnPropertyChanged(nameof(TurnTimeRemainingInSeconds));
+                }
+            }
+        }
+        public int PlayerActionsRemaining
+        {
+            get => _playerActionsRemaining;
+            set
+            {
+                if (_playerActionsRemaining != value)
+                {
+                    _playerActionsRemaining = value;
+                    OnPropertyChanged(nameof(PlayerActionsRemaining));
+                }
+            }
+        }
         public GameStateDTO CurrentGameState
         {
             get => _currentGameState;
@@ -108,48 +127,6 @@ namespace Cliente
                 UpdatePropertiesFromGameState(_currentGameState);
             }
         }
-
-        //public void ConfigureAllPlayerHands()
-        //{
-
-        //    Player1Hand.Clear();
-        //    Player2Hand.Clear();
-        //    Player3Hand.Clear();
-        //    Player4Hand.Clear();
-
-        //    foreach (var player in CurrentGameState.playerState)
-        //    {
-        //        var hand = player.Value.Hand;
-        //        var playerHand = new ObservableCollection<GameCard>();
-
-        //        foreach (var card in hand)
-        //        {
-        //            playerHand.Add(new GameCard(card));
-        //        }
-
-        //        if (player.Key == User.Instance.ID)
-        //        {
-        //            Hand = playerHand;
-        //        }
-        //        else if (playerMapping.Count > 0 && player.Key == playerMapping[0])
-        //        {
-        //            Player1Hand = playerHand;
-        //        }
-        //        else if (playerMapping.Count > 1 && player.Key == playerMapping[1])
-        //        {
-        //            Player2Hand = playerHand;
-        //        }
-        //        else if (playerMapping.Count > 2 && player.Key == playerMapping[2])
-        //        {
-        //            Player3Hand = playerHand;
-        //        }
-        //        else if (playerMapping.Count > 3 && player.Key == playerMapping[3])
-        //        {
-        //            Player4Hand = playerHand;
-        //        }
-        //    }
-
-
 
 
 
@@ -172,14 +149,12 @@ namespace Cliente
 
             CurrentGameState = gameState;
 
+            Console.WriteLine(gameState.CurrentPlayerId);
+
             MapPlayers();
 
-
-            //ConfigureAllPlayerHands();
-
+            gameState.playerState.TryGetValue(User.Instance.ID, out var playerState);
         }
-
-
         private void MapPlayers()
         {
             foreach (var player in CurrentGameState.playerState)
@@ -190,8 +165,6 @@ namespace Cliente
                 }
             }
         }
-
-
         private void UpdatePropertiesFromGameState(GameStateDTO gameState)
         {
             Console.WriteLine("Estoy cambiando??");
@@ -200,7 +173,11 @@ namespace Cliente
 
             GameId = gameState.GameStateId;
             CurrentPlayerId = gameState.CurrentPlayerId;
-            ActionsRemaining = gameState.ActionsRemaining;
+            ActionsRemaining = gameState.PlayerActionsRemaining.ContainsKey(User.Instance.ID) ? gameState.PlayerActionsRemaining[User.Instance.ID] : 0;
+            TurnTimeRemainingInSeconds = gameState.TurnTimeRemainingInSeconds;
+
+            StartTurnTimer();
+
 
             BabyDeck.Clear();
             foreach (var card in gameState.BabyDeck)
@@ -217,16 +194,73 @@ namespace Cliente
             LastCardDrawn = newCard != null ? $"Card ID: {newCard.CardId}" : "No card drawn";
             Console.WriteLine(LastCardDrawn);
 
-
             CardListViewer.Clear();
-
-            foreach (var card in CurrentGameState.playerState[User.Instance.ID].Hand)
+            foreach (var card in gameState.playerState[User.Instance.ID].Hand)
             {
                 CardListViewer.Add(new GameCard(card));
             }
 
+            Monster.Clear();
+            if (gameState.playerState.TryGetValue(User.Instance.ID, out var playerState))
+            {
+                foreach (var monster in playerState.Monsters)
+                {
+                    Monster.Add(monster);
+                }
+            }
+
+            if (gameState.PlayerActionsRemaining.TryGetValue(User.Instance.ID, out int actionsRemaining))
+            {
+                PlayerActionsRemaining = actionsRemaining;
+            }
+            else
+            {
+                PlayerActionsRemaining = 0;
+            }
+
+
 
         }
+        public void RequestBodyPartSelection(int userId, int matchCode, CardDTO card)
+        {
+            BodyPartSelectionRequested?.Invoke(card);
+        }
+        public void RequestToolSelection(int userId, int matchCode, CardDTO card)
+        {
+            ToolSelectionRequested?.Invoke(card);
+        }
+        public void RequestHatSelection(int userId, int matchCode, CardDTO card)
+        {
+            HatSelectionRequested?.Invoke(card);
+        }
+        public void RequestProvokeSelection(int userId, int matchCode)
+        {
+            throw new NotImplementedException();
+        }
+        private void StartTurnTimer()
+        {
+            _turnTimer?.Stop();
+
+            _turnTimer = new DispatcherTimer();
+            _turnTimer.Interval = TimeSpan.FromSeconds(1);
+            _turnTimer.Tick += TurnTimer_Tick;
+
+            _turnTimer.Start();
+        }
+        private void TurnTimer_Tick(object sender, EventArgs e)
+        {
+            if (TurnTimeRemainingInSeconds > 0)
+            {
+                TurnTimeRemainingInSeconds--;
+            }
+            else
+            {
+                _turnTimer.Stop();
+                MessageBox.Show("Your turn has ended due to timeout.");
+            }
+        }
+
+
     }
 }
 

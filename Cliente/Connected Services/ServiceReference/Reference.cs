@@ -427,9 +427,6 @@ namespace Cliente.ServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ActionsRemainingField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private Cliente.ServiceReference.CardDTO[] BabyDeckField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -437,6 +434,12 @@ namespace Cliente.ServiceReference {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int GameStateIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.Dictionary<int, int> PlayerActionsRemainingField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TurnTimeRemainingInSecondsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Collections.Generic.Dictionary<int, Cliente.ServiceReference.PlayerStateDTO> playerStateField;
@@ -448,19 +451,6 @@ namespace Cliente.ServiceReference {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ActionsRemaining {
-            get {
-                return this.ActionsRemainingField;
-            }
-            set {
-                if ((this.ActionsRemainingField.Equals(value) != true)) {
-                    this.ActionsRemainingField = value;
-                    this.RaisePropertyChanged("ActionsRemaining");
-                }
             }
         }
         
@@ -499,6 +489,32 @@ namespace Cliente.ServiceReference {
                 if ((this.GameStateIdField.Equals(value) != true)) {
                     this.GameStateIdField = value;
                     this.RaisePropertyChanged("GameStateId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.Dictionary<int, int> PlayerActionsRemaining {
+            get {
+                return this.PlayerActionsRemainingField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PlayerActionsRemainingField, value) != true)) {
+                    this.PlayerActionsRemainingField = value;
+                    this.RaisePropertyChanged("PlayerActionsRemaining");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TurnTimeRemainingInSeconds {
+            get {
+                return this.TurnTimeRemainingInSecondsField;
+            }
+            set {
+                if ((this.TurnTimeRemainingInSecondsField.Equals(value) != true)) {
+                    this.TurnTimeRemainingInSecondsField = value;
+                    this.RaisePropertyChanged("TurnTimeRemainingInSeconds");
                 }
             }
         }
@@ -1407,6 +1423,36 @@ namespace Cliente.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/PlayCard")]
         System.Threading.Tasks.Task PlayCardAsync(int userId, int matchCode, int cardId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/PlayProvoke")]
+        void PlayProvoke(int userId, int matchCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/PlayProvoke")]
+        System.Threading.Tasks.Task PlayProvokeAsync(int userId, int matchCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/ExecuteBodyPartPlacement")]
+        void ExecuteBodyPartPlacement(int userId, int matchCode, int cardId, int monsterSelectedIndex);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/ExecuteBodyPartPlacement")]
+        System.Threading.Tasks.Task ExecuteBodyPartPlacementAsync(int userId, int matchCode, int cardId, int monsterSelectedIndex);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/ExecuteToolPlacement")]
+        void ExecuteToolPlacement(int userId, int matchCode, int cardId, int monsterSelectedIndex);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/ExecuteToolPlacement")]
+        System.Threading.Tasks.Task ExecuteToolPlacementAsync(int userId, int matchCode, int cardId, int monsterSelectedIndex);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/ExecuteHatPlacement")]
+        void ExecuteHatPlacement(int userId, int matchCode, int cardId, int monsterSelectedIndex);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/ExecuteHatPlacement")]
+        System.Threading.Tasks.Task ExecuteHatPlacementAsync(int userId, int matchCode, int cardId, int monsterSelectedIndex);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/ExecuteProvoke")]
+        void ExecuteProvoke(int userId, int matchCode, int monsterSelectedIndex);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/ExecuteProvoke")]
+        System.Threading.Tasks.Task ExecuteProvokeAsync(int userId, int matchCode, int monsterSelectedIndex);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1414,6 +1460,18 @@ namespace Cliente.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/ReceiveGameState")]
         void ReceiveGameState(Cliente.ServiceReference.GameStateDTO gameStateDto);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/RequestBodyPartSelection")]
+        void RequestBodyPartSelection(int userId, int matchCode, Cliente.ServiceReference.CardDTO card);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/RequestToolSelection")]
+        void RequestToolSelection(int userId, int matchCode, Cliente.ServiceReference.CardDTO card);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/RequestHatSelection")]
+        void RequestHatSelection(int userId, int matchCode, Cliente.ServiceReference.CardDTO card);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/RequestProvokeSelection")]
+        void RequestProvokeSelection(int userId, int matchCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1466,6 +1524,46 @@ namespace Cliente.ServiceReference {
         
         public System.Threading.Tasks.Task PlayCardAsync(int userId, int matchCode, int cardId) {
             return base.Channel.PlayCardAsync(userId, matchCode, cardId);
+        }
+        
+        public void PlayProvoke(int userId, int matchCode) {
+            base.Channel.PlayProvoke(userId, matchCode);
+        }
+        
+        public System.Threading.Tasks.Task PlayProvokeAsync(int userId, int matchCode) {
+            return base.Channel.PlayProvokeAsync(userId, matchCode);
+        }
+        
+        public void ExecuteBodyPartPlacement(int userId, int matchCode, int cardId, int monsterSelectedIndex) {
+            base.Channel.ExecuteBodyPartPlacement(userId, matchCode, cardId, monsterSelectedIndex);
+        }
+        
+        public System.Threading.Tasks.Task ExecuteBodyPartPlacementAsync(int userId, int matchCode, int cardId, int monsterSelectedIndex) {
+            return base.Channel.ExecuteBodyPartPlacementAsync(userId, matchCode, cardId, monsterSelectedIndex);
+        }
+        
+        public void ExecuteToolPlacement(int userId, int matchCode, int cardId, int monsterSelectedIndex) {
+            base.Channel.ExecuteToolPlacement(userId, matchCode, cardId, monsterSelectedIndex);
+        }
+        
+        public System.Threading.Tasks.Task ExecuteToolPlacementAsync(int userId, int matchCode, int cardId, int monsterSelectedIndex) {
+            return base.Channel.ExecuteToolPlacementAsync(userId, matchCode, cardId, monsterSelectedIndex);
+        }
+        
+        public void ExecuteHatPlacement(int userId, int matchCode, int cardId, int monsterSelectedIndex) {
+            base.Channel.ExecuteHatPlacement(userId, matchCode, cardId, monsterSelectedIndex);
+        }
+        
+        public System.Threading.Tasks.Task ExecuteHatPlacementAsync(int userId, int matchCode, int cardId, int monsterSelectedIndex) {
+            return base.Channel.ExecuteHatPlacementAsync(userId, matchCode, cardId, monsterSelectedIndex);
+        }
+        
+        public void ExecuteProvoke(int userId, int matchCode, int monsterSelectedIndex) {
+            base.Channel.ExecuteProvoke(userId, matchCode, monsterSelectedIndex);
+        }
+        
+        public System.Threading.Tasks.Task ExecuteProvokeAsync(int userId, int matchCode, int monsterSelectedIndex) {
+            return base.Channel.ExecuteProvokeAsync(userId, matchCode, monsterSelectedIndex);
         }
     }
 }

@@ -287,8 +287,35 @@
   <wsdl:message name="IGameManager_PlayCard_InputMessage">
     <wsdl:part name="parameters" element="tns:PlayCard" />
   </wsdl:message>
+  <wsdl:message name="IGameManager_PlayProvoke_InputMessage">
+    <wsdl:part name="parameters" element="tns:PlayProvoke" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_ExecuteBodyPartPlacement_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteBodyPartPlacement" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_ExecuteToolPlacement_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteToolPlacement" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_ExecuteHatPlacement_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteHatPlacement" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_ExecuteProvoke_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteProvoke" />
+  </wsdl:message>
   <wsdl:message name="IGameManager_ReceiveGameState_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveGameState" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_RequestBodyPartSelection_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:RequestBodyPartSelection" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_RequestToolSelection_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:RequestToolSelection" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_RequestHatSelection_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:RequestHatSelection" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_RequestProvokeSelection_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:RequestProvokeSelection" />
   </wsdl:message>
   <wsdl:portType name="IUsersManager">
     <wsdl:operation name="IsUsernameTaken">
@@ -480,8 +507,35 @@
     <wsdl:operation name="PlayCard">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/PlayCard" message="tns:IGameManager_PlayCard_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="PlayProvoke">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/PlayProvoke" message="tns:IGameManager_PlayProvoke_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteBodyPartPlacement">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/ExecuteBodyPartPlacement" message="tns:IGameManager_ExecuteBodyPartPlacement_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteToolPlacement">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/ExecuteToolPlacement" message="tns:IGameManager_ExecuteToolPlacement_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteHatPlacement">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/ExecuteHatPlacement" message="tns:IGameManager_ExecuteHatPlacement_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteProvoke">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/ExecuteProvoke" message="tns:IGameManager_ExecuteProvoke_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ReceiveGameState">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/ReceiveGameState" message="tns:IGameManager_ReceiveGameState_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestBodyPartSelection">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/RequestBodyPartSelection" message="tns:IGameManager_RequestBodyPartSelection_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestToolSelection">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/RequestToolSelection" message="tns:IGameManager_RequestToolSelection_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestHatSelection">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/RequestHatSelection" message="tns:IGameManager_RequestHatSelection_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestProvokeSelection">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/RequestProvokeSelection" message="tns:IGameManager_RequestProvokeSelection_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUsersManager" type="tns:IUsersManager">
@@ -891,8 +945,62 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="PlayProvoke">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/PlayProvoke" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteBodyPartPlacement">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/ExecuteBodyPartPlacement" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteToolPlacement">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/ExecuteToolPlacement" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteHatPlacement">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/ExecuteHatPlacement" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteProvoke">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/ExecuteProvoke" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="ReceiveGameState">
       <soap12:operation soapAction="http://tempuri.org/IGameManager/ReceiveGameState" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestBodyPartSelection">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/RequestBodyPartSelection" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestToolSelection">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/RequestToolSelection" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestHatSelection">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/RequestHatSelection" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestProvokeSelection">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/RequestProvokeSelection" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

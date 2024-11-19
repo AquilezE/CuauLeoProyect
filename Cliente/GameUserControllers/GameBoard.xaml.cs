@@ -42,6 +42,12 @@ namespace Cliente.GameUserControllers
 
             this.AddHandler(CardUserController.CardClickedEvent, new RoutedEventHandler(Card_Clicked));
 
+
+            GameLogic.Instance.BodyPartSelectionRequested += OnBodyPartSelectionRequested;
+            GameLogic.Instance.ToolSelectionRequested += OnToolSelectionRequested;
+            GameLogic.Instance.HatSelectionRequested += OnHatSelectionRequested;
+
+
         }
 
         private void GameBoard_Loaded(object sender, RoutedEventArgs e)
@@ -136,6 +142,47 @@ namespace Cliente.GameUserControllers
                 Console.WriteLine("Content not initialized or not of type MonstersViewerVertical.");
             }
         }
+
+        private void OnToolSelectionRequested(CardDTO card)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                var selectionWindow = new MonsterSelectionWindow(GameLogic.Instance.Monster);
+                if (selectionWindow.ShowDialog() == true)
+                {
+                    int selectedMonsterIndex = selectionWindow.SelectedMonsterIndex;
+                    gameManagerClient.ExecuteToolPlacement(User.Instance.ID, GameLogic.Instance.GameId, card.CardId, selectedMonsterIndex);
+                }
+            });
+        }
+
+        private void OnBodyPartSelectionRequested(CardDTO card)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                var selectionWindow = new MonsterSelectionWindow(GameLogic.Instance.Monster);
+                if (selectionWindow.ShowDialog() == true)
+                {
+                    int selectedMonsterIndex = selectionWindow.SelectedMonsterIndex;
+                    gameManagerClient.ExecuteBodyPartPlacement(User.Instance.ID, GameLogic.Instance.GameId, card.CardId, selectedMonsterIndex);
+                }
+            });
+        }
+
+        private void OnHatSelectionRequested(CardDTO card)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                // Open the Monster Selection Window for Hat Placement
+                var selectionWindow = new MonsterSelectionWindow(GameLogic.Instance.Monster);
+                if (selectionWindow.ShowDialog() == true)
+                {
+                    int selectedMonsterIndex = selectionWindow.SelectedMonsterIndex;
+                    gameManagerClient.ExecuteToolPlacement(User.Instance.ID, GameLogic.Instance.GameId, card.CardId, selectedMonsterIndex);
+                }
+            });
+        }
+
 
 
         private void OnClosePanel(object sender, MonstersViewerVertical e)
