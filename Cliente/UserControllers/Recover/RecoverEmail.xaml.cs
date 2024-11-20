@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Cliente.ServiceReference;
+using Haley.Utils;
 
 
 namespace Cliente.UserControllers.Recover
@@ -48,12 +49,12 @@ namespace Cliente.UserControllers.Recover
                 
                 }else
                 {
-                    lbErrEmailCode.Content = "Email not found";
+                    lbErrEmailCode.Content = LangUtils.Translate("lblErrEmailNotFound");
                 }
             }
             else
             {
-                lbErrEmailCode.Content = "Invalid email";
+                lbErrEmailCode.Content = LangUtils.Translate("lblErrEmailInvalid");
             }
 
 

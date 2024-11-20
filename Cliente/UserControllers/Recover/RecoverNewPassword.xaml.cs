@@ -1,4 +1,5 @@
 ﻿using Cliente.ServiceReference;
+using Haley.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,13 +55,13 @@ namespace Cliente.UserControllers.Recover
                 }
                 else
                 {
-                    lbErrPassword.Content = "Error changing password";
+                    lbErrPassword.Content = LangUtils.Translate("lblErrErrorChangingPassword");
                     btChangePassword.IsEnabled = true;
                 }
             }
             else
             {
-                lbErrPassword.Content = "Invalid password";
+                lbErrPassword.Content = LangUtils.Translate("lblErrInvalidPassword");
                 btChangePassword.IsEnabled = true;
             }
 
@@ -71,11 +72,11 @@ namespace Cliente.UserControllers.Recover
             
             if (!IsValidPassword(pbPassword.Password))
             {
-                lbErrPassword.Content = "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
+                lbErrPassword.Content = LangUtils.Translate("lblErrWeakPassword");
             }
             else if (pbPassword.Password.Length < 8)
             {
-                lbErrPassword.Content = "Password must be at least 8 characters long.";
+                lbErrPassword.Content = LangUtils.Translate("lblErrShortPassword");
             }
             else
             {
@@ -87,7 +88,7 @@ namespace Cliente.UserControllers.Recover
         {
             if (pbConfirmPassword.Password != pbPassword.Password)
             {
-                lbErrPasswordConfirmation.Content = "Passwords do not match.";
+                lbErrPasswordConfirmation.Content = LangUtils.Translate("lblErrDiferentPassword");
             }
             else
             {

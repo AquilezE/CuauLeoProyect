@@ -304,7 +304,7 @@
     <value>El nombre de usuario ya existe</value>
   </data>
   <data name="lblErrUsernameInvalid" xml:space="preserve">
-    <value>Este nombre de usuario ya existe</value>
+    <value>El nombre de usuario solo puede contener letras, números y guiones bajos</value>
   </data>
   <data name="lblErrUserNotFound" xml:space="preserve">
     <value>Usuario no encontrado, intentelo de nuevo mas tarde!</value>
@@ -313,7 +313,7 @@
     <value>Este correo electrónico es inválido o ya existe</value>
   </data>
   <data name="lblErrWeakPassword" xml:space="preserve">
-    <value>Contraseña debe tener un número y un caracter especial</value>
+    <value>La contraseña debe tener una mayúscula, una minúscula, un número y un caracter especial</value>
   </data>
   <data name="lblErrWrongLogin" xml:space="preserve">
     <value>Nombre de usuario o Contraseña fueron incorrectos</value>
@@ -404,5 +404,125 @@
   </data>
   <data name="btnSearch" xml:space="preserve">
     <value>Buscar</value>
+  </data>
+  <data name="lblErrNotEnoughPlayers" xml:space="preserve">
+    <value>Se necesitan al menos 2 jugadores para iniciar partida</value>
+  </data>
+  <data name="lblErrNotAllReady" xml:space="preserve">
+    <value>No todos los jugadores están listos</value>
+  </data>
+  <data name="lblKickedFromLobby" xml:space="preserve">
+    <value>Has sido expulsado de la sala</value>
+  </data>
+  <data name="lblUser" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="lblErrNullLogin" xml:space="preserve">
+    <value>Porfavor ingresa un correo y una contraseña</value>
+  </data>
+  <data name="lblErrInvalidCodeFormat" xml:space="preserve">
+    <value>Formato de código inválido</value>
+  </data>
+  <data name="lblErrCodeException" xml:space="preserve">
+    <value>Un error se produjo al verificar el código, intentalo de nuevo más tarde</value>
+  </data>
+  <data name="lblErrCodeManyAttempts" xml:space="preserve">
+    <value>Rebazaste el límite de intentos. Por favor solicita un nuevo código de verificación</value>
+  </data>
+  <data name="lblErrInvalidCode" xml:space="preserve">
+    <value>Código inválido, inténtalo de nuevo</value>
+  </data>
+  <data name="lblSending" xml:space="preserve">
+    <value>Enviando . . .</value>
+  </data>
+  <data name="lblCodeResent" xml:space="preserve">
+    <value>El código de verificación se ha enviado a tu correo</value>
+  </data>
+  <data name="lblErrFailedResendEmail" xml:space="preserve">
+    <value>Ocurrio un error al renviar el código a tu correo, intentalo de nuevo más tarde</value>
+  </data>
+  <data name="lblErrEmailNotFound" xml:space="preserve">
+    <value>Correo electrónico no encontrado</value>
+  </data>
+  <data name="lblErrErrorChangingPassword" xml:space="preserve">
+    <value>Error al cambiar contraseña</value>
+  </data>
+  <data name="lblErrInvalidPassword" xml:space="preserve">
+    <value>Contraseña invalida</value>
+  </data>
+  <data name="lblErrShortPassword" xml:space="preserve">
+    <value>La contraseña debe tener al menos 8 caracteres</value>
+  </data>
+  <data name="lblKicking" xml:space="preserve">
+    <value>Expulsando a</value>
+  </data>
+  <data name="lblTypeReason" xml:space="preserve">
+    <value>Escribe la razón para expulsar a este usuario</value>
+  </data>
+  <data name="lblSureKickUser" xml:space="preserve">
+    <value>¿Estás seguro de que deseas expulsar a este usuario?</value>
+  </data>
+  <data name="lblReason" xml:space="preserve">
+    <value>Razón:</value>
+  </data>
+  <data name="btnCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="lblKickPlayer" xml:space="preserve">
+    <value>Expulsar jugador</value>
+  </data>
+  <data name="lblErrProfileNothingChanged" xml:space="preserve">
+    <value>No realizaste ningún cambio</value>
+  </data>
+  <data name="lblErrLobbyCodeNull" xml:space="preserve">
+    <value>El código de la sala no puede ser vacío</value>
+  </data>
+  <data name="lblErrLobbyCodeTooLong" xml:space="preserve">
+    <value>El código de la sala es demasiado largo</value>
+  </data>
+  <data name="lblErrLobbyCodeNotNumeric" xml:space="preserve">
+    <value>El código de la sala debe ser un valor numerico</value>
+  </data>
+  <data name="lblErrLobbyCodeNotInRange" xml:space="preserve">
+    <value>Rango de salas inválido</value>
+  </data>
+  <data name="lblErrLobbyCodeExceedRange" xml:space="preserve">
+    <value>El código de sala excede el valor  máximo permitido</value>
+  </data>
+  <data name="lblErrLobbyCodeFullOrNotExists" xml:space="preserve">
+    <value>La sala está llena o no existe</value>
+  </data>
+  <data name="lblSelectMonster" xml:space="preserve">
+    <value>Selecciona un Monstruo</value>
+  </data>
+  <data name="lblActionsRemaining" xml:space="preserve">
+    <value>Acciones Restantes: </value>
+  </data>
+  <data name="lblErrTurnTimeout" xml:space="preserve">
+    <value>Tu turno terminó debido a que se agotó el tiempo</value>
+  </data>
+  <data name="lblNotificationTheUser" xml:space="preserve">
+    <value>El usuario </value>
+  </data>
+  <data name="lblNotificationSentYouFR" xml:space="preserve">
+    <value> te envió una solicitud de amistad!</value>
+  </data>
+  <data name="lblNotificationNowFriends" xml:space="preserve">
+    <value>Ahora eres amigo de </value>
+  </data>
+  <data name="lblNotificationInvitedToLobby" xml:space="preserve">
+    <value> te invitó a una sala de juego! Código de la sala: </value>
+  </data>
+  <data name="lblErrBlockingException" xml:space="preserve">
+    <value>Ocurrió un error al bloquear al usuario, intentalo de nuevo más tarde!</value>
+  </data>
+  <data name="lblErrUnblockingException" xml:space="preserve">
+    <value>Ocurrio un error al desbloquear al usuario, intentalo de nuevo mas tarde!</value>
+  </data>
+  <data name="lblErrDeletingFriendException" xml:space="preserve">
+    <value>Ocurrió un error al eliminar amigo, intentalo de nuevo más tarde!</value>
+  </data>
+  <data name="lblErrDecliningFRException" xml:space="preserve">
+    <value>Ocurrió un error al rechazar la solicitud de amistad, intentalo de nuevo más tarde!</value>
   </data>
 </root>

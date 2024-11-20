@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.ServiceModel;
 using Cliente.UserControllers;
+using Haley.Utils;
 
 namespace Cliente
 {
@@ -120,7 +121,7 @@ namespace Cliente
             NotificationDialog notification = new NotificationDialog();
 
             //FALTA INTERNACIONALIZAR
-            notification.ShowInfoNotification("The user "+ friendRequestDto.SenderName +" sent you a friend request!");
+            notification.ShowInfoNotification(LangUtils.Translate("lblNotificationTheUser") + friendRequestDto.SenderName + LangUtils.Translate("lblNotificationSentYouFR"));
         }
 
         public void OnNewFriend(FriendDTO friendDto)
@@ -131,7 +132,7 @@ namespace Cliente
             NotificationDialog notification = new NotificationDialog();
 
             //FALTA INTERNACIONALIZAR
-            notification.ShowSuccessNotification("You are now friends with " + friendDto.FriendName);
+            notification.ShowSuccessNotification(LangUtils.Translate("lblNotificationNowFriends") + friendDto.FriendName);
         }
 
         public void NotifyGameInvited(string inviterName, int lobbyId)
@@ -139,7 +140,7 @@ namespace Cliente
             NotificationDialog notification = new NotificationDialog();
 
             //FALTA INTERNACIONALIZAR
-            notification.ShowInfoNotification(inviterName + " invited you to a game! Lobby code: " + lobbyId);
+            notification.ShowInfoNotification(inviterName + LangUtils.Translate("lblNotificationInvitedToLobby") + lobbyId);
         }
 
         public void OnFriendshipDeleted(int userId)

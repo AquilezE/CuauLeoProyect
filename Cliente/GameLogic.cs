@@ -1,4 +1,5 @@
 ﻿using Cliente.ServiceReference;
+using Haley.Utils;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
@@ -256,7 +257,7 @@ namespace Cliente
             else
             {
                 _turnTimer.Stop();
-                MessageBox.Show("Your turn has ended due to timeout.");
+                MessageBox.Show(LangUtils.Translate("lblErrTurnTimeout"));
             }
         }
 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media.Media3D;
 using System.Windows;
+using Haley.Utils;
 
 namespace Cliente.UserControllers
 {    public class KickPlayerDialog : Window
@@ -14,7 +15,7 @@ namespace Cliente.UserControllers
 
         public KickPlayerDialog()
         {
-            Title = "Kick Player";
+            Title = LangUtils.Translate("lblKickPlayer");
             Width = 300;
             Height = 150;
             WindowStartupLocation = WindowStartupLocation.CenterOwner;
@@ -22,8 +23,8 @@ namespace Cliente.UserControllers
             var grid = new Grid();
             var textBox = new TextBox { Margin = new Thickness(10) };
             var stackPanel = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right };
-            var confirmButton = new Button { Content = "Kick", Margin = new Thickness(5) };
-            var cancelButton = new Button { Content = "Cancel", Margin = new Thickness(5) };
+            var confirmButton = new Button { Content = LangUtils.Translate("btnKick"), Margin = new Thickness(5) };
+            var cancelButton = new Button { Content = LangUtils.Translate("btnCancel"), Margin = new Thickness(5) };
 
             confirmButton.Click += (s, e) =>
             {

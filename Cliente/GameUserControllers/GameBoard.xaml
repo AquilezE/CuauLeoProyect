@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Cliente.GameUserControllers"
+             xmlns:h="http://schemas.hpod9.com/haley/mvvm"
              mc:Ignorable="d"
              d:DesignHeight="1080" d:DesignWidth="1920">
     <Grid MinHeight="1080" MinWidth="1920"  MaxHeight="1080" MaxWidth="1920">
@@ -52,7 +53,7 @@
                Foreground="Black"
                VerticalAlignment="Top" 
                Margin="150,20,0,0"/>
-            <TextBlock Text="Actions Remaining: " 
+            <TextBlock Text="{h:Lang lblActionsRemaining}" 
                FontSize="16" 
                FontWeight="Bold" 
                HorizontalAlignment="Left" 

@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Haley.Utils;
 
 namespace Cliente.UserControllers.Recover
 {
@@ -59,12 +60,12 @@ namespace Cliente.UserControllers.Recover
                 }
                 else
                 {
-                    lbErrVerificactionCode.Content="Invalid code format";
+                    lbErrVerificactionCode.Content=LangUtils.Translate("lblErrInvalidCodeFormat");
                 }
             }
             catch(Exception ex)
             {
-                lbErrVerificactionCode.Content = "An error ocurred while verifying the code, Please try again later";
+                lbErrVerificactionCode.Content = LangUtils.Translate("lblErrCodeException");
             }
             finally
             {
@@ -82,13 +83,13 @@ namespace Cliente.UserControllers.Recover
 
             if (_retryCounter >= MAX_RETRIES)
             {
-                lbErrVerificactionCode.Content = "Too many failed attempts. Please request a new verification code.";
+                lbErrVerificactionCode.Content = LangUtils.Translate("lblErrCodeManyAttempts");
                 btVerify.IsEnabled = false;
             }
 
             else
             {
-                lbErrVerificactionCode.Content = "Invalid code. Please try again.";
+                lbErrVerificactionCode.Content = LangUtils.Translate("lblErrInvalidCode");
             }
         }
 
@@ -110,7 +111,7 @@ namespace Cliente.UserControllers.Recover
         {
             tbVerificactionCode.IsEnabled = false;
 
-            tbVerificactionCode.Text = "Sending...";
+            tbVerificactionCode.Text = LangUtils.Translate("lblSending");
 
             try
             {
@@ -118,17 +119,17 @@ namespace Cliente.UserControllers.Recover
 
                 if (emailSent)
                 {
-                    lbErrVerificactionCode.Content = "Verification email has been resent.";
+                    lbErrVerificactionCode.Content = LangUtils.Translate("lblCodeResent");
                 }
                 else
                 {
-                    lbErrVerificactionCode.Content = "Failed to resend the email. Please try again later.";
+                    lbErrVerificactionCode.Content = LangUtils.Translate("lblErrFailedResendEmail");
                 }
             }
             catch (Exception ex)
             {
 
-                lbErrVerificactionCode.Content = "An error occurred while resending the email.";
+                lbErrVerificactionCode.Content = LangUtils.Translate("lblErrFailedResendEmail");
             }
             finally
             {
@@ -140,7 +141,7 @@ namespace Cliente.UserControllers.Recover
                     Dispatcher.Invoke(() =>
                     {
                         tbVerificactionCode.IsEnabled = true;
-                        tbVerificactionCode.Text = "Click aqui para reenviar tu codigo";
+                        tbVerificactionCode.Text = LangUtils.Translate("lblClickHereResend");
                     });
                     timer.Stop();
                     timer.Dispose();

@@ -96,7 +96,7 @@ namespace Cliente.Pantallas
             }
             else if (!IsValidUsername(username))
             {
-                lbErrUsername.Content = "Username can only contain letters, numbers, and underscores.";
+                lbErrUsername.Content = LangUtils.Translate("lblErrUsernameInvalid");
             }
             else
             {
@@ -147,7 +147,7 @@ namespace Cliente.Pantallas
             }
             else if (pbPassword.Password.Length < 8)
             {
-                lbErrPassword.Content = "Password must be at least 8 characters long.";
+                lbErrPassword.Content = LangUtils.Translate("lblErrShortPassword");
             }
             else
             {

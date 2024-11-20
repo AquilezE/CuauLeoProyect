@@ -143,7 +143,7 @@ namespace Cliente.UserControllers
                 }
                 else
                 {
-                    lbErrVerificactionCode.Content = "Failed to resend the email. Please try again later.";
+                    lbErrVerificactionCode.Content = LangUtils.Translate("lblErrFailedResendEmail");
                 }
             }
             catch (Exception ex)

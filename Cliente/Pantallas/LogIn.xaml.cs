@@ -80,7 +80,7 @@ namespace Cliente.Pantallas
             }
             else
             {
-                lbErrLabel.Content = "Please enter a username and password";
+                lbErrLabel.Content = LangUtils.Translate("lblErrNullLogin");
             }
         }
 
