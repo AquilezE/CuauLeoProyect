@@ -120,15 +120,13 @@ namespace Cliente.Pantallas
                 if(_users.Count < 2)
                 {
                     NotificationDialog notification = new NotificationDialog();
-                    //INTERNATIONALIZATION NEEDED
-                    notification.ShowErrorNotification("You need at least 2 players to start the game");
+                    notification.ShowErrorNotification(LangUtils.Translate("lblErrNotEnoughPlayers"));
                     return;
                 }
                 if(_users.Any(u => u.IsReady == false))
                 {
                     NotificationDialog notification = new NotificationDialog();
-                    //INTERNATIONALIZATION NEEDED
-                    notification.ShowErrorNotification("Not all players are ready");
+                    notification.ShowErrorNotification(LangUtils.Translate("lblErrNotAllReady"));
                     return;
                 }
 
@@ -210,8 +208,7 @@ namespace Cliente.Pantallas
         {
             LeaveLobby();
             NotificationDialog notification = new NotificationDialog();
-            //INTERNATIONALIZATION NEEDED
-            notification.ShowErrorNotification($"You were kicked from the lobby: {reason}");
+            notification.ShowErrorNotification(LangUtils.Translate("lblKickedFromLobby") + $": {reason}");
 
         }
 
@@ -232,8 +229,7 @@ namespace Cliente.Pantallas
             }
             else
             {
-                //INTERNATIONALIZATION NEEDED
-                _messages.Add(new Message($"User {UserId}", message, _lobbyId));
+                _messages.Add(new Message(LangUtils.Translate("lblUser") + $" {UserId}", message, _lobbyId));
             }
 
             Dispatcher.BeginInvoke(new Action(() =>

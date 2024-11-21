@@ -97,6 +97,15 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Cancel.
+        /// </summary>
+        public static string btnCancel {
+            get {
+                return ResourceManager.GetString("btnCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Change.
         /// </summary>
         public static string btnChange {
@@ -430,6 +439,15 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Actions Remaining: .
+        /// </summary>
+        public static string lblActionsRemaining {
+            get {
+                return ResourceManager.GetString("lblActionsRemaining", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Anihilated Babies: .
         /// </summary>
         public static string lblAnihilatedBabies {
@@ -511,6 +529,15 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Verification code has been resent to your email.
+        /// </summary>
+        public static string lblCodeResent {
+            get {
+                return ResourceManager.GetString("lblCodeResent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a A code has been sent to your email, please type it here:.
         /// </summary>
         public static string lblCodeSent {
@@ -556,6 +583,51 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a An error ocurred while blocking the user, try again later!.
+        /// </summary>
+        public static string lblErrBlockingException {
+            get {
+                return ResourceManager.GetString("lblErrBlockingException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a An error ocurred while verifying the code, Please try again later.
+        /// </summary>
+        public static string lblErrCodeException {
+            get {
+                return ResourceManager.GetString("lblErrCodeException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Too many failed attempts. Please request a new verification code..
+        /// </summary>
+        public static string lblErrCodeManyAttempts {
+            get {
+                return ResourceManager.GetString("lblErrCodeManyAttempts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a An error ocurrer while declining the firend request, try again later!.
+        /// </summary>
+        public static string lblErrDecliningFRException {
+            get {
+                return ResourceManager.GetString("lblErrDecliningFRException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a An error ocurred while deleting your friend, try again later!.
+        /// </summary>
+        public static string lblErrDeletingFriendException {
+            get {
+                return ResourceManager.GetString("lblErrDeletingFriendException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Paswords must be the same.
         /// </summary>
         public static string lblErrDiferentPassword {
@@ -574,6 +646,15 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Email not found.
+        /// </summary>
+        public static string lblErrEmailNotFound {
+            get {
+                return ResourceManager.GetString("lblErrEmailNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a You must type something to send a message.
         /// </summary>
         public static string lblErrEmptyMessage {
@@ -583,11 +664,47 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Error changing password.
+        /// </summary>
+        public static string lblErrErrorChangingPassword {
+            get {
+                return ResourceManager.GetString("lblErrErrorChangingPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Failed to resend the email. Please try again later.
+        /// </summary>
+        public static string lblErrFailedResendEmail {
+            get {
+                return ResourceManager.GetString("lblErrFailedResendEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Incorrect code.
         /// </summary>
         public static string lblErrIncorrectCode {
             get {
                 return ResourceManager.GetString("lblErrIncorrectCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Invalid code, try again..
+        /// </summary>
+        public static string lblErrInvalidCode {
+            get {
+                return ResourceManager.GetString("lblErrInvalidCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Invalid code format.
+        /// </summary>
+        public static string lblErrInvalidCodeFormat {
+            get {
+                return ResourceManager.GetString("lblErrInvalidCodeFormat", resourceCulture);
             }
         }
         
@@ -606,6 +723,69 @@ namespace Cliente.Properties {
         public static string lblErrInvalidMessage {
             get {
                 return ResourceManager.GetString("lblErrInvalidMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Invalid password.
+        /// </summary>
+        public static string lblErrInvalidPassword {
+            get {
+                return ResourceManager.GetString("lblErrInvalidPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Lobby code exceeds the maximum allowed value.
+        /// </summary>
+        public static string lblErrLobbyCodeExceedRange {
+            get {
+                return ResourceManager.GetString("lblErrLobbyCodeExceedRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Lobby is full or doesn&apos;t exist.
+        /// </summary>
+        public static string lblErrLobbyCodeFullOrNotExists {
+            get {
+                return ResourceManager.GetString("lblErrLobbyCodeFullOrNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Lobby range invalid.
+        /// </summary>
+        public static string lblErrLobbyCodeNotInRange {
+            get {
+                return ResourceManager.GetString("lblErrLobbyCodeNotInRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Lobby code must be a numeric value.
+        /// </summary>
+        public static string lblErrLobbyCodeNotNumeric {
+            get {
+                return ResourceManager.GetString("lblErrLobbyCodeNotNumeric", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Lobby code cannot be empty.
+        /// </summary>
+        public static string lblErrLobbyCodeNull {
+            get {
+                return ResourceManager.GetString("lblErrLobbyCodeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Loby code is too long.
+        /// </summary>
+        public static string lblErrLobbyCodeTooLong {
+            get {
+                return ResourceManager.GetString("lblErrLobbyCodeTooLong", resourceCulture);
             }
         }
         
@@ -682,6 +862,69 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Not all players are ready.
+        /// </summary>
+        public static string lblErrNotAllReady {
+            get {
+                return ResourceManager.GetString("lblErrNotAllReady", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You need at least 2 players to start the game.
+        /// </summary>
+        public static string lblErrNotEnoughPlayers {
+            get {
+                return ResourceManager.GetString("lblErrNotEnoughPlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Please enter an email and password.
+        /// </summary>
+        public static string lblErrNullLogin {
+            get {
+                return ResourceManager.GetString("lblErrNullLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You didn&apos;t made any change.
+        /// </summary>
+        public static string lblErrProfileNothingChanged {
+            get {
+                return ResourceManager.GetString("lblErrProfileNothingChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Password must be at least 8 characters long.
+        /// </summary>
+        public static string lblErrShortPassword {
+            get {
+                return ResourceManager.GetString("lblErrShortPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Your turn has ended due to timeout.
+        /// </summary>
+        public static string lblErrTurnTimeout {
+            get {
+                return ResourceManager.GetString("lblErrTurnTimeout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a An error ocurred while unblocking user, try again later!.
+        /// </summary>
+        public static string lblErrUnblockingException {
+            get {
+                return ResourceManager.GetString("lblErrUnblockingException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a This username already exists.
         /// </summary>
         public static string lblErrUsernameExists {
@@ -691,7 +934,7 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a This username is invalid.
+        ///   Busca una cadena traducida similar a TUsername can only contain letters, numbers, and underscores..
         /// </summary>
         public static string lblErrUsernameInvalid {
             get {
@@ -709,7 +952,7 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Password must have a number and a special character.
+        ///   Busca una cadena traducida similar a PasswPassword must contain at least one uppercase letter, one lowercase letter, one number, and one special character..
         /// </summary>
         public static string lblErrWeakPassword {
             get {
@@ -741,6 +984,33 @@ namespace Cliente.Properties {
         public static string lblForgotPassword {
             get {
                 return ResourceManager.GetString("lblForgotPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You were kicked from the lobby.
+        /// </summary>
+        public static string lblKickedFromLobby {
+            get {
+                return ResourceManager.GetString("lblKickedFromLobby", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Kicking.
+        /// </summary>
+        public static string lblKicking {
+            get {
+                return ResourceManager.GetString("lblKicking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Kick player.
+        /// </summary>
+        public static string lblKickPlayer {
+            get {
+                return ResourceManager.GetString("lblKickPlayer", resourceCulture);
             }
         }
         
@@ -786,6 +1056,42 @@ namespace Cliente.Properties {
         public static string lblNewUsername {
             get {
                 return ResourceManager.GetString("lblNewUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a  invited you to a game! Lobby code: .
+        /// </summary>
+        public static string lblNotificationInvitedToLobby {
+            get {
+                return ResourceManager.GetString("lblNotificationInvitedToLobby", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You are now friends with .
+        /// </summary>
+        public static string lblNotificationNowFriends {
+            get {
+                return ResourceManager.GetString("lblNotificationNowFriends", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a  sent you a friend reques!.
+        /// </summary>
+        public static string lblNotificationSentYouFR {
+            get {
+                return ResourceManager.GetString("lblNotificationSentYouFR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The user .
+        /// </summary>
+        public static string lblNotificationTheUser {
+            get {
+                return ResourceManager.GetString("lblNotificationTheUser", resourceCulture);
             }
         }
         
@@ -853,6 +1159,33 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Reason:.
+        /// </summary>
+        public static string lblReason {
+            get {
+                return ResourceManager.GetString("lblReason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Select a Monster.
+        /// </summary>
+        public static string lblSelectMonster {
+            get {
+                return ResourceManager.GetString("lblSelectMonster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Sending . . ..
+        /// </summary>
+        public static string lblSending {
+            get {
+                return ResourceManager.GetString("lblSending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Spanish.
         /// </summary>
         public static string lblSpanish {
@@ -867,6 +1200,33 @@ namespace Cliente.Properties {
         public static string lblSuccesPassword {
             get {
                 return ResourceManager.GetString("lblSuccesPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Are you sure you want to kick this user?.
+        /// </summary>
+        public static string lblSureKickUser {
+            get {
+                return ResourceManager.GetString("lblSureKickUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Type a reason to kick this user.
+        /// </summary>
+        public static string lblTypeReason {
+            get {
+                return ResourceManager.GetString("lblTypeReason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a User.
+        /// </summary>
+        public static string lblUser {
+            get {
+                return ResourceManager.GetString("lblUser", resourceCulture);
             }
         }
         

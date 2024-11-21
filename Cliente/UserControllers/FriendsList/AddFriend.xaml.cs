@@ -58,18 +58,19 @@ namespace Cliente.UserControllers.FriendsList
                     }
                     else
                     {
-                        MessageBox.Show("An error ocurred while blocking user");
+                        MessageBox.Show(LangUtils.Translate("lblErrBlockingException"));
                     }
                 }
                 catch (CommunicationException ex)
                 {
-                    MessageBox.Show("An error ocurred while blocking user");
+                    MessageBox.Show(LangUtils.Translate("lblErrNoConection"));
                 }
             }
         }
 
         private void OnSendFriendRequest(object sender, UserFound e)
         {
+            //MISSING EXCEPTIONS WITH INTERNAZIONALIZATION
             Social.Instance.socialManagerClient.SendFriendRequest(User.Instance.ID ,e.ID);
             UsersFound.Remove(e);
         }

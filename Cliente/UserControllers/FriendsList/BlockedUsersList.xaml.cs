@@ -1,5 +1,6 @@
 ﻿using Cliente.Pantallas;
 using Cliente.ServiceReference;
+using Haley.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -59,11 +60,11 @@ namespace Cliente.UserControllers.FriendsList
                     }
                     else
                     {
-                        MessageBox.Show("Error al desbloquear usuario");
+                        MessageBox.Show(LangUtils.Translate("lblErrUnblockingException"));
                     }
                 }catch(CommunicationException ex)
                 {
-                    MessageBox.Show("Error de comunicación con el servidor");
+                    MessageBox.Show(LangUtils.Translate("lblErrNoConection"));
                 }
             }
         }

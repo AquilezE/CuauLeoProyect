@@ -304,7 +304,7 @@
     <value>This username already exists</value>
   </data>
   <data name="lblErrUsernameInvalid" xml:space="preserve">
-    <value>This username is invalid</value>
+    <value>TUsername can only contain letters, numbers, and underscores.</value>
   </data>
   <data name="lblErrUserNotFound" xml:space="preserve">
     <value>User not found, try again later</value>
@@ -313,7 +313,7 @@
     <value>This Email is invalid or already exists</value>
   </data>
   <data name="lblErrWeakPassword" xml:space="preserve">
-    <value>Password must have a number and a special character</value>
+    <value>PasswPassword must contain at least one uppercase letter, one lowercase letter, one number, and one special character.</value>
   </data>
   <data name="lblErrWrongLogin" xml:space="preserve">
     <value>Incorrect username or password</value>
@@ -404,5 +404,125 @@
   </data>
   <data name="btnSearch" xml:space="preserve">
     <value>Search</value>
+  </data>
+  <data name="lblErrNotEnoughPlayers" xml:space="preserve">
+    <value>You need at least 2 players to start the game</value>
+  </data>
+  <data name="lblErrNotAllReady" xml:space="preserve">
+    <value>Not all players are ready</value>
+  </data>
+  <data name="lblKickedFromLobby" xml:space="preserve">
+    <value>You were kicked from the lobby</value>
+  </data>
+  <data name="lblUser" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="lblErrNullLogin" xml:space="preserve">
+    <value>Please enter an email and password</value>
+  </data>
+  <data name="lblErrInvalidCodeFormat" xml:space="preserve">
+    <value>Invalid code format</value>
+  </data>
+  <data name="lblErrCodeException" xml:space="preserve">
+    <value>An error ocurred while verifying the code, Please try again later</value>
+  </data>
+  <data name="lblErrCodeManyAttempts" xml:space="preserve">
+    <value>Too many failed attempts. Please request a new verification code.</value>
+  </data>
+  <data name="lblErrInvalidCode" xml:space="preserve">
+    <value>Invalid code, try again.</value>
+  </data>
+  <data name="lblSending" xml:space="preserve">
+    <value>Sending . . .</value>
+  </data>
+  <data name="lblCodeResent" xml:space="preserve">
+    <value>Verification code has been resent to your email</value>
+  </data>
+  <data name="lblErrFailedResendEmail" xml:space="preserve">
+    <value>Failed to resend the email. Please try again later</value>
+  </data>
+  <data name="lblErrEmailNotFound" xml:space="preserve">
+    <value>Email not found</value>
+  </data>
+  <data name="lblErrErrorChangingPassword" xml:space="preserve">
+    <value>Error changing password</value>
+  </data>
+  <data name="lblErrInvalidPassword" xml:space="preserve">
+    <value>Invalid password</value>
+  </data>
+  <data name="lblErrShortPassword" xml:space="preserve">
+    <value>Password must be at least 8 characters long</value>
+  </data>
+  <data name="lblKicking" xml:space="preserve">
+    <value>Kicking</value>
+  </data>
+  <data name="lblTypeReason" xml:space="preserve">
+    <value>Type a reason to kick this user</value>
+  </data>
+  <data name="lblSureKickUser" xml:space="preserve">
+    <value>Are you sure you want to kick this user?</value>
+  </data>
+  <data name="lblReason" xml:space="preserve">
+    <value>Reason:</value>
+  </data>
+  <data name="btnCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="lblKickPlayer" xml:space="preserve">
+    <value>Kick player</value>
+  </data>
+  <data name="lblErrProfileNothingChanged" xml:space="preserve">
+    <value>You didn't made any change</value>
+  </data>
+  <data name="lblErrLobbyCodeNull" xml:space="preserve">
+    <value>Lobby code cannot be empty</value>
+  </data>
+  <data name="lblErrLobbyCodeTooLong" xml:space="preserve">
+    <value>Loby code is too long</value>
+  </data>
+  <data name="lblErrLobbyCodeNotNumeric" xml:space="preserve">
+    <value>Lobby code must be a numeric value</value>
+  </data>
+  <data name="lblErrLobbyCodeNotInRange" xml:space="preserve">
+    <value>Lobby range invalid</value>
+  </data>
+  <data name="lblErrLobbyCodeExceedRange" xml:space="preserve">
+    <value>Lobby code exceeds the maximum allowed value</value>
+  </data>
+  <data name="lblErrLobbyCodeFullOrNotExists" xml:space="preserve">
+    <value>Lobby is full or doesn't exist</value>
+  </data>
+  <data name="lblSelectMonster" xml:space="preserve">
+    <value>Select a Monster</value>
+  </data>
+  <data name="lblActionsRemaining" xml:space="preserve">
+    <value>Actions Remaining: </value>
+  </data>
+  <data name="lblErrTurnTimeout" xml:space="preserve">
+    <value>Your turn has ended due to timeout</value>
+  </data>
+  <data name="lblNotificationTheUser" xml:space="preserve">
+    <value>The user </value>
+  </data>
+  <data name="lblNotificationSentYouFR" xml:space="preserve">
+    <value> sent you a friend reques!</value>
+  </data>
+  <data name="lblNotificationNowFriends" xml:space="preserve">
+    <value>You are now friends with </value>
+  </data>
+  <data name="lblNotificationInvitedToLobby" xml:space="preserve">
+    <value> invited you to a game! Lobby code: </value>
+  </data>
+  <data name="lblErrBlockingException" xml:space="preserve">
+    <value>An error ocurred while blocking the user, try again later!</value>
+  </data>
+  <data name="lblErrUnblockingException" xml:space="preserve">
+    <value>An error ocurred while unblocking user, try again later!</value>
+  </data>
+  <data name="lblErrDeletingFriendException" xml:space="preserve">
+    <value>An error ocurred while deleting your friend, try again later!</value>
+  </data>
+  <data name="lblErrDecliningFRException" xml:space="preserve">
+    <value>An error ocurrer while declining the firend request, try again later!</value>
   </data>
 </root>

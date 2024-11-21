@@ -1,5 +1,6 @@
 ﻿using Cliente.Pantallas;
 using Cliente.ServiceReference;
+using Haley.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -61,11 +62,11 @@ namespace Cliente.UserControllers.FriendsList
                 try
                 {
                     Social.Instance.socialManagerClient.AcceptFriendRequestAsync(User.Instance.ID, e.SenderId, e.FriendRequestId);
-
+                    //MISSING EXCEPTION LIKE AN ERROR NOT LIKE COMUNICATION, ALSO ADD LOCALIZATION TO THAT EXCEPTION
                 }
                 catch (CommunicationException ex)
                 {
-                    MessageBox.Show("An error ocurred while Accepting Friend Request");
+                    MessageBox.Show(LangUtils.Translate("lblErrNoConection"));
                 }
             }
         }
@@ -83,12 +84,12 @@ namespace Cliente.UserControllers.FriendsList
                     }
                     else
                     {
-                        MessageBox.Show("An error ocurred while Declining Friend Request");
+                        MessageBox.Show(LangUtils.Translate("lblErrDecliningFRException"));
                     }
                 }
                 catch (CommunicationException ex)
                 {
-                    MessageBox.Show("An error ocurred while Declining Friend Request");
+                    MessageBox.Show(LangUtils.Translate("lblErrNoConection"));
                 }
             }
         }

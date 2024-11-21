@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Haley.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,8 +26,7 @@ namespace Cliente.UserControllers
         {
             InitializeComponent();
 
-            //INTERNATIONALIZATION NEEDED
-            Title = "Kicking {username}";
+            Title =LangUtils.Translate("lblKicking") + $" {username}";
         }
 
         private void btCancel_Click(object sender, RoutedEventArgs e)
@@ -41,8 +41,7 @@ namespace Cliente.UserControllers
 
             if (string.IsNullOrEmpty(KickReason))
             {
-                //INTERNATIONALIZATION NEEDED
-                MessageBox.Show("Type a reason to kick this clown.", "Where's the reason???", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(LangUtils.Translate("lblTypeReason"), "Where's the reason???", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 

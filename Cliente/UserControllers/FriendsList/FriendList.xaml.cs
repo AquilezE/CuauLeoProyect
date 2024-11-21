@@ -1,5 +1,6 @@
 ﻿using Cliente.Pantallas;
 using Cliente.ServiceReference;
+using Haley.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -92,12 +93,12 @@ namespace Cliente.UserControllers.FriendsList
                     }
                     else
                     {
-                        MessageBox.Show("An error ocurred while blocking user");
+                        MessageBox.Show(LangUtils.Translate("lblErrBlockingException"));
                     }
                 }
                 catch (CommunicationException ex)
                 {
-                    MessageBox.Show("An error ocurred while blocking user");
+                    MessageBox.Show(LangUtils.Translate("lblErrNoConection"));
                 }
             }
         }
@@ -115,12 +116,12 @@ namespace Cliente.UserControllers.FriendsList
                     }
                     else
                     {
-                        MessageBox.Show("An error ocurred while deleting friend");
+                        MessageBox.Show(LangUtils.Translate("lblErrDeletingFriendException"));
                     }
                 }
                 catch (CommunicationException ex)
                 {
-                    MessageBox.Show("An error ocurred while deleting friend");
+                    MessageBox.Show(LangUtils.Translate("lblErrNoConection"));
                 }
             }
         }

@@ -1,5 +1,6 @@
 ﻿using Cliente.Pantallas;
 using Cliente.ServiceReference;
+using Haley.Utils;
 using ProtoBuf.Meta;
 using System;
 using System.Collections.Generic;
@@ -78,11 +79,11 @@ namespace Cliente.UserControllers.ChangePassword
         {
             if (!IsValidPassword(pbNewPassword.Password))
             {
-                lbErrNewPassword.Content = "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
+                lbErrNewPassword.Content = LangUtils.Translate("lblErrWeakPassword");
             }
             else if (pbNewPassword.Password.Length < 8)
             {
-                lbErrNewPassword.Content = "Password must be at least 8 characters long.";
+                lbErrNewPassword.Content = LangUtils.Translate("lblErrShortPassword");
             }
             else
             {
@@ -94,7 +95,7 @@ namespace Cliente.UserControllers.ChangePassword
         {
             if (pbConfirmNewPassword.Password != pbNewPassword.Password)
             {
-                lbErrConfirmNewPassword.Content = "Passwords do not match.";
+                lbErrConfirmNewPassword.Content = LangUtils.Translate("lblErrDiferentPassword");
             }
             else
             {

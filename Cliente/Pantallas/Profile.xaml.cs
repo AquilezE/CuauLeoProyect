@@ -1,5 +1,6 @@
 ﻿using Cliente.ServiceReference;
 using Cliente.UserControllers.ChangePassword;
+using Haley.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -139,7 +140,7 @@ namespace Cliente.Pantallas
             if (newUsername == "" && newProfilePictureId == 0)
             {
                 //TODO: Make localization of errors
-                lbErrNothingChanged.Content = "You didn't made any change";
+                lbErrNothingChanged.Content = LangUtils.Translate("lblErrProfileNothingChanged");
             }
             else if (newUsername != "" && newProfilePictureId !=0)
             {

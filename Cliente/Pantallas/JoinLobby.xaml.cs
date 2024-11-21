@@ -1,4 +1,5 @@
 ﻿using Cliente.ServiceReference;
+using Haley.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,27 +43,27 @@ namespace Cliente.Pantallas
 
             if (string.IsNullOrEmpty(lobbyCodeText))
             {
-                lbErrLobbyCode.Content = "Lobby code cannot be empty.";
+                lbErrLobbyCode.Content = LangUtils.Translate("lblErrLobbyCodeNull");
             }
             else if (lobbyCodeText.Length > 10) 
             {
-                lbErrLobbyCode.Content = "Lobby code is too long.";
+                lbErrLobbyCode.Content = LangUtils.Translate("lblErrLobbyCodeTooLong");
             }
             else if (!lobbyCodeText.All(char.IsDigit)) 
             {
-                lbErrLobbyCode.Content = "Lobby code must be a numeric value.";
+                lbErrLobbyCode.Content = LangUtils.Translate("lblErrLobbyCodeNotNumeric");
             }
             else if (!int.TryParse(lobbyCodeText, out int lobbyId)) 
             {
-                lbErrLobbyCode.Content = "Invalid lobby code format.";
+                lbErrLobbyCode.Content = LangUtils.Translate("lblErrInvalidCodeFormat");
             }
             else if (lobbyId <= 4) 
             {
-                lbErrLobbyCode.Content = "Lobby range invalid.";
+                lbErrLobbyCode.Content = LangUtils.Translate("lblErrLobbyCodeNotInRange");
             }
             else if (lobbyId > 1000000) 
             {
-                lbErrLobbyCode.Content = "Lobby code exceeds the maximum allowed value.";
+                lbErrLobbyCode.Content = LangUtils.Translate("lblErrLobbyCodeExceedRange");
             }
             else
             {
@@ -78,7 +79,7 @@ namespace Cliente.Pantallas
                 }
                 else
                 {
-                    lbErrLobbyCode.Content = "Lobby is full or doesn't exist.";
+                    lbErrLobbyCode.Content = LangUtils.Translate("lblErrLobbyCodeFullOrNotExists");
                 }
             }
         }
