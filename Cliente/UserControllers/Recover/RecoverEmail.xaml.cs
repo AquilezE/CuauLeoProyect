@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Cliente.Pantallas;
 using Cliente.ServiceReference;
 using Haley.Utils;
 
@@ -89,6 +90,12 @@ namespace Cliente.UserControllers.Recover
 
                 return false;
             }
+        }
+
+        private void btCancel_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.NavigateToView(new LogIn());
         }
     }
 }

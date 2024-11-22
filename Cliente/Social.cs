@@ -139,7 +139,6 @@ namespace Cliente
         {
             NotificationDialog notification = new NotificationDialog();
 
-            //FALTA INTERNACIONALIZAR
             notification.ShowInfoNotification(inviterName + LangUtils.Translate("lblNotificationInvitedToLobby") + lobbyId);
         }
 

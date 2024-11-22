@@ -66,6 +66,7 @@
   <xs:complexType name="GameStateDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="BabyDeck" nillable="true" type="tns:ArrayOfCardDTO" />
+      <xs:element minOccurs="0" name="CardsRemainingInDeck" type="xs:int" />
       <xs:element minOccurs="0" name="CurrentPlayerId" type="xs:int" />
       <xs:element minOccurs="0" name="GameStateId" type="xs:int" />
       <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PlayerActionsRemaining" nillable="true" type="q1:ArrayOfKeyValueOfintint" />

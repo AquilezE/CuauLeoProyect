@@ -430,6 +430,9 @@ namespace Cliente.ServiceReference {
         private Cliente.ServiceReference.CardDTO[] BabyDeckField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CardsRemainingInDeckField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int CurrentPlayerIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -463,6 +466,19 @@ namespace Cliente.ServiceReference {
                 if ((object.ReferenceEquals(this.BabyDeckField, value) != true)) {
                     this.BabyDeckField = value;
                     this.RaisePropertyChanged("BabyDeck");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CardsRemainingInDeck {
+            get {
+                return this.CardsRemainingInDeckField;
+            }
+            set {
+                if ((this.CardsRemainingInDeckField.Equals(value) != true)) {
+                    this.CardsRemainingInDeckField = value;
+                    this.RaisePropertyChanged("CardsRemainingInDeck");
                 }
             }
         }
@@ -1472,6 +1488,9 @@ namespace Cliente.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/RequestProvokeSelection")]
         void RequestProvokeSelection(int userId, int matchCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/NotifyActionInvalid")]
+        void NotifyActionInvalid(string messageKey);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]

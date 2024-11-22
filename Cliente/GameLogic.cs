@@ -1,4 +1,6 @@
-﻿using Cliente.ServiceReference;
+﻿using Cliente.Pantallas;
+using Cliente.ServiceReference;
+using Cliente.UserControllers;
 using Haley.Utils;
 using MaterialDesignThemes.Wpf;
 using System;
@@ -36,6 +38,7 @@ namespace Cliente
         private int _actionsRemaining;
         private int _turnTimeRemainingInSeconds;
         private int _playerActionsRemaining;
+        private int _cardsRemainingInDeck;
 
         private DispatcherTimer _turnTimer;
 
@@ -64,7 +67,15 @@ namespace Cliente
         public ObservableCollection<CardDTO> Hand { get; set; } = new ObservableCollection<CardDTO>();
         public ObservableCollection<MonsterDTO> Monster { get; set; } = new ObservableCollection<MonsterDTO>();
         public ObservableCollection<GameCard> CardListViewer { get; set; } = new ObservableCollection<GameCard>();
-
+        public int CardsRemainingInDeck
+        {
+            get => _cardsRemainingInDeck;
+            set
+            {
+                _cardsRemainingInDeck = value;
+                OnPropertyChanged(nameof(CardsRemainingInDeck));
+            }
+        }
 
 
         public string LastCardDrawn
@@ -220,6 +231,9 @@ namespace Cliente
             }
 
 
+            CardsRemainingInDeck = gameState.CardsRemainingInDeck;
+
+
 
         }
         public void RequestBodyPartSelection(int userId, int matchCode, CardDTO card)
@@ -256,12 +270,19 @@ namespace Cliente
             }
             else
             {
-                _turnTimer.Stop();
-                MessageBox.Show(LangUtils.Translate("lblErrTurnTimeout"));
+
+                NotificationDialog notification = new NotificationDialog();
+
+                notification.ShowInfoNotification(LangUtils.Translate("lblErrTurnTimeout"));
             }
         }
 
+        public void NotifyActionInvalid(string messageKey)
+        {
+            NotificationDialog notification = new NotificationDialog();
 
+            notification.ShowInfoNotification(LangUtils.Translate(messageKey));
+        }
     }
 }
 

@@ -25,11 +25,11 @@
             <TextBlock Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock.Style>
                     <Style TargetType="TextBlock">
-                        <Setter Property="Text" Value="Disconnected"/>
+                        <Setter Property="Text" Value="{h:Lang lblOffline}"/>
                         <Setter Property="Foreground" Value="Red"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding IsConnected}" Value="True">
-                                <Setter Property="Text" Value="Connected"/>
+                                <Setter Property="Text" Value="{h:Lang lblOnline}"/>
                                 <Setter Property="Foreground" Value="Green"/>
                             </DataTrigger>
                         </Style.Triggers>
