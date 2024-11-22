@@ -81,8 +81,6 @@ namespace Cliente
                 OnPropertyChanged(nameof(CardsRemainingInDeck));
             }
         }
-
-
         public string LastCardDrawn
         {
             get => _lastCardDrawn;
@@ -145,9 +143,6 @@ namespace Cliente
             }
         }
 
-
-
-
         public void ReceiveGameState(GameStateDTO gameState)
         {
             if (GameLogic.Instance == null)
@@ -168,26 +163,70 @@ namespace Cliente
 
             Console.WriteLine(gameState.CurrentPlayerId);
 
-            MapPlayers();
-
-            gameState.playerState.TryGetValue(User.Instance.ID, out var playerState);
 
             Player1Monsters.Clear();
-            foreach(var monster in gameState.playerState[User.Instance.ID].Monsters)
-            {   
-                Player1Monsters.Add(new GameMonster(monster));
-            }
-        }
-        private void MapPlayers()
-        {
-            foreach (var player in CurrentGameState.playerState)
+            if (gameState.playerState.TryGetValue(User.Instance.ID, out var playerState))
             {
-                if (player.Value.User.UserId != User.Instance.ID)
+                foreach (var monster in playerState.Monsters)
                 {
-                    playerMapping.Add(player.Value.User.UserId);
+                    Player1Monsters.Add(new GameMonster(monster));
                 }
             }
+            else
+            {
+                Console.WriteLine($"Player state not found for User ID: {User.Instance.ID}");
+            }
+
+            Player2Monsters.Clear();
+            Player3Monsters.Clear();
+            Player4Monsters.Clear();
+
+            int playerNumber = 2;
+            foreach (var player in gameState.playerState)
+            {
+                int playerId = player.Key;
+
+
+                if (playerId == User.Instance.ID)
+                    continue;
+
+                switch (playerNumber)
+                {
+                    case 2:
+                        foreach (var monster in player.Value.Monsters)
+                        {
+                            Player2Monsters.Add(new GameMonster(monster));
+                        }
+                        break;
+
+                    case 3:
+                        foreach (var monster in player.Value.Monsters)
+                        {
+                            Player3Monsters.Add(new GameMonster(monster));
+                        }
+                        break;
+
+                    case 4:
+                        foreach (var monster in player.Value.Monsters)
+                        {
+                            Player4Monsters.Add(new GameMonster(monster));
+                        }
+                        break;
+
+                    default:
+                        Console.WriteLine($"No monster list available for Player {playerNumber}");
+                        break;
+                }
+
+                playerNumber++;
+
+                if (playerNumber > 4)
+                    break;
+            }
+
+
         }
+
         private void UpdatePropertiesFromGameState(GameStateDTO gameState)
         {
             Console.WriteLine("Estoy cambiando??");
@@ -244,8 +283,6 @@ namespace Cliente
 
             CardsRemainingInDeck = gameState.CardsRemainingInDeck;
 
-
-
         }
         public void RequestBodyPartSelection(int userId, int matchCode, CardDTO card)
         {
@@ -284,10 +321,8 @@ namespace Cliente
 
                 NotificationDialog notification = new NotificationDialog();
 
-                notification.ShowInfoNotification(LangUtils.Translate("lblErrTurnTimeout"));
             }
         }
-
         public void NotifyActionInvalid(string messageKey)
         {
             NotificationDialog notification = new NotificationDialog();
