@@ -67,6 +67,11 @@ namespace Cliente
         public ObservableCollection<CardDTO> Hand { get; set; } = new ObservableCollection<CardDTO>();
         public ObservableCollection<MonsterDTO> Monster { get; set; } = new ObservableCollection<MonsterDTO>();
         public ObservableCollection<GameCard> CardListViewer { get; set; } = new ObservableCollection<GameCard>();
+        public ObservableCollection<GameMonster> Player1Monsters { get; set; } = new ObservableCollection<GameMonster>();
+        public ObservableCollection<GameMonster> Player2Monsters { get; set; } = new ObservableCollection<GameMonster>();
+        public ObservableCollection<GameMonster> Player3Monsters { get; set; } = new ObservableCollection<GameMonster>();
+        public ObservableCollection<GameMonster> Player4Monsters { get; set; } = new ObservableCollection<GameMonster>();
+
         public int CardsRemainingInDeck
         {
             get => _cardsRemainingInDeck;
@@ -166,6 +171,12 @@ namespace Cliente
             MapPlayers();
 
             gameState.playerState.TryGetValue(User.Instance.ID, out var playerState);
+
+            Player1Monsters.Clear();
+            foreach(var monster in gameState.playerState[User.Instance.ID].Monsters)
+            {   
+                Player1Monsters.Add(new GameMonster(monster));
+            }
         }
         private void MapPlayers()
         {

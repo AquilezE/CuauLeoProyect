@@ -16,14 +16,15 @@ using System.Windows.Shapes;
 namespace Cliente.GameUserControllers
 {
     /// <summary>
-    /// Lógica de interacción para MonstersViewerVertical.xaml
+    /// Lógica de interacción para MonstersViewerPlayer4.xaml
     /// </summary>
-    public partial class MonstersViewerVertical : UserControl
+    public partial class MonstersViewerPlayer4 : UserControl
     {
-        public EventHandler<MonstersViewerVertical> closePanel;
-        public MonstersViewerVertical()
+        public EventHandler<MonstersViewerPlayer4> closePanel;
+        public MonstersViewerPlayer4()
         {
             InitializeComponent();
+            DataContext = GameLogic.Instance.Player4Monsters;
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)

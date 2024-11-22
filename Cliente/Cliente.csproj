@@ -171,13 +171,20 @@
     <Compile Include="GameUserControllers\MonsterSelectionWindow.xaml.cs">
       <DependentUpon>MonsterSelectionWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GameUserControllers\MonstersViewer.xaml.cs">
-      <DependentUpon>MonstersViewer.xaml</DependentUpon>
+    <Compile Include="GameUserControllers\MonstersViewerPlayer1.xaml.cs">
+      <DependentUpon>MonstersViewerPlayer1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GameUserControllers\MonstersViewerVertical.xaml.cs">
-      <DependentUpon>MonstersViewerVertical.xaml</DependentUpon>
+    <Compile Include="GameUserControllers\MonstersViewerPlayer2.xaml.cs">
+      <DependentUpon>MonstersViewerPlayer2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameUserControllers\MonstersViewerPlayer3.xaml.cs">
+      <DependentUpon>MonstersViewerPlayer3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameUserControllers\MonstersViewerPlayer4.xaml.cs">
+      <DependentUpon>MonstersViewerPlayer4.xaml</DependentUpon>
     </Compile>
     <Compile Include="Message.cs" />
+    <Compile Include="GameMonster.cs" />
     <Compile Include="Pantallas\Friends.xaml.cs">
       <DependentUpon>Friends.xaml</DependentUpon>
     </Compile>
@@ -308,11 +315,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GameUserControllers\MonstersViewer.xaml">
+    <Page Include="GameUserControllers\MonstersViewerPlayer1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GameUserControllers\MonstersViewerVertical.xaml">
+    <Page Include="GameUserControllers\MonstersViewerPlayer2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameUserControllers\MonstersViewerPlayer3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameUserControllers\MonstersViewerPlayer4.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

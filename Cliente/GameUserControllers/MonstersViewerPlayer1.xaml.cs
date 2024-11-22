@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,14 +17,15 @@ using System.Windows.Shapes;
 namespace Cliente.GameUserControllers
 {
     /// <summary>
-    /// Lógica de interacción para MonstersViewer.xaml
+    /// Lógica de interacción para MonstersViewerPlayer1.xaml
     /// </summary>
-    public partial class MonstersViewer : UserControl
+    public partial class MonstersViewerPlayer1 : UserControl
     {
-        public EventHandler<MonstersViewer> closePanel;
-        public MonstersViewer()
+        public EventHandler<MonstersViewerPlayer1> closePanel;
+        public MonstersViewerPlayer1()
         {
             InitializeComponent();
+            DataContext = GameLogic.Instance.Player1Monsters;
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)

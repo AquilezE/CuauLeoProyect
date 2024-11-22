@@ -35,10 +35,18 @@ namespace Cliente.GameUserControllers
 
             var cardsViewer = new CardsViewer();
             extensiblePanelCards.Content = cardsViewer;
-            var monstersViewer = new MonstersViewer();
-            extensiblePanelMonstersPlayer1.Content = monstersViewer;
-            var monstersViewer2 = new MonstersViewerVertical();
+
+            var monstersViewer1 = new MonstersViewerPlayer1();
+            extensiblePanelMonstersPlayer1.Content = monstersViewer1;
+            
+            var monstersViewer2 = new MonstersViewerPlayer2();
             extensiblePanelMonstersPlayer2.Content = monstersViewer2;
+            
+            var monstersViewer3 = new MonstersViewerPlayer3();
+            extensiblePanelMonstersPlayer3.Content = monstersViewer3;
+            
+            var monstersViewer4 = new MonstersViewerPlayer4();
+            extensiblePanelMonstersPlayer4.Content = monstersViewer4;
 
             this.AddHandler(CardUserController.CardClickedEvent, new RoutedEventHandler(Card_Clicked));
 
@@ -119,11 +127,11 @@ namespace Cliente.GameUserControllers
 
         }
 
-        private void extensiblePanelMonstersPlayer2_Loaded(object sender, RoutedEventArgs e)
+        private void extensiblePanelMonstersPlayer1_Loaded(object sender, RoutedEventArgs e)
         {
-            if (extensiblePanelMonstersPlayer2.Content is MonstersViewerVertical monstersViewerVertical)
+            if (extensiblePanelMonstersPlayer1.Content is MonstersViewerPlayer1 monstersViewer)
             {
-                monstersViewerVertical.closePanel += OnClosePanel;
+                monstersViewer.closePanel += OnClosePanelPlayer1;
             }
             else
             {
@@ -131,11 +139,35 @@ namespace Cliente.GameUserControllers
             }
         }
 
-        private void extensiblePanelMonstersPlayer1_Loaded(object sender, RoutedEventArgs e)
+        private void extensiblePanelMonstersPlayer2_Loaded(object sender, RoutedEventArgs e)
         {
-            if (extensiblePanelMonstersPlayer1.Content is MonstersViewer monstersViewer)
+            if (extensiblePanelMonstersPlayer2.Content is MonstersViewerPlayer2 monstersViewerVertical)
             {
-                monstersViewer.closePanel += OnClosePanelPlayer1;
+                monstersViewerVertical.closePanel += OnClosePanelPLayer2;
+            }
+            else
+            {
+                Console.WriteLine("Content not initialized or not of type MonstersViewerVertical.");
+            }
+        }
+
+        private void extensiblePanelMonstersPlayer3_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (extensiblePanelMonstersPlayer3.Content is MonstersViewerPlayer3 monstersViewerVertical)
+            {
+                monstersViewerVertical.closePanel += OnClosePanelPlayer3;
+            }
+            else
+            {
+                Console.WriteLine("Content not initialized or not of type MonstersViewerVertical.");
+            }
+        }
+
+        private void extensiblePanelMonstersPlayer4_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (extensiblePanelMonstersPlayer4.Content is MonstersViewerPlayer4 monstersViewerVertical)
+            {
+                monstersViewerVertical.closePanel += OnClosePanelPlayer4;
             }
             else
             {
@@ -183,16 +215,24 @@ namespace Cliente.GameUserControllers
             });
         }
 
-
-
-        private void OnClosePanel(object sender, MonstersViewerVertical e)
+        private void OnClosePanelPlayer1(object sender, MonstersViewerPlayer1 e)
         {
-            extensiblePanelMonstersPlayer2.Margin = new Thickness(0, -1200, -1200, 0);
+            extensiblePanelMonstersPlayer1.Margin = new Thickness(0, -12200, -12200, 0);
         }
 
-        private void btnPlayer2Monster_Click(object sender, RoutedEventArgs e)
+        private void OnClosePanelPLayer2(object sender, MonstersViewerPlayer2 e)
         {
-            extensiblePanelMonstersPlayer2.Margin = new Thickness(0, 0, 971, 0);
+            extensiblePanelMonstersPlayer2.Margin = new Thickness(0, -12200, -12200, 0);
+        }
+
+        private void OnClosePanelPlayer3(object sender, MonstersViewerPlayer3 e)
+        {
+            extensiblePanelMonstersPlayer3.Margin = new Thickness(0, -12200, -12200, 0);
+        }
+
+        private void OnClosePanelPlayer4(object sender, MonstersViewerPlayer4 e)
+        {
+            extensiblePanelMonstersPlayer4.Margin = new Thickness(0, -12200, -12200, 0);
         }
 
         private void btnPlayer1Monster_Click(object sender, RoutedEventArgs e)
@@ -200,9 +240,19 @@ namespace Cliente.GameUserControllers
             extensiblePanelMonstersPlayer1.Margin = new Thickness(0, 296, 0, 0);
         }
 
-        private void OnClosePanelPlayer1(object sender, MonstersViewer e)
+        private void btnPlayer2Monster_Click(object sender, RoutedEventArgs e)
         {
-            extensiblePanelMonstersPlayer1.Margin = new Thickness(0, -1200, -1200, 0);
+            extensiblePanelMonstersPlayer2.Margin = new Thickness(0, 19, 0, 277);
+        }
+
+        private void btnPlayer3Monster_Click(object sender, RoutedEventArgs e)
+        {
+            extensiblePanelMonstersPlayer3.Margin = new Thickness(971, 0, 0, 0);
+        }
+
+        private void btnPlayer4Monster_Click(object sender, RoutedEventArgs e)
+        {
+            extensiblePanelMonstersPlayer4.Margin = new Thickness(0, 0, 971, 0);
         }
     }
 }
