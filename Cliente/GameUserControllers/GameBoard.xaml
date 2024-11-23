@@ -77,9 +77,16 @@
                Foreground="Black"/>
         </StackPanel>
 
+        <Label Grid.Column="1" Content="{Binding Player1Username}" HorizontalAlignment="Left" Margin="63,30,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="20"/>
+        <Label Grid.Column="1" Content="{Binding Player2Username}" HorizontalAlignment="Left" Margin="859,222,0,0" VerticalAlignment="Top" FontSize="20" />
+        <Label Grid.Column="2" Content="{Binding Player3Username}" HorizontalAlignment="Center" Margin="0,30,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="{Binding Player4Username}" HorizontalAlignment="Left" Margin="39,381,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20"/>
+
         <ContentControl Grid.Row="1" Grid.Column="1" x:Name="extensiblePanelMonstersPlayer1" Height="500" Width="1200" HorizontalAlignment="Right" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="1000,2000,2000,1000" Loaded="extensiblePanelMonstersPlayer1_Loaded"/>
         <ContentControl Grid.Column="1" x:Name="extensiblePanelMonstersPlayer2" Height="500" Width="1200" HorizontalAlignment="Center" Grid.RowSpan="2" Margin="10000,1000,1000,1000" Loaded="extensiblePanelMonstersPlayer2_Loaded"/>
         <ContentControl Grid.Column="1" Grid.Row="0"  x:Name="extensiblePanelMonstersPlayer3" Height="1080" Width="600" VerticalAlignment="Center" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="1000,2000,2000,1000" Loaded="extensiblePanelMonstersPlayer3_Loaded"/>
         <ContentControl Grid.Column="0" Grid.Row="0" x:Name="extensiblePanelMonstersPlayer4" Height="1080" Width="600" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="1000,2000,2000,1000" Grid.RowSpan="3" Loaded="extensiblePanelMonstersPlayer4_Loaded" />
+
+
     </Grid>
 </UserControl>

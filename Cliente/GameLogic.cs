@@ -31,7 +31,6 @@ namespace Cliente
 
         private static GameLogic _instance;
         private static readonly object _lock = new object();
-        private int _pendingCardId;
         private GameStateDTO _currentGameState;
         private string _lastCardDrawn;
         private int _currentPlayerId;
@@ -39,6 +38,50 @@ namespace Cliente
         private int _turnTimeRemainingInSeconds;
         private int _playerActionsRemaining;
         private int _cardsRemainingInDeck;
+        private string _player1Username;
+        private string _player2Username;
+        private string _player3Username;
+        private string _player4Username;
+
+        public string Player1Username
+        {
+            get => _player1Username;
+            set 
+            {  
+                _player1Username = value;
+                OnPropertyChanged(nameof(Player1Username));
+            }
+        }
+
+        public string Player2Username
+        {
+            get => _player2Username;
+            set
+            {
+                _player2Username = value;
+                OnPropertyChanged(nameof(Player2Username));
+            }
+        }
+
+        public string Player3Username
+        {
+            get => _player3Username;
+            set
+            {
+                _player3Username = value;
+                OnPropertyChanged(nameof(Player3Username));
+            }
+        }
+
+        public string Player4Username
+        {
+            get => _player4Username;
+            set
+            {
+                _player4Username = value;
+                OnPropertyChanged(nameof(Player4Username));
+            }
+        }
 
         private DispatcherTimer _turnTimer;
 
@@ -143,6 +186,8 @@ namespace Cliente
             }
         }
 
+        
+
         public void ReceiveGameState(GameStateDTO gameState)
         {
             if (GameLogic.Instance == null)
@@ -167,6 +212,7 @@ namespace Cliente
             Player1Monsters.Clear();
             if (gameState.playerState.TryGetValue(User.Instance.ID, out var playerState))
             {
+                Player1Username = playerState.User.Username;
                 foreach (var monster in playerState.Monsters)
                 {
                     Player1Monsters.Add(new GameMonster(monster));
@@ -193,6 +239,7 @@ namespace Cliente
                 switch (playerNumber)
                 {
                     case 2:
+                        Player2Username = player.Value.User.Username;
                         foreach (var monster in player.Value.Monsters)
                         {
                             Player2Monsters.Add(new GameMonster(monster));
@@ -200,6 +247,7 @@ namespace Cliente
                         break;
 
                     case 3:
+                        Player3Username = player.Value.User.Username;
                         foreach (var monster in player.Value.Monsters)
                         {
                             Player3Monsters.Add(new GameMonster(monster));
@@ -207,6 +255,7 @@ namespace Cliente
                         break;
 
                     case 4:
+                        Player4Username = player.Value.User.Username;
                         foreach (var monster in player.Value.Monsters)
                         {
                             Player4Monsters.Add(new GameMonster(monster));

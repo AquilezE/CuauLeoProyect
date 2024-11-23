@@ -210,7 +210,7 @@ namespace Cliente.GameUserControllers
                 if (selectionWindow.ShowDialog() == true)
                 {
                     int selectedMonsterIndex = selectionWindow.SelectedMonsterIndex;
-                    gameManagerClient.ExecuteToolPlacement(User.Instance.ID, GameLogic.Instance.GameId, card.CardId, selectedMonsterIndex);
+                    gameManagerClient.ExecuteHatPlacement(User.Instance.ID, GameLogic.Instance.GameId, card.CardId, selectedMonsterIndex);
                 }
             });
         }
