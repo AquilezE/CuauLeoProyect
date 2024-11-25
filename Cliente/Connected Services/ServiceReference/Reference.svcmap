@@ -25,6 +25,7 @@
     <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="b653a181-a5e6-4b63-b10b-18254e5fb976" SourceId="1" SourceUrl="net.tcp://localhost:8000/ServiceImplementation/mex" />
     <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="403b4ed5-240c-4384-817e-e8b03d3ddbdd" SourceId="1" SourceUrl="net.tcp://localhost:8000/ServiceImplementation/mex" />
     <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="55971916-2410-4574-8234-60d36d9d7d90" SourceId="1" SourceUrl="net.tcp://localhost:8000/ServiceImplementation/mex" />
+    <MetadataFile FileName="BevososService.Exceptions.xsd" MetadataType="Schema" ID="44d5f402-f6a4-406d-8ac5-ada6c7f65694" SourceId="1" SourceUrl="net.tcp://localhost:8000/ServiceImplementation/mex" />
     <MetadataFile FileName="BevososService.DTOs.xsd" MetadataType="Schema" ID="94891108-2390-4313-a3b9-87294a47818b" SourceId="1" SourceUrl="net.tcp://localhost:8000/ServiceImplementation/mex" />
     <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="b8f9859a-10ec-4291-9a54-eee54ca65cf7" SourceId="1" SourceUrl="net.tcp://localhost:8000/ServiceImplementation/mex" />
   </Metadata>

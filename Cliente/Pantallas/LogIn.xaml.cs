@@ -31,7 +31,7 @@ namespace Cliente.Pantallas
     {
 
         private UsersManagerClient _servicio;
-        private bool isLoaded = false;
+        private bool _isLoaded;
 
         public LogIn()
         {
@@ -39,9 +39,13 @@ namespace Cliente.Pantallas
             _servicio = new UsersManagerClient();
             LangUtils.Register();
             ChangeCulture("en");
-            this.Loaded += (s, e) => isLoaded = true;
+            this.Loaded += OnLoaded;
         }
 
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            _isLoaded = true;
+        }
 
         private void btPlayAsGuest_Click(object sender, RoutedEventArgs e)
         {
@@ -112,22 +116,39 @@ namespace Cliente.Pantallas
                 
                 
                 Social.Instance.socialManagerClient.Connect(currentUser.ID);
-                social.FriendList.Clear();
-                social.GetFriends();
-                social.FriendRequests.Clear();
-                social.GetFriendRequests();
-                social.BlockedUsersList.Clear();
-                social.GetBlockedUsers();
-                
+                RefreshSocialData(social);
 
                 return true;
             }
             catch (Exception)
             {
+
+                Social.Instance = null;
+                Social.Instance = Social.Instance;
+
+                if (_servicio != null)
+                {
+                    _servicio.Abort();
+                    _servicio = new UsersManagerClient();
+                }
+
                 throw;
             }
 
         }
+
+        private void RefreshSocialData(Social social)
+        {
+            social.FriendList.Clear();
+            social.GetFriends();
+
+            social.FriendRequests.Clear();
+            social.GetFriendRequests();
+
+            social.BlockedUsersList.Clear();
+            social.GetBlockedUsers();
+        }
+
 
         private void btRegister_Click(object sender, RoutedEventArgs e)
         {
@@ -143,7 +164,7 @@ namespace Cliente.Pantallas
 
         private void cbLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (!isLoaded)
+            if (!_isLoaded)
             {
                 return;
             }

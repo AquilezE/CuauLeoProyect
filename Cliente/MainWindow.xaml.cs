@@ -41,8 +41,6 @@ namespace Cliente
 
                 this.ResizeMode = ResizeMode.NoResize;
 
-
-
             }
 
         }
