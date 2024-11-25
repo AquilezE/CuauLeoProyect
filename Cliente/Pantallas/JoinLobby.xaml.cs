@@ -22,72 +22,124 @@ namespace Cliente.Pantallas
     /// </summary>
     public partial class JoinLobby : UserControl
     {
+
+        private readonly LobbyCheckerClient _lobbyCheckerClient;
+
         public JoinLobby()
         {
             InitializeComponent();
+            _lobbyCheckerClient = new LobbyCheckerClient();
+            lbErrLobbyCode.Content = "";
         }
 
         private void btJoinLobby_Click(object sender, RoutedEventArgs e)
         {
-            LobbyCheckerClient lobbyCheckerClient = new LobbyCheckerClient();
+            var userDto = GetCurrentUserDto();
 
-            Lobby lobbyWindow = new Lobby();
+            string lobbyCodeInput = tbLobbyCode.Text.Trim();
 
-            UserDto userDto = new UserDto();
-            userDto.UserId = User.Instance.ID;
-            userDto.Username = User.Instance.Username;
-            userDto.Email = User.Instance.Email;
-            userDto.ProfilePictureId = User.Instance.ProfilePictureId;
-
-            string lobbyCodeText = tbLobbyCode.Text.Trim();
-
-            if (string.IsNullOrEmpty(lobbyCodeText))
+            string validationError = ValidateLobbyCode(lobbyCodeInput);
+            if (validationError != null)
             {
-                lbErrLobbyCode.Content = LangUtils.Translate("lblErrLobbyCodeNull");
+                lbErrLobbyCode.Content = LangUtils.Translate(validationError);
+                return;
             }
-            else if (lobbyCodeText.Length > 10) 
-            {
-                lbErrLobbyCode.Content = LangUtils.Translate("lblErrLobbyCodeTooLong");
-            }
-            else if (!lobbyCodeText.All(char.IsDigit)) 
-            {
-                lbErrLobbyCode.Content = LangUtils.Translate("lblErrLobbyCodeNotNumeric");
-            }
-            else if (!int.TryParse(lobbyCodeText, out int lobbyId)) 
+
+            if (!int.TryParse(lobbyCodeInput, out int lobbyId))
             {
                 lbErrLobbyCode.Content = LangUtils.Translate("lblErrInvalidCodeFormat");
+                return;
             }
-            else if (lobbyId <= 4) 
+
+            // Check lobby status
+            bool isLobbyOpen;
+            bool isLobbyFull;
+
+            try
             {
-                lbErrLobbyCode.Content = LangUtils.Translate("lblErrLobbyCodeNotInRange");
+                isLobbyOpen = WcfCallHelper.Execute(() => _lobbyCheckerClient.IsLobbyOpen(lobbyId));
+                isLobbyFull = WcfCallHelper.Execute(() => _lobbyCheckerClient.IsLobbyFull(lobbyId));
             }
-            else if (lobbyId > 1000000) 
+            catch (Exception)
             {
-                lbErrLobbyCode.Content = LangUtils.Translate("lblErrLobbyCodeExceedRange");
+                lbErrLobbyCode.Content = LangUtils.Translate("lblErrNoConnection");
+                return;
+            }
+
+            if (isLobbyOpen && !isLobbyFull)
+            {
+                try
+                {
+                    var lobbyWindow = new Lobby();
+                    lobbyWindow._servicio.JoinLobby(lobbyId, userDto);
+
+                    var mainWindow = (MainWindow)Application.Current.MainWindow;
+                    mainWindow.NavigateToView(lobbyWindow);
+                }
+                catch (Exception)
+                {
+                    lbErrLobbyCode.Content = LangUtils.Translate("lblErrJoiningLobby");
+                }
             }
             else
             {
-                bool isLobbyOpen = lobbyCheckerClient.IsLobbyOpen(lobbyId);
-                bool isLobbyFull = lobbyCheckerClient.IsLobbyFull(lobbyId);
+                lbErrLobbyCode.Content = LangUtils.Translate("lblErrLobbyCodeFullOrNotExists");
+            }
+        }
 
-                if (isLobbyOpen && !isLobbyFull)
+        private UserDto GetCurrentUserDto()
+        {
+            return new UserDto
+            {
+                UserId = User.Instance.ID,
+                Username = User.Instance.Username,
+                Email = User.Instance.Email,
+                ProfilePictureId = User.Instance.ProfilePictureId
+            };
+        }
+
+        private string ValidateLobbyCode(string lobbyCode)
+        {
+            if (string.IsNullOrEmpty(lobbyCode))
+            {
+                return "lblErrLobbyCodeNull";
+            }
+
+            if (lobbyCode.Length > 10)
+            {
+                return "lblErrLobbyCodeTooLong";
+            }
+
+            if (!lobbyCode.All(char.IsDigit))
+            {
+                return "lblErrLobbyCodeNotNumeric";
+            }
+
+            if (int.TryParse(lobbyCode, out int lobbyId))
+            {
+                if (lobbyId <= 4)
                 {
-                    lobbyWindow._servicio.JoinLobby(lobbyId, userDto);
-
-                    MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-                    mainWindow.NavigateToView(lobbyWindow);
+                    return "lblErrLobbyCodeNotInRange";
                 }
-                else
+
+                if (lobbyId > 1000000)
                 {
-                    lbErrLobbyCode.Content = LangUtils.Translate("lblErrLobbyCodeFullOrNotExists");
+                    return "lblErrLobbyCodeExceedRange";
                 }
             }
+            else
+            {
+                return "lblErrInvalidCodeFormat";
+            }
+
+            return null;
         }
 
         private void btGoBack_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new MainMenu());
         }
     }
 }
+

@@ -299,6 +299,7 @@
     </Compile>
     <Compile Include="UserFound.cs" />
     <Compile Include="UserLobby.cs" />
+    <Compile Include="Utils\WcfCallHelper.cs" />
     <Page Include="GameUserControllers\CardUserController.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -491,6 +492,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceReference\BevososService.DTOs.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference\BevososService.Exceptions.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceReference\Cliente.ServiceReference.BlockedDTO.datasource">

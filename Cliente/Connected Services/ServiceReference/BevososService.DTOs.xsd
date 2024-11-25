@@ -33,21 +33,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="FriendDTO" nillable="true" type="tns:FriendDTO" />
-  <xs:complexType name="ArrayOfFriendRequestDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="FriendRequestDTO" nillable="true" type="tns:FriendRequestDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfFriendRequestDTO" nillable="true" type="tns:ArrayOfFriendRequestDTO" />
-  <xs:complexType name="FriendRequestDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="FriendRequestId" type="xs:int" />
-      <xs:element minOccurs="0" name="ProfilePictureId" type="xs:int" />
-      <xs:element minOccurs="0" name="SenderId" type="xs:int" />
-      <xs:element minOccurs="0" name="SenderName" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="FriendRequestDTO" nillable="true" type="tns:FriendRequestDTO" />
   <xs:complexType name="ArrayOfBlockedDTO">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="BlockedDTO" nillable="true" type="tns:BlockedDTO" />
@@ -63,6 +48,21 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="BlockedDTO" nillable="true" type="tns:BlockedDTO" />
+  <xs:complexType name="ArrayOfFriendRequestDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FriendRequestDTO" nillable="true" type="tns:FriendRequestDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFriendRequestDTO" nillable="true" type="tns:ArrayOfFriendRequestDTO" />
+  <xs:complexType name="FriendRequestDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FriendRequestId" type="xs:int" />
+      <xs:element minOccurs="0" name="ProfilePictureId" type="xs:int" />
+      <xs:element minOccurs="0" name="SenderId" type="xs:int" />
+      <xs:element minOccurs="0" name="SenderName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FriendRequestDTO" nillable="true" type="tns:FriendRequestDTO" />
   <xs:complexType name="GameStateDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="BabyDeck" nillable="true" type="tns:ArrayOfCardDTO" />

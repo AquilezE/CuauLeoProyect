@@ -346,6 +346,13 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="AcceptFriendRequestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AcceptFriendRequestResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="DeclineFriendRequest">
     <xs:complexType>
       <xs:sequence>
@@ -357,6 +364,35 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="DeclineFriendRequestResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteFriend">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+        <xs:element minOccurs="0" name="friendId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteFriendResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteFriendResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFriends">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFriendsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="GetFriendsResult" nillable="true" type="q6:ArrayOfFriendDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -405,32 +441,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="DeleteFriend">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="userId" type="xs:int" />
-        <xs:element minOccurs="0" name="friendId" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DeleteFriendResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="DeleteFriendResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetFriends">
+  <xs:element name="GetBlockedUsers">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="userId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetFriendsResponse">
+  <xs:element name="GetBlockedUsersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="GetFriendsResult" nillable="true" type="q6:ArrayOfFriendDTO" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="GetBlockedUsersResult" nillable="true" type="q7:ArrayOfBlockedDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -444,21 +465,7 @@
   <xs:element name="GetFriendRequestsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="GetFriendRequestsResult" nillable="true" type="q7:ArrayOfFriendRequestDTO" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetBlockedUsers">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="userId" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetBlockedUsersResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="GetBlockedUsersResult" nillable="true" type="q8:ArrayOfBlockedDTO" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="GetFriendRequestsResult" nillable="true" type="q8:ArrayOfFriendRequestDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

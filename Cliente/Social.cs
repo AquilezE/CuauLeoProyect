@@ -12,6 +12,7 @@ using System.ComponentModel;
 using System.ServiceModel;
 using Cliente.UserControllers;
 using Haley.Utils;
+using Cliente.Pantallas;
 
 namespace Cliente
 {
@@ -30,12 +31,48 @@ namespace Cliente
         public Social()
         {
             socialManagerClient = new SocialManagerClient(new System.ServiceModel.InstanceContext(this));
+
+            ICommunicationObject clientChannel = (ICommunicationObject)socialManagerClient;
+            clientChannel.Closed += ClientChannel_Closed;
+            clientChannel.Faulted += ClientChannel_Faulted;
+
+
             FriendList = new ObservableCollection<Friend>();
             FriendRequests = new ObservableCollection<FriendRequest>();
             BlockedUsersList = new ObservableCollection<Blocked>();
-
-            
         }
+
+        private void ClientChannel_Closed(object sender, EventArgs e)
+        {
+            HandleChannelTermination("Connection closed. Redirecting to login...");
+        }
+
+        private void ClientChannel_Faulted(object sender, EventArgs e)
+        {
+            HandleChannelTermination("Connection faulted. Redirecting to login...");
+        }
+
+        private void HandleChannelTermination(string message)
+        {
+            // Log the termination message if necessary
+            Console.WriteLine(message);
+
+            // Navigate to the login page
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.NavigateToView(new LogIn());
+            });
+
+            // Cleanup: Dispose of the current client
+            socialManagerClient.Abort();
+            socialManagerClient = null;
+
+            // Optionally, reset the Social instance
+            Social.instance = null;
+        }
+
+
 
         public ObservableCollection<Friend> FriendList
         {
@@ -155,22 +192,17 @@ namespace Cliente
         {
             try
             {
-                socialManagerClient.Disconnect(User.Instance.ID);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error disconnecting: {ex.Message}");
-            }
-
-
-            FriendList.Clear();
-            FriendRequests.Clear();
-            BlockedUsersList.Clear();
-
-            try
-            {
                 if (socialManagerClient != null)
                 {
+                    try
+                    {
+                        socialManagerClient.Disconnect(User.Instance.ID);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error disconnecting: {ex.Message}");
+                    }
+
                     if (socialManagerClient.State == CommunicationState.Faulted)
                     {
                         socialManagerClient.Abort();
@@ -184,14 +216,16 @@ namespace Cliente
             catch (Exception ex)
             {
                 Console.WriteLine($"Error closing client: {ex.Message}");
-                socialManagerClient.Abort();
+                socialManagerClient?.Abort(); 
             }
             finally
             {
                 socialManagerClient = null;
             }
 
-
+            FriendList.Clear();
+            FriendRequests.Clear();
+            BlockedUsersList.Clear();
         }
 
 
