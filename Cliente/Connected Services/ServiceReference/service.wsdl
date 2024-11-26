@@ -417,6 +417,9 @@
   <wsdl:message name="IGameManager_NotifyActionInvalid_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:NotifyActionInvalid" />
   </wsdl:message>
+  <wsdl:message name="IGameManager_OnProvoke_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnProvoke" />
+  </wsdl:message>
   <wsdl:portType name="IUsersManager">
     <wsdl:operation name="IsUsernameTaken">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/IsUsernameTaken" message="tns:IUsersManager_IsUsernameTaken_InputMessage" />
@@ -659,6 +662,9 @@
     </wsdl:operation>
     <wsdl:operation name="NotifyActionInvalid">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/NotifyActionInvalid" message="tns:IGameManager_NotifyActionInvalid_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnProvoke">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/OnProvoke" message="tns:IGameManager_OnProvoke_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUsersManager" type="tns:IUsersManager">
@@ -1190,6 +1196,12 @@
     </wsdl:operation>
     <wsdl:operation name="NotifyActionInvalid">
       <soap12:operation soapAction="http://tempuri.org/IGameManager/NotifyActionInvalid" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnProvoke">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/OnProvoke" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

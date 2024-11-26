@@ -70,8 +70,9 @@
       <xs:element minOccurs="0" name="CurrentPlayerId" type="xs:int" />
       <xs:element minOccurs="0" name="GameStateId" type="xs:int" />
       <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PlayerActionsRemaining" nillable="true" type="q1:ArrayOfKeyValueOfintint" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PlayerStadistics" nillable="true" type="q2:ArrayOfKeyValueOfintGameStatsDTOc2z18OO1" />
       <xs:element minOccurs="0" name="TurnTimeRemainingInSeconds" type="xs:int" />
-      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="playerState" nillable="true" type="q2:ArrayOfKeyValueOfintPlayerStateDTOc2z18OO1" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="playerState" nillable="true" type="q3:ArrayOfKeyValueOfintPlayerStateDTOc2z18OO1" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="GameStateDTO" nillable="true" type="tns:GameStateDTO" />
@@ -87,6 +88,13 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CardDTO" nillable="true" type="tns:CardDTO" />
+  <xs:complexType name="GameStatsDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BabiesKilled" type="xs:int" />
+      <xs:element minOccurs="0" name="Points" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GameStatsDTO" nillable="true" type="tns:GameStatsDTO" />
   <xs:complexType name="PlayerStateDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="Hand" nillable="true" type="tns:ArrayOfCardDTO" />

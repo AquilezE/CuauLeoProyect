@@ -1,4 +1,5 @@
-﻿using Cliente.Pantallas;
+﻿using Cliente.GameUserControllers;
+using Cliente.Pantallas;
 using Cliente.ServiceReference;
 using Cliente.UserControllers;
 using Haley.Utils;
@@ -42,6 +43,12 @@ namespace Cliente
         private string _player2Username;
         private string _player3Username;
         private string _player4Username;
+        private int _player1Score;
+        private int _player2Score;
+        private int _player3Score;
+        private int _player4Score;
+        private DispatcherTimer _turnTimer;
+
 
         public string Player1Username
         {
@@ -52,7 +59,6 @@ namespace Cliente
                 OnPropertyChanged(nameof(Player1Username));
             }
         }
-
         public string Player2Username
         {
             get => _player2Username;
@@ -62,7 +68,6 @@ namespace Cliente
                 OnPropertyChanged(nameof(Player2Username));
             }
         }
-
         public string Player3Username
         {
             get => _player3Username;
@@ -72,7 +77,6 @@ namespace Cliente
                 OnPropertyChanged(nameof(Player3Username));
             }
         }
-
         public string Player4Username
         {
             get => _player4Username;
@@ -82,8 +86,45 @@ namespace Cliente
                 OnPropertyChanged(nameof(Player4Username));
             }
         }
+        public int Player1Score
+        {
+            get => _player1Score;
+            set
+            {
+                _player1Score = value;
+                OnPropertyChanged(nameof(Player1Score));
+            }
+        }
+        public int Player2Score
+        {
+            get => _player2Score;
+            set
+            {
+                _player2Score = value;
+                OnPropertyChanged(nameof(Player2Score));
+            }
+        }
+        public int Player3Score
+        {
+            get => _player3Score;
+            set
+            {
+                _player3Score = value;
+                OnPropertyChanged(nameof(Player3Score));
+            }
+        }
+        public int Player4Score
+        {
+            get => _player4Score;
+            set
+            {
+                _player4Score = value;
+                OnPropertyChanged(nameof(Player4Score));
+            }
+        }
 
-        private DispatcherTimer _turnTimer;
+
+
 
 
 
@@ -114,6 +155,8 @@ namespace Cliente
         public ObservableCollection<GameMonster> Player2Monsters { get; set; } = new ObservableCollection<GameMonster>();
         public ObservableCollection<GameMonster> Player3Monsters { get; set; } = new ObservableCollection<GameMonster>();
         public ObservableCollection<GameMonster> Player4Monsters { get; set; } = new ObservableCollection<GameMonster>();
+
+
 
         public int CardsRemainingInDeck
         {
@@ -212,6 +255,7 @@ namespace Cliente
             Player1Monsters.Clear();
             if (gameState.playerState.TryGetValue(User.Instance.ID, out var playerState))
             {
+                Player1Score = gameState.PlayerStadistics[User.Instance.ID].Points;
                 Player1Username = playerState.User.Username;
                 foreach (var monster in playerState.Monsters)
                 {
@@ -239,6 +283,7 @@ namespace Cliente
                 switch (playerNumber)
                 {
                     case 2:
+                        Player2Score = gameState.PlayerStadistics[playerId].Points;
                         Player2Username = player.Value.User.Username;
                         foreach (var monster in player.Value.Monsters)
                         {
@@ -247,6 +292,7 @@ namespace Cliente
                         break;
 
                     case 3:
+                        Player3Score = gameState.PlayerStadistics[playerId].Points;
                         Player3Username = player.Value.User.Username;
                         foreach (var monster in player.Value.Monsters)
                         {
@@ -255,6 +301,7 @@ namespace Cliente
                         break;
 
                     case 4:
+                        Player4Score = gameState.PlayerStadistics[playerId].Points;
                         Player4Username = player.Value.User.Username;
                         foreach (var monster in player.Value.Monsters)
                         {
@@ -378,6 +425,15 @@ namespace Cliente
 
             notification.ShowInfoNotification(LangUtils.Translate(messageKey));
         }
+    
+        public void OnProvoke(int matchCode, int babyPileIndex)
+        {
+            var animationWindow = new ProvokeAnimationWindow();
+
+            animationWindow.ShowDialog();
+        }
+
+
     }
 }
 

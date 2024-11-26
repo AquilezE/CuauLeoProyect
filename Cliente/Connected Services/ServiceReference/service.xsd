@@ -566,6 +566,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="userId" type="xs:int" />
         <xs:element minOccurs="0" name="matchCode" type="xs:int" />
+        <xs:element minOccurs="0" name="babyPileProvoked" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -604,7 +605,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="userId" type="xs:int" />
         <xs:element minOccurs="0" name="matchCode" type="xs:int" />
-        <xs:element minOccurs="0" name="monsterSelectedIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="babyPileProvoked" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -654,6 +655,14 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="messageKey" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnProvoke">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="matchCode" type="xs:int" />
+        <xs:element minOccurs="0" name="babyPileIndex" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

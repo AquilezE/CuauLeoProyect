@@ -7,6 +7,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -254,5 +255,24 @@ namespace Cliente.GameUserControllers
         {
             extensiblePanelMonstersPlayer4.Margin = new Thickness(0, 0, 971, 0);
         }
+
+        private async void btnProvokeEarth_Click(object sender, RoutedEventArgs e)
+        {
+            await gameManagerClient.PlayProvokeAsync(User.Instance.ID, GameLogic.Instance.GameId, 0);
+            Console.WriteLine("Provoke Water");
+        }
+
+        private async void btnProvokeWater_Click(object sender, RoutedEventArgs e)
+        {
+            await gameManagerClient.PlayProvokeAsync(User.Instance.ID, GameLogic.Instance.GameId, 1);
+            Console.WriteLine("Provoke Water");
+        }
+
+        private async void btnProvokeSky_Click(object sender, RoutedEventArgs e)
+        {
+            await gameManagerClient.PlayProvokeAsync(User.Instance.ID, GameLogic.Instance.GameId, 2);
+            Console.WriteLine("Provoke Water");
+        }
+
     }
 }
