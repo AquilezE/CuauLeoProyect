@@ -503,6 +503,9 @@ namespace Cliente.ServiceReference {
         private System.Collections.Generic.Dictionary<int, int> PlayerActionsRemainingField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.Dictionary<int, Cliente.ServiceReference.GameStatsDTO> PlayerStadisticsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int TurnTimeRemainingInSecondsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -584,6 +587,19 @@ namespace Cliente.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.Dictionary<int, Cliente.ServiceReference.GameStatsDTO> PlayerStadistics {
+            get {
+                return this.PlayerStadisticsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PlayerStadisticsField, value) != true)) {
+                    this.PlayerStadisticsField = value;
+                    this.RaisePropertyChanged("PlayerStadistics");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int TurnTimeRemainingInSeconds {
             get {
                 return this.TurnTimeRemainingInSecondsField;
@@ -650,6 +666,67 @@ namespace Cliente.ServiceReference {
                 if ((this.CardIdField.Equals(value) != true)) {
                     this.CardIdField = value;
                     this.RaisePropertyChanged("CardId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GameStatsDTO", Namespace="http://schemas.datacontract.org/2004/07/BevososService.DTOs")]
+    [System.SerializableAttribute()]
+    public partial class GameStatsDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int BabiesKilledField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PointsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int BabiesKilled {
+            get {
+                return this.BabiesKilledField;
+            }
+            set {
+                if ((this.BabiesKilledField.Equals(value) != true)) {
+                    this.BabiesKilledField = value;
+                    this.RaisePropertyChanged("BabiesKilled");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Points {
+            get {
+                return this.PointsField;
+            }
+            set {
+                if ((this.PointsField.Equals(value) != true)) {
+                    this.PointsField = value;
+                    this.RaisePropertyChanged("Points");
                 }
             }
         }
@@ -1524,10 +1601,10 @@ namespace Cliente.ServiceReference {
         System.Threading.Tasks.Task PlayCardAsync(int userId, int matchCode, int cardId);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/PlayProvoke")]
-        void PlayProvoke(int userId, int matchCode);
+        void PlayProvoke(int userId, int matchCode, int babyPileProvoked);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/PlayProvoke")]
-        System.Threading.Tasks.Task PlayProvokeAsync(int userId, int matchCode);
+        System.Threading.Tasks.Task PlayProvokeAsync(int userId, int matchCode, int babyPileProvoked);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/ExecuteBodyPartPlacement")]
         void ExecuteBodyPartPlacement(int userId, int matchCode, int cardId, int monsterSelectedIndex);
@@ -1548,10 +1625,10 @@ namespace Cliente.ServiceReference {
         System.Threading.Tasks.Task ExecuteHatPlacementAsync(int userId, int matchCode, int cardId, int monsterSelectedIndex);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/ExecuteProvoke")]
-        void ExecuteProvoke(int userId, int matchCode, int monsterSelectedIndex);
+        void ExecuteProvoke(int userId, int matchCode, int babyPileProvoked);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/ExecuteProvoke")]
-        System.Threading.Tasks.Task ExecuteProvokeAsync(int userId, int matchCode, int monsterSelectedIndex);
+        System.Threading.Tasks.Task ExecuteProvokeAsync(int userId, int matchCode, int babyPileProvoked);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1574,6 +1651,9 @@ namespace Cliente.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/NotifyActionInvalid")]
         void NotifyActionInvalid(string messageKey);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/OnProvoke")]
+        void OnProvoke(int matchCode, int babyPileIndex);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1628,12 +1708,12 @@ namespace Cliente.ServiceReference {
             return base.Channel.PlayCardAsync(userId, matchCode, cardId);
         }
         
-        public void PlayProvoke(int userId, int matchCode) {
-            base.Channel.PlayProvoke(userId, matchCode);
+        public void PlayProvoke(int userId, int matchCode, int babyPileProvoked) {
+            base.Channel.PlayProvoke(userId, matchCode, babyPileProvoked);
         }
         
-        public System.Threading.Tasks.Task PlayProvokeAsync(int userId, int matchCode) {
-            return base.Channel.PlayProvokeAsync(userId, matchCode);
+        public System.Threading.Tasks.Task PlayProvokeAsync(int userId, int matchCode, int babyPileProvoked) {
+            return base.Channel.PlayProvokeAsync(userId, matchCode, babyPileProvoked);
         }
         
         public void ExecuteBodyPartPlacement(int userId, int matchCode, int cardId, int monsterSelectedIndex) {
@@ -1660,12 +1740,12 @@ namespace Cliente.ServiceReference {
             return base.Channel.ExecuteHatPlacementAsync(userId, matchCode, cardId, monsterSelectedIndex);
         }
         
-        public void ExecuteProvoke(int userId, int matchCode, int monsterSelectedIndex) {
-            base.Channel.ExecuteProvoke(userId, matchCode, monsterSelectedIndex);
+        public void ExecuteProvoke(int userId, int matchCode, int babyPileProvoked) {
+            base.Channel.ExecuteProvoke(userId, matchCode, babyPileProvoked);
         }
         
-        public System.Threading.Tasks.Task ExecuteProvokeAsync(int userId, int matchCode, int monsterSelectedIndex) {
-            return base.Channel.ExecuteProvokeAsync(userId, matchCode, monsterSelectedIndex);
+        public System.Threading.Tasks.Task ExecuteProvokeAsync(int userId, int matchCode, int babyPileProvoked) {
+            return base.Channel.ExecuteProvokeAsync(userId, matchCode, babyPileProvoked);
         }
     }
 }

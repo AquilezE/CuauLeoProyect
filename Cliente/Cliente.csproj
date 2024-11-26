@@ -131,6 +131,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9e7cd3b544a090dc, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.2.0.2\lib\net40\WpfAnimatedGif.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -182,6 +185,9 @@
     </Compile>
     <Compile Include="GameUserControllers\MonstersViewerPlayer4.xaml.cs">
       <DependentUpon>MonstersViewerPlayer4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameUserControllers\ProvokeAnimationWindow.xaml.cs">
+      <DependentUpon>ProvokeAnimationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Message.cs" />
     <Compile Include="GameMonster.cs" />
@@ -329,6 +335,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GameUserControllers\MonstersViewerPlayer4.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameUserControllers\ProvokeAnimationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -730,6 +740,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\GameImages\MonstersViewerVertical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\family-guy-peter-griffin.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />
