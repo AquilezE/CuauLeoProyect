@@ -666,4 +666,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="OnNotifyEndGamePhase">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnNotifyGameEnded">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="matchCode" type="xs:int" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="stats" nillable="true" type="q17:ArrayOfStatsDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnNotifyGameEndedWithoutUsers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="matchCode" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

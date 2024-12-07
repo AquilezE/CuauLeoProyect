@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Threading;
 using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
@@ -16,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Cliente.GameUserControllers;
+using Cliente.Pantallas;
 
 namespace Cliente.GameUserControllers
 {
@@ -55,6 +57,8 @@ namespace Cliente.GameUserControllers
             GameLogic.Instance.BodyPartSelectionRequested += OnBodyPartSelectionRequested;
             GameLogic.Instance.ToolSelectionRequested += OnToolSelectionRequested;
             GameLogic.Instance.HatSelectionRequested += OnHatSelectionRequested;
+            GameLogic.Instance.GameHasEnded += OnGameHasEnded;
+            GameLogic.Instance.GameHasEndedWithoutUsers += OnGameHasEndedWithoutUsers;
 
 
         }
@@ -213,6 +217,24 @@ namespace Cliente.GameUserControllers
                     int selectedMonsterIndex = selectionWindow.SelectedMonsterIndex;
                     gameManagerClient.ExecuteHatPlacement(User.Instance.ID, GameLogic.Instance.GameId, card.CardId, selectedMonsterIndex);
                 }
+            });
+        }
+
+        private void OnGameHasEnded(int matchCode)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.NavigateToView(new EndGame(), 800, 750);
+            });
+        }
+
+        private void OnGameHasEndedWithoutUsers(int matchCode)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.NavigateToView(new MainMenu());
             });
         }
 

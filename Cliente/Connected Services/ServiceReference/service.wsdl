@@ -420,6 +420,15 @@
   <wsdl:message name="IGameManager_OnProvoke_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnProvoke" />
   </wsdl:message>
+  <wsdl:message name="IGameManager_OnNotifyEndGamePhase_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnNotifyEndGamePhase" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_OnNotifyGameEnded_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnNotifyGameEnded" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_OnNotifyGameEndedWithoutUsers_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnNotifyGameEndedWithoutUsers" />
+  </wsdl:message>
   <wsdl:portType name="IUsersManager">
     <wsdl:operation name="IsUsernameTaken">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/IsUsernameTaken" message="tns:IUsersManager_IsUsernameTaken_InputMessage" />
@@ -665,6 +674,15 @@
     </wsdl:operation>
     <wsdl:operation name="OnProvoke">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/OnProvoke" message="tns:IGameManager_OnProvoke_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnNotifyEndGamePhase">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/OnNotifyEndGamePhase" message="tns:IGameManager_OnNotifyEndGamePhase_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnNotifyGameEnded">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/OnNotifyGameEnded" message="tns:IGameManager_OnNotifyGameEnded_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnNotifyGameEndedWithoutUsers">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/OnNotifyGameEndedWithoutUsers" message="tns:IGameManager_OnNotifyGameEndedWithoutUsers_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUsersManager" type="tns:IUsersManager">
@@ -1202,6 +1220,24 @@
     </wsdl:operation>
     <wsdl:operation name="OnProvoke">
       <soap12:operation soapAction="http://tempuri.org/IGameManager/OnProvoke" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnNotifyEndGamePhase">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/OnNotifyEndGamePhase" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnNotifyGameEnded">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/OnNotifyGameEnded" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnNotifyGameEndedWithoutUsers">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/OnNotifyGameEndedWithoutUsers" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

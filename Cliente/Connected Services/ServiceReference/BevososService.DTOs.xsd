@@ -70,7 +70,7 @@
       <xs:element minOccurs="0" name="CurrentPlayerId" type="xs:int" />
       <xs:element minOccurs="0" name="GameStateId" type="xs:int" />
       <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PlayerActionsRemaining" nillable="true" type="q1:ArrayOfKeyValueOfintint" />
-      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PlayerStadistics" nillable="true" type="q2:ArrayOfKeyValueOfintGameStatsDTOc2z18OO1" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PlayerStatistics" nillable="true" type="q2:ArrayOfKeyValueOfintGameStatsDTOc2z18OO1" />
       <xs:element minOccurs="0" name="TurnTimeRemainingInSeconds" type="xs:int" />
       <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="playerState" nillable="true" type="q3:ArrayOfKeyValueOfintPlayerStateDTOc2z18OO1" />
     </xs:sequence>
@@ -111,8 +111,21 @@
   <xs:element name="ArrayOfMonsterDTO" nillable="true" type="tns:ArrayOfMonsterDTO" />
   <xs:complexType name="MonsterDTO">
     <xs:sequence>
-      <xs:element minOccurs="0" name="bodyParts" nillable="true" type="tns:ArrayOfCardDTO" />
+      <xs:element minOccurs="0" name="BodyParts" nillable="true" type="tns:ArrayOfCardDTO" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="MonsterDTO" nillable="true" type="tns:MonsterDTO" />
+  <xs:complexType name="ArrayOfStatsDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StatsDTO" nillable="true" type="tns:StatsDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStatsDTO" nillable="true" type="tns:ArrayOfStatsDTO" />
+  <xs:complexType name="StatsDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PointsThisGame" type="xs:int" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StatsDTO" nillable="true" type="tns:StatsDTO" />
 </xs:schema>

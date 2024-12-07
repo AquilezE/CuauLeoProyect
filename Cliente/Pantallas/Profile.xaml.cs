@@ -18,7 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Cliente.Pantallas
-{
+{///
     /// <summary>
     /// Lógica de interacción para Profile.xaml
     /// </summary>
@@ -161,13 +161,13 @@ namespace Cliente.Pantallas
             {
                 User.instance.Username = username;
             }
-                User.instance.ProfilePictureId = profilePictureId;
-                LoadUserInfo();
-                ResetAllBorders();
+            User.instance.ProfilePictureId = profilePictureId;
+            LoadUserInfo();
+            ResetAllBorders();
                 
-                newUsername = "";
-                newProfilePictureId = 0;
-                lbErrInvalidUsername.Content = error;
+            newUsername = "";
+            newProfilePictureId = 0;
+            lbErrInvalidUsername.Content = error;
         }
 
         private void btChangePassword_Click(object sender, RoutedEventArgs e)

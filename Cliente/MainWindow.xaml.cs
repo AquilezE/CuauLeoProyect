@@ -48,7 +48,8 @@ namespace Cliente
         public void NavigateToView(UserControl control, double ? newWidth = null, double ? newHeight = null)
         {
             MainContentControl.Content = control;
-
+            this.WindowState = WindowState.Normal;
+            this.WindowStyle = WindowStyle.SingleBorderWindow;
 
             if (newWidth != null && newHeight != null)
             {

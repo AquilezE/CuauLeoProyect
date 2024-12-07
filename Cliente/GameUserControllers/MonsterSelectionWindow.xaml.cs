@@ -31,7 +31,7 @@ namespace Cliente.GameUserControllers
             foreach (var monster in monsters)
             {
                 var gameCards = new ObservableCollection<GameCard>();
-                foreach (var cardDto in monster.bodyParts)
+                foreach (var cardDto in monster.BodyParts)
                 {
                     gameCards.Add(new GameCard(cardDto));
                 }

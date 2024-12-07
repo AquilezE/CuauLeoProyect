@@ -2,9 +2,11 @@
 using Cliente.Pantallas;
 using Cliente.ServiceReference;
 using Cliente.UserControllers;
+using Cliente.UserControllers.FriendsList;
 using Haley.Utils;
 using MaterialDesignThemes.Wpf;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -25,6 +27,8 @@ namespace Cliente
         public event Action<CardDTO> BodyPartSelectionRequested;
         public event Action<CardDTO> ToolSelectionRequested;
         public event Action<CardDTO> HatSelectionRequested;
+        public event Action<int> GameHasEnded;
+        public event Action<int> GameHasEndedWithoutUsers;
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName) =>
@@ -53,8 +57,8 @@ namespace Cliente
         public string Player1Username
         {
             get => _player1Username;
-            set 
-            {  
+            set
+            {
                 _player1Username = value;
                 OnPropertyChanged(nameof(Player1Username));
             }
@@ -124,11 +128,6 @@ namespace Cliente
         }
 
 
-
-
-
-
-        public List<int> playerMapping = new List<int>();
         public static GameLogic Instance
         {
             get
@@ -146,6 +145,13 @@ namespace Cliente
                 return _instance;
             }
         }
+
+        public static GameLogic ResetInstance()
+        {
+            _instance = null;
+            return Instance;
+        }
+
         public int GameId { get; set; }
         public ObservableCollection<GameCard> BabyDeck { get; set; } = new ObservableCollection<GameCard>();
         public ObservableCollection<CardDTO> Hand { get; set; } = new ObservableCollection<CardDTO>();
@@ -229,7 +235,7 @@ namespace Cliente
             }
         }
 
-        
+
 
         public void ReceiveGameState(GameStateDTO gameState)
         {
@@ -255,7 +261,7 @@ namespace Cliente
             Player1Monsters.Clear();
             if (gameState.playerState.TryGetValue(User.Instance.ID, out var playerState))
             {
-                Player1Score = gameState.PlayerStadistics[User.Instance.ID].Points;
+                Player1Score = gameState.PlayerStatistics[User.Instance.ID].Points;
                 Player1Username = playerState.User.Username;
                 foreach (var monster in playerState.Monsters)
                 {
@@ -283,7 +289,7 @@ namespace Cliente
                 switch (playerNumber)
                 {
                     case 2:
-                        Player2Score = gameState.PlayerStadistics[playerId].Points;
+                        Player2Score = gameState.PlayerStatistics[playerId].Points;
                         Player2Username = player.Value.User.Username;
                         foreach (var monster in player.Value.Monsters)
                         {
@@ -292,7 +298,7 @@ namespace Cliente
                         break;
 
                     case 3:
-                        Player3Score = gameState.PlayerStadistics[playerId].Points;
+                        Player3Score = gameState.PlayerStatistics[playerId].Points;
                         Player3Username = player.Value.User.Username;
                         foreach (var monster in player.Value.Monsters)
                         {
@@ -301,7 +307,7 @@ namespace Cliente
                         break;
 
                     case 4:
-                        Player4Score = gameState.PlayerStadistics[playerId].Points;
+                        Player4Score = gameState.PlayerStatistics[playerId].Points;
                         Player4Username = player.Value.User.Username;
                         foreach (var monster in player.Value.Monsters)
                         {
@@ -425,7 +431,7 @@ namespace Cliente
 
             notification.ShowInfoNotification(LangUtils.Translate(messageKey));
         }
-    
+
         public void OnProvoke(int matchCode, int babyPileIndex)
         {
             var animationWindow = new ProvokeAnimationWindow();
@@ -433,7 +439,40 @@ namespace Cliente
             animationWindow.ShowDialog();
         }
 
+        public void OnNotifyEndGamePhase()
+        {
+            var animationWindow = new EndGameStartedAnimationWindow();
+            animationWindow.ShowDialog();
+        }
 
+        public void OnNotifyGameEnded(int matchCode, StatsDTO[] gameStats)
+        {
+            GameHasEnded?.Invoke(matchCode);
+            List<Stats> orderedStats = new List<Stats>();
+            foreach (StatsDTO stats in gameStats)
+            {
+               orderedStats.Add(new Stats(stats));
+            }
+
+            orderedStats = orderedStats.OrderByDescending(s => s.points).ToList();
+
+            Player1Username = orderedStats[0].username;
+            Player1Score = orderedStats[0].points;
+
+            Player2Username = orderedStats[1].username;
+            Player2Score = orderedStats[1].points;
+
+            Player3Username = orderedStats[2].username;
+            Player3Score = orderedStats[2].points;
+
+            Player4Username = orderedStats[3].username;
+            Player4Score = orderedStats[3].points;
+        }
+
+        public void OnNotifyGameEndedWithoutUsers(int matchCode)
+        {
+            GameHasEndedWithoutUsers?.Invoke(matchCode);
+        }
     }
 }
 

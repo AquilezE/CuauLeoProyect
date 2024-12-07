@@ -168,6 +168,12 @@
     <Compile Include="GameUserControllers\CardsViewer.xaml.cs">
       <DependentUpon>CardsViewer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GameUserControllers\EndGame.xaml.cs">
+      <DependentUpon>EndGame.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameUserControllers\EndGameStartedAnimationWindow.xaml.cs">
+      <DependentUpon>EndGameStartedAnimationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GameUserControllers\GameBoard.xaml.cs">
       <DependentUpon>GameBoard.xaml</DependentUpon>
     </Compile>
@@ -234,6 +240,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Social.cs" />
+    <Compile Include="Stats.cs" />
     <Compile Include="UserControllers\BlockedUser.xaml.cs">
       <DependentUpon>BlockedUser.xaml</DependentUpon>
     </Compile>
@@ -311,6 +318,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GameUserControllers\CardsViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameUserControllers\EndGame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameUserControllers\EndGameStartedAnimationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -743,6 +758,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\family-guy-peter-griffin.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\kanye-west-wtf.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\GameImages\ash-baby.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />
