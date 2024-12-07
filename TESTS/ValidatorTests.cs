@@ -254,6 +254,34 @@ namespace TESTS
             // Assert
             Assert.Equal("lblErrPasswordEmpty", result);
         }
+        [Theory]
+        [InlineData("123456")]
+        [InlineData("111111")]
+        public void IsTokenValidFormat_ValidTokens_ReturnsTrue(string code)
+        {
+            // Act
+            var result = _validator.IsTokenValidFormat(code);
+
+            // Assert
+            Assert.True(result);
+        }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData(" ")]
+        [InlineData(null)]
+        [InlineData("12345")]
+        [InlineData("1234567")]
+        [InlineData("1a2b3")]
+        [InlineData("1a2b3c4")]
+        public void IsTokenValidFormat_InvalidTokens_ReturnsFalse(string code)
+        {
+            // Act
+            var result = _validator.IsTokenValidFormat(code);
+
+            // Assert
+            Assert.False(result);
+        }
 
     }
 }

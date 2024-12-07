@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Cliente.Pantallas;
 using Cliente.ServiceReference;
+using Cliente.Utils;
 using Haley.Utils;
 
 
@@ -24,6 +25,9 @@ namespace Cliente.UserControllers.Recover
     {
         public event Action<string> EmailFilled;
         private UsersManagerClient _service;
+        private Validator _validator = new Validator();
+
+
 
         public RecoverEmail()
         {
@@ -41,56 +45,30 @@ namespace Cliente.UserControllers.Recover
 
             string email = tbEmail.Text.Trim();
            
-            if (IsValidEmail(email))
+            string error = _validator.ValidateEmail(email);
+
+            lbErrEmailCode.Content = error;
+
+            if (error != string.Empty)
             {
-                if (_service.IsEmailTaken(email)) { 
+                return;
+            }
+
+   
+            if (_service.IsEmailTaken(email)) { 
 
                 _service.SendTokenAsync(email);
                 OnEmailFilled(email);
                 
-                }else
-                {
-                    lbErrEmailCode.Content = LangUtils.Translate("lblErrEmailNotFound");
-                }
-            }
-            else
+            }else
             {
-                lbErrEmailCode.Content = LangUtils.Translate("lblErrEmailInvalid");
+                lbErrEmailCode.Content = LangUtils.Translate("lblErrEmailNotFound");
             }
-
+  
 
         }
 
 
-        private bool IsValidEmail(string email)
-        {
-
-            
-            if (string.IsNullOrWhiteSpace(email))
-            {
-                return false;
-            }
-
-            try
-            {
-                string pattern = @"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$";
-
-                if (!Regex.IsMatch(email, pattern))
-                {
-                    return false;
-                }
-
-                var addr = new System.Net.Mail.MailAddress(email);
-                string domain = addr.Host;
-
-                return domain.IndexOf("..") == -1 && domain.All(c => Char.IsLetterOrDigit(c) || c == '-' || c == '.');
-            }
-            catch
-            {
-
-                return false;
-            }
-        }
 
         private void btCancel_Click(object sender, RoutedEventArgs e)
         {

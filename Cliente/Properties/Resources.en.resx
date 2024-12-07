@@ -253,7 +253,7 @@
     <value>A code has been sent to your email, please type it here:</value>
   </data>
   <data name="lblConfirmPassword" xml:space="preserve">
-    <value>Confrim Password</value>
+	  <value>Confirm Password</value>
   </data>
   <data name="lblCurrentPassword" xml:space="preserve">
     <value>Current Password</value>
@@ -451,7 +451,7 @@
     <value>Invalid password</value>
   </data>
   <data name="lblErrShortPassword" xml:space="preserve">
-    <value>Password must be at least 8 characters long</value>
+	  <value>Password must be at least 12 characters long</value>
   </data>
   <data name="lblKicking" xml:space="preserve">
     <value>Kicking</value>
@@ -524,5 +524,26 @@
   </data>
   <data name="lblErrDecliningFRException" xml:space="preserve">
     <value>An error ocurrer while declining the firend request, try again later!</value>
+  </data>
+  <data name="lblErrEmailTooLong" xml:space="preserve">
+	  <value>Your email is too long!</value>
+  </data>
+  <data name="lblErrEmailEmpty" xml:space="preserve">
+	  <value>You left your Email empty</value>
+  </data>
+  <data name="lblErrEmailContainsWhiteSpace" xml:space="preserve">
+	  <value>Email can't have a whitespace dude</value>
+  </data>
+  <data name="lblErrUsernameTooLong" xml:space="preserve">
+	  <value>Username is too long</value>
+  </data>
+  <data name="lblErrUsernameEmpty" xml:space="preserve">
+	  <value>Username can't be empty</value>
+  </data>
+  <data name="lblErrPasswordEmpty" xml:space="preserve">
+	  <value>Password can't be left empty</value>
+  </data>
+  <data name="lblErrPasswordContainsWhiteSpace" xml:space="preserve">
+	  <value>Password can't contain whitespaces</value>
   </data>
 </root>

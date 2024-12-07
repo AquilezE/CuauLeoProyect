@@ -1,5 +1,6 @@
 ﻿using Cliente.Pantallas;
 using Cliente.ServiceReference;
+using Cliente.Utils;
 using Haley.Utils;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,7 @@ namespace Cliente.UserControllers
     {
         public event EventHandler VerificationCompleted;
         private UsersManagerClient _service;
+        private Validator _validator = new Validator();
 
         private string _email;
         private string _username;
@@ -32,6 +34,7 @@ namespace Cliente.UserControllers
 
         private int _retryCounter = 0;
         private const int MAX_RETRIES = 3;
+        
 
         public RegisterCodeVerification(string email, string username, string password)
         {
@@ -49,7 +52,7 @@ namespace Cliente.UserControllers
 
             try
             {
-                if (IsTokenValidFormat(tbVerificactionCode.Text))
+                if (_validator.IsTokenValidFormat(tbVerificactionCode.Text))
                 {
 
                     bool isCodeValid = await _service.VerifyTokenAsync(_email, tbVerificactionCode.Text);
@@ -110,20 +113,6 @@ namespace Cliente.UserControllers
         protected virtual void OnVerificationCompleted(EventArgs e)
         {
             VerificationCompleted?.Invoke(this, e);
-        }
-
-        private bool IsTokenValidFormat(string code)
-        {
-            code = code.Trim();
-            if (code.Length != 6)
-            {
-                return false;
-            }
-            if (!code.All(char.IsDigit))
-            {
-                return false;
-            }
-            return true;
         }
 
 

@@ -1,5 +1,6 @@
 ﻿using Cliente.Pantallas;
 using Cliente.ServiceReference;
+using Cliente.Utils;
 using Haley.Utils;
 using ProtoBuf.Meta;
 using System;
@@ -27,6 +28,7 @@ namespace Cliente.UserControllers.ChangePassword
     public partial class ChangePassword : UserControl, IProfileManagerCallback
     {
         private ProfileManagerClient _service;
+        private Validator _validator = new Validator();
         public ChangePassword()
         {
             InstanceContext instanceContext = new InstanceContext(this);
@@ -36,72 +38,56 @@ namespace Cliente.UserControllers.ChangePassword
 
         private void btChange_Click(object sender, RoutedEventArgs e)
         {
-            if (IsValidPassword(pbNewPassword.Password) && pbConfirmNewPassword.Password == pbNewPassword.Password)
-            {
-                _service.ChangePassword(User.Instance.ID, pbCurrentPassword.Password, pbNewPassword.Password);    
-            }
-            else
-            {
 
+            string currentPassword = pbCurrentPassword.Password;
+            string newPassword = pbNewPassword.Password;
+            string confirmNewPassword = pbConfirmNewPassword.Password;
+
+            string errorCurrent = _validator.ValidatePassword(newPassword);
+            string errorNewPassword= _validator.ValidatePassword(confirmNewPassword);
+            string errorConfirmNewPassword = _validator.ValidateConfirmPassword(newPassword, confirmNewPassword);
+            
+            if(!string.IsNullOrEmpty(errorCurrent) || 
+               !string.IsNullOrEmpty(errorNewPassword) || 
+               !string.IsNullOrEmpty(errorConfirmNewPassword))
+            {
+                return;
             }
+
+            _service.ChangePassword(User.Instance.ID, pbCurrentPassword.Password, pbNewPassword.Password);    
+
+           
         }
 
         private void pbCurrentPassword_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(pbCurrentPassword.Password))
-            {
-                lbErrCuerrentPassword.Content = "This field is obligatory";
-            }
-            else
-            {
-                lbErrCuerrentPassword.Content = string.Empty;
-            }
+            string password = pbCurrentPassword.Password;
+            string error = _validator.ValidatePassword(password);
+            lbErrCuerrentPassword.Content = error;
         }
 
-        private bool IsValidPassword(string password)
-        {
 
-            if (password.Contains(' '))
-            {
-                return false;
-            }
-
-
-            bool hasUpper = password.Any(char.IsUpper);
-            bool hasLower = password.Any(char.IsLower);
-            bool hasDigit = password.Any(char.IsDigit);
-            bool hasSpecialChar = password.Any(ch => !char.IsLetterOrDigit(ch));
-
-            return hasUpper && hasLower && hasDigit && hasSpecialChar && password.Length >= 8;
-        }
 
         private void pbNewPassword_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (!IsValidPassword(pbNewPassword.Password))
-            {
-                lbErrNewPassword.Content = LangUtils.Translate("lblErrWeakPassword");
-            }
-            else if (pbNewPassword.Password.Length < 8)
-            {
-                lbErrNewPassword.Content = LangUtils.Translate("lblErrShortPassword");
-            }
-            else
-            {
-                lbErrNewPassword.Content = string.Empty;
-            }
+            string password = pbNewPassword.Password;
+            string error = _validator.ValidatePassword(password);
+            lbErrNewPassword.Content = error;
         }
 
         private void pbConfirmNewPassword_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (pbConfirmNewPassword.Password != pbNewPassword.Password)
-            {
-                lbErrConfirmNewPassword.Content = LangUtils.Translate("lblErrDiferentPassword");
-            }
-            else
-            {
-                lbErrConfirmNewPassword.Content = string.Empty;
-            }
+            string password = pbNewPassword.Password;
+            string confirmPassword = pbConfirmNewPassword.Password;
+            string error = _validator.ValidateConfirmPassword(password, confirmPassword);
+            lbErrConfirmNewPassword.Content = error;
         }
+
+        public void OnProfileUpdate(string username, int profilePictureId, string message)
+        {
+            throw new NotImplementedException();
+        }
+
         public void OnPasswordChange(string error)
         {
             if (error != null)
@@ -115,10 +101,6 @@ namespace Cliente.UserControllers.ChangePassword
             }
         }
 
-        public void OnProfileUpdate(string username, int profilePictureId, string error)
-        {
-            throw new NotImplementedException();
-        }
 
         private void btGoBack_Click(object sender, RoutedEventArgs e)
         {

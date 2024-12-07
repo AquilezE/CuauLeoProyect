@@ -451,7 +451,7 @@
     <value>Contraseña invalida</value>
   </data>
   <data name="lblErrShortPassword" xml:space="preserve">
-    <value>La contraseña debe tener al menos 8 caracteres</value>
+	  <value>La contraseña debe tener al menos 12 caracteres</value>
   </data>
   <data name="lblKicking" xml:space="preserve">
     <value>Expulsando a</value>
@@ -524,5 +524,26 @@
   </data>
   <data name="lblErrDecliningFRException" xml:space="preserve">
     <value>Ocurrió un error al rechazar la solicitud de amistad, intentalo de nuevo más tarde!</value>
+  </data>
+  <data name="lblErrEmailTooLong" xml:space="preserve">
+	  <value>Tu correo electronico es muy grande!</value>
+  </data>
+  <data name="lblErrEmailEmpty" xml:space="preserve">
+	  <value>Dejaste tu correo vacio</value>
+  </data>
+  <data name="lblErrEmailContainsWhiteSpace" xml:space="preserve">
+	  <value>El correo no puede tener espacios</value>
+  </data>
+  <data name="lblErrUsernameTooLong" xml:space="preserve">
+	  <value>Nombre de usuario es muy largo</value>
+  </data>
+  <data name="lblErrUsernameEmpty" xml:space="preserve">
+	  <value>Nombre de usuario no puede estar vacio</value>
+  </data>
+  <data name="lblErrPasswordEmpty" xml:space="preserve">
+	  <value>La contraseña no puede estar vacia</value>
+  </data>
+  <data name="lblErrPasswordContainsWhiteSpace" xml:space="preserve">
+	  <value>Contraseña no puede tener espacios</value>
   </data>
 </root>

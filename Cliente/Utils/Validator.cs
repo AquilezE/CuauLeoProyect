@@ -87,6 +87,17 @@ namespace Cliente.Utils
             return string.Empty;
         }
 
+        public bool IsTokenValidFormat(string code)
+        {
+            if (string.IsNullOrWhiteSpace(code))
+            {
+                return false;
+            }
+
+            code = code.Trim();
+            return code.Length == 6 && code.All(char.IsDigit);
+        }
+
         public bool IsValidPassword(string password)
         {
             if (password.Contains(' '))
@@ -102,17 +113,30 @@ namespace Cliente.Utils
             return hasUpper && hasLower && hasDigit && hasSpecialChar && password.Length >= 8;
         }
 
-
         public bool IsValidUsername(string username)
         {
             string pattern = @"^[a-zA-Z0-9_]+$";
             return Regex.IsMatch(username, pattern);
         }
 
-        public bool IsValidEmail(string email)
+        private bool IsValidEmail(string email)
         {
+
+
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                return false;
+            }
+
             try
             {
+                string pattern = @"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$";
+
+                if (!Regex.IsMatch(email, pattern))
+                {
+                    return false;
+                }
+
                 var addr = new System.Net.Mail.MailAddress(email);
                 string domain = addr.Host;
 
@@ -120,6 +144,7 @@ namespace Cliente.Utils
             }
             catch
             {
+
                 return false;
             }
         }

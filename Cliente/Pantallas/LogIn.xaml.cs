@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -95,11 +96,22 @@ namespace Cliente.Pantallas
             {
                 Social social = Social.Instance;
 
-                if (Social.Instance.socialManagerClient.IsConnected(email))
-                {
-                    Social.Instance = null;
-                    return false;
+                try {
+
+                    if (Social.Instance.socialManagerClient.IsConnected(email))
+                    {
+                        Social.Instance = null;
+                        return false;
+                    }
+
                 }
+                catch(FaultException<BevososServerExceptions> ex)
+                {
+
+                   Console.WriteLine("Se chingo la BD: " + ex.Message);
+                }
+
+
 
                 UserDto userDto = _servicio.LogIn(email, password);
                 if (userDto == null)
@@ -184,12 +196,10 @@ namespace Cliente.Pantallas
                 switch (culture)
                 {
                     case "Spanish":
-                        Console.WriteLine("Changing culture to: " + culture);
                         LangUtils.ChangeCulture("es");
                         lbErrLabel.Content = string.Empty;
                         break;
                     case "Inglés":
-                        Console.WriteLine("Changing culture to: " + culture);
                         LangUtils.ChangeCulture("en");
                         lbErrLabel.Content = string.Empty;
                         break;

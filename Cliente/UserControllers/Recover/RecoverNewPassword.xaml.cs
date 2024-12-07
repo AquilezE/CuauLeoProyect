@@ -1,4 +1,5 @@
 ﻿using Cliente.ServiceReference;
+using Cliente.Utils;
 using Haley.Utils;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,7 @@ namespace Cliente.UserControllers.Recover
         public event EventHandler PasswordChanged;
         private UsersManagerClient _service;
         private string _email;
+        private Validator _validator = new Validator();
 
         public RecoverNewPassword(string email)
         {
@@ -44,74 +46,53 @@ namespace Cliente.UserControllers.Recover
         {
             btChangePassword.IsEnabled = false;
 
-            if(IsValidPassword(pbPassword.Password) && pbConfirmPassword.Password==pbPassword.Password)
+            string password = pbPassword.Password;
+            string confirmPassword = pbConfirmPassword.Password;
+
+            string error = _validator.ValidatePassword(password);
+            lbErrPassword.Content = error;
+
+            string errorConfirmation = _validator.ValidateConfirmPassword(password,confirmPassword);
+            lbErrPassword.Content = errorConfirmation;
+
+            if (error != string.Empty || errorConfirmation != string.Empty)
             {
-                bool passwordChanged = await _service.RecoverPasswordAsync(_email, pbPassword.Password);
+                btChangePassword.IsEnabled = true;
+                return;
+            }
+
+            bool passwordChanged = await _service.RecoverPasswordAsync(_email, pbPassword.Password);
 
                 
-                if(passwordChanged)
-                {
-                    OnPasswordChanged(e);
-                }
-                else
-                {
-                    lbErrPassword.Content = LangUtils.Translate("lblErrErrorChangingPassword");
-                    btChangePassword.IsEnabled = true;
-                }
+            if(passwordChanged)
+            {
+                OnPasswordChanged(e);
             }
             else
             {
-                lbErrPassword.Content = LangUtils.Translate("lblErrInvalidPassword");
+                lbErrPassword.Content = LangUtils.Translate("lblErrErrorChangingPassword");
                 btChangePassword.IsEnabled = true;
             }
-
         }
 
         private void pbPassword_LostFocus(object sender, RoutedEventArgs e)
         {
-            
-            if (!IsValidPassword(pbPassword.Password))
-            {
-                lbErrPassword.Content = LangUtils.Translate("lblErrWeakPassword");
-            }
-            else if (pbPassword.Password.Length < 8)
-            {
-                lbErrPassword.Content = LangUtils.Translate("lblErrShortPassword");
-            }
-            else
-            {
-                lbErrPassword.Content = string.Empty;
-            }
+            string password = pbPassword.Password;
+
+            string error = _validator.ValidatePassword(password);
+            lbErrPassword.Content = error;
+
         }
 
         private void pbConfirmPassword_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (pbConfirmPassword.Password != pbPassword.Password)
-            {
-                lbErrPasswordConfirmation.Content = LangUtils.Translate("lblErrDiferentPassword");
-            }
-            else
-            {
-                lbErrPasswordConfirmation.Content = string.Empty;
-            }
+            string password = pbPassword.Password;
+            string confirmPassword = pbConfirmPassword.Password;
+
+            string error = _validator.ValidateConfirmPassword(password, confirmPassword);
+            lbErrPasswordConfirmation.Content = error;
+
         }
-
-        private bool IsValidPassword(string password)
-        {
-
-            if (password.Contains(' '))
-            {
-                return false;
-            }
-
-            bool hasUpper = password.Any(char.IsUpper);
-            bool hasLower = password.Any(char.IsLower);
-            bool hasDigit = password.Any(char.IsDigit);
-            bool hasSpecialChar = password.Any(ch => !char.IsLetterOrDigit(ch));
-
-            return hasUpper && hasLower && hasDigit && hasSpecialChar && password.Length >= 8;
-        }
-
 
     }
 }

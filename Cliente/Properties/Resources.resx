@@ -253,7 +253,7 @@
     <value>A code has been sent to your email, please type it here:</value>
   </data>
   <data name="lblConfirmPassword" xml:space="preserve">
-    <value>Confrim Password</value>
+	  <value>Confirm Password</value>
   </data>
   <data name="lblCurrentPassword" xml:space="preserve">
     <value>Current Password</value>
@@ -265,7 +265,7 @@
     <value>Enter your lobby code: </value>
   </data>
   <data name="lblErrDiferentPassword" xml:space="preserve">
-    <value>Paswords must be the same</value>
+	  <value>Passwords must be the same</value>
   </data>
   <data name="lblErrEmailInvalid" xml:space="preserve">
     <value>Email is invalid or already exists</value>
@@ -274,7 +274,7 @@
     <value>You must type something to send a message</value>
   </data>
   <data name="lblErrIncorrectCode" xml:space="preserve">
-    <value>Incorrect code</value>
+	  <value>Incorrect Code</value>
   </data>
   <data name="lblErrInvalidMessage" xml:space="preserve">
     <value>Your message contains invalid characters, only alphanumeric</value>
@@ -304,7 +304,7 @@
     <value>This username already exists</value>
   </data>
   <data name="lblErrUsernameInvalid" xml:space="preserve">
-    <value>TUsername can only contain letters, numbers, and underscores.</value>
+	  <value>Username can only contain letters, numbers, and underscores.</value>
   </data>
   <data name="lblErrUserNotFound" xml:space="preserve">
     <value>User not found, try again later</value>
@@ -313,7 +313,7 @@
     <value>This Email is invalid or already exists</value>
   </data>
   <data name="lblErrWeakPassword" xml:space="preserve">
-    <value>PasswPassword must contain at least one uppercase letter, one lowercase letter, one number, and one special character.</value>
+	  <value>Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.</value>
   </data>
   <data name="lblErrWrongLogin" xml:space="preserve">
     <value>Incorrect username or password</value>
@@ -373,7 +373,7 @@
     <value>User ID</value>
   </data>
   <data name="lblViewProfile" xml:space="preserve">
-    <value>ViewProfile</value>
+	  <value>View Profile</value>
   </data>
   <data name="lblVolume" xml:space="preserve">
     <value>Volume</value>
@@ -451,7 +451,7 @@
     <value>Invalid password</value>
   </data>
   <data name="lblErrShortPassword" xml:space="preserve">
-    <value>Password must be at least 8 characters long</value>
+	  <value>Password must be at least 12 characters long</value>
   </data>
   <data name="lblKicking" xml:space="preserve">
     <value>Kicking</value>
@@ -478,7 +478,7 @@
     <value>Lobby code cannot be empty</value>
   </data>
   <data name="lblErrLobbyCodeTooLong" xml:space="preserve">
-    <value>Loby code is too long</value>
+	  <value>Lobby code is too long</value>
   </data>
   <data name="lblErrLobbyCodeNotNumeric" xml:space="preserve">
     <value>Lobby code must be a numeric value</value>
@@ -524,5 +524,26 @@
   </data>
   <data name="lblErrDecliningFRException" xml:space="preserve">
     <value>An error ocurrer while declining the firend request, try again later!</value>
+  </data>
+  <data name="lblErrEmailTooLong" xml:space="preserve">
+	  <value>Email can't be longer than 255 characters</value>
+  </data>
+  <data name="lblErrEmailEmpty" xml:space="preserve">
+	  <value>You left your email empty</value>
+  </data>
+  <data name="lblErrEmailContainsWhiteSpace" xml:space="preserve">
+	  <value>Email can't have a whitespace dude</value>
+  </data>
+  <data name="lblErrUsernameTooLong" xml:space="preserve">
+	  <value>Username is too long</value>
+  </data>
+  <data name="lblErrUsernameEmpty" xml:space="preserve">
+	  <value>Username can't be empty</value>
+  </data>
+  <data name="lblErrPasswordEmpty" xml:space="preserve">
+	  <value>Password can't be left empty</value>
+  </data>
+  <data name="lblErrPasswordContainsWhiteSpace" xml:space="preserve">
+	  <value>Password can't contain whitespaces</value>
   </data>
 </root>
