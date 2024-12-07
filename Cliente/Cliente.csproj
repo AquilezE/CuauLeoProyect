@@ -312,6 +312,7 @@
     </Compile>
     <Compile Include="UserFound.cs" />
     <Compile Include="UserLobby.cs" />
+    <Compile Include="Utils\Validator.cs" />
     <Compile Include="Utils\WcfCallHelper.cs" />
     <Page Include="GameUserControllers\CardUserController.xaml">
       <SubType>Designer</SubType>

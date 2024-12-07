@@ -1,4 +1,5 @@
 ﻿using Cliente.ServiceReference;
+using Cliente.Utils;
 using Haley.Utils;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,9 @@ namespace Cliente.Pantallas
     public partial class RegisterAccountFields : UserControl
     {
         public event Action<string, string, string> RegistrationFilled;
-        private UsersManagerClient _service;
+        private readonly UsersManagerClient _service;
+        private readonly Validator _validator = new Validator();
+
 
         public RegisterAccountFields()
         {
@@ -38,46 +41,54 @@ namespace Cliente.Pantallas
             btRegister.IsEnabled = false;
 
 
-            int cooldownDuration = 2000;
+            const int cooldownDuration = 2000;
 
 
             var timer = new System.Timers.Timer(cooldownDuration);
             timer.Elapsed += (s, args) =>
             {
                 Dispatcher.Invoke(() => btRegister.IsEnabled = true);
-                timer.Stop(); 
-                timer.Dispose(); 
+                timer.Stop();
+                timer.Dispose();
             };
             timer.Start();
 
+            string username = tbUsername.Text;
+            string email = tbEmail.Text;
+            string password = pbPassword.Password;
+            string confirmPassword = pbConfirmPassword.Password;
 
-            if (IsValidUsername(tbUsername.Text) &&
-                IsValidEmail(tbEmail.Text) &&
-                IsValidPassword(pbPassword.Password) &&
-                pbConfirmPassword.Password == pbPassword.Password)
+            string usernameError = _validator.ValidateUsername(username);
+            string emailError = _validator.ValidateEmail(email);
+            string passwordError = _validator.ValidatePassword(password);
+            string confirmPasswordError = _validator.ValidateConfirmPassword(password, confirmPassword);
+
+
+            if (!string.IsNullOrEmpty(usernameError) ||
+                !string.IsNullOrEmpty(emailError) ||
+                !string.IsNullOrEmpty(passwordError) ||
+                !string.IsNullOrEmpty(confirmPasswordError))
             {
-
-                bool isEmailTaken = await _service.IsEmailTakenAsync(tbEmail.Text);
-                bool isUsernameTaken = await _service.IsUsernameTakenAsync(tbUsername.Text);
-
-                if (isEmailTaken)
-                {
-                    lbErrEmail.Content = LangUtils.Translate("lblErrEmailExists");
-                    return;
-                }
-
-                if (isUsernameTaken)
-                {
-                    lbErrUsername.Content = LangUtils.Translate("lblErrUsernameExists");
-                    return;
-                }
-
-                OnRegistrationCompleted(tbUsername.Text, pbPassword.Password, tbEmail.Text);
+                return;
             }
-            else
+
+            bool isEmailTaken = await _service.IsEmailTakenAsync(email);
+            bool isUsernameTaken = await _service.IsUsernameTakenAsync(username);
+
+            if (isEmailTaken)
             {
-
+                lbErrEmail.Content = LangUtils.Translate("lblErrEmailExists");
+                return;
             }
+
+            if (isUsernameTaken)
+            {
+                lbErrUsername.Content = LangUtils.Translate("lblErrUsernameExists");
+                return;
+            }
+
+
+            OnRegistrationCompleted(username, password, email);
         }
 
         protected virtual void OnRegistrationCompleted(string username, string password, string email)
@@ -89,99 +100,31 @@ namespace Cliente.Pantallas
         private void tbUsername_LostFocus(object sender, RoutedEventArgs e)
         {
             string username = tbUsername.Text;
-
-            if (string.IsNullOrWhiteSpace(username))
-            {
-                lbErrUsername.Content = LangUtils.Translate("lblErrUsernameInvalid");
-            }
-            else if (!IsValidUsername(username))
-            {
-                lbErrUsername.Content = LangUtils.Translate("lblErrUsernameInvalid");
-            }
-            else
-            {
-                lbErrUsername.Content = string.Empty;
-            }
+            string error = _validator.ValidateUsername(username);
+            lbErrUsername.Content = error;
         }
 
-        private bool IsValidUsername(string username)
-        {
-            string pattern = @"^[a-zA-Z0-9_]+$";
-            return Regex.IsMatch(username, pattern);
-        }
 
         private void tbEmail_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(tbEmail.Text) || !IsValidEmail(tbEmail.Text))
-            {
-                lbErrEmail.Content = LangUtils.Translate("lblErrEmailInvalid");
-            }
-            else
-            {
-                lbErrEmail.Content = string.Empty;
-            }
-        }
-
-        private bool IsValidEmail(string email)
-        {
-            try
-            {
-
-                var addr = new System.Net.Mail.MailAddress(email);
-                string domain = addr.Host;
-
-                return domain.IndexOf("..") == -1 && domain.All(c => Char.IsLetterOrDigit(c) || c == '-' || c == '.');
-            }
-            catch
-            {
-
-            return false; 
-            }
+            string email = tbEmail.Text;
+            string error = _validator.ValidateEmail(email);
+            lbErrEmail.Content = error;
         }
 
         private void pbPassword_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (!IsValidPassword(pbPassword.Password))
-            {
-                lbErrPassword.Content = LangUtils.Translate("lblErrWeakPassword");
-            }
-            else if (pbPassword.Password.Length < 8)
-            {
-                lbErrPassword.Content = LangUtils.Translate("lblErrShortPassword");
-            }
-            else
-            {
-                lbErrPassword.Content = string.Empty;
-            }
-        }
-
-        private bool IsValidPassword(string password)
-        {
-
-            if (password.Contains(' '))
-            {
-                return false;
-            }
-
-
-            bool hasUpper = password.Any(char.IsUpper);
-            bool hasLower = password.Any(char.IsLower);
-            bool hasDigit = password.Any(char.IsDigit);
-            bool hasSpecialChar = password.Any(ch => !char.IsLetterOrDigit(ch));
-
-            return hasUpper && hasLower && hasDigit && hasSpecialChar && password.Length >= 8;
+            string password = pbPassword.Password;
+            string error = _validator.ValidatePassword(password);
+            lbErrPassword.Content = error;
         }
 
         private void pbConfirmPassword_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (pbConfirmPassword.Password != pbPassword.Password)
-            {
-                lbErrPasswordConfirmation.Content = LangUtils.Translate("lblErrDiferentPassword");
-            }
-            else
-            {
-                lbErrPasswordConfirmation.Content = string.Empty;
-            }
+            string password = pbPassword.Password;
+            string confirmPassword = pbConfirmPassword.Password;
+            string error = _validator.ValidateConfirmPassword(password, confirmPassword);
+            lbErrPasswordConfirmation.Content = error;
         }
 
         private void btCancel_Click(object sender, RoutedEventArgs e)
