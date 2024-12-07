@@ -96,6 +96,22 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IStatsManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="30000">
+          </wsrm:InactivityTimeout>
+          <wsrm:AcknowledgementInterval Milliseconds="200">
+          </wsrm:AcknowledgementInterval>
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1">
+        </msb:BinaryEncoding>
+        <wsaw:UsingAddressing>
+        </wsaw:UsingAddressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import namespace="http://tempuri.org/" />
@@ -429,6 +445,12 @@
   <wsdl:message name="IGameManager_OnNotifyGameEndedWithoutUsers_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnNotifyGameEndedWithoutUsers" />
   </wsdl:message>
+  <wsdl:message name="IStatsManager_GetCurrentUserStats_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentUserStats" />
+  </wsdl:message>
+  <wsdl:message name="IStatsManager_OnStatsReceived_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnStatsReceived" />
+  </wsdl:message>
   <wsdl:portType name="IUsersManager">
     <wsdl:operation name="IsUsernameTaken">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/IsUsernameTaken" message="tns:IUsersManager_IsUsernameTaken_InputMessage" />
@@ -683,6 +705,14 @@
     </wsdl:operation>
     <wsdl:operation name="OnNotifyGameEndedWithoutUsers">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/OnNotifyGameEndedWithoutUsers" message="tns:IGameManager_OnNotifyGameEndedWithoutUsers_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IStatsManager">
+    <wsdl:operation name="GetCurrentUserStats">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStatsManager/GetCurrentUserStats" message="tns:IStatsManager_GetCurrentUserStats_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnStatsReceived">
+      <wsdl:output wsaw:Action="http://tempuri.org/IStatsManager/OnStatsReceived" message="tns:IStatsManager_OnStatsReceived_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUsersManager" type="tns:IUsersManager">
@@ -1243,6 +1273,23 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IStatsManager" type="tns:IStatsManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IStatsManager_policy">
+    </wsp:PolicyReference>
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GetCurrentUserStats">
+      <soap12:operation soapAction="http://tempuri.org/IStatsManager/GetCurrentUserStats" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="OnStatsReceived">
+      <soap12:operation soapAction="http://tempuri.org/IStatsManager/OnStatsReceived" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="ServiceImplementation">
     <wsdl:port name="NetTcpBinding_IUsersManager" binding="tns:NetTcpBinding_IUsersManager">
       <soap12:address location="net.tcp://localhost:8000/ServiceImplementation/Service" />
@@ -1275,6 +1322,12 @@
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IGameManager" binding="tns:NetTcpBinding_IGameManager">
+      <soap12:address location="net.tcp://localhost:8000/ServiceImplementation/Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8000/ServiceImplementation/Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IStatsManager" binding="tns:NetTcpBinding_IStatsManager">
       <soap12:address location="net.tcp://localhost:8000/ServiceImplementation/Service" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8000/ServiceImplementation/Service</wsa10:Address>

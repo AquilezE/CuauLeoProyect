@@ -1818,4 +1818,59 @@ namespace Cliente.ServiceReference {
             return base.Channel.ExecuteProvokeAsync(userId, matchCode, babyPileProvoked);
         }
     }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IStatsManager", CallbackContract=typeof(Cliente.ServiceReference.IStatsManagerCallback))]
+    public interface IStatsManager {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IStatsManager/GetCurrentUserStats")]
+        void GetCurrentUserStats(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IStatsManager/GetCurrentUserStats")]
+        System.Threading.Tasks.Task GetCurrentUserStatsAsync(int userId);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IStatsManagerCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IStatsManager/OnStatsReceived")]
+        void OnStatsReceived(int wins, int monsters, int babies);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IStatsManagerChannel : Cliente.ServiceReference.IStatsManager, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class StatsManagerClient : System.ServiceModel.DuplexClientBase<Cliente.ServiceReference.IStatsManager>, Cliente.ServiceReference.IStatsManager {
+        
+        public StatsManagerClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
+        }
+        
+        public StatsManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
+        }
+        
+        public StatsManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public StatsManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public StatsManagerClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        public void GetCurrentUserStats(int userId) {
+            base.Channel.GetCurrentUserStats(userId);
+        }
+        
+        public System.Threading.Tasks.Task GetCurrentUserStatsAsync(int userId) {
+            return base.Channel.GetCurrentUserStatsAsync(userId);
+        }
+    }
 }
