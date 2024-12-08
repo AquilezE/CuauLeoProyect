@@ -1,19 +1,13 @@
 ﻿using Cliente.GameUserControllers;
-using Cliente.Pantallas;
 using Cliente.ServiceReference;
 using Cliente.UserControllers;
-using Cliente.UserControllers.FriendsList;
 using Haley.Utils;
-using MaterialDesignThemes.Wpf;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+using System.Numerics;
 using System.Windows.Threading;
 
 namespace Cliente
@@ -239,7 +233,7 @@ namespace Cliente
 
         public void ReceiveGameState(GameStateDTO gameState)
         {
-            if (GameLogic.Instance == null)
+            if (Instance == null)
             {
                 Console.WriteLine("GameLogic null");
             }
@@ -259,7 +253,7 @@ namespace Cliente
 
 
             Player1Monsters.Clear();
-            if (gameState.playerState.TryGetValue(User.Instance.ID, out var playerState))
+            if (gameState.PlayerState.TryGetValue(User.Instance.ID, out var playerState))
             {
                 Player1Score = gameState.PlayerStatistics[User.Instance.ID].Points;
                 Player1Username = playerState.User.Username;
@@ -278,7 +272,7 @@ namespace Cliente
             Player4Monsters.Clear();
 
             int playerNumber = 2;
-            foreach (var player in gameState.playerState)
+            foreach (var player in gameState.PlayerState)
             {
                 int playerId = player.Key;
 
@@ -350,22 +344,22 @@ namespace Cliente
             }
 
 
-            var currentPlayerState = gameState.playerState
+            var currentPlayerState = gameState.PlayerState
                 .FirstOrDefault(ps => ps.Key == CurrentPlayerId).Value;
 
 
-            var newCard = gameState.playerState.FirstOrDefault(ps => ps.Key == User.Instance.ID).Value.Hand.Last(); ;
+            var newCard = gameState.PlayerState.FirstOrDefault(ps => ps.Key == User.Instance.ID).Value.Hand.Last(); ;
             LastCardDrawn = newCard != null ? $"Card ID: {newCard.CardId}" : "No card drawn";
             Console.WriteLine(LastCardDrawn);
 
             CardListViewer.Clear();
-            foreach (var card in gameState.playerState[User.Instance.ID].Hand)
+            foreach (var card in gameState.PlayerState[User.Instance.ID].Hand)
             {
                 CardListViewer.Add(new GameCard(card));
             }
 
             Monster.Clear();
-            if (gameState.playerState.TryGetValue(User.Instance.ID, out var playerState))
+            if (gameState.PlayerState.TryGetValue(User.Instance.ID, out var playerState))
             {
                 foreach (var monster in playerState.Monsters)
                 {
@@ -456,17 +450,40 @@ namespace Cliente
 
             orderedStats = orderedStats.OrderByDescending(s => s.points).ToList();
 
-            Player1Username = orderedStats[0].username;
-            Player1Score = orderedStats[0].points;
+            int playerNumber = 1;
+            foreach (var player in orderedStats)
+            {
+                switch (playerNumber)
+                {
+                    case 1:
+                        Player1Username = orderedStats[0].username;
+                        Player1Score = orderedStats[0].points;
 
-            Player2Username = orderedStats[1].username;
-            Player2Score = orderedStats[1].points;
+                        break;
+                    case 2:
+                        Player2Username = orderedStats[1].username;
+                        Player2Score = orderedStats[1].points;
 
-            Player3Username = orderedStats[2].username;
-            Player3Score = orderedStats[2].points;
+                        break;
 
-            Player4Username = orderedStats[3].username;
-            Player4Score = orderedStats[3].points;
+                    case 3:
+                        Player3Username = orderedStats[2].username;
+                        Player3Score = orderedStats[2].points;
+
+                        break;
+
+                    case 4:
+                        Player4Username = orderedStats[3].username;
+                        Player4Score = orderedStats[3].points;
+                        break;
+
+                    default:
+                        Console.WriteLine("Nothing happened");
+                        break;
+                }
+                playerNumber++;
+            }
+
         }
 
         public void OnNotifyGameEndedWithoutUsers(int matchCode)

@@ -1,13 +1,8 @@
 ﻿using Cliente.ServiceReference;
-using Cliente.UserControllers.FriendsList;
 using System;
 using System.Windows;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Management.Instrumentation;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel;
 using System.ServiceModel;
 using Cliente.UserControllers;
@@ -30,7 +25,7 @@ namespace Cliente
 
         public Social()
         {
-            socialManagerClient = new SocialManagerClient(new System.ServiceModel.InstanceContext(this));
+            socialManagerClient = new SocialManagerClient(new InstanceContext(this));
 
             ICommunicationObject clientChannel = (ICommunicationObject)socialManagerClient;
             clientChannel.Closed += ClientChannel_Closed;
@@ -69,7 +64,7 @@ namespace Cliente
             socialManagerClient = null;
 
             // Optionally, reset the Social instance
-            Social.instance = null;
+            instance = null;
         }
 
 
@@ -247,7 +242,7 @@ namespace Cliente
             foreach (FriendRequestDTO friendRequest in friendRequests)
             {
                 Console.WriteLine(friendRequest.SenderName);
-                this.FriendRequests.Add(new FriendRequest(friendRequest));
+                FriendRequests.Add(new FriendRequest(friendRequest));
             }
         }
 

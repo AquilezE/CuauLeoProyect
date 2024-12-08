@@ -85,7 +85,19 @@
   <xs:element name="LogInResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="LogInResult" nillable="true" type="q1:UserDto" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="LogInResult" nillable="true" type="q1:UserDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGuestUser">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGuestUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="GetGuestUserResult" nillable="true" type="q2:UserDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -107,7 +119,7 @@
   <xs:element name="NewLobbyCreated">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="userDto" nillable="true" type="q2:UserDto" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="userDto" nillable="true" type="q3:UserDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -115,7 +127,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="lobbyId" type="xs:int" />
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="userDto" nillable="true" type="q3:UserDto" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="userDto" nillable="true" type="q4:UserDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -173,7 +185,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="lobbyId" type="xs:int" />
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="existingUsers" nillable="true" type="q4:ArrayOfUserDto" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="existingUsers" nillable="true" type="q5:ArrayOfUserDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -189,7 +201,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="lobbyId" type="xs:int" />
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="userDto" nillable="true" type="q5:UserDto" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="userDto" nillable="true" type="q6:UserDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -392,7 +404,7 @@
   <xs:element name="GetFriendsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="GetFriendsResult" nillable="true" type="q6:ArrayOfFriendDTO" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="GetFriendsResult" nillable="true" type="q7:ArrayOfFriendDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -451,7 +463,7 @@
   <xs:element name="GetBlockedUsersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="GetBlockedUsersResult" nillable="true" type="q7:ArrayOfBlockedDTO" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="GetBlockedUsersResult" nillable="true" type="q8:ArrayOfBlockedDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -465,7 +477,7 @@
   <xs:element name="GetFriendRequestsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="GetFriendRequestsResult" nillable="true" type="q8:ArrayOfFriendRequestDTO" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="GetFriendRequestsResult" nillable="true" type="q9:ArrayOfFriendRequestDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -480,7 +492,7 @@
   <xs:element name="GetUsersFoundByNameResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="GetUsersFoundByNameResult" nillable="true" type="q9:ArrayOfUserDto" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="GetUsersFoundByNameResult" nillable="true" type="q10:ArrayOfUserDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -510,7 +522,7 @@
   <xs:element name="OnNewFriend">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="friendDto" nillable="true" type="q10:FriendDTO" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="friendDto" nillable="true" type="q11:FriendDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -524,7 +536,7 @@
   <xs:element name="OnNewFriendRequest">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="friendRequest" nillable="true" type="q11:FriendRequestDTO" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="friendRequest" nillable="true" type="q12:FriendRequestDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -540,7 +552,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="gameId" type="xs:int" />
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="userDto" nillable="true" type="q12:UserDto" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="userDto" nillable="true" type="q13:UserDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -612,7 +624,7 @@
   <xs:element name="ReceiveGameState">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="gameStateDto" nillable="true" type="q13:GameStateDTO" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="gameStateDto" nillable="true" type="q14:GameStateDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -621,7 +633,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="userId" type="xs:int" />
         <xs:element minOccurs="0" name="matchCode" type="xs:int" />
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="card" nillable="true" type="q14:CardDTO" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="card" nillable="true" type="q15:CardDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -630,7 +642,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="userId" type="xs:int" />
         <xs:element minOccurs="0" name="matchCode" type="xs:int" />
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="card" nillable="true" type="q15:CardDTO" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="card" nillable="true" type="q16:CardDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -639,7 +651,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="userId" type="xs:int" />
         <xs:element minOccurs="0" name="matchCode" type="xs:int" />
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="card" nillable="true" type="q16:CardDTO" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="card" nillable="true" type="q17:CardDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -675,7 +687,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="matchCode" type="xs:int" />
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="stats" nillable="true" type="q17:ArrayOfStatsDTO" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/BevososService.DTOs" minOccurs="0" name="stats" nillable="true" type="q18:ArrayOfStatsDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

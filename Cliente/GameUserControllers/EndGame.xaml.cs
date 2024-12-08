@@ -1,18 +1,6 @@
 ﻿using Cliente.Pantallas;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Cliente.GameUserControllers
 {
@@ -24,13 +12,21 @@ namespace Cliente.GameUserControllers
         public EndGame()
         {
             InitializeComponent();
-            this.DataContext = GameLogic.Instance;
+            DataContext = GameLogic.Instance;
         }
 
         private void btContinue_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.NavigateToView(new MainMenu());
+            if (User.Instance.ID > 0)
+            {
+                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.NavigateToView(new MainMenu());
+            }
+            else if (User.Instance.ID < 0)
+            {
+                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.NavigateToView(new JoinLobby(), 650, 800);
+            }
         }
     }
 }

@@ -1,11 +1,4 @@
-﻿using Cliente.Pantallas;
-using Cliente.ServiceReference;
-using Cliente.UserControllers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Cliente.ServiceReference;
 
 namespace Cliente
 {

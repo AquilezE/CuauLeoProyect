@@ -1,11 +1,6 @@
 ﻿using Cliente.ServiceReference;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cliente
 {
@@ -46,7 +41,7 @@ namespace Cliente
             }
         }
 
-        public UserLobby(UserDto userDto)
+        public UserLobby(UserDTO userDto)
         {
             ID = userDto.UserId;
             Username = userDto.Username;

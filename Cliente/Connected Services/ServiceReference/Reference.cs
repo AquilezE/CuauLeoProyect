@@ -76,9 +76,9 @@ namespace Cliente.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UserDto", Namespace="http://schemas.datacontract.org/2004/07/BevososService.DTOs")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserDTO", Namespace="http://schemas.datacontract.org/2004/07/BevososService.DTOs")]
     [System.SerializableAttribute()]
-    public partial class UserDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class UserDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -503,13 +503,13 @@ namespace Cliente.ServiceReference {
         private System.Collections.Generic.Dictionary<int, int> PlayerActionsRemainingField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.Dictionary<int, Cliente.ServiceReference.PlayerStateDTO> PlayerStateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Collections.Generic.Dictionary<int, Cliente.ServiceReference.GameStatsDTO> PlayerStatisticsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int TurnTimeRemainingInSecondsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.Dictionary<int, Cliente.ServiceReference.PlayerStateDTO> playerStateField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -587,6 +587,19 @@ namespace Cliente.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.Dictionary<int, Cliente.ServiceReference.PlayerStateDTO> PlayerState {
+            get {
+                return this.PlayerStateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PlayerStateField, value) != true)) {
+                    this.PlayerStateField = value;
+                    this.RaisePropertyChanged("PlayerState");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Collections.Generic.Dictionary<int, Cliente.ServiceReference.GameStatsDTO> PlayerStatistics {
             get {
                 return this.PlayerStatisticsField;
@@ -608,19 +621,6 @@ namespace Cliente.ServiceReference {
                 if ((this.TurnTimeRemainingInSecondsField.Equals(value) != true)) {
                     this.TurnTimeRemainingInSecondsField = value;
                     this.RaisePropertyChanged("TurnTimeRemainingInSeconds");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.Dictionary<int, Cliente.ServiceReference.PlayerStateDTO> playerState {
-            get {
-                return this.playerStateField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.playerStateField, value) != true)) {
-                    this.playerStateField = value;
-                    this.RaisePropertyChanged("playerState");
                 }
             }
         }
@@ -666,6 +666,83 @@ namespace Cliente.ServiceReference {
                 if ((this.CardIdField.Equals(value) != true)) {
                     this.CardIdField = value;
                     this.RaisePropertyChanged("CardId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PlayerStateDTO", Namespace="http://schemas.datacontract.org/2004/07/BevososService.DTOs")]
+    [System.SerializableAttribute()]
+    public partial class PlayerStateDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Cliente.ServiceReference.CardDTO[] HandField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Cliente.ServiceReference.MonsterDTO[] MonstersField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Cliente.ServiceReference.UserDTO UserField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Cliente.ServiceReference.CardDTO[] Hand {
+            get {
+                return this.HandField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HandField, value) != true)) {
+                    this.HandField = value;
+                    this.RaisePropertyChanged("Hand");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Cliente.ServiceReference.MonsterDTO[] Monsters {
+            get {
+                return this.MonstersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MonstersField, value) != true)) {
+                    this.MonstersField = value;
+                    this.RaisePropertyChanged("Monsters");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Cliente.ServiceReference.UserDTO User {
+            get {
+                return this.UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserField, value) != true)) {
+                    this.UserField = value;
+                    this.RaisePropertyChanged("User");
                 }
             }
         }
@@ -743,21 +820,15 @@ namespace Cliente.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PlayerStateDTO", Namespace="http://schemas.datacontract.org/2004/07/BevososService.DTOs")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MonsterDTO", Namespace="http://schemas.datacontract.org/2004/07/BevososService.DTOs")]
     [System.SerializableAttribute()]
-    public partial class PlayerStateDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class MonsterDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Cliente.ServiceReference.CardDTO[] HandField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Cliente.ServiceReference.MonsterDTO[] MonstersField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Cliente.ServiceReference.UserDto UserField;
+        private Cliente.ServiceReference.CardDTO[] BodyPartsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -770,40 +841,14 @@ namespace Cliente.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Cliente.ServiceReference.CardDTO[] Hand {
+        public Cliente.ServiceReference.CardDTO[] BodyParts {
             get {
-                return this.HandField;
+                return this.BodyPartsField;
             }
             set {
-                if ((object.ReferenceEquals(this.HandField, value) != true)) {
-                    this.HandField = value;
-                    this.RaisePropertyChanged("Hand");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Cliente.ServiceReference.MonsterDTO[] Monsters {
-            get {
-                return this.MonstersField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MonstersField, value) != true)) {
-                    this.MonstersField = value;
-                    this.RaisePropertyChanged("Monsters");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Cliente.ServiceReference.UserDto User {
-            get {
-                return this.UserField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserField, value) != true)) {
-                    this.UserField = value;
-                    this.RaisePropertyChanged("User");
+                if ((object.ReferenceEquals(this.BodyPartsField, value) != true)) {
+                    this.BodyPartsField = value;
+                    this.RaisePropertyChanged("BodyParts");
                 }
             }
         }
@@ -879,51 +924,6 @@ namespace Cliente.ServiceReference {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="MonsterDTO", Namespace="http://schemas.datacontract.org/2004/07/BevososService.DTOs")]
-    [System.SerializableAttribute()]
-    public partial class MonsterDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Cliente.ServiceReference.CardDTO[] BodyPartsField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Cliente.ServiceReference.CardDTO[] BodyParts {
-            get {
-                return this.BodyPartsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.BodyPartsField, value) != true)) {
-                    this.BodyPartsField = value;
-                    this.RaisePropertyChanged("BodyParts");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IUsersManager")]
     public interface IUsersManager {
@@ -965,10 +965,16 @@ namespace Cliente.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsersManager/LogIn", ReplyAction="http://tempuri.org/IUsersManager/LogInResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(Cliente.ServiceReference.BevososServerExceptions), Action="http://tempuri.org/IUsersManager/LogInBevososServerExceptionsFault", Name="BevososServerExceptions", Namespace="http://schemas.datacontract.org/2004/07/BevososService.Exceptions")]
-        Cliente.ServiceReference.UserDto LogIn(string email, string password);
+        Cliente.ServiceReference.UserDTO LogIn(string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsersManager/LogIn", ReplyAction="http://tempuri.org/IUsersManager/LogInResponse")]
-        System.Threading.Tasks.Task<Cliente.ServiceReference.UserDto> LogInAsync(string email, string password);
+        System.Threading.Tasks.Task<Cliente.ServiceReference.UserDTO> LogInAsync(string email, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsersManager/GetGuestUser", ReplyAction="http://tempuri.org/IUsersManager/GetGuestUserResponse")]
+        Cliente.ServiceReference.UserDTO GetGuestUser();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsersManager/GetGuestUser", ReplyAction="http://tempuri.org/IUsersManager/GetGuestUserResponse")]
+        System.Threading.Tasks.Task<Cliente.ServiceReference.UserDTO> GetGuestUserAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsersManager/RecoverPassword", ReplyAction="http://tempuri.org/IUsersManager/RecoverPasswordResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(Cliente.ServiceReference.BevososServerExceptions), Action="http://tempuri.org/IUsersManager/RecoverPasswordBevososServerExceptionsFault", Name="BevososServerExceptions", Namespace="http://schemas.datacontract.org/2004/07/BevososService.Exceptions")]
@@ -1045,12 +1051,20 @@ namespace Cliente.ServiceReference {
             return base.Channel.RegisterUserAsync(email, username, password);
         }
         
-        public Cliente.ServiceReference.UserDto LogIn(string email, string password) {
+        public Cliente.ServiceReference.UserDTO LogIn(string email, string password) {
             return base.Channel.LogIn(email, password);
         }
         
-        public System.Threading.Tasks.Task<Cliente.ServiceReference.UserDto> LogInAsync(string email, string password) {
+        public System.Threading.Tasks.Task<Cliente.ServiceReference.UserDTO> LogInAsync(string email, string password) {
             return base.Channel.LogInAsync(email, password);
+        }
+        
+        public Cliente.ServiceReference.UserDTO GetGuestUser() {
+            return base.Channel.GetGuestUser();
+        }
+        
+        public System.Threading.Tasks.Task<Cliente.ServiceReference.UserDTO> GetGuestUserAsync() {
+            return base.Channel.GetGuestUserAsync();
         }
         
         public bool RecoverPassword(string email, string password) {
@@ -1067,16 +1081,16 @@ namespace Cliente.ServiceReference {
     public interface ILobbyManager {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/NewLobbyCreated")]
-        void NewLobbyCreated(Cliente.ServiceReference.UserDto userDto);
+        void NewLobbyCreated(Cliente.ServiceReference.UserDTO userDto);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/NewLobbyCreated")]
-        System.Threading.Tasks.Task NewLobbyCreatedAsync(Cliente.ServiceReference.UserDto userDto);
+        System.Threading.Tasks.Task NewLobbyCreatedAsync(Cliente.ServiceReference.UserDTO userDto);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/JoinLobby")]
-        void JoinLobby(int lobbyId, Cliente.ServiceReference.UserDto userDto);
+        void JoinLobby(int lobbyId, Cliente.ServiceReference.UserDTO userDto);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/JoinLobby")]
-        System.Threading.Tasks.Task JoinLobbyAsync(int lobbyId, Cliente.ServiceReference.UserDto userDto);
+        System.Threading.Tasks.Task JoinLobbyAsync(int lobbyId, Cliente.ServiceReference.UserDTO userDto);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/LeaveLobby")]
         void LeaveLobby(int lobbyId, int userId);
@@ -1116,13 +1130,13 @@ namespace Cliente.ServiceReference {
         void OnNewLobbyCreated(int lobbyId, int userId);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/OnLobbyUsersUpdate")]
-        void OnLobbyUsersUpdate(int lobbyId, Cliente.ServiceReference.UserDto[] existingUsers);
+        void OnLobbyUsersUpdate(int lobbyId, Cliente.ServiceReference.UserDTO[] existingUsers);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/OnLeaderChanged")]
         void OnLeaderChanged(int lobbyId, int newLeaderId);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/OnJoinLobby")]
-        void OnJoinLobby(int lobbyId, Cliente.ServiceReference.UserDto userDto);
+        void OnJoinLobby(int lobbyId, Cliente.ServiceReference.UserDTO userDto);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManager/OnLeaveLobby")]
         void OnLeaveLobby(int lobbyId, int userId);
@@ -1168,19 +1182,19 @@ namespace Cliente.ServiceReference {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void NewLobbyCreated(Cliente.ServiceReference.UserDto userDto) {
+        public void NewLobbyCreated(Cliente.ServiceReference.UserDTO userDto) {
             base.Channel.NewLobbyCreated(userDto);
         }
         
-        public System.Threading.Tasks.Task NewLobbyCreatedAsync(Cliente.ServiceReference.UserDto userDto) {
+        public System.Threading.Tasks.Task NewLobbyCreatedAsync(Cliente.ServiceReference.UserDTO userDto) {
             return base.Channel.NewLobbyCreatedAsync(userDto);
         }
         
-        public void JoinLobby(int lobbyId, Cliente.ServiceReference.UserDto userDto) {
+        public void JoinLobby(int lobbyId, Cliente.ServiceReference.UserDTO userDto) {
             base.Channel.JoinLobby(lobbyId, userDto);
         }
         
-        public System.Threading.Tasks.Task JoinLobbyAsync(int lobbyId, Cliente.ServiceReference.UserDto userDto) {
+        public System.Threading.Tasks.Task JoinLobbyAsync(int lobbyId, Cliente.ServiceReference.UserDTO userDto) {
             return base.Channel.JoinLobbyAsync(lobbyId, userDto);
         }
         
@@ -1456,10 +1470,10 @@ namespace Cliente.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/GetUsersFoundByName", ReplyAction="http://tempuri.org/ISocialManager/GetUsersFoundByNameResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(Cliente.ServiceReference.BevososServerExceptions), Action="http://tempuri.org/ISocialManager/GetUsersFoundByNameBevososServerExceptionsFault" +
             "", Name="BevososServerExceptions", Namespace="http://schemas.datacontract.org/2004/07/BevososService.Exceptions")]
-        Cliente.ServiceReference.UserDto[] GetUsersFoundByName(int userId, string name);
+        Cliente.ServiceReference.UserDTO[] GetUsersFoundByName(int userId, string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/GetUsersFoundByName", ReplyAction="http://tempuri.org/ISocialManager/GetUsersFoundByNameResponse")]
-        System.Threading.Tasks.Task<Cliente.ServiceReference.UserDto[]> GetUsersFoundByNameAsync(int userId, string name);
+        System.Threading.Tasks.Task<Cliente.ServiceReference.UserDTO[]> GetUsersFoundByNameAsync(int userId, string name);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ISocialManager/InviteFriendToLobby")]
         void InviteFriendToLobby(string inviterName, int userId, int lobbyId);
@@ -1622,11 +1636,11 @@ namespace Cliente.ServiceReference {
             return base.Channel.GetFriendRequestsAsync(userId);
         }
         
-        public Cliente.ServiceReference.UserDto[] GetUsersFoundByName(int userId, string name) {
+        public Cliente.ServiceReference.UserDTO[] GetUsersFoundByName(int userId, string name) {
             return base.Channel.GetUsersFoundByName(userId, name);
         }
         
-        public System.Threading.Tasks.Task<Cliente.ServiceReference.UserDto[]> GetUsersFoundByNameAsync(int userId, string name) {
+        public System.Threading.Tasks.Task<Cliente.ServiceReference.UserDTO[]> GetUsersFoundByNameAsync(int userId, string name) {
             return base.Channel.GetUsersFoundByNameAsync(userId, name);
         }
         
@@ -1644,10 +1658,10 @@ namespace Cliente.ServiceReference {
     public interface IGameManager {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/JoinGame")]
-        void JoinGame(int gameId, Cliente.ServiceReference.UserDto userDto);
+        void JoinGame(int gameId, Cliente.ServiceReference.UserDTO userDto);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/JoinGame")]
-        System.Threading.Tasks.Task JoinGameAsync(int gameId, Cliente.ServiceReference.UserDto userDto);
+        System.Threading.Tasks.Task JoinGameAsync(int gameId, Cliente.ServiceReference.UserDTO userDto);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/DrawCard")]
         void DrawCard(int matchCode, int userId);
@@ -1754,11 +1768,11 @@ namespace Cliente.ServiceReference {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void JoinGame(int gameId, Cliente.ServiceReference.UserDto userDto) {
+        public void JoinGame(int gameId, Cliente.ServiceReference.UserDTO userDto) {
             base.Channel.JoinGame(gameId, userDto);
         }
         
-        public System.Threading.Tasks.Task JoinGameAsync(int gameId, Cliente.ServiceReference.UserDto userDto) {
+        public System.Threading.Tasks.Task JoinGameAsync(int gameId, Cliente.ServiceReference.UserDTO userDto) {
             return base.Channel.JoinGameAsync(gameId, userDto);
         }
         

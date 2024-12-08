@@ -1,12 +1,4 @@
-﻿using Cliente.Pantallas;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using Cliente.ServiceReference;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Documents;
+﻿using Cliente.ServiceReference;
 using System.ComponentModel;
 
 

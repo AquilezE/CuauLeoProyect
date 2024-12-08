@@ -1,23 +1,11 @@
 ﻿using Cliente.ServiceReference;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Windows.Threading;
 using System.Windows;
-using System.Windows.Automation.Peers;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Cliente.GameUserControllers;
 using Cliente.Pantallas;
+using UserDTO = Cliente.ServiceReference.UserDTO;
 
 namespace Cliente.GameUserControllers
 {
@@ -32,9 +20,9 @@ namespace Cliente.GameUserControllers
         public GameBoard()
         {
             InitializeComponent();
-            this.DataContext = GameLogic.Instance;
+            DataContext = GameLogic.Instance;
 
-            this.Loaded += GameBoard_Loaded;
+            Loaded += GameBoard_Loaded;
 
             var cardsViewer = new CardsViewer();
             extensiblePanelCards.Content = cardsViewer;
@@ -51,7 +39,7 @@ namespace Cliente.GameUserControllers
             var monstersViewer4 = new MonstersViewerPlayer4();
             extensiblePanelMonstersPlayer4.Content = monstersViewer4;
 
-            this.AddHandler(CardUserController.CardClickedEvent, new RoutedEventHandler(Card_Clicked));
+            AddHandler(CardUserController.CardClickedEvent, new RoutedEventHandler(Card_Clicked));
 
 
             GameLogic.Instance.BodyPartSelectionRequested += OnBodyPartSelectionRequested;
@@ -69,7 +57,7 @@ namespace Cliente.GameUserControllers
 
             try
             {
-                UserDto user = new UserDto();
+                UserDTO user = new UserDTO();
                 user.UserId = User.Instance.ID;
                 user.Username = User.Instance.Username;
                 user.Email = User.Instance.Email;
@@ -233,8 +221,16 @@ namespace Cliente.GameUserControllers
         {
             Dispatcher.Invoke(() =>
             {
-                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-                mainWindow.NavigateToView(new MainMenu());
+                if (User.Instance.ID > 0)
+                {
+                    MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                    mainWindow.NavigateToView(new MainMenu());
+                }
+                else if (User.Instance.ID < 0)
+                {
+                    MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                    mainWindow.NavigateToView(new JoinLobby(), 650, 800);
+                }
             });
         }
 

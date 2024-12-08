@@ -1,18 +1,8 @@
 ﻿using Cliente.ServiceReference;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Cliente.GameUserControllers
 {
@@ -38,7 +28,7 @@ namespace Cliente.GameUserControllers
                 gameCardMonsters.Add(gameCards);
             }
 
-            this.DataContext = new { Monster = gameCardMonsters };
+            DataContext = new { Monster = gameCardMonsters };
 
             MonsterList.Loaded += MonsterList_Loaded;
         }
@@ -67,14 +57,14 @@ namespace Cliente.GameUserControllers
                 var clickedGameCard = clickedCard.DataContext as GameCard;
                 if (clickedGameCard != null)
                 {
-                    var monsters = ((dynamic)this.DataContext).Monster as ObservableCollection<ObservableCollection<GameCard>>;
+                    var monsters = ((dynamic)DataContext).Monster as ObservableCollection<ObservableCollection<GameCard>>;
                     for (int i = 0; i < monsters.Count; i++)
                     {
                         if (monsters[i].Contains(clickedGameCard))
                         {
                             SelectedMonsterIndex = i;
-                            this.DialogResult = true;
-                            this.Close();
+                            DialogResult = true;
+                            Close();
                             return; 
                         }
                     }
@@ -87,7 +77,7 @@ namespace Cliente.GameUserControllers
             for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
             {
                 DependencyObject child = VisualTreeHelper.GetChild(obj, i);
-                if (child != null && child is childItem)
+                if (child is childItem)
                 {
                     return (childItem)child;
                 }

@@ -1,27 +1,10 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using Haley.Utils;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Path = System.IO.Path;
 using Cliente.ServiceReference;
-using static MaterialDesignThemes.Wpf.Theme;
-using Cliente.GameUserControllers;
 
 namespace Cliente.Pantallas
 {
@@ -40,7 +23,7 @@ namespace Cliente.Pantallas
             _servicio = new UsersManagerClient();
             LangUtils.Register();
             ChangeCulture("en");
-            this.Loaded += OnLoaded;
+            Loaded += OnLoaded;
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
@@ -50,7 +33,15 @@ namespace Cliente.Pantallas
 
         private void btPlayAsGuest_Click(object sender, RoutedEventArgs e)
         {
-            
+            if(SetSessionGuestUser())
+            {
+                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.NavigateToView(new JoinLobby(), 650, 800);
+            }
+            else
+            {
+                lbErrLabel.Content = LangUtils.Translate("lblErrNoConection");
+            }
         }
 
         private void btLogIn_Click(object sender, RoutedEventArgs e)
@@ -89,6 +80,37 @@ namespace Cliente.Pantallas
             }
         }
 
+        private bool SetSessionGuestUser()
+        {
+            try
+            {
+                UserDTO userDto = _servicio.GetGuestUser();
+                if (userDto == null)
+                {
+                    return false;
+                }
+
+                var currentUser = User.Instance;
+                currentUser.ID = userDto.UserId;
+                currentUser.Username = userDto.Username;
+                currentUser.Email = userDto.Email;
+                currentUser.ProfilePictureId = userDto.ProfilePictureId;
+
+                return true;
+            }
+            catch (Exception)
+            {
+                if (_servicio != null)
+                {
+                    _servicio.Abort();
+                    _servicio = new UsersManagerClient();
+                }
+
+                throw;
+            }
+
+        }
+
 
         private bool SetSessionUser(string email, string password)
         {
@@ -113,7 +135,7 @@ namespace Cliente.Pantallas
 
 
 
-                UserDto userDto = _servicio.LogIn(email, password);
+                UserDTO userDto = _servicio.LogIn(email, password);
                 if (userDto == null)
                 {
                     return false;

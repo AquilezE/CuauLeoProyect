@@ -175,6 +175,12 @@
   <wsdl:message name="IUsersManager_LogIn_BevososServerExceptionsFault_FaultMessage">
     <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q6:BevososServerExceptions" />
   </wsdl:message>
+  <wsdl:message name="IUsersManager_GetGuestUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGuestUser" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_GetGuestUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGuestUserResponse" />
+  </wsdl:message>
   <wsdl:message name="IUsersManager_RecoverPassword_InputMessage">
     <wsdl:part name="parameters" element="tns:RecoverPassword" />
   </wsdl:message>
@@ -481,6 +487,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/LogIn" message="tns:IUsersManager_LogIn_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/LogInResponse" message="tns:IUsersManager_LogIn_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IUsersManager/LogInBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:IUsersManager_LogIn_BevososServerExceptionsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGuestUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/GetGuestUser" message="tns:IUsersManager_GetGuestUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/GetGuestUserResponse" message="tns:IUsersManager_GetGuestUser_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RecoverPassword">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/RecoverPassword" message="tns:IUsersManager_RecoverPassword_InputMessage" />
@@ -790,6 +800,15 @@
       <wsdl:fault name="BevososServerExceptionsFault">
         <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
       </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetGuestUser">
+      <soap12:operation soapAction="http://tempuri.org/IUsersManager/GetGuestUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="RecoverPassword">
       <soap12:operation soapAction="http://tempuri.org/IUsersManager/RecoverPassword" style="document" />

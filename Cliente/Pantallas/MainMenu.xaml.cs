@@ -1,18 +1,7 @@
 ﻿using Cliente.ServiceReference;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Cliente.Pantallas
 {
@@ -32,7 +21,7 @@ namespace Cliente.Pantallas
 
 
             //How convenient is it to add a cast to the User class?
-            UserDto userDto = new UserDto
+            UserDTO userDto = new UserDTO
             {
                 UserId = User.Instance.ID,
                 Username = User.Instance.Username,

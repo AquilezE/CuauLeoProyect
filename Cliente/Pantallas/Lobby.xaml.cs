@@ -1,17 +1,11 @@
 ﻿using Cliente.ServiceReference;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using Cliente.UserControllers;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using Haley.Utils;
 using System.ComponentModel;
@@ -167,9 +161,19 @@ namespace Cliente.Pantallas
 
         public bool LeaveLobby()
         {
-            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.NavigateToView(new MainMenu());
-            return true;
+            if (User.Instance.ID > 0)
+            {
+                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.NavigateToView(new MainMenu());
+                return true;
+            }
+            else if (User.Instance.ID < 0)
+            {
+                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.NavigateToView(new JoinLobby(), 650, 800);
+                return true;
+            }
+            return false;
         }
 
         public void OnNewLobbyCreated(int lobbyId, int UserId)
@@ -187,7 +191,7 @@ namespace Cliente.Pantallas
 
         }
 
-        public void OnJoinLobby(int lobbyId, UserDto userDto)
+        public void OnJoinLobby(int lobbyId, UserDTO userDto)
         {
             UserLobby user = new UserLobby(userDto);
             _users.Add(user);
@@ -239,7 +243,7 @@ namespace Cliente.Pantallas
 
         }
 
-        public void OnLobbyUsersUpdate(int lobbyId, UserDto[] users)
+        public void OnLobbyUsersUpdate(int lobbyId, UserDTO[] users)
         {
             _lobbyId = lobbyId;
 
@@ -262,11 +266,6 @@ namespace Cliente.Pantallas
             }
 
             tbLobbyCode.Text = lobbyId.ToString();
-        }
-
-        private void btKick_Click(object sender, RoutedEventArgs e)
-        {
-            
         }
 
         private void btInviteFriend_Click(object sender, RoutedEventArgs e)
@@ -294,7 +293,7 @@ namespace Cliente.Pantallas
             for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
             {
                 DependencyObject child = VisualTreeHelper.GetChild(obj, i);
-                if (child != null && child is T)
+                if (child is T)
                     return (T)child;
                 else
                 {

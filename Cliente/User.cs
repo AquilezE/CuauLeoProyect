@@ -1,9 +1,4 @@
 ﻿using Cliente.ServiceReference;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cliente
 {
@@ -15,7 +10,7 @@ namespace Cliente
         public string Email { get; set; } 
         public int ProfilePictureId { get; set; }
 
-        public User(UserDto userDto)
+        public User(UserDTO userDto)
         {
             ID = userDto.UserId;
             Username = userDto.Username;

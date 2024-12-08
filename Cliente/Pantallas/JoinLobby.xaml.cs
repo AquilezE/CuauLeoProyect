@@ -1,19 +1,9 @@
 ﻿using Cliente.ServiceReference;
 using Haley.Utils;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Cliente.Pantallas
 {
@@ -87,9 +77,9 @@ namespace Cliente.Pantallas
             }
         }
 
-        private UserDto GetCurrentUserDto()
+        private UserDTO GetCurrentUserDto()
         {
-            return new UserDto
+            return new UserDTO
             {
                 UserId = User.Instance.ID,
                 Username = User.Instance.Username,
@@ -137,8 +127,19 @@ namespace Cliente.Pantallas
 
         private void btGoBack_Click(object sender, RoutedEventArgs e)
         {
-            var mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.NavigateToView(new MainMenu());
+            if (User.Instance.ID > 0)
+            {
+                var mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.NavigateToView(new MainMenu());
+            }
+            else if (User.Instance.ID < 0)
+            {
+                User.Instance = null;
+                Social.Instance = null;
+                var mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.NavigateToView(new LogIn());
+                
+            }
         }
     }
 }

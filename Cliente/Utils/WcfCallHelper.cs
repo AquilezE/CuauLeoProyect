@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
 using System.Windows;
 using Cliente.Pantallas;
-using System.Text;
-using System.Threading.Tasks;
 using Cliente;
 
 public static class WcfCallHelper

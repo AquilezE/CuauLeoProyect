@@ -1,9 +1,4 @@
 ﻿using Cliente.ServiceReference;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cliente
 {
@@ -20,7 +15,7 @@ namespace Cliente
             UserFoundProfilePicturePath = profilePictureId;
         }
 
-        public UserFound(UserDto userDto)
+        public UserFound(UserDTO userDto)
         {
             ID = userDto.UserId;
             UserFoundUsername = userDto.Username;
