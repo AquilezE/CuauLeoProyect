@@ -67,13 +67,13 @@ namespace Cliente.UserControllers.FriendsList
             }
         }
 
-        private void OnBlockUser(object sender, Cliente.Friend e)
+        private async void OnBlockUser(object sender, Cliente.Friend e)
         {
             if (e != null)
             {
                 try
                 {
-                    bool result = Social.Instance.socialManagerClient.BlockFriend(User.Instance.ID, e.FriendId);
+                    bool result = await Social.Instance.socialManagerClient.BlockFriendAsync(User.Instance.ID, e.FriendId);
                     if (result)
                     {
                         Social.Instance.FriendList.Remove(e);
@@ -81,12 +81,14 @@ namespace Cliente.UserControllers.FriendsList
                     }
                     else
                     {
-                        MessageBox.Show(LangUtils.Translate("lblErrBlockingException"));
+                        var notification = new NotificationDialog();
+                        notification.ShowErrorNotification(LangUtils.Translate("lblErrBlockingException"));
                     }
                 }
                 catch (CommunicationException ex)
-                {
-                    MessageBox.Show(LangUtils.Translate("lblErrNoConection"));
+                { 
+                    var notification = new NotificationDialog();
+                    notification.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
                 }
             }
         }
