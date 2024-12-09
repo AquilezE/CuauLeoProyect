@@ -375,9 +375,6 @@
   <data name="lblViewProfile" xml:space="preserve">
     <value>View Profile</value>
   </data>
-  <data name="lblVolume" xml:space="preserve">
-    <value>Volume</value>
-  </data>
   <data name="lblWins" xml:space="preserve">
     <value>Wins: </value>
   </data>
@@ -545,5 +542,41 @@
   </data>
   <data name="lblErrPasswordContainsWhiteSpace" xml:space="preserve">
 	  <value>Password can't contain whitespaces</value>
+  </data>
+  <data name="lblErrTimeout" xml:space="preserve">
+	  <value>Oops! The server took too long to respond</value>
+  </data>
+  <data name="lblNotYourTurn" xml:space="preserve">
+	  <value>It's not your turn</value>
+  </data>
+  <data name="lblNoActionsRemaining" xml:space="preserve">
+	  <value>No more actions remaining </value>
+  </data>
+  <data name="lblDeckEmpty" xml:space="preserve">
+	  <value>Deck is Empty</value>
+  </data>
+  <data name="lblInvalidCard" xml:space="preserve">
+	  <value>Invalid card</value>
+  </data>
+  <data name="lblTooManyMonsters" xml:space="preserve">
+	  <value>You have too many Monsters</value>
+  </data>
+  <data name="lblNoMonsters" xml:space="preserve">
+	  <value>You have no Monsters</value>
+  </data>
+  <data name="lblUnknownCardType" xml:space="preserve">
+	  <value>Unknown card type</value>
+  </data>
+  <data name="lblPartAlreadyExists" xml:space="preserve">
+	  <value>Monster already has part</value>
+  </data>
+  <data name="lblInvalidMonsterSelection" xml:space="preserve">
+	  <value>Invalid monster selection</value>
+  </data>
+  <data name="lblYouHaveNoHead" xml:space="preserve">
+	  <value>You have no head</value>
+  </data>
+  <data name="lblEmptyBabyPile" xml:space="preserve">
+	  <value>Empty Baby pile</value>
   </data>
 </root>

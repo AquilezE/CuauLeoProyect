@@ -1,4 +1,9 @@
-﻿using System.ComponentModel;
+﻿using Cliente.ServiceReference;
+using Cliente.Utils;
+using Haley.Utils;
+using System;
+using System.ComponentModel;
+using System.ServiceModel;
 using System.Windows;
 
 namespace Cliente.UserControllers
@@ -27,7 +32,44 @@ namespace Cliente.UserControllers
 
         private void OnFriendInvite(object sender, Cliente.Friend friend)
         {
-               Social.Instance.socialManagerClient.InviteFriendToLobby(User.Instance.Username, friend.FriendId, currentLobbyId);
+            try
+            {
+                Social.Instance.socialManagerClient.InviteFriendToLobby(User.Instance.Username, friend.FriendId, currentLobbyId);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+
+            }
+            catch (FaultException<BevososServerExceptions> ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+            }
+            catch (Exception ex)
+            {
+                ExceptionManager.LogFatalException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
+
+
         }
     }
 }

@@ -1,7 +1,10 @@
 ﻿using Cliente.ServiceReference;
+using Cliente.UserControllers;
+using Cliente.Utils;
 using Haley.Utils;
 using System;
 using System.Linq;
+using System.ServiceModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -41,18 +44,26 @@ namespace Cliente.Pantallas
                 return;
             }
 
-            // Check lobby status
             bool isLobbyOpen;
             bool isLobbyFull;
 
             try
             {
-                isLobbyOpen = WcfCallHelper.Execute(() => _lobbyCheckerClient.IsLobbyOpen(lobbyId));
-                isLobbyFull = WcfCallHelper.Execute(() => _lobbyCheckerClient.IsLobbyFull(lobbyId));
+                isLobbyOpen = _lobbyCheckerClient.IsLobbyOpen(lobbyId);
+                isLobbyFull = _lobbyCheckerClient.IsLobbyFull(lobbyId);
             }
-            catch (Exception)
+            catch (EndpointNotFoundException ex)
             {
-                lbErrLobbyCode.Content = LangUtils.Translate("lblErrNoConnection");
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                return;
+
+            }catch(TimeoutException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrConnectionTimeout"));
                 return;
             }
 
@@ -66,8 +77,19 @@ namespace Cliente.Pantallas
                     var mainWindow = (MainWindow)Application.Current.MainWindow;
                     mainWindow.NavigateToView(lobbyWindow);
                 }
-                catch (Exception)
+                catch (EndpointNotFoundException ex)
                 {
+                    ExceptionManager.LogErrorException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                    lbErrLobbyCode.Content = LangUtils.Translate("lblErrJoiningLobby");
+
+                }
+                catch (TimeoutException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
                     lbErrLobbyCode.Content = LangUtils.Translate("lblErrJoiningLobby");
                 }
             }
@@ -87,7 +109,6 @@ namespace Cliente.Pantallas
                 ProfilePictureId = User.Instance.ProfilePictureId
             };
         }
-
         private string ValidateLobbyCode(string lobbyCode)
         {
             if (string.IsNullOrEmpty(lobbyCode))
@@ -124,7 +145,6 @@ namespace Cliente.Pantallas
 
             return null;
         }
-
         private void btGoBack_Click(object sender, RoutedEventArgs e)
         {
             if (User.Instance.ID > 0)
@@ -141,6 +161,7 @@ namespace Cliente.Pantallas
                 
             }
         }
+    
     }
 }
 

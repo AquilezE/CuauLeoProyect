@@ -10,6 +10,7 @@ using System.Windows.Media;
 using Haley.Utils;
 using System.ComponentModel;
 using Cliente.GameUserControllers;
+using Cliente.Utils;
 
 namespace Cliente.Pantallas
 {
@@ -69,8 +70,24 @@ namespace Cliente.Pantallas
 
         private void btLeaveLobby_Click(object sender, RoutedEventArgs e)
         {
-            _servicio.LeaveLobby(_lobbyId, User.Instance.ID);
-            LeaveLobby();
+            try
+            {
+                _servicio.LeaveLobby(_lobbyId, User.Instance.ID);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                LeaveLobby();
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                LeaveLobby();
+            }
         }
 
         private void btSendMessage_Click(object sender, RoutedEventArgs e)
@@ -167,7 +184,8 @@ namespace Cliente.Pantallas
                 mainWindow.NavigateToView(new MainMenu());
                 return true;
             }
-            else if (User.Instance.ID < 0)
+
+            if (User.Instance.ID < 0)
             {
                 MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
                 mainWindow.NavigateToView(new JoinLobby(), 650, 800);

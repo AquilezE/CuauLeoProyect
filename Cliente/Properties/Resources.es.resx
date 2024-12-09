@@ -375,9 +375,6 @@
   <data name="lblViewProfile" xml:space="preserve">
     <value>VerPerfil</value>
   </data>
-  <data name="lblVolume" xml:space="preserve">
-    <value>Volumen</value>
-  </data>
   <data name="lblWins" xml:space="preserve">
     <value>Victorias: </value>
   </data>
@@ -545,5 +542,41 @@
   </data>
   <data name="lblErrPasswordContainsWhiteSpace" xml:space="preserve">
 	  <value>Contraseña no puede tener espacios</value>
+  </data>
+  <data name="lblErrTimeout" xml:space="preserve">
+	  <value>Uju! El servidor tardo mucho en responder</value>
+  </data>
+  <data name="lblNotYourTurn" xml:space="preserve">
+	  <value>No es tu turno</value>
+  </data>
+  <data name="lblNoActionsRemaining" xml:space="preserve">
+	  <value>Ya no tienes acciones</value>
+  </data>
+  <data name="lblDeckEmpty" xml:space="preserve">
+	  <value>Mazo esta vacio</value>
+  </data>
+  <data name="lblInvalidCard" xml:space="preserve">
+	  <value>Carta Invalida</value>
+  </data>
+  <data name="lblTooManyMonsters" xml:space="preserve">
+	  <value>Tienes muchos monstruos</value>
+  </data>
+  <data name="lblNoMonsters" xml:space="preserve">
+	  <value>No tienes Monstruos</value>
+  </data>
+  <data name="lblUnknownCardType" xml:space="preserve">
+	  <value>Carta de tipo desconocido</value>
+  </data>
+  <data name="lblPartAlreadyExists" xml:space="preserve">
+	  <value>El monstruo ya tiene esta parte</value>
+  </data>
+  <data name="lblInvalidMonsterSelection" xml:space="preserve">
+	  <value>Seleccion de monstruo invalido</value>
+  </data>
+  <data name="lblYouHaveNoHead" xml:space="preserve">
+	  <value>No tienes cabeza</value>
+  </data>
+  <data name="lblEmptyBabyPile" xml:space="preserve">
+	  <value>Pila de bebes vacía</value>
   </data>
 </root>

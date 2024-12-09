@@ -1,5 +1,6 @@
 ﻿using Cliente.Pantallas;
 using Cliente.ServiceReference;
+using Cliente.Utils;
 using Haley.Utils;
 using System;
 using System.Collections.ObjectModel;
@@ -37,31 +38,57 @@ namespace Cliente.UserControllers.FriendsList
             }
         }
 
-        private void OnUnblockUser(object sender, Blocked e)
+        private async void OnUnblockUser(object sender, Blocked e)
         {
-            if (e != null)
+            if (e == null) return;
+
+            try
             {
-                try
-                {
-                    bool result = Social.Instance.socialManagerClient.UnblockUser(User.Instance.ID, e.BlockedId);
-                    if (result) {
-                        Social.Instance.BlockedUsersList.Remove(e);
-                    }
-                    else
-                    {
-                        MessageBox.Show(LangUtils.Translate("lblErrUnblockingException"));
-                    }
-                }catch(CommunicationException ex)
-                {
-                    MessageBox.Show(LangUtils.Translate("lblErrNoConection"));
+
+                bool result = await Social.Instance.socialManagerClient.UnblockUserAsync(User.Instance.ID, e.BlockedId);
+                if (result) {
+                    Social.Instance.BlockedUsersList.Remove(e);
+                }
+                else
+                { 
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrUnblockingException"));
+
                 }
             }
-        }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
 
-        public void OnFriendNew(FriendDTO[] friends)
-        {
-            //delete
-            throw new NotImplementedException();
+            }
+            catch (FaultException<BevososServerExceptions> ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+            }
+            catch (Exception ex)
+            {
+                ExceptionManager.LogFatalException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrUnblockingException"));
+            }
+
         }
     }
 }

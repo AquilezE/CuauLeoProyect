@@ -5,6 +5,8 @@ using System.Windows;
 using System.Windows.Controls;
 using Haley.Utils;
 using Cliente.ServiceReference;
+using Cliente.UserControllers;
+using Cliente.Utils;
 
 namespace Cliente.Pantallas
 {
@@ -33,14 +35,10 @@ namespace Cliente.Pantallas
 
         private void btPlayAsGuest_Click(object sender, RoutedEventArgs e)
         {
-            if(SetSessionGuestUser())
+            if (SetSessionGuestUser())
             {
                 MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
                 mainWindow.NavigateToView(new JoinLobby(), 650, 800);
-            }
-            else
-            {
-                lbErrLabel.Content = LangUtils.Translate("lblErrNoConection");
             }
         }
 
@@ -53,26 +51,17 @@ namespace Cliente.Pantallas
             if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
             {
 
-                try
+
+                if (SetSessionUser(username, password))
                 {
+                    MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                    mainWindow.NavigateToView(new MainMenu());
 
-                    if (SetSessionUser(username, password))
-                    {
-                        MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-                        mainWindow.NavigateToView(new MainMenu());
-
-                    }
-                    else
-                    {
-                        lbErrLabel.Content = LangUtils.Translate("lblErrWrongLogin");
-                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    lbErrLabel.Content = LangUtils.Translate("lblErrNoConection");
+                    lbErrLabel.Content = LangUtils.Translate("lblErrWrongLogin");
                 }
-
-
             }
             else
             {
@@ -96,44 +85,59 @@ namespace Cliente.Pantallas
                 currentUser.Email = userDto.Email;
                 currentUser.ProfilePictureId = userDto.ProfilePictureId;
 
-                return true;
             }
-            catch (Exception)
+            catch (EndpointNotFoundException ex)
             {
-                if (_servicio != null)
-                {
-                    _servicio.Abort();
-                    _servicio = new UsersManagerClient();
-                }
 
-                throw;
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+
+                ResetClientGuest();
+
             }
+            catch (TimeoutException ex)
+            {
 
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                
+                ResetClientGuest();
+            }
+            catch (CommunicationException ex)
+            {
+
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+
+                ResetClientGuest();
+            }
+            catch (Exception ex)
+            {
+
+                ExceptionManager.LogFatalException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrFatal"));
+
+                ResetClientGuest();
+            }
+            return true;
         }
-
 
         private bool SetSessionUser(string email, string password)
         {
             try
             {
-                Social social = Social.Instance;
+                var social = Social.Instance;
 
-                try {
 
-                    if (Social.Instance.socialManagerClient.IsConnected(email))
-                    {
-                        Social.Instance = null;
-                        return false;
-                    }
-
-                }
-                catch(FaultException<BevososServerExceptions> ex)
+                if (Social.Instance.socialManagerClient.IsConnected(email))
                 {
-
-                   Console.WriteLine("Se chingo la BD: " + ex.Message);
+                    Social.Instance = null;
+                    return false;
                 }
-
-
 
                 UserDTO userDto = _servicio.LogIn(email, password);
                 if (userDto == null)
@@ -141,36 +145,86 @@ namespace Cliente.Pantallas
                     return false;
                 }
 
-                
-                User currentUser = User.Instance;
+
+                var currentUser = User.Instance;
                 currentUser.ID = userDto.UserId;
                 currentUser.Username = userDto.Username;
                 currentUser.Email = userDto.Email;
                 currentUser.ProfilePictureId = userDto.ProfilePictureId;
-                
-                
+
+
                 Social.Instance.socialManagerClient.Connect(currentUser.ID);
                 RefreshSocialData(social);
 
                 return true;
             }
-            catch (Exception)
+            catch (EndpointNotFoundException ex)
             {
-
-                Social.Instance = null;
-                Social.Instance = Social.Instance;
-
-                if (_servicio != null)
-                {
-                    _servicio.Abort();
-                    _servicio = new UsersManagerClient();
-                }
-
-                throw;
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                ResetSocial();
+                return false;
             }
+            catch (FaultException<BevososServerExceptions> ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+                ResetSocial();
+                return false;
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                ResetSocial();
+                return false;
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                ResetSocial();
+                return false;
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionManager.LogFatalException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                ResetSocial();
+                return false;
+            }
+
 
         }
 
+        private void ResetSocial()
+        {
+            Social.Instance = null;
+            Social.Instance = Social.Instance;
+
+            if (_servicio != null)
+            {
+                _servicio.Abort();
+                _servicio = new UsersManagerClient();
+            }
+        }
+
+        private void ResetClientGuest()
+        {
+
+           if (_servicio != null)
+           {
+               _servicio.Abort();
+               _servicio = new UsersManagerClient();
+           }
+        }
+        
         private void RefreshSocialData(Social social)
         {
             social.FriendList.Clear();
@@ -182,7 +236,6 @@ namespace Cliente.Pantallas
             social.BlockedUsersList.Clear();
             social.GetBlockedUsers();
         }
-
 
         private void btRegister_Click(object sender, RoutedEventArgs e)
         {
@@ -236,6 +289,6 @@ namespace Cliente.Pantallas
                 Console.WriteLine("Error changing culture: " + ex.Message);
             }
         }
-
+    
     }
 }

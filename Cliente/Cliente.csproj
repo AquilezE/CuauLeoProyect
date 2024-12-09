@@ -70,6 +70,12 @@
     <Reference Include="protobuf-net.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
       <HintPath>..\packages\protobuf-net.Core.3.2.16\lib\net462\protobuf-net.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Serilog, Version=4.2.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.4.2.0\lib\net471\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.File, Version=6.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.File.6.0.0\lib\net471\Serilog.Sinks.File.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -81,6 +87,9 @@
       <HintPath>..\packages\System.Collections.Immutable.7.0.0\lib\net462\System.Collections.Immutable.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.8.0.1\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing.Common, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Drawing.Common.7.0.0\lib\net462\System.Drawing.Common.dll</HintPath>
     </Reference>
@@ -106,6 +115,9 @@
     </Reference>
     <Reference Include="System.Text.Json, Version=7.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Json.7.0.2\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Channels, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Channels.8.0.0\lib\net462\System.Threading.Channels.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
@@ -312,8 +324,9 @@
     </Compile>
     <Compile Include="UserFound.cs" />
     <Compile Include="UserLobby.cs" />
+    <Compile Include="Utils\ExceptionManager.cs" />
+    <Compile Include="Utils\LoggerService.cs" />
     <Compile Include="Utils\Validator.cs" />
-    <Compile Include="Utils\WcfCallHelper.cs" />
     <Page Include="GameUserControllers\CardUserController.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -383,10 +396,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pantallas\MainMenu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pantallas\Mensajeador.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -500,9 +509,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pantallas\Mensajeador.xaml.cs">
-      <DependentUpon>Mensajeador.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -514,13 +520,13 @@
     <Resource Include="Images\configIcon.png" />
     <Resource Include="Images\profileIcon.png" />
     <Resource Include="Notes.txt" />
-    <None Include="Connected Services\ServiceReference\Arrays.xsd">
+    <None Include="Connected Services\ServiceReference\Arrays1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceReference\BevososService.DTOs.xsd">
+    <None Include="Connected Services\ServiceReference\BevososService.DTOs1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceReference\BevososService.Exceptions.xsd">
+    <None Include="Connected Services\ServiceReference\BevososService.Exceptions1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceReference\Cliente.ServiceReference.BlockedDTO.datasource">
@@ -578,11 +584,11 @@
     <None Include="Connected Services\LogInService\Servicio.Clases.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceReference\service.wsdl" />
-    <None Include="Connected Services\ServiceReference\service.xsd">
+    <None Include="Connected Services\ServiceReference\service1.wsdl" />
+    <None Include="Connected Services\ServiceReference\service2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceReference\service1.xsd">
+    <None Include="Connected Services\ServiceReference\service21.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />

@@ -565,6 +565,24 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deck is Empty.
+        /// </summary>
+        public static string lblDeckEmpty {
+            get {
+                return ResourceManager.GetString("lblDeckEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Empty Baby Pile.
+        /// </summary>
+        public static string lblEmptyBabyPile {
+            get {
+                return ResourceManager.GetString("lblEmptyBabyPile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to English.
         /// </summary>
         public static string lblEnglish {
@@ -952,6 +970,15 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Oops! The server took too long to respond.
+        /// </summary>
+        public static string lblErrTimeout {
+            get {
+                return ResourceManager.GetString("lblErrTimeout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your turn has ended due to timeout.
         /// </summary>
         public static string lblErrTurnTimeout {
@@ -1051,6 +1078,24 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid Card.
+        /// </summary>
+        public static string lblInvalidCard {
+            get {
+                return ResourceManager.GetString("lblInvalidCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid monster selection.
+        /// </summary>
+        public static string lblInvalidMonsterSelection {
+            get {
+                return ResourceManager.GetString("lblInvalidMonsterSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You were kicked from the lobby.
         /// </summary>
         public static string lblKickedFromLobby {
@@ -1123,6 +1168,24 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No more actions remaining .
+        /// </summary>
+        public static string lblNoActionsRemaining {
+            get {
+                return ResourceManager.GetString("lblNoActionsRemaining", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have no Monsters.
+        /// </summary>
+        public static string lblNoMonsters {
+            get {
+                return ResourceManager.GetString("lblNoMonsters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to  invited you to a game! Lobby code: .
         /// </summary>
         public static string lblNotificationInvitedToLobby {
@@ -1168,6 +1231,15 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to It&apos;s not your turn.
+        /// </summary>
+        public static string lblNotYourTurn {
+            get {
+                return ResourceManager.GetString("lblNotYourTurn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Offline.
         /// </summary>
         public static string lblOffline {
@@ -1191,6 +1263,15 @@ namespace Cliente.Properties {
         public static string lblOptions {
             get {
                 return ResourceManager.GetString("lblOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monster already has part.
+        /// </summary>
+        public static string lblPartAlreadyExists {
+            get {
+                return ResourceManager.GetString("lblPartAlreadyExists", resourceCulture);
             }
         }
         
@@ -1276,11 +1357,29 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Too Many Monsters.
+        /// </summary>
+        public static string lblTooManyMonsters {
+            get {
+                return ResourceManager.GetString("lblTooManyMonsters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type a reason to kick this user.
         /// </summary>
         public static string lblTypeReason {
             get {
                 return ResourceManager.GetString("lblTypeReason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown card type.
+        /// </summary>
+        public static string lblUnknownCardType {
+            get {
+                return ResourceManager.GetString("lblUnknownCardType", resourceCulture);
             }
         }
         
@@ -1312,15 +1411,6 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Volume.
-        /// </summary>
-        public static string lblVolume {
-            get {
-                return ResourceManager.GetString("lblVolume", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Wins: .
         /// </summary>
         public static string lblWins {
@@ -1335,6 +1425,15 @@ namespace Cliente.Properties {
         public static string lblWriteEmail {
             get {
                 return ResourceManager.GetString("lblWriteEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have no head.
+        /// </summary>
+        public static string lblYouHaveNoHead {
+            get {
+                return ResourceManager.GetString("lblYouHaveNoHead", resourceCulture);
             }
         }
         

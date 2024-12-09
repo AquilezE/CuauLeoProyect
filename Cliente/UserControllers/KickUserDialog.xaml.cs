@@ -29,7 +29,7 @@ namespace Cliente.UserControllers
 
             if (string.IsNullOrEmpty(KickReason))
             {
-                MessageBox.Show(LangUtils.Translate("lblTypeReason"), "Where's the reason???", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(LangUtils.Translate("lblTypeReason"), "???", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 

@@ -6,6 +6,9 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using Cliente.Pantallas;
 using UserDTO = Cliente.ServiceReference.UserDTO;
+using Cliente.UserControllers;
+using Cliente.Utils;
+using Haley.Utils;
 
 namespace Cliente.GameUserControllers
 {
@@ -65,13 +68,20 @@ namespace Cliente.GameUserControllers
 
                 gameManagerClient.JoinGame(GameLogic.Instance.GameId, user);
             }
-            catch (CommunicationException ex)
+            catch (EndpointNotFoundException ex)
             {
-                Console.WriteLine(ex.Message);
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+
+
             }
             catch (TimeoutException ex)
             {
-                Console.WriteLine(ex.Message);
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                
             }
         }
 
@@ -86,7 +96,6 @@ namespace Cliente.GameUserControllers
 
                 gameManagerClient.PlayCard(User.Instance.ID,GameLogic.Instance.GameId,card.CardId);
 
-                Console.WriteLine($"Card clicked: {card.CardId}");
             }
         }
 
@@ -95,30 +104,6 @@ namespace Cliente.GameUserControllers
             gameManagerClient.DrawCard(GameLogic.Instance.GameId, User.Instance.ID);
         }
 
-        private void imgPlayer1Monster_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            
-        }
-
-        private void imgPlayer1Cards_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void imgBabieLando_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void imgBabieWata_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void imgBabieAir_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
 
         private void extensiblePanelMonstersPlayer1_Loaded(object sender, RoutedEventArgs e)
         {
@@ -198,7 +183,6 @@ namespace Cliente.GameUserControllers
         {
             Dispatcher.Invoke(() =>
             {
-                // Open the Monster Selection Window for Hat Placement
                 var selectionWindow = new MonsterSelectionWindow(GameLogic.Instance.Monster);
                 if (selectionWindow.ShowDialog() == true)
                 {

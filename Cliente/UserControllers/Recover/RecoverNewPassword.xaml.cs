@@ -2,6 +2,7 @@
 using Cliente.Utils;
 using Haley.Utils;
 using System;
+using System.ServiceModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -21,8 +22,8 @@ namespace Cliente.UserControllers.Recover
 
         public RecoverNewPassword(string email)
         {
-            _service = new UsersManagerClient();
             InitializeComponent();
+            _service = new UsersManagerClient();
             _email = email;
         }
 
@@ -50,18 +51,55 @@ namespace Cliente.UserControllers.Recover
                 return;
             }
 
-            bool passwordChanged = await _service.RecoverPasswordAsync(_email, pbPassword.Password);
-
+            try
+            {
                 
-            if(passwordChanged)
-            {
-                OnPasswordChanged(e);
+                bool passwordChanged = await _service.RecoverPasswordAsync(_email, pbPassword.Password);
+
+
+                if (passwordChanged)
+                {
+                    OnPasswordChanged(e);
+                }
+                else
+                {
+                    lbErrPassword.Content = LangUtils.Translate("lblErrErrorChangingPassword");
+                    btChangePassword.IsEnabled = true;
+                }
             }
-            else
+            catch (EndpointNotFoundException ex)
             {
-                lbErrPassword.Content = LangUtils.Translate("lblErrErrorChangingPassword");
-                btChangePassword.IsEnabled = true;
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+
             }
+            catch (FaultException<BevososServerExceptions> ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+            }
+            catch (Exception ex)
+            {
+                ExceptionManager.LogFatalException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrErrorChangingPassword"));
+            }
+
         }
 
         private void pbPassword_LostFocus(object sender, RoutedEventArgs e)

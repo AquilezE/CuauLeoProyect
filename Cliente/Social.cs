@@ -8,6 +8,7 @@ using System.ServiceModel;
 using Cliente.UserControllers;
 using Haley.Utils;
 using Cliente.Pantallas;
+using Cliente.Utils;
 
 namespace Cliente
 {
@@ -39,31 +40,26 @@ namespace Cliente
 
         private void ClientChannel_Closed(object sender, EventArgs e)
         {
-            HandleChannelTermination("Connection closed. Redirecting to login...");
+            HandleChannelTermination();
         }
 
         private void ClientChannel_Faulted(object sender, EventArgs e)
         {
-            HandleChannelTermination("Connection faulted. Redirecting to login...");
+            HandleChannelTermination();
         }
 
-        private void HandleChannelTermination(string message)
+        private void HandleChannelTermination()
         {
-            // Log the termination message if necessary
-            Console.WriteLine(message);
 
-            // Navigate to the login page
             Application.Current.Dispatcher.Invoke(() =>
             {
                 MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
                 mainWindow.NavigateToView(new LogIn());
             });
 
-            // Cleanup: Dispose of the current client
             socialManagerClient.Abort();
             socialManagerClient = null;
 
-            // Optionally, reset the Social instance
             instance = null;
         }
 
@@ -152,7 +148,6 @@ namespace Cliente
             FriendRequests.Add(newFriendRequest);
             NotificationDialog notification = new NotificationDialog();
 
-            //FALTA INTERNACIONALIZAR
             notification.ShowInfoNotification(LangUtils.Translate("lblNotificationTheUser") + friendRequestDto.SenderName + LangUtils.Translate("lblNotificationSentYouFR"));
         }
 
@@ -163,7 +158,6 @@ namespace Cliente
             FriendRequests.Remove(FriendRequests.FirstOrDefault(f => f.SenderId == friendDto.FriendId));
             NotificationDialog notification = new NotificationDialog();
 
-            //FALTA INTERNACIONALIZAR
             notification.ShowSuccessNotification(LangUtils.Translate("lblNotificationNowFriends") + friendDto.FriendName);
         }
 
@@ -193,9 +187,26 @@ namespace Cliente
                     {
                         socialManagerClient.Disconnect(User.Instance.ID);
                     }
-                    catch (Exception ex)
+                    catch (EndpointNotFoundException ex)
                     {
-                        Console.WriteLine($"Error disconnecting: {ex.Message}");
+                        ExceptionManager.LogErrorException(ex);
+                        var notificationDialog = new NotificationDialog();
+                        notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                        HandleChannelTermination();
+                    }
+                    catch (TimeoutException ex)
+                    {
+                        ExceptionManager.LogErrorException(ex);
+                        var notificationDialog = new NotificationDialog();
+                        notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                        HandleChannelTermination();
+                    }
+                    catch (CommunicationException ex)
+                    {
+                        ExceptionManager.LogErrorException(ex);
+                        var notificationDialog = new NotificationDialog();
+                        notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                        HandleChannelTermination();
                     }
 
                     if (socialManagerClient.State == CommunicationState.Faulted)
@@ -210,7 +221,6 @@ namespace Cliente
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error closing client: {ex.Message}");
                 socialManagerClient?.Abort(); 
             }
             finally
@@ -226,33 +236,119 @@ namespace Cliente
 
         public void GetFriends()
         {
-            FriendDTO[] friends = socialManagerClient.GetFriends(User.Instance.ID);
-            foreach (FriendDTO friend in friends)
+            try
             {
-                Console.WriteLine(friend.FriendName);
-                FriendList.Add(new Friend(friend));
+                FriendDTO[] friends = socialManagerClient.GetFriends(User.Instance.ID);
+                foreach (FriendDTO friend in friends)
+                {
+                    Console.WriteLine(friend.FriendName);
+                    FriendList.Add(new Friend(friend));
+                }
             }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
+            catch (FaultException<BevososServerExceptions> ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
 
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
         }
 
 
         public void GetFriendRequests()
         {
-            FriendRequestDTO[] friendRequests = socialManagerClient.GetFriendRequests(User.Instance.ID);
-            foreach (FriendRequestDTO friendRequest in friendRequests)
+            try
             {
-                Console.WriteLine(friendRequest.SenderName);
-                FriendRequests.Add(new FriendRequest(friendRequest));
+                FriendRequestDTO[] friendRequests = socialManagerClient.GetFriendRequests(User.Instance.ID);
+                foreach (FriendRequestDTO friendRequest in friendRequests)
+                {
+                    Console.WriteLine(friendRequest.SenderName);
+                    FriendRequests.Add(new FriendRequest(friendRequest));
+                }
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
+            catch (FaultException<BevososServerExceptions> ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
             }
         }
 
         public void GetBlockedUsers()
         {
-            BlockedDTO[] blockedUsers = socialManagerClient.GetBlockedUsers(User.Instance.ID);
-            foreach (BlockedDTO blockedUser in blockedUsers)
+            try
             {
-                Console.WriteLine(blockedUser.BlockerUsername);
-                BlockedUsersList.Add(new Blocked(blockedUser));
+                BlockedDTO[] blockedUsers = socialManagerClient.GetBlockedUsers(User.Instance.ID);
+                foreach (BlockedDTO blockedUser in blockedUsers)
+                {
+                    Console.WriteLine(blockedUser.BlockerUsername);
+                    BlockedUsersList.Add(new Blocked(blockedUser));
+                }
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
+            catch (FaultException<BevososServerExceptions> ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
             }
         }
     }

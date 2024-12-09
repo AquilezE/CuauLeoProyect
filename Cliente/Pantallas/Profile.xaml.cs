@@ -131,7 +131,6 @@ namespace Cliente.Pantallas
 
             if (newUsername == "" && newProfilePictureId == 0)
             {
-                //TODO: Make localization of errors
                 lbErrNothingChanged.Content = LangUtils.Translate("lblErrProfileNothingChanged");
             }
             else if (newUsername != "" && newProfilePictureId !=0)

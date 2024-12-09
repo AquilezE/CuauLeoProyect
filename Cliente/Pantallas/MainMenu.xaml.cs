@@ -1,5 +1,9 @@
 ﻿using Cliente.ServiceReference;
+using Cliente.UserControllers;
+using Cliente.Utils;
+using Haley.Utils;
 using System;
+using System.ServiceModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -20,7 +24,6 @@ namespace Cliente.Pantallas
             Lobby lobbyWindow = new Lobby();
 
 
-            //How convenient is it to add a cast to the User class?
             UserDTO userDto = new UserDTO
             {
                 UserId = User.Instance.ID,
@@ -29,10 +32,26 @@ namespace Cliente.Pantallas
                 ProfilePictureId = User.Instance.ProfilePictureId
             };
 
-            lobbyWindow._servicio.NewLobbyCreated(userDto);
+            try
+            {
+                lobbyWindow._servicio.NewLobbyCreated(userDto);
 
-            MainWindow main = (MainWindow)Application.Current.MainWindow;
-            main.NavigateToView(lobbyWindow);
+                MainWindow main = (MainWindow)Application.Current.MainWindow;
+                main.NavigateToView(lobbyWindow);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+            }
         }
 
         private void btJoinLobby_Click(object sender, RoutedEventArgs e)

@@ -2,14 +2,14 @@
 using Cliente.Utils;
 using Haley.Utils;
 using System;
+using System.ServiceModel;
 using System.Windows;
 using System.Windows.Controls;
+using Cliente.UserControllers;
 
 namespace Cliente.Pantallas
 {
-    /// <summary>
-    /// Interaction logic for RegisterAccountFields.xaml
-    /// </summary>
+
     public partial class RegisterAccountFields : UserControl
     {
         public event Action<string, string, string> RegistrationFilled;
@@ -60,29 +60,68 @@ namespace Cliente.Pantallas
                 return;
             }
 
-            bool isEmailTaken = await _service.IsEmailTakenAsync(email);
-            bool isUsernameTaken = await _service.IsUsernameTakenAsync(username);
-
-            if (isEmailTaken)
+            try
             {
-                lbErrEmail.Content = LangUtils.Translate("lblErrEmailExists");
-                return;
-            }
+                bool isEmailTaken = await _service.IsEmailTakenAsync(email);
+                bool isUsernameTaken = await _service.IsUsernameTakenAsync(username);
 
-            if (isUsernameTaken)
+                if (isEmailTaken)
+                {
+                    lbErrEmail.Content = LangUtils.Translate("lblErrEmailExists");
+                    return;
+                }
+
+                if (isUsernameTaken)
+                {
+                    lbErrUsername.Content = LangUtils.Translate("lblErrUsernameExists");
+                    return;
+                }
+                OnRegistrationCompleted(username, password, email);
+            }
+            catch(EndpointNotFoundException ex)
             {
-                lbErrUsername.Content = LangUtils.Translate("lblErrUsernameExists");
-                return;
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
             }
-
-
-            OnRegistrationCompleted(username, password, email);
+            catch(FaultException<BevososServerExceptions> ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+            }
+            catch(TimeoutException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+            }
         }
 
         protected virtual void OnRegistrationCompleted(string username, string password, string email)
         {
-            _service.SendTokenAsync(email);
-            RegistrationFilled?.Invoke(username, password, email);
+            try
+            {
+                _service.SendTokenAsync(email);
+                RegistrationFilled?.Invoke(username, password, email);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
+            catch (FaultException<BevososServerExceptions> ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+            }catch(TimeoutException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+            }
         }
 
         private void tbUsername_LostFocus(object sender, RoutedEventArgs e)
@@ -91,7 +130,6 @@ namespace Cliente.Pantallas
             string error = _validator.ValidateUsername(username);
             lbErrUsername.Content = error;
         }
-
 
         private void tbEmail_LostFocus(object sender, RoutedEventArgs e)
         {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ServiceModel;
 using System.Windows;
 using System.Windows.Controls;
 using Cliente.Pantallas;
@@ -42,17 +43,54 @@ namespace Cliente.UserControllers.Recover
                 return;
             }
 
-   
-            if (_service.IsEmailTaken(email)) { 
-
-                _service.SendTokenAsync(email);
-                OnEmailFilled(email);
-                
-            }else
+            try
             {
-                lbErrEmailCode.Content = LangUtils.Translate("lblErrEmailNotFound");
+
+
+                if (_service.IsEmailTaken(email))
+                {
+
+                    _service.SendTokenAsync(email);
+                    OnEmailFilled(email);
+
+                }
+                else
+                {
+                    lbErrEmailCode.Content = LangUtils.Translate("lblErrEmailNotFound");
+                }
             }
-  
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+
+            }
+            catch (FaultException<BevososServerExceptions> ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+            }
+            catch (Exception ex)
+            {
+                ExceptionManager.LogFatalException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
 
         }
 

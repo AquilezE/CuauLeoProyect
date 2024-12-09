@@ -2,9 +2,11 @@
 using Cliente.ServiceReference;
 using Cliente.Utils;
 using System;
+using System.Reflection.Emit;
 using System.ServiceModel;
 using System.Windows;
 using System.Windows.Controls;
+using Haley.Utils;
 
 namespace Cliente.UserControllers.ChangePassword
 {
@@ -41,7 +43,20 @@ namespace Cliente.UserControllers.ChangePassword
                 return;
             }
 
-            _service.ChangePassword(User.Instance.ID, pbCurrentPassword.Password, pbNewPassword.Password);    
+            try
+            {
+                _service.ChangePassword(User.Instance.ID, pbCurrentPassword.Password, pbNewPassword.Password);
+            }catch(EndpointNotFoundException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConnction"));
+            }catch(FaultException<BevososServerExceptions> ex) {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+            }
+
 
            
         }

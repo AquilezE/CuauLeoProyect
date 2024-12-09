@@ -4,6 +4,8 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using Haley.Utils;
+using System.ServiceModel;
+using Cliente.Utils;
 
 namespace Cliente.UserControllers.Recover
 {
@@ -37,6 +39,7 @@ namespace Cliente.UserControllers.Recover
             try
             {
                 if (IsTokenValidFormat(tbVerificactionCode.Text)){
+                    
                     bool isCodeValid = await _service.VerifyTokenAsync(_email, tbVerificactionCode.Text);
                     
                     if (isCodeValid)
@@ -53,9 +56,37 @@ namespace Cliente.UserControllers.Recover
                     lbErrVerificactionCode.Content=LangUtils.Translate("lblErrInvalidCodeFormat");
                 }
             }
-            catch(Exception ex)
+            catch (EndpointNotFoundException ex)
             {
-                lbErrVerificactionCode.Content = LangUtils.Translate("lblErrCodeException");
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+
+            }
+            catch (FaultException<BevososServerExceptions> ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+            }
+            catch (Exception ex)
+            {
+                ExceptionManager.LogFatalException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrInvalidCode"));
             }
             finally
             {
@@ -115,11 +146,37 @@ namespace Cliente.UserControllers.Recover
                 {
                     lbErrVerificactionCode.Content = LangUtils.Translate("lblErrFailedResendEmail");
                 }
+            }catch(EndpointNotFoundException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+
+            }
+            catch (FaultException <BevososServerExceptions> ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
             }
             catch (Exception ex)
             {
-
-                lbErrVerificactionCode.Content = LangUtils.Translate("lblErrFailedResendEmail");
+                ExceptionManager.LogFatalException(ex);
+                NotificationDialog notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrFailedResendEmail"));
             }
             finally
             {

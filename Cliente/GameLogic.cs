@@ -325,7 +325,6 @@ namespace Cliente
 
         private void UpdatePropertiesFromGameState(GameStateDTO gameState)
         {
-            Console.WriteLine("Estoy cambiando??");
             if (gameState == null)
                 return;
 
@@ -344,8 +343,6 @@ namespace Cliente
             }
 
 
-            var currentPlayerState = gameState.PlayerState
-                .FirstOrDefault(ps => ps.Key == CurrentPlayerId).Value;
 
 
             var newCard = gameState.PlayerState.FirstOrDefault(ps => ps.Key == User.Instance.ID).Value.Hand.Last(); ;
@@ -478,7 +475,6 @@ namespace Cliente
                         break;
 
                     default:
-                        Console.WriteLine("Nothing happened");
                         break;
                 }
                 playerNumber++;

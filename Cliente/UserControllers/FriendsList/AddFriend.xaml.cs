@@ -7,17 +7,21 @@ using System.ComponentModel;
 using System.ServiceModel;
 using System.Windows;
 using System.Windows.Controls;
+using Cliente.Utils;
 
 namespace Cliente.UserControllers.FriendsList
 {
-    /// <summary>
-    /// Lógica de interacción para AddFriend.xaml
-    /// </summary>
+
     public partial class AddFriend : UserControl, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
         private ObservableCollection<UserFound> _usersFound;
+
+        protected void OnPropertyChanged(string propertyName) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+
         public AddFriend()
         {
             InitializeComponent();
@@ -33,13 +37,13 @@ namespace Cliente.UserControllers.FriendsList
                 findUserItem.blockUser += OnBlockUser;
             }
         }
-        private void OnBlockUser(object sender, UserFound e)
+        private async void OnBlockUser(object sender, UserFound e)
         {
             if (e != null)
             {
                 try
                 {
-                    bool result = Social.Instance.socialManagerClient.BlockUser(User.Instance.ID, e.ID);
+                    bool result = await Social.Instance.socialManagerClient.BlockUserAsync(User.Instance.ID, e.ID);
                     if (result)
                     {
                         UsersFound.Remove(e);
@@ -47,24 +51,98 @@ namespace Cliente.UserControllers.FriendsList
                     }
                     else
                     {
-                        MessageBox.Show(LangUtils.Translate("lblErrBlockingException"));
+
+                        NotificationDialog notificationDialog = new NotificationDialog();
+                        notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrBlockingException"));
                     }
+                }
+                catch (EndpointNotFoundException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+
+                }
+                catch (FaultException<BevososServerExceptions> ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+
                 }
                 catch (CommunicationException ex)
                 {
-                    MessageBox.Show(LangUtils.Translate("lblErrNoConection"));
+                    ExceptionManager.LogErrorException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                }
+                catch (TimeoutException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                }
+                catch (Exception ex)
+                {
+                    ExceptionManager.LogFatalException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrBlockingException"));
                 }
             }
         }
 
-        private void OnSendFriendRequest(object sender, UserFound e)
+        private async void OnSendFriendRequest(object sender, UserFound e)
         {
-            //MISSING EXCEPTIONS WITH INTERNAZIONALIZATION
-            Social.Instance.socialManagerClient.SendFriendRequest(User.Instance.ID ,e.ID);
-            UsersFound.Remove(e);
+            if (e != null)
+            {
+                try
+                {
+                    bool result = await Social.Instance.socialManagerClient.SendFriendRequestAsync(User.Instance.ID, e.ID);
+                    if (result)
+                    {
+                        UsersFound.Remove(e);
+                    }
+                    else
+                    {
+                        NotificationDialog notificationDialog = new NotificationDialog();
+                        notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrSendingFriendRequest"));
+                    }
+                }
+                catch (EndpointNotFoundException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+
+                }
+                catch (FaultException<BevososServerExceptions> ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+
+                }
+                catch (CommunicationException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                }
+                catch (TimeoutException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                }
+                catch (Exception ex)
+                {
+                    ExceptionManager.LogFatalException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrSendingFriendRequest"));
+                }
+            }
         }
-        protected void OnPropertyChanged(string propertyName) =>
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
 
         public ObservableCollection<UserFound> UsersFound
         {
@@ -75,6 +153,7 @@ namespace Cliente.UserControllers.FriendsList
                 OnPropertyChanged(nameof(UsersFound));
             }
         }
+   
         private void btGoBack_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
@@ -87,12 +166,48 @@ namespace Cliente.UserControllers.FriendsList
             string search = tbSearchUser.Text;
             if (!string.IsNullOrEmpty(search))
             {
-                UserDTO[] usersFound = Social.Instance.socialManagerClient.GetUsersFoundByName(User.Instance.ID,search);
-                foreach (UserDTO userFound in usersFound)
+                try
                 {
-                    Console.WriteLine(userFound.Username);
-                    UsersFound.Add(new UserFound(userFound));
+                    UserDTO[] usersFound = Social.Instance.socialManagerClient.GetUsersFoundByName(User.Instance.ID, search);
+                    foreach (UserDTO userFound in usersFound)
+                    {
+                        Console.WriteLine(userFound.Username);
+                        UsersFound.Add(new UserFound(userFound));
+                    }
                 }
+                catch (EndpointNotFoundException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+
+                }
+                catch (FaultException<BevososServerExceptions> ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+
+                }
+                catch (CommunicationException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                }
+                catch (TimeoutException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                }
+                catch (Exception ex)
+                {
+                    ExceptionManager.LogFatalException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                }
+
             }
             tbSearchUser.Text = "";
         }

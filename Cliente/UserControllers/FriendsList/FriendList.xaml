@@ -62,7 +62,7 @@
                 </ControlTemplate>
             </ItemsControl.Template>
         </ItemsControl>
-        <Button x:Name="buttonDELETELATER" Click="buttonDELETELATER_Click">
+        <Button x:Name="buttonDELETELATER">
             
         </Button>
     </Grid>

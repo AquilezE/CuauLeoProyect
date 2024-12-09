@@ -1,4 +1,6 @@
 ﻿using Cliente.Pantallas;
+using Cliente.ServiceReference;
+using Cliente.Utils;
 using Haley.Utils;
 using System;
 using System.ComponentModel;
@@ -67,13 +69,14 @@ namespace Cliente.UserControllers.FriendsList
             }
         }
 
-        private void OnBlockUser(object sender, Cliente.Friend e)
+        private async void OnBlockUser(object sender, Cliente.Friend e)
         {
+
             if (e != null)
             {
                 try
                 {
-                    bool result = Social.Instance.socialManagerClient.BlockFriend(User.Instance.ID, e.FriendId);
+                    bool result = await Social.Instance.socialManagerClient.BlockFriendAsync(User.Instance.ID, e.FriendId);
                     if (result)
                     {
                         Social.Instance.FriendList.Remove(e);
@@ -81,47 +84,98 @@ namespace Cliente.UserControllers.FriendsList
                     }
                     else
                     {
-                        MessageBox.Show(LangUtils.Translate("lblErrBlockingException"));
+                        NotificationDialog notificationDialog = new NotificationDialog();
+                        notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrBlockingException"));
                     }
+                }
+                catch (EndpointNotFoundException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+
+                }
+                catch (FaultException<BevososServerExceptions> ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+
                 }
                 catch (CommunicationException ex)
                 {
-                    MessageBox.Show(LangUtils.Translate("lblErrNoConection"));
+                    ExceptionManager.LogErrorException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                }
+                catch (TimeoutException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                }
+                catch (Exception ex)
+                {
+                    ExceptionManager.LogFatalException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrBlockingException"));
                 }
             }
         }
 
-        private void OnFriendDelete(object sender, Cliente.Friend e)
+        private async void OnFriendDelete(object sender, Cliente.Friend e)
         {
             if (e != null)
             {
                 try
                 {
-                    bool result = Social.Instance.socialManagerClient.DeleteFriend(User.Instance.ID, e.FriendId);
+                    bool result = await Social.Instance.socialManagerClient.DeleteFriendAsync(User.Instance.ID, e.FriendId);
                     if (result)
                     {
                         Social.Instance.FriendList.Remove(e);
                     }
                     else
                     {
-                        MessageBox.Show(LangUtils.Translate("lblErrDeletingFriendException"));
+
+                        NotificationDialog notificationDialog = new NotificationDialog();
+                        notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrDeletingFriendException"));
                     }
+                }
+                catch (EndpointNotFoundException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+
+                }
+                catch (FaultException<BevososServerExceptions> ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+
                 }
                 catch (CommunicationException ex)
                 {
-                    MessageBox.Show(LangUtils.Translate("lblErrNoConection"));
+                    ExceptionManager.LogErrorException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                }
+                catch (TimeoutException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                }
+                catch (Exception ex)
+                {
+                    ExceptionManager.LogFatalException(ex);
+                    NotificationDialog notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrDeletingFriendException"));
                 }
             }
         }
         protected void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-        private void buttonDELETELATER_Click(object sender, RoutedEventArgs e)
-        {
-            foreach (var item in Social.Instance.FriendList)
-            {
-                Console.WriteLine(item.FriendName);
-                Console.WriteLine(item.IsConnected);
-            }
-        }
     }
 }
