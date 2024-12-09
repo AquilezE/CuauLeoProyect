@@ -73,6 +73,8 @@ namespace Cliente.Pantallas
             try
             {
                 _servicio.LeaveLobby(_lobbyId, User.Instance.ID);
+                LeaveLobby();
+
             }
             catch (EndpointNotFoundException ex)
             {

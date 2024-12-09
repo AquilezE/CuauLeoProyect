@@ -520,10 +520,19 @@
     <Resource Include="Images\configIcon.png" />
     <Resource Include="Images\profileIcon.png" />
     <Resource Include="Notes.txt" />
+    <None Include="Connected Services\ServiceReference\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceReference\Arrays1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceReference\BevososService.DTOs.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceReference\BevososService.DTOs1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference\BevososService.Exceptions.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceReference\BevososService.Exceptions1.xsd">
@@ -584,7 +593,14 @@
     <None Include="Connected Services\LogInService\Servicio.Clases.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceReference\service.wsdl" />
+    <None Include="Connected Services\ServiceReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceReference\service1.wsdl" />
+    <None Include="Connected Services\ServiceReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceReference\service2.xsd">
       <SubType>Designer</SubType>
     </None>

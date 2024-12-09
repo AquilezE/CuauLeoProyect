@@ -44,15 +44,15 @@ namespace Cliente.Pantallas
 
         private void btLogIn_Click(object sender, RoutedEventArgs e)
         {
-            string username = tbUsername.Text;
+            string email = tbUsername.Text;
             string password = pbPassword.Password;
 
 
-            if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
+            if (email.Length < 256 && !string.IsNullOrEmpty(email)&& !string.IsNullOrEmpty(password) && password.Length < 256)
             {
 
 
-                if (SetSessionUser(username, password))
+                if (SetSessionUser(email, password))
                 {
                     MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
                     mainWindow.NavigateToView(new MainMenu());
