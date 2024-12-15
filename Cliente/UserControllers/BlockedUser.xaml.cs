@@ -10,6 +10,7 @@ namespace Cliente.UserControllers
     public partial class BlockedUser : UserControl
     {
         public event EventHandler<Blocked> unblockUser;
+
         public BlockedUser()
         {
             InitializeComponent();

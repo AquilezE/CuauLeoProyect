@@ -1,10 +1,10 @@
 ﻿<UserControl x:Class="Cliente.GameUserControllers.CardsViewer"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Cliente.GameUserControllers"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="600">
     <!-- Define Resources -->
     <UserControl.Resources>
@@ -16,31 +16,31 @@
                         <Grid Background="{TemplateBinding Background}">
                             <Grid.RowDefinitions>
                                 <!-- Row for Horizontal ScrollBar -->
-                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto" />
                                 <!-- Row for Content -->
-                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
 
                             <!-- Horizontal ScrollBar at the Top -->
-                            <ScrollBar x:Name="PART_HorizontalScrollBar"
-                                       Orientation="Horizontal"
-                                       Grid.Row="0"
-                                       Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
-                                       Minimum="0"
-                                       Maximum="{TemplateBinding ScrollableWidth}"
-                                       ViewportSize="{TemplateBinding ViewportWidth}"
-                                       SmallChange="1"
-                                       LargeChange="10"/>
+                            <ScrollBar
+                                Orientation="Horizontal"
+                                Grid.Row="0"
+                                Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
+                                Minimum="0"
+                                Maximum="{TemplateBinding ScrollableWidth}"
+                                ViewportSize="{TemplateBinding ViewportWidth}"
+                                SmallChange="1"
+                                LargeChange="10" />
 
                             <!-- Content Presenter -->
-                            <ScrollContentPresenter x:Name="PART_ScrollContentPresenter"
-                                                    Grid.Row="1"
-                                                    CanContentScroll="{TemplateBinding CanContentScroll}"
-                                                    ContentTemplate="{TemplateBinding ContentTemplate}"
-                                                    Content="{TemplateBinding Content}"
-                                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                    Margin="{TemplateBinding Padding}"/>
+                            <ScrollContentPresenter
+                                Grid.Row="1"
+                                CanContentScroll="{TemplateBinding CanContentScroll}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                Content="{TemplateBinding Content}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Margin="{TemplateBinding Padding}" />
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
@@ -56,7 +56,7 @@
                       VerticalScrollBarVisibility="Disabled"
                       PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
             <!-- ItemsControl to display cards -->
-            <ItemsControl x:Name="CardsListBox" ItemsSource="{Binding CardListViewer}">
+            <ItemsControl ItemsSource="{Binding CardListViewer}">
                 <!-- Define the ItemTemplate -->
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>

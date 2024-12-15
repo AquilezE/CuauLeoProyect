@@ -9,7 +9,6 @@ namespace Cliente.Pantallas
     /// </summary>
     public partial class RecoverPassword : UserControl
     {
-
         private string _email;
 
         public RecoverPassword()
@@ -33,15 +32,11 @@ namespace Cliente.Pantallas
             var recoverNewPassword = new RecoverNewPassword(_email);
             recoverNewPassword.PasswordChanged += OnPasswordChanged;
             RecoverPasswordContentControl.Content = recoverNewPassword;
-            
         }
 
         private void OnPasswordChanged(object sender, EventArgs e)
         {
             RecoverPasswordContentControl.Content = new RecoverSuccesful();
         }
-
-
-
     }
 }

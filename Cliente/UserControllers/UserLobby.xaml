@@ -1,47 +1,50 @@
 ﻿<UserControl x:Class="Cliente.UserControllers.UserLobby"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Cliente.UserControllers"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:converters="clr-namespace:Cliente.Converters"
              xmlns:h="http://schemas.hpod9.com/haley/mvvm"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="50" d:DesignWidth="500">
     <UserControl.Resources>
-        <converters:KickButtonVisibilityConverter x:Key="KickButtonVisibilityConverter"/>
+        <converters:KickButtonVisibilityConverter x:Key="KickButtonVisibilityConverter" />
         <converters:ReadyCheckVisibilityConverter x:Key="ReadyChecVisConverter" />
     </UserControl.Resources>
     <Grid>
 
 
-        
-
         <Border Background="LightGray" CornerRadius="5" BorderBrush="Gray" BorderThickness=".5" Margin="5">
             <Border.Effect>
-                <DropShadowEffect Color="Black" Direction="315" ShadowDepth="2" Opacity="0.5"/>
+                <DropShadowEffect Color="Black" Direction="315" ShadowDepth="2" Opacity="0.5" />
             </Border.Effect>
             <Grid Width="500" MaxWidth="500" MinHeight="50">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="60*"/>
-                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="20*" />
+                    <ColumnDefinition Width="20*" />
+                    <ColumnDefinition Width="60*" />
+                    <ColumnDefinition Width="30*" />
                 </Grid.ColumnDefinitions>
 
                 <materialDesign:PackIcon Grid.Row="0" Kind="Check" Width="40" Height="40" Foreground="Green"
-                                 Visibility="{Binding IsReady, Converter={StaticResource ReadyChecVisConverter}}" />
+                                         Visibility="{Binding IsReady, Converter={StaticResource ReadyChecVisConverter}}" />
 
-                <Image Grid.Column="1" Source="{Binding ProfilePicturePath}" Margin="0 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30"/>
-                <TextBlock Grid.Column="2" Text="{Binding Username}" Margin="10 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="ForestGreen"/>
-                
-                <Button x:Name="KickButton" Grid.Column="3" Height="30" Width="70" VerticalAlignment="Center" Margin="0 0 0 10" Content="{h:Lang btnKick}" Click="KickButton_Click">
+                <Image Grid.Column="1" Source="{Binding ProfilePicturePath}" Margin="0 0 0 0"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" />
+                <TextBlock Grid.Column="2" Text="{Binding Username}" Margin="10 0 0 0" HorizontalAlignment="Center"
+                           VerticalAlignment="Center" FontWeight="Bold" Foreground="ForestGreen" />
+
+                <Button Grid.Column="3" Height="30" Width="70" VerticalAlignment="Center" Margin="0 0 0 10"
+                        Content="{h:Lang btnKick}" Click="KickButton_Click">
                     <Button.Visibility>
                         <MultiBinding Converter="{StaticResource KickButtonVisibilityConverter}">
-                            <Binding Path="IsLeader" RelativeSource="{RelativeSource AncestorType={x:Type local:UserLobby}}"/>
-                            <Binding Path="CurrentUserId" RelativeSource="{RelativeSource AncestorType={x:Type local:UserLobby}}"/>
-                            <Binding Path="ID"/>
+                            <Binding Path="IsLeader"
+                                     RelativeSource="{RelativeSource AncestorType={x:Type local:UserLobby}}" />
+                            <Binding Path="CurrentUserId"
+                                     RelativeSource="{RelativeSource AncestorType={x:Type local:UserLobby}}" />
+                            <Binding Path="ID" />
                         </MultiBinding>
                     </Button.Visibility>
                 </Button>

@@ -18,13 +18,10 @@ namespace Cliente.GameUserControllers
             InitializeComponent();
             var gameCardMonsters = new ObservableCollection<ObservableCollection<GameCard>>();
 
-            foreach (var monster in monsters)
+            foreach (MonsterDTO monster in monsters)
             {
                 var gameCards = new ObservableCollection<GameCard>();
-                foreach (var cardDto in monster.BodyParts)
-                {
-                    gameCards.Add(new GameCard(cardDto));
-                }
+                foreach (CardDTO cardDto in monster.BodyParts) gameCards.Add(new GameCard(cardDto));
                 gameCardMonsters.Add(gameCards);
             }
 
@@ -35,16 +32,13 @@ namespace Cliente.GameUserControllers
 
         private void MonsterList_Loaded(object sender, RoutedEventArgs e)
         {
-            foreach (var item in MonsterList.Items)
+            foreach (object item in MonsterList.Items)
             {
                 var container = MonsterList.ItemContainerGenerator.ContainerFromItem(item) as ContentPresenter;
                 if (container != null)
                 {
                     var cardControl = FindVisualChild<CardUserController>(container);
-                    if (cardControl != null)
-                    {
-                        cardControl.CardClicked += CardControl_CardClicked;
-                    }
+                    if (cardControl != null) cardControl.CardClicked += CardControl_CardClicked;
                 }
             }
         }
@@ -57,7 +51,8 @@ namespace Cliente.GameUserControllers
                 var clickedGameCard = clickedCard.DataContext as GameCard;
                 if (clickedGameCard != null)
                 {
-                    var monsters = ((dynamic)DataContext).Monster as ObservableCollection<ObservableCollection<GameCard>>;
+                    var monsters =
+                        ((dynamic)DataContext).Monster as ObservableCollection<ObservableCollection<GameCard>>;
                     for (int i = 0; i < monsters.Count; i++)
                     {
                         if (monsters[i].Contains(clickedGameCard))
@@ -65,7 +60,7 @@ namespace Cliente.GameUserControllers
                             SelectedMonsterIndex = i;
                             DialogResult = true;
                             Close();
-                            return; 
+                            return;
                         }
                     }
                 }
@@ -78,18 +73,14 @@ namespace Cliente.GameUserControllers
             {
                 DependencyObject child = VisualTreeHelper.GetChild(obj, i);
                 if (child is childItem)
-                {
                     return (childItem)child;
-                }
                 else
                 {
-                    childItem childOfChild = FindVisualChild<childItem>(child);
-                    if (childOfChild != null)
-                    {
-                        return childOfChild;
-                    }
+                    var childOfChild = FindVisualChild<childItem>(child);
+                    if (childOfChild != null) return childOfChild;
                 }
             }
+
             return null;
         }
     }

@@ -11,6 +11,7 @@ namespace Cliente.UserControllers
     {
         public event EventHandler<Cliente.FriendRequest> acceptFriend;
         public event EventHandler<Cliente.FriendRequest> declineFriend;
+
         public FriendRequest()
         {
             InitializeComponent();

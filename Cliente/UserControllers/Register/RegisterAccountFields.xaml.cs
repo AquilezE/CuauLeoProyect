@@ -9,7 +9,6 @@ using Cliente.UserControllers;
 
 namespace Cliente.Pantallas
 {
-
     public partial class RegisterAccountFields : UserControl
     {
         public event Action<string, string, string> RegistrationFilled;
@@ -25,7 +24,6 @@ namespace Cliente.Pantallas
 
         private async void btRegister_Click(object sender, RoutedEventArgs e)
         {
-
             btRegister.IsEnabled = false;
 
 
@@ -56,9 +54,7 @@ namespace Cliente.Pantallas
                 !string.IsNullOrEmpty(emailError) ||
                 !string.IsNullOrEmpty(passwordError) ||
                 !string.IsNullOrEmpty(confirmPasswordError))
-            {
                 return;
-            }
 
             try
             {
@@ -76,24 +72,25 @@ namespace Cliente.Pantallas
                     lbErrUsername.Content = LangUtils.Translate("lblErrUsernameExists");
                     return;
                 }
+
                 OnRegistrationCompleted(username, password, email);
             }
-            catch(EndpointNotFoundException ex)
+            catch (EndpointNotFoundException ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
             }
-            catch(FaultException<BevososServerExceptions> ex)
+            catch (FaultException<BevososServerExceptions> ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
             }
-            catch(TimeoutException ex)
+            catch (TimeoutException ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
             }
         }
@@ -108,18 +105,19 @@ namespace Cliente.Pantallas
             catch (EndpointNotFoundException ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
             }
             catch (FaultException<BevososServerExceptions> ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
-            }catch(TimeoutException ex)
+            }
+            catch (TimeoutException ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
             }
         }
@@ -155,9 +153,8 @@ namespace Cliente.Pantallas
 
         private void btCancel_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new LogIn());
         }
     }
-
 }

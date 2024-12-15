@@ -10,7 +10,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Cliente.Pantallas
-{///
+{
+    ///
     /// <summary>
     /// Lógica de interacción para Profile.xaml
     /// </summary>
@@ -22,7 +23,7 @@ namespace Cliente.Pantallas
 
         public Profile()
         {
-            InstanceContext instanceContext = new InstanceContext(this);
+            var instanceContext = new InstanceContext(this);
             _service = new ProfileManagerClient(instanceContext);
             InitializeComponent();
             LoadUserInfo();
@@ -107,14 +108,14 @@ namespace Cliente.Pantallas
         private void LoadUserInfo()
         {
             lbUsername.Content = User.Instance.Username;
-            lbEmail.Content = User.Instance.Email;  
+            lbEmail.Content = User.Instance.Email;
             lbUserId.Content = User.Instance.ID;
             tbNewUsername.Text = "";
 
             if (User.Instance.ProfilePictureId != 1 || User.Instance.ProfilePictureId != 0)
-            {
-                imgProfilePicture.Source = new BitmapImage(new Uri("pack://application:,,,/Images/pfp" + User.Instance.ProfilePictureId + ".jpg"));
-            }
+                imgProfilePicture.Source =
+                    new BitmapImage(new Uri("pack://application:,,,/Images/pfp" + User.Instance.ProfilePictureId +
+                                            ".jpg"));
         }
 
         private void SetNewUserName()
@@ -130,32 +131,22 @@ namespace Cliente.Pantallas
             lbErrNothingChanged.Content = "";
 
             if (newUsername == "" && newProfilePictureId == 0)
-            {
                 lbErrNothingChanged.Content = LangUtils.Translate("lblErrProfileNothingChanged");
-            }
-            else if (newUsername != "" && newProfilePictureId !=0)
-            {
+            else if (newUsername != "" && newProfilePictureId != 0)
                 _service.UpdateProfile(User.Instance.ID, newUsername, newProfilePictureId);
-            }
             else if (newUsername == "" && newProfilePictureId != 0)
-            {
                 _service.UpdateProfile(User.instance.ID, "Not changed", newProfilePictureId);
-            }
-            else if(newUsername != "" && newProfilePictureId == 0)
-            {
+            else if (newUsername != "" && newProfilePictureId == 0)
                 _service.UpdateProfile(User.instance.ID, newUsername, User.Instance.ProfilePictureId);
-            }
         }
+
         public void OnProfileUpdate(string username, int profilePictureId, string error)
-        { 
-            if(username != "Not changed")
-            {
-                User.instance.Username = username;
-            }
+        {
+            if (username != "Not changed") User.instance.Username = username;
             User.instance.ProfilePictureId = profilePictureId;
             LoadUserInfo();
             ResetAllBorders();
-                
+
             newUsername = "";
             newProfilePictureId = 0;
             lbErrInvalidUsername.Content = error;
@@ -163,13 +154,13 @@ namespace Cliente.Pantallas
 
         private void btChangePassword_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.NavigateToView(new ChangePassword(),750, 800);
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.NavigateToView(new ChangePassword(), 750, 800);
         }
 
         private void btGoBack_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new MainMenu());
         }
 

@@ -3,22 +3,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Cliente.UserControllers"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:h="http://schemas.hpod9.com/haley/mvvm"
         mc:Ignorable="d"
         Title="KickUserDialog" Height="250" Width="400">
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <TextBlock Text="{h:Lang lblSureKickUser}" 
-                   FontSize="14" 
-                   TextWrapping="Wrap" 
-                   Grid.Row="0"/>
+        <TextBlock Text="{h:Lang lblSureKickUser}"
+                   FontSize="14"
+                   TextWrapping="Wrap"
+                   Grid.Row="0" />
 
         <StackPanel Grid.Row="1" Margin="0,10,0,0">
             <TextBlock Text="{h:Lang lblReason}" FontWeight="Bold" />
@@ -35,8 +34,8 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-            <Button Content="{h:Lang btnCancel}" Width="75" Margin="0,0,10,0" Click="btCancel_Click"/>
-            <Button Content="{h:Lang btnKick}" Width="75" Click="btKick_Click"/>
+            <Button Content="{h:Lang btnCancel}" Width="75" Margin="0,0,10,0" Click="btCancel_Click" />
+            <Button Content="{h:Lang btnKick}" Width="75" Click="btKick_Click" />
         </StackPanel>
     </Grid>
 </Window>

@@ -9,10 +9,7 @@ namespace Cliente
 
         public GameMonster(MonsterDTO monsterDto)
         {
-            foreach (var cardDto in monsterDto.BodyParts)
-            {
-                BodyParts.Add(new GameCard(cardDto));
-            }
+            foreach (CardDTO cardDto in monsterDto.BodyParts) BodyParts.Add(new GameCard(cardDto));
         }
     }
 }

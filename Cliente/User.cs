@@ -7,7 +7,7 @@ namespace Cliente
         public static User instance;
         public int ID { get; set; }
         public string Username { get; set; }
-        public string Email { get; set; } 
+        public string Email { get; set; }
         public int ProfilePictureId { get; set; }
 
         public User(UserDTO userDto)
@@ -19,26 +19,18 @@ namespace Cliente
         }
 
 
-
         private User()
         {
-
         }
 
         public static User Instance
         {
             get
             {
-                if (instance == null)
-                {
-                    instance = new User();
-                }
+                if (instance == null) instance = new User();
                 return instance;
             }
-            set
-            {
-                instance = value;
-            }
+            set => instance = value;
         }
     }
 }

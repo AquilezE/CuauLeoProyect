@@ -12,7 +12,7 @@ using Cliente.Utils;
 
 namespace Cliente
 {
-    public class Social: ISocialManagerCallback, INotifyPropertyChanged
+    public class Social : ISocialManagerCallback, INotifyPropertyChanged
     {
         public SocialManagerClient socialManagerClient;
 
@@ -28,7 +28,7 @@ namespace Cliente
         {
             socialManagerClient = new SocialManagerClient(new InstanceContext(this));
 
-            ICommunicationObject clientChannel = (ICommunicationObject)socialManagerClient;
+            var clientChannel = (ICommunicationObject)socialManagerClient;
             clientChannel.Closed += ClientChannel_Closed;
             clientChannel.Faulted += ClientChannel_Faulted;
 
@@ -50,10 +50,9 @@ namespace Cliente
 
         private void HandleChannelTermination()
         {
-
             Application.Current.Dispatcher.Invoke(() =>
             {
-                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                var mainWindow = (MainWindow)Application.Current.MainWindow;
                 mainWindow.NavigateToView(new LogIn());
             });
 
@@ -62,7 +61,6 @@ namespace Cliente
 
             instance = null;
         }
-
 
 
         public ObservableCollection<Friend> FriendList
@@ -96,36 +94,28 @@ namespace Cliente
         }
 
 
-
         public static Social Instance
         {
             get
             {
-                if (instance == null)
-                {
-                    instance = new Social();
-                }
+                if (instance == null) instance = new Social();
                 return instance;
             }
-            set
-            {
-                instance = value;
-            }
+            set => instance = value;
         }
 
-        protected void OnPropertyChanged(string propertyName) =>
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         public void OnFriendOnline(int friendId)
         {
             Console.WriteLine("Friend online" + friendId);
             Application.Current.Dispatcher.Invoke(() =>
             {
-                var friend = FriendList.FirstOrDefault(f => f.FriendId == friendId);
-                if (friend != null)
-                {
-                    friend.IsConnected = true;
-                }
+                Friend friend = FriendList.FirstOrDefault(f => f.FriendId == friendId);
+                if (friend != null) friend.IsConnected = true;
             });
         }
 
@@ -133,11 +123,8 @@ namespace Cliente
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
-                var friend = FriendList.FirstOrDefault(f => f.FriendId == friendId);
-                if (friend != null)
-                {
-                    friend.IsConnected = false;
-                }
+                Friend friend = FriendList.FirstOrDefault(f => f.FriendId == friendId);
+                if (friend != null) friend.IsConnected = false;
             });
         }
 
@@ -146,9 +133,11 @@ namespace Cliente
         {
             var newFriendRequest = new FriendRequest(friendRequestDto);
             FriendRequests.Add(newFriendRequest);
-            NotificationDialog notification = new NotificationDialog();
+            var notification = new NotificationDialog();
 
-            notification.ShowInfoNotification(LangUtils.Translate("lblNotificationTheUser") + friendRequestDto.SenderName + LangUtils.Translate("lblNotificationSentYouFR"));
+            notification.ShowInfoNotification(LangUtils.Translate("lblNotificationTheUser") +
+                                              friendRequestDto.SenderName +
+                                              LangUtils.Translate("lblNotificationSentYouFR"));
         }
 
         public void OnNewFriend(FriendDTO friendDto)
@@ -156,25 +145,24 @@ namespace Cliente
             var newFriend = new Friend(friendDto);
             FriendList.Add(newFriend);
             FriendRequests.Remove(FriendRequests.FirstOrDefault(f => f.SenderId == friendDto.FriendId));
-            NotificationDialog notification = new NotificationDialog();
+            var notification = new NotificationDialog();
 
-            notification.ShowSuccessNotification(LangUtils.Translate("lblNotificationNowFriends") + friendDto.FriendName);
+            notification.ShowSuccessNotification(
+                LangUtils.Translate("lblNotificationNowFriends") + friendDto.FriendName);
         }
 
         public void NotifyGameInvited(string inviterName, int lobbyId)
         {
-            NotificationDialog notification = new NotificationDialog();
+            var notification = new NotificationDialog();
 
-            notification.ShowInfoNotification(inviterName + LangUtils.Translate("lblNotificationInvitedToLobby") + lobbyId);
+            notification.ShowInfoNotification(inviterName + LangUtils.Translate("lblNotificationInvitedToLobby") +
+                                              lobbyId);
         }
 
         public void OnFriendshipDeleted(int userId)
         {
             object friend = FriendList.FirstOrDefault(f => f.FriendId == userId);
-            if (friend != null)
-            {
-                FriendList.Remove((Friend)friend);
-            }
+            if (friend != null) FriendList.Remove((Friend)friend);
         }
 
         public void Logout()
@@ -210,18 +198,14 @@ namespace Cliente
                     }
 
                     if (socialManagerClient.State == CommunicationState.Faulted)
-                    {
                         socialManagerClient.Abort();
-                    }
                     else
-                    {
                         socialManagerClient.Close();
-                    }
                 }
             }
             catch (Exception ex)
             {
-                socialManagerClient?.Abort(); 
+                socialManagerClient?.Abort();
             }
             finally
             {
@@ -256,14 +240,12 @@ namespace Cliente
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
-
             }
             catch (TimeoutException ex)
             {
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
-
             }
             catch (CommunicationException ex)
             {
@@ -296,14 +278,12 @@ namespace Cliente
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
-
             }
             catch (TimeoutException ex)
             {
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
-
             }
             catch (CommunicationException ex)
             {
@@ -335,14 +315,12 @@ namespace Cliente
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
-
             }
             catch (TimeoutException ex)
             {
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
-
             }
             catch (CommunicationException ex)
             {

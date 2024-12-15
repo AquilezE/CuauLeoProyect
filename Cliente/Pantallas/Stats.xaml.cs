@@ -10,6 +10,7 @@ namespace Cliente.Pantallas
     public partial class Stats : UserControl, IStatsManagerCallback
     {
         public StatsManagerClient statsManagerClient;
+
         public Stats()
         {
             InitializeComponent();
@@ -19,7 +20,6 @@ namespace Cliente.Pantallas
         public void FillUserStats()
         {
             statsManagerClient.GetCurrentUserStats(User.instance.ID);
-
         }
 
         public void OnStatsReceived(int wins, int monsters, int babies)
@@ -31,7 +31,7 @@ namespace Cliente.Pantallas
 
         private void btGoBack_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new MainMenu());
         }
 

@@ -3,7 +3,8 @@ using System.Windows;
 using Haley.Utils;
 
 namespace Cliente.UserControllers
-{    public class KickPlayerDialog : Window
+{
+    public class KickPlayerDialog : Window
     {
         public string KickReason { get; private set; }
 
@@ -16,7 +17,8 @@ namespace Cliente.UserControllers
 
             var grid = new Grid();
             var textBox = new TextBox { Margin = new Thickness(10) };
-            var stackPanel = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right };
+            var stackPanel = new StackPanel
+                { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right };
             var confirmButton = new Button { Content = LangUtils.Translate("btnKick"), Margin = new Thickness(5) };
             var cancelButton = new Button { Content = LangUtils.Translate("btnCancel"), Margin = new Thickness(5) };
 

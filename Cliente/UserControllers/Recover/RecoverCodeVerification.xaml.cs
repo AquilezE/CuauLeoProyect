@@ -9,13 +9,12 @@ using Cliente.Utils;
 
 namespace Cliente.UserControllers.Recover
 {
-
     public partial class RecoverCodeVerification : UserControl
     {
         public event EventHandler VerificationCompleted;
 
         private UsersManagerClient _service = new UsersManagerClient();
-        private string _email;  
+        private string _email;
 
 
         private int _retryCounter = 0;
@@ -34,65 +33,55 @@ namespace Cliente.UserControllers.Recover
 
         private async void btVerify_Click(object sender, RoutedEventArgs e)
         {
-
             btVerify.IsEnabled = false;
             try
             {
-                if (IsTokenValidFormat(tbVerificactionCode.Text)){
-                    
+                if (IsTokenValidFormat(tbVerificactionCode.Text))
+                {
                     bool isCodeValid = await _service.VerifyTokenAsync(_email, tbVerificactionCode.Text);
-                    
+
                     if (isCodeValid)
-                    {
                         OnVerificationCompleted(e);
-                    }
                     else
-                    {
                         HandleFailedVerification();
-                    }
                 }
                 else
-                {
-                    lbErrVerificactionCode.Content=LangUtils.Translate("lblErrInvalidCodeFormat");
-                }
+                    lbErrVerificactionCode.Content = LangUtils.Translate("lblErrInvalidCodeFormat");
             }
             catch (EndpointNotFoundException ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
-
             }
             catch (FaultException<BevososServerExceptions> ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
-
             }
             catch (CommunicationException ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
             }
             catch (TimeoutException ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
             }
             catch (Exception ex)
             {
                 ExceptionManager.LogFatalException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrInvalidCode"));
             }
             finally
             {
                 btVerify.IsEnabled = true;
             }
-
         }
 
         private void HandleFailedVerification()
@@ -109,22 +98,14 @@ namespace Cliente.UserControllers.Recover
             }
 
             else
-            {
                 lbErrVerificactionCode.Content = LangUtils.Translate("lblErrInvalidCode");
-            }
         }
 
         private bool IsTokenValidFormat(string code)
         {
             code = code.Trim();
-            if (code.Length != 6)
-            {
-                return false;
-            }
-            if (!code.All(char.IsDigit))
-            {
-                return false;
-            }
+            if (code.Length != 6) return false;
+            if (!code.All(char.IsDigit)) return false;
             return true;
         }
 
@@ -139,48 +120,42 @@ namespace Cliente.UserControllers.Recover
                 bool emailSent = await _service.SendTokenAsync(_email);
 
                 if (emailSent)
-                {
                     lbErrVerificactionCode.Content = LangUtils.Translate("lblCodeResent");
-                }
                 else
-                {
                     lbErrVerificactionCode.Content = LangUtils.Translate("lblErrFailedResendEmail");
-                }
-            }catch(EndpointNotFoundException ex)
-            {
-                ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
-                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
-
             }
-            catch (FaultException <BevososServerExceptions> ex)
+            catch (EndpointNotFoundException ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
+            catch (FaultException<BevososServerExceptions> ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
-
             }
             catch (CommunicationException ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
             }
             catch (TimeoutException ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
             }
             catch (Exception ex)
             {
                 ExceptionManager.LogFatalException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrFailedResendEmail"));
             }
             finally
             {
-
                 const int cooldownPeriod = 30000;
                 var timer = new System.Timers.Timer(cooldownPeriod);
                 timer.Elapsed += (s, args) =>

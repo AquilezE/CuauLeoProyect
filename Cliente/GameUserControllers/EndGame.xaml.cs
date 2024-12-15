@@ -19,12 +19,12 @@ namespace Cliente.GameUserControllers
         {
             if (User.Instance.ID > 0)
             {
-                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                var mainWindow = (MainWindow)Application.Current.MainWindow;
                 mainWindow.NavigateToView(new MainMenu());
             }
             else if (User.Instance.ID < 0)
             {
-                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                var mainWindow = (MainWindow)Application.Current.MainWindow;
                 mainWindow.NavigateToView(new JoinLobby(), 650, 800);
             }
         }

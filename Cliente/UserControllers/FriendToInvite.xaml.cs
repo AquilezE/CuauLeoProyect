@@ -20,6 +20,5 @@ namespace Cliente.UserControllers
         {
             inviteFriend?.Invoke(this, DataContext as Cliente.Friend);
         }
-
     }
 }

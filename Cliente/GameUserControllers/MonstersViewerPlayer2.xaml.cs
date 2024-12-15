@@ -10,6 +10,7 @@ namespace Cliente.GameUserControllers
     public partial class MonstersViewerPlayer2 : UserControl
     {
         public EventHandler<MonstersViewerPlayer2> closePanel;
+
         public MonstersViewerPlayer2()
         {
             InitializeComponent();

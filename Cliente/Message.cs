@@ -2,9 +2,6 @@
 {
     internal class Message
     {
-
-
-
         public Message(string username, string messageText, int lobbyCode)
         {
             UserName = username;

@@ -9,15 +9,13 @@ namespace Cliente.GameUserControllers
     /// </summary>
     public partial class CardUserController : UserControl
     {
-
-
         public static readonly RoutedEvent CardClickedEvent = EventManager.RegisterRoutedEvent(
             "CardClicked", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(CardUserController));
 
         public event RoutedEventHandler CardClicked
         {
-            add { AddHandler(CardClickedEvent, value); }
-            remove { RemoveHandler(CardClickedEvent, value); }
+            add => AddHandler(CardClickedEvent, value);
+            remove => RemoveHandler(CardClickedEvent, value);
         }
 
 
@@ -28,7 +26,7 @@ namespace Cliente.GameUserControllers
 
         private void OnCardClicked()
         {
-            RoutedEventArgs newEventArgs = new RoutedEventArgs(CardClickedEvent, this);
+            var newEventArgs = new RoutedEventArgs(CardClickedEvent, this);
             RaiseEvent(newEventArgs);
         }
 

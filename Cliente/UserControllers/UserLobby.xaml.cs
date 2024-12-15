@@ -4,7 +4,6 @@ using System.Windows.Controls;
 
 namespace Cliente.UserControllers
 {
-
     public partial class UserLobby : UserControl
     {
         public event EventHandler<Cliente.UserLobby> KickRequested;

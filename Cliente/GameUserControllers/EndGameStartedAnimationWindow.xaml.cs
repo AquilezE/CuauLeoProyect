@@ -12,6 +12,7 @@ namespace Cliente.GameUserControllers
         {
             InitializeComponent();
         }
+
         private void EndGameStarted_AnimationCompleted(object sender, EventArgs e)
         {
             Close();

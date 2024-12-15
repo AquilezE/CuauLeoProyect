@@ -21,10 +21,10 @@ namespace Cliente.Pantallas
 
         private void btCreateLobby_Click(object sender, RoutedEventArgs e)
         {
-            Lobby lobbyWindow = new Lobby();
+            var lobbyWindow = new Lobby();
 
 
-            UserDTO userDto = new UserDTO
+            var userDto = new UserDTO
             {
                 UserId = User.Instance.ID,
                 Username = User.Instance.Username,
@@ -36,39 +36,38 @@ namespace Cliente.Pantallas
             {
                 lobbyWindow._servicio.NewLobbyCreated(userDto);
 
-                MainWindow main = (MainWindow)Application.Current.MainWindow;
+                var main = (MainWindow)Application.Current.MainWindow;
                 main.NavigateToView(lobbyWindow);
             }
             catch (EndpointNotFoundException ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
-
             }
             catch (TimeoutException ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
             }
         }
 
         private void btJoinLobby_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new JoinLobby(), 650, 800);
         }
 
         private void btFriends_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new Friends());
         }
 
         private void btStats_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new Stats(), 650, 800);
         }
 
@@ -78,13 +77,13 @@ namespace Cliente.Pantallas
             User.Instance = null;
             Social.Instance = null;
 
-            MainWindow main = (MainWindow)Application.Current.MainWindow;
+            var main = (MainWindow)Application.Current.MainWindow;
             main.NavigateToView(new LogIn());
         }
 
         private void btnProfile_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow main = (MainWindow)Application.Current.MainWindow;
+            var main = (MainWindow)Application.Current.MainWindow;
             main.NavigateToView(new Profile());
 
             Console.WriteLine("Profile");
@@ -96,7 +95,6 @@ namespace Cliente.Pantallas
 
         private void btnOptions_Click(object sender, RoutedEventArgs e)
         {
-
         }
     }
 }

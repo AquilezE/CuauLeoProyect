@@ -1,13 +1,12 @@
 ﻿<UserControl x:Class="Cliente.GameUserControllers.CardUserController"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Cliente.GameUserControllers"
-             mc:Ignorable="d" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
              d:DesignHeight="180" d:DesignWidth="160"
              MouseDown="UserControl_MouseDown">
     <Grid Background="AntiqueWhite" Margin="10 10 10 10">
-        <Image Source="{Binding CardPath}"/>
+        <Image Source="{Binding CardPath}" />
     </Grid>
 </UserControl>

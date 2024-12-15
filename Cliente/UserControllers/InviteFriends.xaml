@@ -4,12 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cliente.UserControllers"
-        xmlns:h="http://schemas.hpod9.com/haley/mvvm"
 
         mc:Ignorable="d"
         Title="InviteFriends" Height="450" Width="600">
     <Grid>
-        <ItemsControl Grid.Row="1" MinWidth="600" MinHeight="400" x:Name="FriendsListBox" ItemsSource="{Binding FriendList}">
+        <ItemsControl Grid.Row="1" MinWidth="600" MinHeight="400" ItemsSource="{Binding FriendList}">
             <ItemsControl.Resources>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Background" Value="Red" />
@@ -25,7 +24,7 @@
             </ItemsControl.Resources>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <local:FriendToInvite  Loaded="FriendLoaded"/>
+                    <local:FriendToInvite Loaded="FriendLoaded" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
 
@@ -33,7 +32,7 @@
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel IsVirtualizing="True"
-                                    VirtualizationMode="Recycling" />
+                                            VirtualizationMode="Recycling" />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
 

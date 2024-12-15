@@ -27,11 +27,11 @@ namespace Cliente.UserControllers.FriendsList
 
             _friendsFiltered = CollectionViewSource.GetDefaultView(Social.Instance.FriendList);
             _friendsFiltered.Filter = FilterFriends;
-
-
         }
 
-        public string FilterSearchName{ get => _filterSearchName;
+        public string FilterSearchName
+        {
+            get => _filterSearchName;
             set
             {
                 _filterSearchName = value;
@@ -47,16 +47,17 @@ namespace Cliente.UserControllers.FriendsList
                 if (string.IsNullOrEmpty(FilterSearchName))
                     return true;
 
-                var filterCriteria = FilterSearchName.ToLower();
+                string filterCriteria = FilterSearchName.ToLower();
                 return friend.FriendName.ToLower().Contains(filterCriteria);
             }
+
             return false;
         }
 
 
         private void btGoBack_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new Friends());
         }
 
@@ -71,12 +72,12 @@ namespace Cliente.UserControllers.FriendsList
 
         private async void OnBlockUser(object sender, Cliente.Friend e)
         {
-
             if (e != null)
             {
                 try
                 {
-                    bool result = await Social.Instance.socialManagerClient.BlockFriendAsync(User.Instance.ID, e.FriendId);
+                    bool result =
+                        await Social.Instance.socialManagerClient.BlockFriendAsync(User.Instance.ID, e.FriendId);
                     if (result)
                     {
                         Social.Instance.FriendList.Remove(e);
@@ -84,40 +85,38 @@ namespace Cliente.UserControllers.FriendsList
                     }
                     else
                     {
-                        NotificationDialog notificationDialog = new NotificationDialog();
+                        var notificationDialog = new NotificationDialog();
                         notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrBlockingException"));
                     }
                 }
                 catch (EndpointNotFoundException ex)
                 {
                     ExceptionManager.LogErrorException(ex);
-                    NotificationDialog notificationDialog = new NotificationDialog();
+                    var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
-
                 }
                 catch (FaultException<BevososServerExceptions> ex)
                 {
                     ExceptionManager.LogErrorException(ex);
-                    NotificationDialog notificationDialog = new NotificationDialog();
+                    var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
-
                 }
                 catch (CommunicationException ex)
                 {
                     ExceptionManager.LogErrorException(ex);
-                    NotificationDialog notificationDialog = new NotificationDialog();
+                    var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
                 }
                 catch (TimeoutException ex)
                 {
                     ExceptionManager.LogErrorException(ex);
-                    NotificationDialog notificationDialog = new NotificationDialog();
+                    var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
                 }
                 catch (Exception ex)
                 {
                     ExceptionManager.LogFatalException(ex);
-                    NotificationDialog notificationDialog = new NotificationDialog();
+                    var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrBlockingException"));
                 }
             }
@@ -129,53 +128,52 @@ namespace Cliente.UserControllers.FriendsList
             {
                 try
                 {
-                    bool result = await Social.Instance.socialManagerClient.DeleteFriendAsync(User.Instance.ID, e.FriendId);
+                    bool result =
+                        await Social.Instance.socialManagerClient.DeleteFriendAsync(User.Instance.ID, e.FriendId);
                     if (result)
-                    {
                         Social.Instance.FriendList.Remove(e);
-                    }
                     else
                     {
-
-                        NotificationDialog notificationDialog = new NotificationDialog();
+                        var notificationDialog = new NotificationDialog();
                         notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrDeletingFriendException"));
                     }
                 }
                 catch (EndpointNotFoundException ex)
                 {
                     ExceptionManager.LogErrorException(ex);
-                    NotificationDialog notificationDialog = new NotificationDialog();
+                    var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
-
                 }
                 catch (FaultException<BevososServerExceptions> ex)
                 {
                     ExceptionManager.LogErrorException(ex);
-                    NotificationDialog notificationDialog = new NotificationDialog();
+                    var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
-
                 }
                 catch (CommunicationException ex)
                 {
                     ExceptionManager.LogErrorException(ex);
-                    NotificationDialog notificationDialog = new NotificationDialog();
+                    var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
                 }
                 catch (TimeoutException ex)
                 {
                     ExceptionManager.LogErrorException(ex);
-                    NotificationDialog notificationDialog = new NotificationDialog();
+                    var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
                 }
                 catch (Exception ex)
                 {
                     ExceptionManager.LogFatalException(ex);
-                    NotificationDialog notificationDialog = new NotificationDialog();
+                    var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrDeletingFriendException"));
                 }
             }
         }
-        protected void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

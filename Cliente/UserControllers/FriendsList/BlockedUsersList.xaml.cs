@@ -16,6 +16,7 @@ namespace Cliente.UserControllers.FriendsList
     public partial class BlockedUsersList : UserControl
     {
         private ObservableCollection<Blocked> _blockedList;
+
         public BlockedUsersList()
         {
             InitializeComponent();
@@ -26,16 +27,13 @@ namespace Cliente.UserControllers.FriendsList
 
         private void btGoBack_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new Friends());
         }
 
         private void BlockedUserLoaded(object sender, RoutedEventArgs e)
         {
-            if (sender is BlockedUser blockedUserControl)
-            {
-                blockedUserControl.unblockUser += OnUnblockUser;
-            }
+            if (sender is BlockedUser blockedUserControl) blockedUserControl.unblockUser += OnUnblockUser;
         }
 
         private async void OnUnblockUser(object sender, Blocked e)
@@ -44,51 +42,45 @@ namespace Cliente.UserControllers.FriendsList
 
             try
             {
-
                 bool result = await Social.Instance.socialManagerClient.UnblockUserAsync(User.Instance.ID, e.BlockedId);
-                if (result) {
+                if (result)
                     Social.Instance.BlockedUsersList.Remove(e);
-                }
                 else
-                { 
-                    NotificationDialog notificationDialog = new NotificationDialog();
+                {
+                    var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrUnblockingException"));
-
                 }
             }
             catch (EndpointNotFoundException ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
-
             }
             catch (FaultException<BevososServerExceptions> ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
-
             }
             catch (CommunicationException ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
             }
             catch (TimeoutException ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
             }
             catch (Exception ex)
             {
                 ExceptionManager.LogFatalException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrUnblockingException"));
             }
-
         }
     }
 }

@@ -1,72 +1,76 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import namespace="http://schemas.datacontract.org/2004/07/Servicio" />
-  <xs:element name="SendMessage">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Servicio" minOccurs="0" name="mensaje" nillable="true" type="q1:Message" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Connect">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="lobbyCode" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ConnectResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ConnectResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Disconnect">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="lobbyCode" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DisconnectResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="DisconnectResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetMessage">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Servicio" minOccurs="0" name="message" nillable="true" type="q2:Message" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="JoinLobby">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="JoinLobbyResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="JoinLobbyResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="LeaveLobby">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="LeaveLobbyResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="LeaveLobbyResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
+
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:import namespace="http://schemas.datacontract.org/2004/07/Servicio" />
+	<xs:element name="SendMessage">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Servicio" minOccurs="0" name="mensaje"
+				            nillable="true" type="q1:Message" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Connect">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="lobbyCode" nillable="true" type="xs:string" />
+				<xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ConnectResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="ConnectResult" type="xs:boolean" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Disconnect">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="lobbyCode" nillable="true" type="xs:string" />
+				<xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DisconnectResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="DisconnectResult" type="xs:boolean" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetMessage">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Servicio" minOccurs="0" name="message"
+				            nillable="true" type="q2:Message" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="JoinLobby">
+		<xs:complexType>
+			<xs:sequence />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="JoinLobbyResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="JoinLobbyResult" type="xs:boolean" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="LeaveLobby">
+		<xs:complexType>
+			<xs:sequence />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="LeaveLobbyResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="LeaveLobbyResult" type="xs:boolean" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 </xs:schema>

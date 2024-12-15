@@ -14,7 +14,7 @@ namespace Cliente.UserControllers
         {
             InitializeComponent();
 
-            Title =LangUtils.Translate("lblKicking") + $" {username}";
+            Title = LangUtils.Translate("lblKicking") + $" {username}";
         }
 
         private void btCancel_Click(object sender, RoutedEventArgs e)
@@ -29,13 +29,13 @@ namespace Cliente.UserControllers
 
             if (string.IsNullOrEmpty(KickReason))
             {
-                MessageBox.Show(LangUtils.Translate("lblTypeReason"), "???", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(LangUtils.Translate("lblTypeReason"), "???", MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
                 return;
             }
 
             DialogResult = true;
             Close();
         }
-
     }
 }

@@ -4,7 +4,7 @@ namespace Cliente
 {
     public class Stats
     {
-        public string username{ get; set; }
+        public string username { get; set; }
         public int points { get; set; }
 
         public Stats(string username, int points)

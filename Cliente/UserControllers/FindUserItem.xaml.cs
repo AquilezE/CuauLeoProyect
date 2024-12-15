@@ -11,6 +11,7 @@ namespace Cliente.UserControllers
     {
         public event EventHandler<UserFound> sendFriendRequest;
         public event EventHandler<UserFound> blockUser;
+
         public FindUserItem()
         {
             InitializeComponent();

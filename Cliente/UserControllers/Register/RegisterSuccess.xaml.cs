@@ -16,7 +16,7 @@ namespace Cliente.UserControllers
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new LogIn());
         }
     }

@@ -1,67 +1,68 @@
 ﻿<UserControl x:Class="Cliente.Pantallas.LogIn"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Cliente.Pantallas"
-             xmlns:p="clr-namespace:Cliente.Properties"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:h="http://schemas.hpod9.com/haley/mvvm"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Width="800" Height="450">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="60*"/>
-            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="60*" />
+            <ColumnDefinition Width="40*" />
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="27*"/>
-                <RowDefinition Height="23*"/>
-                <RowDefinition Height="25*"/>
-                <RowDefinition Height="25*"/>
-                <RowDefinition Height="25*"/>
-                <RowDefinition Height="25*"/>
-                <RowDefinition Height="25*"/>
-                <RowDefinition Height="25*"/>
-                <RowDefinition Height="25*"/>
+                <RowDefinition Height="27*" />
+                <RowDefinition Height="23*" />
+                <RowDefinition Height="25*" />
+                <RowDefinition Height="25*" />
+                <RowDefinition Height="25*" />
+                <RowDefinition Height="25*" />
+                <RowDefinition Height="25*" />
+                <RowDefinition Height="25*" />
+                <RowDefinition Height="25*" />
             </Grid.RowDefinitions>
 
             <!-- Make sure the languages work -->
             <StackPanel Grid.Row="0" Orientation="Horizontal">
-                <Label Content="Bevosos" FontSize="40" Margin="50 0 150 0"/>
+                <Label Content="Bevosos" FontSize="40" Margin="50 0 150 0" />
                 <ComboBox x:Name="cbLanguage" SelectedIndex="0" SelectionChanged="cbLanguage_SelectionChanged">
-                    <ComboBoxItem IsEnabled="False" Content="{h:Lang cmbLanguage}"/>
-                    <ComboBoxItem Content="{h:Lang lblEnglish}"/>
-                    <ComboBoxItem Content="{h:Lang lblSpanish}"/>
+                    <ComboBoxItem IsEnabled="False" Content="{h:Lang cmbLanguage}" />
+                    <ComboBoxItem Content="{h:Lang lblEnglish}" />
+                    <ComboBoxItem Content="{h:Lang lblSpanish}" />
                 </ComboBox>
             </StackPanel>
-            <Label Grid.Row="1" Content="{h:Lang globalsLogin}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <Label Grid.Row="2" Content="{h:Lang globalsEmail}" FontSize="20" Margin="50,0,0,0"/>
-            <TextBox Grid.Row="3" x:Name="tbUsername" Margin="50,0,50,0"/>
-            <Label Grid.Row="4" Content="{h:Lang globalsPassword}" FontSize="20" Margin="50,0,0,0"/>
-            <PasswordBox Grid.Row="5" x:Name="pbPassword" Margin="50,0,50,0"/>
+            <Label Grid.Row="1" Content="{h:Lang globalsLogin}" HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center" />
+            <Label Grid.Row="2" Content="{h:Lang globalsEmail}" FontSize="20" Margin="50,0,0,0" />
+            <TextBox Grid.Row="3" x:Name="tbUsername" Margin="50,0,50,0" />
+            <Label Grid.Row="4" Content="{h:Lang globalsPassword}" FontSize="20" Margin="50,0,0,0" />
+            <PasswordBox Grid.Row="5" x:Name="pbPassword" Margin="50,0,50,0" />
 
             <Grid Grid.Row="6">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50*"/>
-                    <ColumnDefinition Width="30*"/>
-                    <ColumnDefinition Width="40*"/>
+                    <ColumnDefinition Width="50*" />
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="40*" />
                 </Grid.ColumnDefinitions>
-                <Button Content="{h:Lang lblForgotPassword}" Background="Transparent" BorderThickness="0" Foreground="Blue" Click="ForgotPassword_Click"/>
-                <Button x:Name="btLogIn" Content="{h:Lang globalsLogin}" Click="btLogIn_Click" Grid.Column="2" Margin="0 0 10 0"/>
+                <Button Content="{h:Lang lblForgotPassword}" Background="Transparent" BorderThickness="0"
+                        Foreground="Blue" Click="ForgotPassword_Click" />
+                <Button Content="{h:Lang globalsLogin}" Click="btLogIn_Click" Grid.Column="2" Margin="0 0 10 0" />
             </Grid>
 
-            <Label Grid.Row="7" x:Name="lbErrLabel" d:Content="{h:Lang lblErrWrongLogin}" Foreground="Red" HorizontalContentAlignment="Center" VerticalAlignment="Center" Height="24"/>
+            <Label Grid.Row="7" x:Name="lbErrLabel" d:Content="{h:Lang lblErrWrongLogin}" Foreground="Red"
+                   HorizontalContentAlignment="Center" VerticalAlignment="Center" Height="24" />
 
             <Grid Grid.Row="8">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="30*"/>
-                    <ColumnDefinition Width="30*"/>
-                    <ColumnDefinition Width="40*"/>
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="40*" />
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" x:Name="btRegister" Content="{h:Lang globalsRegister}" Click="btRegister_Click" Margin="10 0 0 0"/>
-                <Button Grid.Column="2" x:Name="btPlayAsGuest" Content="{h:Lang btnPlayAsGuest}" Click="btPlayAsGuest_Click" Margin="0 0 10 0"/>
+                <Button Grid.Column="0" Content="{h:Lang globalsRegister}" Click="btRegister_Click" Margin="10 0 0 0" />
+                <Button Grid.Column="2" Content="{h:Lang btnPlayAsGuest}" Click="btPlayAsGuest_Click" Margin="0 0 10 0" />
             </Grid>
 
             <!-- Rest of the code -->

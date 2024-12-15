@@ -33,7 +33,5 @@ namespace Cliente.GameUserControllers
                 e.Handled = true; // Prevent vertical scrolling
             }
         }
-
-
     }
 }

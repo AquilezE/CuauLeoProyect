@@ -23,7 +23,7 @@ namespace Cliente.UserControllers
 
         private int _retryCounter = 0;
         private const int MAX_RETRIES = 3;
-        
+
 
         public RegisterCodeVerification(string email, string username, string password)
         {
@@ -36,47 +36,36 @@ namespace Cliente.UserControllers
 
         private async void btRegister_Click(object sender, RoutedEventArgs e)
         {
-
             btRegister.IsEnabled = false;
 
             try
             {
                 if (_validator.IsTokenValidFormat(tbVerificactionCode.Text))
                 {
-
                     bool isCodeValid = await _service.VerifyTokenAsync(_email, tbVerificactionCode.Text);
 
                     if (isCodeValid)
                     {
-
                         bool isRegistered = await _service.RegisterUserAsync(_email, _username, _password);
 
                         if (isRegistered)
-                        {
                             OnVerificationCompleted(EventArgs.Empty);
-                        }
                         else
-                        {
                             lbErrVerificactionCode.Content = LangUtils.Translate("lblErrUserOrEmailTaken");
-                        }
                     }
                     else
-                    {
                         HandleFailedVerification();
-                    }
                 }
                 else
-                {
                     lbErrVerificactionCode.Content = LangUtils.Translate("lblErrIncorrectCode");
-                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 lbErrVerificactionCode.Content = LangUtils.Translate("lblErrNoConection");
             }
             finally
             {
-               btRegister.IsEnabled = true;
+                btRegister.IsEnabled = true;
             }
         }
 
@@ -91,14 +80,13 @@ namespace Cliente.UserControllers
             if (_retryCounter >= MAX_RETRIES)
             {
                 lbErrVerificactionCode.Content = LangUtils.Translate("lblErrManyCodeAttempts");
-                btRegister.IsEnabled = false; 
+                btRegister.IsEnabled = false;
             }
 
             else
-            {
                 lbErrVerificactionCode.Content = LangUtils.Translate("lblErrIncorrectCode");
-            }
         }
+
         protected virtual void OnVerificationCompleted(EventArgs e)
         {
             VerificationCompleted?.Invoke(this, e);
@@ -116,29 +104,23 @@ namespace Cliente.UserControllers
                 bool emailSent = await _service.SendTokenAsync(_email);
 
                 if (emailSent)
-                {
                     lbErrVerificactionCode.Content = LangUtils.Translate("lblCodeResent");
-                }
                 else
-                {
                     lbErrVerificactionCode.Content = LangUtils.Translate("lblErrFailedResendEmail");
-                }
             }
             catch (Exception ex)
             {
-               
                 lbErrVerificactionCode.Content = LangUtils.Translate("lblErrNoConection");
             }
             finally
             {
-                
-                const int cooldownPeriod = 30000; 
+                const int cooldownPeriod = 30000;
                 var timer = new System.Timers.Timer(cooldownPeriod);
                 timer.Elapsed += (s, args) =>
                 {
                     Dispatcher.Invoke(() =>
                     {
-                        lbResendEmail.IsEnabled = true; 
+                        lbResendEmail.IsEnabled = true;
                         lbResendEmail.Content = LangUtils.Translate("lblClickHereResend");
                     });
                     timer.Stop();
@@ -150,7 +132,7 @@ namespace Cliente.UserControllers
 
         private void btCancel_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new LogIn());
         }
     }

@@ -12,10 +12,10 @@ namespace Cliente.Pantallas
     //this will implement the IRegisterAccountService interface
     public partial class RegisterAccount : UserControl
     {
-
         private string _username;
         private string _password;
         private string _email;
+
         public RegisterAccount()
         {
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace Cliente.Pantallas
             _username = username;
             _password = password;
             _email = email;
-            
+
             var registerCodeVerification = new RegisterCodeVerification(_email, _username, _password);
             registerCodeVerification.VerificationCompleted += OnVerificationCompleted;
             RegisterAccountContentControl.Content = registerCodeVerification;

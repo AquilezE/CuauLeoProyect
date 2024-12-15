@@ -4,29 +4,25 @@ using System.Runtime.CompilerServices;
 
 namespace Cliente
 {
-    public class UserLobby: INotifyPropertyChanged
+    public class UserLobby : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
 
-       public event PropertyChangedEventHandler PropertyChanged;
-       protected void OnPropertyChanged([CallerMemberName] string propertyName = null) =>
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
-       private bool _isReady;
-
-       public int ID { get; set; }
-       public string Username { get; set; }
-
-       public string Email { get; set; }
-
-       public int ProfilePictureId { get; set; }
-
-        public string ProfilePicturePath
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            get
-            {
-                return "pack://application:,,,/Images/pfp" + ProfilePictureId + ".jpg";
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        private bool _isReady;
+
+        public int ID { get; set; }
+        public string Username { get; set; }
+
+        public string Email { get; set; }
+
+        public int ProfilePictureId { get; set; }
+
+        public string ProfilePicturePath => "pack://application:,,,/Images/pfp" + ProfilePictureId + ".jpg";
 
         public bool IsReady
         {

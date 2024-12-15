@@ -1,9 +1,7 @@
 ﻿<Window x:Class="Cliente.GameUserControllers.ProvokeAnimationWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         Title="ProvokeAnimationWindow" Height="350" Width="525"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -14,11 +12,11 @@
         <Grid Background="#20000000">
             <!-- Semi-transparent background -->
             <Image gif:ImageBehavior.AnimatedSource="pack://application:,,,/Images/GameImages/ash-baby.gif"
-               gif:ImageBehavior.AnimationCompleted="ProvokeAnimationImage_AnimationCompleted"
-               gif:ImageBehavior.RepeatBehavior="1x"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center"
-               Stretch="None"/>
+                   gif:ImageBehavior.AnimationCompleted="ProvokeAnimationImage_AnimationCompleted"
+                   gif:ImageBehavior.RepeatBehavior="1x"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Stretch="None" />
         </Grid>
     </Grid>
 </Window>

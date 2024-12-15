@@ -8,7 +8,7 @@ namespace Cliente
         public int BlockedId { get; set; }
         public string BlockerUsername { get; set; }
         public string BlockedProfilePicturePath { get; set; }
-    
+
         public Blocked(int blockId, int blockedId, string blockerUsername, string blockedProfilePicturePath)
         {
             BlockId = blockId;

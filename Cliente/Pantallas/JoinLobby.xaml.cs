@@ -15,7 +15,6 @@ namespace Cliente.Pantallas
     /// </summary>
     public partial class JoinLobby : UserControl
     {
-
         private readonly LobbyCheckerClient _lobbyCheckerClient;
 
         public JoinLobby()
@@ -27,7 +26,7 @@ namespace Cliente.Pantallas
 
         private void btJoinLobby_Click(object sender, RoutedEventArgs e)
         {
-            var userDto = GetCurrentUserDto();
+            UserDTO userDto = GetCurrentUserDto();
 
             string lobbyCodeInput = tbLobbyCode.Text.Trim();
 
@@ -55,14 +54,14 @@ namespace Cliente.Pantallas
             catch (EndpointNotFoundException ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
                 return;
-
-            }catch(TimeoutException ex)
+            }
+            catch (TimeoutException ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrConnectionTimeout"));
                 return;
             }
@@ -80,23 +79,20 @@ namespace Cliente.Pantallas
                 catch (EndpointNotFoundException ex)
                 {
                     ExceptionManager.LogErrorException(ex);
-                    NotificationDialog notificationDialog = new NotificationDialog();
+                    var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
                     lbErrLobbyCode.Content = LangUtils.Translate("lblErrJoiningLobby");
-
                 }
                 catch (TimeoutException ex)
                 {
                     ExceptionManager.LogErrorException(ex);
-                    NotificationDialog notificationDialog = new NotificationDialog();
+                    var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
                     lbErrLobbyCode.Content = LangUtils.Translate("lblErrJoiningLobby");
                 }
             }
             else
-            {
                 lbErrLobbyCode.Content = LangUtils.Translate("lblErrLobbyCodeFullOrNotExists");
-            }
         }
 
         private UserDTO GetCurrentUserDto()
@@ -109,42 +105,27 @@ namespace Cliente.Pantallas
                 ProfilePictureId = User.Instance.ProfilePictureId
             };
         }
+
         private string ValidateLobbyCode(string lobbyCode)
         {
-            if (string.IsNullOrEmpty(lobbyCode))
-            {
-                return "lblErrLobbyCodeNull";
-            }
+            if (string.IsNullOrEmpty(lobbyCode)) return "lblErrLobbyCodeNull";
 
-            if (lobbyCode.Length > 10)
-            {
-                return "lblErrLobbyCodeTooLong";
-            }
+            if (lobbyCode.Length > 10) return "lblErrLobbyCodeTooLong";
 
-            if (!lobbyCode.All(char.IsDigit))
-            {
-                return "lblErrLobbyCodeNotNumeric";
-            }
+            if (!lobbyCode.All(char.IsDigit)) return "lblErrLobbyCodeNotNumeric";
 
             if (int.TryParse(lobbyCode, out int lobbyId))
             {
-                if (lobbyId <= 4)
-                {
-                    return "lblErrLobbyCodeNotInRange";
-                }
+                if (lobbyId <= 4) return "lblErrLobbyCodeNotInRange";
 
-                if (lobbyId > 1000000)
-                {
-                    return "lblErrLobbyCodeExceedRange";
-                }
+                if (lobbyId > 1000000) return "lblErrLobbyCodeExceedRange";
             }
             else
-            {
                 return "lblErrInvalidCodeFormat";
-            }
 
             return null;
         }
+
         private void btGoBack_Click(object sender, RoutedEventArgs e)
         {
             if (User.Instance.ID > 0)
@@ -158,10 +139,7 @@ namespace Cliente.Pantallas
                 Social.Instance = null;
                 var mainWindow = (MainWindow)Application.Current.MainWindow;
                 mainWindow.NavigateToView(new LogIn());
-                
             }
         }
-    
     }
 }
-

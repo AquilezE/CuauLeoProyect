@@ -17,7 +17,6 @@ namespace Cliente.GameUserControllers
     /// </summary>
     public partial class GameBoard : UserControl
     {
-
         public GameManagerClient gameManagerClient;
 
         public GameBoard()
@@ -32,13 +31,13 @@ namespace Cliente.GameUserControllers
 
             var monstersViewer1 = new MonstersViewerPlayer1();
             extensiblePanelMonstersPlayer1.Content = monstersViewer1;
-            
+
             var monstersViewer2 = new MonstersViewerPlayer2();
             extensiblePanelMonstersPlayer2.Content = monstersViewer2;
-            
+
             var monstersViewer3 = new MonstersViewerPlayer3();
             extensiblePanelMonstersPlayer3.Content = monstersViewer3;
-            
+
             var monstersViewer4 = new MonstersViewerPlayer4();
             extensiblePanelMonstersPlayer4.Content = monstersViewer4;
 
@@ -50,8 +49,6 @@ namespace Cliente.GameUserControllers
             GameLogic.Instance.HatSelectionRequested += OnHatSelectionRequested;
             GameLogic.Instance.GameHasEnded += OnGameHasEnded;
             GameLogic.Instance.GameHasEndedWithoutUsers += OnGameHasEndedWithoutUsers;
-
-
         }
 
         private void GameBoard_Loaded(object sender, RoutedEventArgs e)
@@ -60,7 +57,7 @@ namespace Cliente.GameUserControllers
 
             try
             {
-                UserDTO user = new UserDTO();
+                var user = new UserDTO();
                 user.UserId = User.Instance.ID;
                 user.Username = User.Instance.Username;
                 user.Email = User.Instance.Email;
@@ -71,17 +68,14 @@ namespace Cliente.GameUserControllers
             catch (EndpointNotFoundException ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
-
-
             }
             catch (TimeoutException ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
-                
             }
         }
 
@@ -90,12 +84,11 @@ namespace Cliente.GameUserControllers
             var cardControl = e.OriginalSource as CardUserController;
             if (cardControl != null)
             {
-                var cardData = cardControl.DataContext;
-                
+                object cardData = cardControl.DataContext;
+
                 var card = cardData as GameCard;
 
-                gameManagerClient.PlayCard(User.Instance.ID,GameLogic.Instance.GameId,card.CardId);
-
+                gameManagerClient.PlayCard(User.Instance.ID, GameLogic.Instance.GameId, card.CardId);
             }
         }
 
@@ -108,49 +101,33 @@ namespace Cliente.GameUserControllers
         private void extensiblePanelMonstersPlayer1_Loaded(object sender, RoutedEventArgs e)
         {
             if (extensiblePanelMonstersPlayer1.Content is MonstersViewerPlayer1 monstersViewer)
-            {
                 monstersViewer.closePanel += OnClosePanelPlayer1;
-            }
             else
-            {
                 Console.WriteLine("Content not initialized or not of type MonstersViewerVertical.");
-            }
         }
 
         private void extensiblePanelMonstersPlayer2_Loaded(object sender, RoutedEventArgs e)
         {
             if (extensiblePanelMonstersPlayer2.Content is MonstersViewerPlayer2 monstersViewerVertical)
-            {
                 monstersViewerVertical.closePanel += OnClosePanelPLayer2;
-            }
             else
-            {
                 Console.WriteLine("Content not initialized or not of type MonstersViewerVertical.");
-            }
         }
 
         private void extensiblePanelMonstersPlayer3_Loaded(object sender, RoutedEventArgs e)
         {
             if (extensiblePanelMonstersPlayer3.Content is MonstersViewerPlayer3 monstersViewerVertical)
-            {
                 monstersViewerVertical.closePanel += OnClosePanelPlayer3;
-            }
             else
-            {
                 Console.WriteLine("Content not initialized or not of type MonstersViewerVertical.");
-            }
         }
 
         private void extensiblePanelMonstersPlayer4_Loaded(object sender, RoutedEventArgs e)
         {
             if (extensiblePanelMonstersPlayer4.Content is MonstersViewerPlayer4 monstersViewerVertical)
-            {
                 monstersViewerVertical.closePanel += OnClosePanelPlayer4;
-            }
             else
-            {
                 Console.WriteLine("Content not initialized or not of type MonstersViewerVertical.");
-            }
         }
 
         private void OnToolSelectionRequested(CardDTO card)
@@ -161,7 +138,8 @@ namespace Cliente.GameUserControllers
                 if (selectionWindow.ShowDialog() == true)
                 {
                     int selectedMonsterIndex = selectionWindow.SelectedMonsterIndex;
-                    gameManagerClient.ExecuteToolPlacement(User.Instance.ID, GameLogic.Instance.GameId, card.CardId, selectedMonsterIndex);
+                    gameManagerClient.ExecuteToolPlacement(User.Instance.ID, GameLogic.Instance.GameId, card.CardId,
+                        selectedMonsterIndex);
                 }
             });
         }
@@ -174,7 +152,8 @@ namespace Cliente.GameUserControllers
                 if (selectionWindow.ShowDialog() == true)
                 {
                     int selectedMonsterIndex = selectionWindow.SelectedMonsterIndex;
-                    gameManagerClient.ExecuteBodyPartPlacement(User.Instance.ID, GameLogic.Instance.GameId, card.CardId, selectedMonsterIndex);
+                    gameManagerClient.ExecuteBodyPartPlacement(User.Instance.ID, GameLogic.Instance.GameId, card.CardId,
+                        selectedMonsterIndex);
                 }
             });
         }
@@ -187,7 +166,8 @@ namespace Cliente.GameUserControllers
                 if (selectionWindow.ShowDialog() == true)
                 {
                     int selectedMonsterIndex = selectionWindow.SelectedMonsterIndex;
-                    gameManagerClient.ExecuteHatPlacement(User.Instance.ID, GameLogic.Instance.GameId, card.CardId, selectedMonsterIndex);
+                    gameManagerClient.ExecuteHatPlacement(User.Instance.ID, GameLogic.Instance.GameId, card.CardId,
+                        selectedMonsterIndex);
                 }
             });
         }
@@ -196,7 +176,7 @@ namespace Cliente.GameUserControllers
         {
             Dispatcher.Invoke(() =>
             {
-                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                var mainWindow = (MainWindow)Application.Current.MainWindow;
                 mainWindow.NavigateToView(new EndGame(), 800, 750);
             });
         }
@@ -207,12 +187,12 @@ namespace Cliente.GameUserControllers
             {
                 if (User.Instance.ID > 0)
                 {
-                    MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                    var mainWindow = (MainWindow)Application.Current.MainWindow;
                     mainWindow.NavigateToView(new MainMenu());
                 }
                 else if (User.Instance.ID < 0)
                 {
-                    MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                    var mainWindow = (MainWindow)Application.Current.MainWindow;
                     mainWindow.NavigateToView(new JoinLobby(), 650, 800);
                 }
             });
@@ -275,6 +255,5 @@ namespace Cliente.GameUserControllers
             await gameManagerClient.PlayProvokeAsync(User.Instance.ID, GameLogic.Instance.GameId, 2);
             Console.WriteLine("Provoke Water");
         }
-
     }
 }

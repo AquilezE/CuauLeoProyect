@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace Cliente
 {
-    public class Friend: INotifyPropertyChanged
+    public class Friend : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private bool isConnected;
@@ -13,6 +13,7 @@ namespace Cliente
         public int FriendShipId { get; set; }
         public int FriendId { get; set; }
         public string ProfilePicturePath { get; set; }
+
         public bool IsConnected
         {
             get => isConnected;
@@ -50,4 +51,3 @@ namespace Cliente
         }
     }
 }
-

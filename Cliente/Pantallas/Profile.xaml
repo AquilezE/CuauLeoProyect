@@ -1,104 +1,108 @@
 ﻿<UserControl x:Class="Cliente.Pantallas.Profile"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Cliente.Pantallas"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:h="http://schemas.hpod9.com/haley/mvvm"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="750" d:DesignWidth="1000">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="30*"/>
-            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="30*" />
+            <ColumnDefinition Width="60*" />
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="30*"/>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
+                <RowDefinition Height="30*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="10*" />
             </Grid.RowDefinitions>
 
-            <Image x:Name="imgProfilePicture" Grid.Row="0" Source="/Images/profileIcon.png"/>
-            <Label Grid.Row="1" Content="{h:Lang globalsUsername}" FontSize="25"/>
-            <Label x:Name="lbUsername" Grid.Row="2" Content="" FontSize="25"/>
-            <Label Grid.Row="3" Content="{h:Lang globalsEmail}" FontSize="25"/>
-            <Label x:Name="lbEmail" Grid.Row="4" Content="" FontSize="25"/>
-            <Label Grid.Row="5" Content="{h:Lang lblUserId}" FontSize="25"/>
-            <Label x:Name="lbUserId" Grid.Row="6" Content="" FontSize="25"/>
+            <Image x:Name="imgProfilePicture" Grid.Row="0" Source="/Images/profileIcon.png" />
+            <Label Grid.Row="1" Content="{h:Lang globalsUsername}" FontSize="25" />
+            <Label x:Name="lbUsername" Grid.Row="2" Content="" FontSize="25" />
+            <Label Grid.Row="3" Content="{h:Lang globalsEmail}" FontSize="25" />
+            <Label x:Name="lbEmail" Grid.Row="4" Content="" FontSize="25" />
+            <Label Grid.Row="5" Content="{h:Lang lblUserId}" FontSize="25" />
+            <Label x:Name="lbUserId" Grid.Row="6" Content="" FontSize="25" />
 
         </Grid>
-        
+
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="40*"/>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="14*"/>
-                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="40*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="14*" />
+                <RowDefinition Height="10*" />
             </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" Content="{h:Lang lblChangeProfile}" FontSize="35"/>
-            <Label Grid.Row="1" Content="{h:Lang lblNewUsername}" FontSize="25"/>
-            <TextBox x:Name="tbNewUsername" Grid.Row="2" FontSize="15"/>
-            <Label x:Name="lbErrInvalidUsername" Grid.Row="3" Content="" FontSize="8" Foreground="Red"/>
-            <Label Grid.Row="4" Content="{h:Lang lblChosepfp}" FontSize="25"/>
-            <Button x:Name="btChangePassword" Grid.Row="6" Content="{h:Lang btnChangePassword}" Width="150" HorizontalAlignment="Right" Margin="0 10 15 0" Click="btChangePassword_Click"/>
+            <Label Grid.Row="0" Content="{h:Lang lblChangeProfile}" FontSize="35" />
+            <Label Grid.Row="1" Content="{h:Lang lblNewUsername}" FontSize="25" />
+            <TextBox x:Name="tbNewUsername" Grid.Row="2" FontSize="15" />
+            <Label x:Name="lbErrInvalidUsername" Grid.Row="3" Content="" FontSize="8" Foreground="Red" />
+            <Label Grid.Row="4" Content="{h:Lang lblChosepfp}" FontSize="25" />
+            <Button Grid.Row="6" Content="{h:Lang btnChangePassword}" Width="150" HorizontalAlignment="Right"
+                    Margin="0 10 15 0" Click="btChangePassword_Click" />
             <StackPanel Grid.Row="7" Orientation="Vertical">
-                <Button x:Name="btSave" Content="{h:Lang btnSave}" Width="150" HorizontalAlignment="Right" Margin="0 10 15 0" Click="btSave_Click"/>
-                <Label x:Name="lbErrNothingChanged" Foreground="Red" Content="" HorizontalAlignment="Right" Margin="0 10 15 0"/>
+                <Button Content="{h:Lang btnSave}" Width="150" HorizontalAlignment="Right" Margin="0 10 15 0"
+                        Click="btSave_Click" />
+                <Label x:Name="lbErrNothingChanged" Foreground="Red" Content="" HorizontalAlignment="Right"
+                       Margin="0 10 15 0" />
             </StackPanel>
-            <Button x:Name="btGoBack" Grid.Column="1" Grid.Row="8" Width="150" Height="40" Margin="0 10 15 0" Content="{h:Lang btnGoBack}" FontSize="25" Background="LightGoldenrodYellow" Foreground="Coral" Click="btGoBack_Click" HorizontalAlignment="Right"/>
-            
+            <Button Grid.Column="1" Grid.Row="8" Width="150" Height="40" Margin="0 10 15 0"
+                    Content="{h:Lang btnGoBack}" FontSize="25" Background="LightGoldenrodYellow" Foreground="Coral"
+                    Click="btGoBack_Click" HorizontalAlignment="Right" />
+
             <Grid Grid.Row="5">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="10*"/>
-                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*" />
+                    <RowDefinition Height="10*" />
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10*"/>
-                    <ColumnDefinition Width="10*"/>
-                    <ColumnDefinition Width="10*"/>
-                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="10*" />
                 </Grid.ColumnDefinitions>
 
                 <Border x:Name="brdKanye" Grid.Column="0" Grid.Row="0" BorderBrush="Black" BorderThickness="2">
-                    <Image x:Name="imgPfp1" Grid.Row="0" Grid.Column="0" Source="/Images/pfp2.jpg" MouseDown="imgPfp1_MouseDown"/>
+                    <Image x:Name="imgPfp1" Source="/Images/pfp2.jpg" MouseDown="imgPfp1_MouseDown" />
                 </Border>
                 <Border x:Name="brdTravis" Grid.Column="1" Grid.Row="0" BorderBrush="Black" BorderThickness="2">
-                    <Image x:Name="imgPfp2" Grid.Row="0" Grid.Column="1" Source="/Images/pfp3.jpg" MouseDown="imgPfp2_MouseDown"/>
+                    <Image x:Name="imgPfp2" Source="/Images/pfp3.jpg" MouseDown="imgPfp2_MouseDown" />
                 </Border>
                 <Border x:Name="brdCarti" Grid.Column="2" Grid.Row="0" BorderBrush="Black" BorderThickness="2">
-                    <Image x:Name="imgPfp3" Grid.Row="0" Grid.Column="2" Source="/Images/pfp4.jpg" MouseDown="imgPfp3_MouseDown"/>
+                    <Image x:Name="imgPfp3" Source="/Images/pfp4.jpg" MouseDown="imgPfp3_MouseDown" />
                 </Border>
                 <Border x:Name="brdKendrick" Grid.Column="3" Grid.Row="0" BorderBrush="Black" BorderThickness="2">
-                    <Image x:Name="imgPfp4" Grid.Row="0" Grid.Column="3" Source="/Images/pfp5.jpg" MouseDown="imgPfp4_MouseDown"/>
+                    <Image x:Name="imgPfp4" Source="/Images/pfp5.jpg" MouseDown="imgPfp4_MouseDown" />
                 </Border>
                 <Border x:Name="brdKitty" Grid.Column="0" Grid.Row="1" BorderBrush="Black" BorderThickness="2">
-                    <Image x:Name="imgPfp5" Grid.Row="1" Grid.Column="0" Source="/Images/pfp6.jpg" MouseDown="imgPfp5_MouseDown"/>
+                    <Image x:Name="imgPfp5" Source="/Images/pfp6.jpg" MouseDown="imgPfp5_MouseDown" />
                 </Border>
                 <Border x:Name="brdMelody" Grid.Column="1" Grid.Row="1" BorderBrush="Black" BorderThickness="2">
-                    <Image x:Name="imgPfp6" Grid.Row="1" Grid.Column="1" Source="/Images/pfp7.jpg" MouseDown="imgPfp6_MouseDown"/>
+                    <Image x:Name="imgPfp6" Source="/Images/pfp7.jpg" MouseDown="imgPfp6_MouseDown" />
                 </Border>
                 <Border x:Name="brdKuromi" Grid.Column="2" Grid.Row="1" BorderBrush="Black" BorderThickness="2">
-                    <Image x:Name="imgPfp7" Grid.Row="1" Grid.Column="2" Source="/Images/pfp8.jpg" MouseDown="imgPfp7_MouseDown"/>
+                    <Image x:Name="imgPfp7" Source="/Images/pfp8.jpg" MouseDown="imgPfp7_MouseDown" />
                 </Border>
                 <Border x:Name="brdCinamon" Grid.Column="3" Grid.Row="1" BorderBrush="Black" BorderThickness="2">
-                    <Image x:Name="imgPfp8" Grid.Row="1" Grid.Column="3" Source="/Images/pfp9.jpg" MouseDown="imgPfp8_MouseDown"/>
+                    <Image x:Name="imgPfp8" Source="/Images/pfp9.jpg" MouseDown="imgPfp8_MouseDown" />
                 </Border>
             </Grid>
-            
+
         </Grid>
-        <StackPanel Grid.Column="1"/>
+        <StackPanel Grid.Column="1" />
     </Grid>
 </UserControl>

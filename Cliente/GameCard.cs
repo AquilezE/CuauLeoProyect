@@ -7,7 +7,7 @@ namespace Cliente
         public int CardId { get; set; }
         public string CardPath { get; set; }
 
-        public GameCard(string cardPath) 
+        public GameCard(string cardPath)
         {
             CardPath = cardPath;
         }

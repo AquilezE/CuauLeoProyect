@@ -3,14 +3,11 @@ using System.Windows.Threading;
 
 namespace Cliente
 {
-    /// <summary>
-    /// Lógica de interacción para App.xaml
-    /// </summary>
     public partial class App : Application
     {
         public static Dispatcher AppDispatcher { get; private set; }
 
-        App()
+        private App()
         {
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("es-ES");
         }
@@ -20,6 +17,5 @@ namespace Cliente
             base.OnStartup(e);
             AppDispatcher = Dispatcher.CurrentDispatcher;
         }
-
     }
 }

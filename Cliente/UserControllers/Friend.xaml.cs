@@ -11,6 +11,7 @@ namespace Cliente.UserControllers
     {
         public event EventHandler<Cliente.Friend> deleteFriend;
         public event EventHandler<Cliente.Friend> blockUser;
+
         public Friend()
         {
             InitializeComponent();

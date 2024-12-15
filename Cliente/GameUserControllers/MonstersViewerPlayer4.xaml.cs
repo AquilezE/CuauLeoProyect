@@ -10,6 +10,7 @@ namespace Cliente.GameUserControllers
     public partial class MonstersViewerPlayer4 : UserControl
     {
         public EventHandler<MonstersViewerPlayer4> closePanel;
+
         public MonstersViewerPlayer4()
         {
             InitializeComponent();

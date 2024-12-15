@@ -33,30 +33,26 @@ namespace Cliente.Utils
         {
             _logger = new LoggerConfiguration()
                 .MinimumLevel.Verbose()
-                .Enrich.FromLogContext() 
+                .Enrich.FromLogContext()
                 .WriteTo.File(
-                    path: logFilePath,
+                    logFilePath,
                     rollingInterval: RollingInterval.Day,
                     retainedFileCountLimit: 7,
-                    outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}"
+                    outputTemplate:
+                    "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}"
                 )
                 .CreateLogger();
         }
 
         private static string BuildLogFilePath()
         {
-
-
             DateTime currentDate = DateTime.Now;
-            var date = currentDate.ToString(DATE_FORMAT);
+            string date = currentDate.ToString(DATE_FORMAT);
 
-            var logFileName = $"{ID_FILE_NAME}{CHARACTER_SEPARATOR}{date}{FILE_EXTENSION}";
+            string logFileName = $"{ID_FILE_NAME}{CHARACTER_SEPARATOR}{date}{FILE_EXTENSION}";
             string absoluteLogDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, RELATIVE_LOG_FILE_PATH);
 
-            if (!Directory.Exists(absoluteLogDirectory))
-            {
-                Directory.CreateDirectory(absoluteLogDirectory);
-            }
+            if (!Directory.Exists(absoluteLogDirectory)) Directory.CreateDirectory(absoluteLogDirectory);
 
             string logFilePath = Path.Combine(absoluteLogDirectory, logFileName);
 
@@ -70,6 +66,7 @@ namespace Cliente.Utils
                 string logPath = BuildLogFilePath();
                 ConfigureLogger(logPath);
             }
+
             _logger = Log.Logger;
             return _logger;
         }

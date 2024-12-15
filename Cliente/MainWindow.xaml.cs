@@ -23,16 +23,14 @@ namespace Cliente
                 MainContentControl.Content = control;
                 WindowState = WindowState.Maximized;
                 WindowStyle = WindowStyle.None;
-                Width= SystemParameters.PrimaryScreenWidth;
+                Width = SystemParameters.PrimaryScreenWidth;
                 Height = SystemParameters.PrimaryScreenHeight;
 
                 ResizeMode = ResizeMode.NoResize;
-
             }
-
         }
 
-        public void NavigateToView(UserControl control, double ? newWidth = null, double ? newHeight = null)
+        public void NavigateToView(UserControl control, double? newWidth = null, double? newHeight = null)
         {
             MainContentControl.Content = control;
             WindowState = WindowState.Normal;
@@ -45,10 +43,7 @@ namespace Cliente
                 SizeToContent = SizeToContent.Manual;
             }
             else
-            {
                 SizeToContent = SizeToContent.WidthAndHeight;
-            }
         }
-
-        }
+    }
 }

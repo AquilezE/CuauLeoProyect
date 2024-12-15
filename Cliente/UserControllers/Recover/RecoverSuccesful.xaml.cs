@@ -7,10 +7,8 @@ namespace Cliente.UserControllers.Recover
     /// <summary>
     /// Interaction logic for RecoverSuccesful.xaml
     /// </summary>
-    
     public partial class RecoverSuccesful : UserControl
     {
-
         public RecoverSuccesful()
         {
             InitializeComponent();
@@ -18,7 +16,7 @@ namespace Cliente.UserControllers.Recover
 
         public void btGotoLogIn_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new LogIn());
         }
     }

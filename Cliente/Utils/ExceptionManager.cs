@@ -13,12 +13,14 @@ namespace Cliente.Utils
 
         public static void LogErrorException(Exception ex)
         {
-            _logger.Error("Error encountered in method '{0}'.\nMessage: {1}\nStackTrace:\n{2}", ex.TargetSite, ex.Message, ex.StackTrace);
+            _logger.Error("Error encountered in method '{0}'.\nMessage: {1}\nStackTrace:\n{2}", ex.TargetSite,
+                ex.Message, ex.StackTrace);
         }
 
         public static void LogFatalException(Exception ex)
         {
-            _logger.Fatal("Fatal error in method '{0}'.\nMessage: {1}\nStackTrace:\n{2}", ex.TargetSite, ex.Message, ex.StackTrace);
+            _logger.Fatal("Fatal error in method '{0}'.\nMessage: {1}\nStackTrace:\n{2}", ex.TargetSite, ex.Message,
+                ex.StackTrace);
         }
     }
 }

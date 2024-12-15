@@ -12,7 +12,6 @@ namespace Cliente.UserControllers.Recover
     /// Interaction logic for RecoverNewPassword.xaml
     /// </summary>
     /// 
-
     public partial class RecoverNewPassword : UserControl
     {
         public event EventHandler PasswordChanged;
@@ -42,7 +41,7 @@ namespace Cliente.UserControllers.Recover
             string error = _validator.ValidatePassword(password);
             lbErrPassword.Content = error;
 
-            string errorConfirmation = _validator.ValidateConfirmPassword(password,confirmPassword);
+            string errorConfirmation = _validator.ValidateConfirmPassword(password, confirmPassword);
             lbErrPassword.Content = errorConfirmation;
 
             if (error != string.Empty || errorConfirmation != string.Empty)
@@ -53,14 +52,11 @@ namespace Cliente.UserControllers.Recover
 
             try
             {
-                
                 bool passwordChanged = await _service.RecoverPasswordAsync(_email, pbPassword.Password);
 
 
                 if (passwordChanged)
-                {
                     OnPasswordChanged(e);
-                }
                 else
                 {
                     lbErrPassword.Content = LangUtils.Translate("lblErrErrorChangingPassword");
@@ -70,36 +66,33 @@ namespace Cliente.UserControllers.Recover
             catch (EndpointNotFoundException ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
-
             }
             catch (FaultException<BevososServerExceptions> ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
-
             }
             catch (CommunicationException ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
             }
             catch (TimeoutException ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
             }
             catch (Exception ex)
             {
                 ExceptionManager.LogFatalException(ex);
-                NotificationDialog notificationDialog = new NotificationDialog();
+                var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrErrorChangingPassword"));
             }
-
         }
 
         private void pbPassword_LostFocus(object sender, RoutedEventArgs e)
@@ -108,7 +101,6 @@ namespace Cliente.UserControllers.Recover
 
             string error = _validator.ValidatePassword(password);
             lbErrPassword.Content = error;
-
         }
 
         private void pbConfirmPassword_LostFocus(object sender, RoutedEventArgs e)
@@ -118,8 +110,6 @@ namespace Cliente.UserControllers.Recover
 
             string error = _validator.ValidateConfirmPassword(password, confirmPassword);
             lbErrPasswordConfirmation.Content = error;
-
         }
-
     }
 }

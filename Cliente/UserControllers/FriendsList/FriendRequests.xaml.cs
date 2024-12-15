@@ -16,6 +16,7 @@ namespace Cliente.UserControllers.FriendsList
     public partial class FriendRequests : UserControl
     {
         private ObservableCollection<Cliente.FriendRequest> _friendRequests;
+
         public FriendRequests()
         {
             InitializeComponent();
@@ -26,7 +27,7 @@ namespace Cliente.UserControllers.FriendsList
 
         private void btGoBack_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new Friends());
         }
 
@@ -45,47 +46,45 @@ namespace Cliente.UserControllers.FriendsList
             {
                 try
                 {
-                   bool result = await Social.Instance.socialManagerClient.AcceptFriendRequestAsync(User.Instance.ID, e.SenderId, e.FriendRequestId);
-                   if (result)
-                   {
+                    bool result =
+                        await Social.Instance.socialManagerClient.AcceptFriendRequestAsync(User.Instance.ID, e.SenderId,
+                            e.FriendRequestId);
+                    if (result)
                         Social.Instance.FriendRequests.Remove(e);
-                   }
-                   else
-                   {
-                       NotificationDialog notificationDialog = new NotificationDialog();
-                       notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrAcceptingFRException"));
-                   }
+                    else
+                    {
+                        var notificationDialog = new NotificationDialog();
+                        notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrAcceptingFRException"));
+                    }
                 }
                 catch (EndpointNotFoundException ex)
                 {
                     ExceptionManager.LogErrorException(ex);
-                    NotificationDialog notificationDialog = new NotificationDialog();
+                    var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
-
                 }
                 catch (FaultException<BevososServerExceptions> ex)
                 {
                     ExceptionManager.LogErrorException(ex);
-                    NotificationDialog notificationDialog = new NotificationDialog();
+                    var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
-
                 }
                 catch (CommunicationException ex)
                 {
                     ExceptionManager.LogErrorException(ex);
-                    NotificationDialog notificationDialog = new NotificationDialog();
+                    var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
                 }
                 catch (TimeoutException ex)
                 {
                     ExceptionManager.LogErrorException(ex);
-                    NotificationDialog notificationDialog = new NotificationDialog();
+                    var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
                 }
                 catch (Exception ex)
                 {
                     ExceptionManager.LogFatalException(ex);
-                    NotificationDialog notificationDialog = new NotificationDialog();
+                    var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrAcceptingFRException"));
                 }
             }
@@ -93,52 +92,49 @@ namespace Cliente.UserControllers.FriendsList
 
         private async void OnFriendRequestDecline(object sender, Cliente.FriendRequest e)
         {
-            if(e != null)
+            if (e != null)
             {
-                try{
-                    bool result = await Social.Instance.socialManagerClient.DeclineFriendRequestAsync(e.FriendRequestId);
+                try
+                {
+                    bool result =
+                        await Social.Instance.socialManagerClient.DeclineFriendRequestAsync(e.FriendRequestId);
 
                     if (result)
-                    {
                         Social.Instance.FriendRequests.Remove(e);
-                    }
                     else
                     {
-                        NotificationDialog notificationDialog = new NotificationDialog();
+                        var notificationDialog = new NotificationDialog();
                         notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrDecliningFRException"));
-
                     }
                 }
                 catch (EndpointNotFoundException ex)
                 {
                     ExceptionManager.LogErrorException(ex);
-                    NotificationDialog notificationDialog = new NotificationDialog();
+                    var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
-
                 }
                 catch (FaultException<BevososServerExceptions> ex)
                 {
                     ExceptionManager.LogErrorException(ex);
-                    NotificationDialog notificationDialog = new NotificationDialog();
+                    var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
-
                 }
                 catch (CommunicationException ex)
                 {
                     ExceptionManager.LogErrorException(ex);
-                    NotificationDialog notificationDialog = new NotificationDialog();
+                    var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
                 }
                 catch (TimeoutException ex)
                 {
                     ExceptionManager.LogErrorException(ex);
-                    NotificationDialog notificationDialog = new NotificationDialog();
+                    var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
                 }
                 catch (Exception ex)
                 {
                     ExceptionManager.LogFatalException(ex);
-                    NotificationDialog notificationDialog = new NotificationDialog();
+                    var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrDecliningFRException"));
                 }
             }

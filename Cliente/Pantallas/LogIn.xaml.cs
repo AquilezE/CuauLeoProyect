@@ -15,7 +15,6 @@ namespace Cliente.Pantallas
     /// </summary>
     public partial class LogIn : UserControl
     {
-
         private UsersManagerClient _servicio;
         private bool _isLoaded;
 
@@ -37,7 +36,7 @@ namespace Cliente.Pantallas
         {
             if (SetSessionGuestUser())
             {
-                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                var mainWindow = (MainWindow)Application.Current.MainWindow;
                 mainWindow.NavigateToView(new JoinLobby(), 650, 800);
             }
         }
@@ -48,25 +47,19 @@ namespace Cliente.Pantallas
             string password = pbPassword.Password;
 
 
-            if (email.Length < 256 && !string.IsNullOrEmpty(email)&& !string.IsNullOrEmpty(password) && password.Length < 256)
+            if (email.Length < 256 && !string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password) &&
+                password.Length < 256)
             {
-
-
                 if (SetSessionUser(email, password))
                 {
-                    MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                    var mainWindow = (MainWindow)Application.Current.MainWindow;
                     mainWindow.NavigateToView(new MainMenu());
-
                 }
                 else
-                {
                     lbErrLabel.Content = LangUtils.Translate("lblErrWrongLogin");
-                }
             }
             else
-            {
                 lbErrLabel.Content = LangUtils.Translate("lblErrNullLogin");
-            }
         }
 
         private bool SetSessionGuestUser()
@@ -74,40 +67,32 @@ namespace Cliente.Pantallas
             try
             {
                 UserDTO userDto = _servicio.GetGuestUser();
-                if (userDto == null)
-                {
-                    return false;
-                }
+                if (userDto == null) return false;
 
                 var currentUser = User.Instance;
                 currentUser.ID = userDto.UserId;
                 currentUser.Username = userDto.Username;
                 currentUser.Email = userDto.Email;
                 currentUser.ProfilePictureId = userDto.ProfilePictureId;
-
             }
             catch (EndpointNotFoundException ex)
             {
-
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
 
                 ResetClientGuest();
-
             }
             catch (TimeoutException ex)
             {
-
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
-                
+
                 ResetClientGuest();
             }
             catch (CommunicationException ex)
             {
-
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
@@ -116,13 +101,13 @@ namespace Cliente.Pantallas
             }
             catch (Exception ex)
             {
-
                 ExceptionManager.LogFatalException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrFatal"));
 
                 ResetClientGuest();
             }
+
             return true;
         }
 
@@ -140,10 +125,7 @@ namespace Cliente.Pantallas
                 }
 
                 UserDTO userDto = _servicio.LogIn(email, password);
-                if (userDto == null)
-                {
-                    return false;
-                }
+                if (userDto == null) return false;
 
 
                 var currentUser = User.Instance;
@@ -189,7 +171,6 @@ namespace Cliente.Pantallas
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
                 ResetSocial();
                 return false;
-
             }
             catch (Exception ex)
             {
@@ -199,8 +180,6 @@ namespace Cliente.Pantallas
                 ResetSocial();
                 return false;
             }
-
-
         }
 
         private void ResetSocial()
@@ -217,14 +196,13 @@ namespace Cliente.Pantallas
 
         private void ResetClientGuest()
         {
-
-           if (_servicio != null)
-           {
-               _servicio.Abort();
-               _servicio = new UsersManagerClient();
-           }
+            if (_servicio != null)
+            {
+                _servicio.Abort();
+                _servicio = new UsersManagerClient();
+            }
         }
-        
+
         private void RefreshSocialData(Social social)
         {
             social.FriendList.Clear();
@@ -239,24 +217,21 @@ namespace Cliente.Pantallas
 
         private void btRegister_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new RegisterAccount());
         }
 
         private void ForgotPassword_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new RecoverPassword());
         }
 
         private void cbLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (!_isLoaded)
-            {
-                return;
-            }
+            if (!_isLoaded) return;
 
-            ComboBoxItem selectedItem = cbLanguage.SelectedItem as ComboBoxItem;
+            var selectedItem = cbLanguage.SelectedItem as ComboBoxItem;
             if (selectedItem != null)
             {
                 string culture = selectedItem.Content as string;
@@ -289,6 +264,5 @@ namespace Cliente.Pantallas
                 Console.WriteLine("Error changing culture: " + ex.Message);
             }
         }
-    
     }
 }

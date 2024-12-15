@@ -1,41 +1,41 @@
 ﻿<UserControl x:Class="Cliente.Pantallas.Lobby"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Cliente.Pantallas"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:userControllers="clr-namespace:Cliente.UserControllers"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:p="clr-namespace:Cliente.Properties"
              xmlns:h="http://schemas.hpod9.com/haley/mvvm"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="800" d:DesignWidth="1500">
-    <Grid  MinHeight="600" MaxHeight="600" MinWidth="1200" MaxWidth="1200">
+    <Grid MinHeight="600" MaxHeight="600" MinWidth="1200" MaxWidth="1200">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="60*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="60*" />
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="10*" />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <Button Width="200" HorizontalAlignment="Left" Margin="50 0 0 0"
-            x:Name="btLeaveLobby" Content="{h:Lang btnLeaveLobby}" Click="btLeaveLobby_Click"/>
+            <Button Width="200" HorizontalAlignment="Left" Margin="50 0 0 0" Content="{h:Lang btnLeaveLobby}"
+                    Click="btLeaveLobby_Click" />
 
 
-            <Label x:Name="lbUserName" Width="355" Height="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30"/>
-
-        </StackPanel>
-        <StackPanel Grid.Column="1" Grid.Row="0"  Orientation="Horizontal">
-            <Label Content="{h:Lang lblLobby}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
-            <TextBox x:Name="tbLobbyCode" Width="180" Height="50" FontSize="30" Margin="20 0 0 0"/>
+            <Label x:Name="lbUserName" Width="355" Height="50" HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center" FontSize="30" />
 
         </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
+            <Label Content="{h:Lang lblLobby}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" />
+            <TextBox x:Name="tbLobbyCode" Width="180" Height="50" FontSize="30" Margin="20 0 0 0" />
 
-        <ItemsControl Grid.Column="0" Grid.Row="1" MinWidth="600" MaxWidth="600" MinHeight="300" MaxHeight="300" x:Name="MessagesListBox" ItemsSource="{Binding _messages}">
+        </StackPanel>
+
+        <ItemsControl Grid.Column="0" Grid.Row="1" MinWidth="600" MaxWidth="600" MinHeight="300" MaxHeight="300"
+                      x:Name="MessagesListBox" ItemsSource="{Binding _messages}">
             <ItemsControl.Resources>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Background" Value="Red" />
@@ -55,11 +55,11 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
 
-            
+
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel IsVirtualizing="True"
-                                    VirtualizationMode="Recycling" />
+                                            VirtualizationMode="Recycling" />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
 
@@ -79,57 +79,62 @@
                 <DataTemplate>
                     <userControllers:UserLobby Loaded="UserLobby_Loaded"
                                                IsLeader="{Binding IsLeader, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
-                                               CurrentUserId="{Binding CurrentUserId, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                                               CurrentUserId="{Binding CurrentUserId, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
 
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <StackPanel Orientation="Vertical"/>
+                    <StackPanel Orientation="Vertical" />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
         </ItemsControl>
 
 
-        <StackPanel Grid.Column="0" Grid.Row="2"  Orientation="Horizontal">
+        <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal">
             <TextBox
-            x:Name="tbMessage"
-            materialDesign:HintAssist.Hint="{h:Lang btnImReady}"
-            Width="450"
-            Height="100"
-            materialDesign:TextFieldAssist.CharacterCounterVisibility="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxTextCountComboBox, Converter={StaticResource BooleanToVisibilityConverter}}"
-            MaxLength="300"
-            Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                
-            TextWrapping="Wrap"
-            VerticalScrollBarVisibility="Auto" 
-            Margin="5 0 0 0"/>
-            
-            <Button Grid.Column="1" Grid.Row="3" Width="100" HorizontalAlignment="Right" Margin="25 0 25 0" x:Name="btSendMessage" Click="btSendMessage_Click">
+                x:Name="tbMessage"
+                materialDesign:HintAssist.Hint="{h:Lang btnImReady}"
+                Width="450"
+                Height="100"
+                materialDesign:TextFieldAssist.CharacterCounterVisibility="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxTextCountComboBox, Converter={StaticResource BooleanToVisibilityConverter}}"
+                MaxLength="300"
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto"
+                Margin="5 0 0 0" />
+
+            <Button Width="100" HorizontalAlignment="Right" Margin="25 0 25 0" Click="btSendMessage_Click">
                 <Button.Content>
-                    <TextBlock FontFamily="Segoe UI Symbol" Text="&#x1f4e8;" FontSize="20"/>
+                    <TextBlock FontFamily="Segoe UI Symbol" Text="&#x1f4e8;" FontSize="20" />
                 </Button.Content>
             </Button>
-        
+
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
-            
+
             <StackPanel Orientation="Horizontal">
-                <Button Grid.Column="1" Grid.Row="3" Width="200" HorizontalAlignment="Right" Margin="25 0 140 0" x:Name="btInviteFriend" Content="{h:Lang btnInviteFriend}" Click="btInviteFriend_Click"/>
-                <Button Grid.Column="1" Grid.Row="3" Width="200" HorizontalAlignment="Right" Margin="0 0 0 0" x:Name="btReady" Content="{h:Lang btnImReady}" Click="btReady_Click"/>
+                <Button Width="200" HorizontalAlignment="Right" Margin="25 0 140 0" Content="{h:Lang btnInviteFriend}"
+                        Click="btInviteFriend_Click" />
+                <Button Width="200" HorizontalAlignment="Right" Margin="0 0 0 0" Content="{h:Lang btnImReady}"
+                        Click="btReady_Click" />
             </StackPanel>
         </StackPanel>
 
-        <Label x:Name="lbMessageError" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="3" Content=""/>
+        <Label x:Name="lbMessageError" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+               Grid.Column="0" Grid.Row="3" Content="" />
 
         <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0 0 25 0">
 
 
-            <Button  Width="200" Margin="13 0 10 0"  HorizontalAlignment="Right" x:Name="btStartGame" Content="{h:Lang btnStartGame}" Click="btStartGame_Click"/>
+            <Button Width="200" Margin="13 0 10 0" HorizontalAlignment="Right" Content="{h:Lang btnStartGame}"
+                    Click="btStartGame_Click" />
 
-            <StackPanel FlowDirection="LeftToRight" Orientation="Vertical" Width="300" >
-                <TextBlock Text="{h:Lang lblErrNoConection}" x:Name="lbErrGeneral" Height="100" Width="300" TextWrapping="WrapWithOverflow" TextAlignment="Center"/>
+            <StackPanel FlowDirection="LeftToRight" Orientation="Vertical" Width="300">
+                <TextBlock Text="{h:Lang lblErrNoConection}" Height="100" Width="300" TextWrapping="WrapWithOverflow"
+                           TextAlignment="Center" />
             </StackPanel>
         </StackPanel>
 

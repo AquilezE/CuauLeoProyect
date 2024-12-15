@@ -1,43 +1,51 @@
 ﻿<UserControl x:Class="Cliente.GameUserControllers.EndGame"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Cliente.GameUserControllers"
-             mc:Ignorable="d" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
              d:DesignHeight="750" d:DesignWidth="800" Height="750" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="10*" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Content="Final Scores" Foreground="Lime" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50"/>
+        <Label Grid.Row="0" Content="Final Scores" Foreground="Lime" HorizontalAlignment="Center"
+               VerticalAlignment="Center" FontSize="50" />
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Label x:Name="lbPlayer1Username"  Content="{Binding Player1Username}" Foreground="Lime" VerticalAlignment="Center" HorizontalAlignment="Center" />
-            <Label x:Name="lbPlayer1Points" Content="{Binding Player1Score}" Foreground="Lime" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Label Content="{Binding Player1Username}" Foreground="Lime" VerticalAlignment="Center"
+                   HorizontalAlignment="Center" />
+            <Label Content="{Binding Player1Score}" Foreground="Lime" HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Label x:Name="lbPlayer2Username"  Content="{Binding Player2Username}" Foreground="Lime" VerticalAlignment="Center" HorizontalAlignment="Center" />
-            <Label x:Name="lbPlayer2Points" Content="{Binding Player2Score}" Foreground="Lime" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Label Content="{Binding Player2Username}" Foreground="Lime" VerticalAlignment="Center"
+                   HorizontalAlignment="Center" />
+            <Label Content="{Binding Player2Score}" Foreground="Lime" HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
         </StackPanel>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Label x:Name="lbPlayer3Username"  Content="{Binding Player3Username}" Foreground="Lime" VerticalAlignment="Center" HorizontalAlignment="Center" />
-            <Label x:Name="lbPlayer3Points" Content="{Binding Player3Score}" Foreground="Lime" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Label Content="{Binding Player3Username}" Foreground="Lime" VerticalAlignment="Center"
+                   HorizontalAlignment="Center" />
+            <Label Content="{Binding Player3Score}" Foreground="Lime" HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
         </StackPanel>
 
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Label x:Name="lbPlayer4Username"  Content="{Binding Player4Username}" Foreground="Lime" VerticalAlignment="Center" HorizontalAlignment="Center" />
-            <Label x:Name="lbPlayer4Points" Content="{Binding Player4Score}" Foreground="Lime" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Label Content="{Binding Player4Username}" Foreground="Lime" VerticalAlignment="Center"
+                   HorizontalAlignment="Center" />
+            <Label Content="{Binding Player4Score}" Foreground="Lime" HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
         </StackPanel>
 
-        <Button Grid.Row="5" x:Name="btContinue" Content="Continue" Height="100" Width="250" Background="Indigo" Click="btContinue_Click"/>
+        <Button Grid.Row="5" Content="Continue" Height="100" Width="250" Background="Indigo" Click="btContinue_Click" />
     </Grid>
 </UserControl>
