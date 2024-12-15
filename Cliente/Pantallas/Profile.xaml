@@ -60,7 +60,7 @@
                        Margin="0 10 15 0" />
             </StackPanel>
             <Button Grid.Column="1" Grid.Row="8" Width="150" Height="40" Margin="0 10 15 0"
-                    Content="{h:Lang btnGoBack}" FontSize="25" Background="LightGoldenrodYellow" Foreground="Coral"
+                    Content="{h:Lang btnGoBack}" FontSize="25"
                     Click="btGoBack_Click" HorizontalAlignment="Right" />
 
             <Grid Grid.Row="5">

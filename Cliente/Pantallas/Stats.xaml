@@ -38,7 +38,7 @@
         </StackPanel>
 
         <Button Grid.Row="4" Height="45" Width="150" HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                Margin="0 0 30 20" Background="LightGoldenrodYellow" Foreground="Coral" FontSize="20"
+                Margin="0 0 30 20" FontSize="20"
                 Content="{h:Lang btnGoBack}" Click="btGoBack_Click" />
     </Grid>
 </UserControl>

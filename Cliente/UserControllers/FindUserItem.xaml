@@ -23,7 +23,7 @@
                    HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" />
             <TextBlock Grid.Column="1" Text="{Binding UserFoundUsername}" Margin="10 0 0 0" TextWrapping="Wrap"
                        VerticalAlignment="Center" HorizontalAlignment="Left" Width="376" />
-            <Button Grid.Column="2" Content="{h:Lang btnSendFriendRequest}" Width="200" Background="GreenYellow"
+            <Button Grid.Column="2" Content="{h:Lang btnSendFriendRequest}" Width="200" Background="SpringGreen"
                     Click="btSendFriendRequest_Click" />
             <Button Grid.Column="3" Content="{h:Lang btnBlockUser}" Width="100" Background="IndianRed"
                     Click="btBlock_Click" />

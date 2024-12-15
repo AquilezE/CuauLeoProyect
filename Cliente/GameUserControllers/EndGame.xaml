@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:h="http://schemas.hpod9.com/haley/mvvm"
              mc:Ignorable="d"
              d:DesignHeight="750" d:DesignWidth="800" Height="750" Width="800">
     <Grid>
@@ -46,6 +47,6 @@
                    VerticalAlignment="Center" />
         </StackPanel>
 
-        <Button Grid.Row="5" Content="Continue" Height="100" Width="250" Background="Indigo" Click="btContinue_Click" />
+        <Button Grid.Row="5" Content="{h:Lang btnContinue}" Height="100" Width="250" Click="btContinue_Click" />
     </Grid>
 </UserControl>

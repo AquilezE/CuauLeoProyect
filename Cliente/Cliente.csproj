@@ -224,6 +224,9 @@
     <Compile Include="Pantallas\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pantallas\Options.xaml.cs">
+      <DependentUpon>Options.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
     </Compile>
@@ -326,6 +329,7 @@
     <Compile Include="UserLobby.cs" />
     <Compile Include="Utils\ExceptionManager.cs" />
     <Compile Include="Utils\LoggerService.cs" />
+    <Compile Include="Utils\ThemeManagerService.cs" />
     <Compile Include="Utils\Validator.cs" />
     <Page Include="GameUserControllers\CardUserController.xaml">
       <SubType>Designer</SubType>
@@ -400,6 +404,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pantallas\Lobby.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pantallas\Options.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

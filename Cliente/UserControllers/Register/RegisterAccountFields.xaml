@@ -14,35 +14,20 @@
 
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <!-- 0 -->
                 <RowDefinition Height="67*" />
-                <!-- 1 -->
                 <RowDefinition Height="40*" />
-                <!-- 2 -->
                 <RowDefinition Height="43*" />
-                <!-- 3 -->
                 <RowDefinition Height="43*" />
-                <!-- 4 -->
                 <RowDefinition Height="25*" />
-                <!-- 5 -->
                 <RowDefinition Height="43*" />
-                <!-- 6 -->
                 <RowDefinition Height="43*" />
-                <!-- 7 -->
                 <RowDefinition Height="25*" />
-                <!-- 8 -->
                 <RowDefinition Height="43*" />
-                <!-- 9 -->
                 <RowDefinition Height="43*" />
-                <!-- 10 -->
                 <RowDefinition Height="25*" />
-                <!-- 11 -->
                 <RowDefinition Height="43*" />
-                <!-- 12 -->
                 <RowDefinition Height="43*" />
-                <!-- 13 -->
                 <RowDefinition Height="25*" />
-                <!-- 14 -->
                 <RowDefinition Height="43*" />
             </Grid.RowDefinitions>
 

@@ -94,7 +94,7 @@
         <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal">
             <TextBox
                 x:Name="tbMessage"
-                materialDesign:HintAssist.Hint="{h:Lang btnImReady}"
+                materialDesign:HintAssist.Hint="{h:Lang lblSendMessage}"
                 Width="450"
                 Height="100"
                 materialDesign:TextFieldAssist.CharacterCounterVisibility="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxTextCountComboBox, Converter={StaticResource BooleanToVisibilityConverter}}"
@@ -133,7 +133,7 @@
                     Click="btStartGame_Click" />
 
             <StackPanel FlowDirection="LeftToRight" Orientation="Vertical" Width="300">
-                <TextBlock Text="{h:Lang lblErrNoConection}" Height="100" Width="300" TextWrapping="WrapWithOverflow"
+                <TextBlock Height="100" Width="300" TextWrapping="WrapWithOverflow"
                            TextAlignment="Center" />
             </StackPanel>
         </StackPanel>

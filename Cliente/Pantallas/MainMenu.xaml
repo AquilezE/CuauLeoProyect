@@ -49,14 +49,14 @@
         <Label Grid.Column="2" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"
                Content="{h:Lang lblOptions}" FontSize="25" />
         <Button Grid.Column="1" Grid.Row="2" MinWidth="20" MinHeight="120" Margin="5 5 5 5"
-                Content="{h:Lang btnCreateLobby}" FontSize="50" Background="SaddleBrown" Click="btCreateLobby_Click" />
+                Content="{h:Lang btnCreateLobby}" FontSize="50" Click="btCreateLobby_Click" />
         <Button Grid.Column="1" Grid.Row="3" MinWidth="20" MinHeight="120" Margin="5 5 5 5"
-                Content="{h:Lang btnJoinLobby}" FontSize="50" Background="SaddleBrown" Click="btJoinLobby_Click" />
+                Content="{h:Lang btnJoinLobby}" FontSize="50" Click="btJoinLobby_Click" />
         <Button Grid.Column="1" Grid.Row="4" MinWidth="20" MinHeight="120" Margin="5 5 5 5"
-                Content="{h:Lang btnFriends}" FontSize="50" Background="SaddleBrown" Click="btFriends_Click" />
+                Content="{h:Lang btnFriends}" FontSize="50" Click="btFriends_Click" />
         <Button Grid.Column="1" Grid.Row="5" MinWidth="20" MinHeight="120" Margin="5 5 5 5" Content="{h:Lang btnStats}"
-                FontSize="50" Background="SaddleBrown" Click="btStats_Click" />
+                FontSize="50" Click="btStats_Click" />
         <Button Grid.Column="0" Grid.Row="6" Width="200" Height="60" Margin="15 5 5 15" Content="{h:Lang btnLogOut}"
-                FontSize="25" Background="LightGoldenrodYellow" Foreground="Coral" Click="btLogOut_Click" />
+                FontSize="25" Click="btLogOut_Click" />
     </Grid>
 </UserControl>

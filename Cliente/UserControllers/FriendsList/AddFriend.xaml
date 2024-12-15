@@ -18,12 +18,12 @@
             <Label Content="{h:Lang btnFriendRequest}" HorizontalAlignment="Left" VerticalAlignment="Center"
                    Margin="10 10 0 0" FontSize="20" FontWeight="Bold" />
             <TextBox x:Name="tbSearchUser" Width="300" Margin="300 0 0 10" />
-            <Button Content="{h:Lang btnSearch}" Width="100" Margin="40 0 0 0" Background="AliceBlue"
+            <Button Content="{h:Lang btnSearch}" Width="100" Margin="40 0 0 0"
                     Click="btSearch_Click" />
         </StackPanel>
 
         <Button Grid.Row="2" Width="150" Height="40" Margin="0 10 15 5" Content="{h:Lang btnGoBack}" FontSize="25"
-                Background="LightGoldenrodYellow" Foreground="Coral" Click="btGoBack_Click" HorizontalAlignment="Right" />
+                Click="btGoBack_Click" HorizontalAlignment="Right" />
 
         <ItemsControl Grid.Row="1" MinWidth="750" MinHeight="400" ItemsSource="{Binding UsersFound}">
             <ItemsControl.Resources>

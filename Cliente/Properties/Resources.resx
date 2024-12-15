@@ -253,7 +253,7 @@
     <value>A code has been sent to your email, please type it here:</value>
   </data>
   <data name="lblConfirmPassword" xml:space="preserve">
-	  <value>Confirm Password</value>
+    <value>Confirm Password</value>
   </data>
   <data name="lblCurrentPassword" xml:space="preserve">
     <value>Current Password</value>
@@ -265,7 +265,7 @@
     <value>Enter your lobby code: </value>
   </data>
   <data name="lblErrDiferentPassword" xml:space="preserve">
-	  <value>Passwords must be the same</value>
+    <value>Passwords must be the same</value>
   </data>
   <data name="lblErrEmailInvalid" xml:space="preserve">
     <value>Email is invalid or already exists</value>
@@ -274,7 +274,7 @@
     <value>You must type something to send a message</value>
   </data>
   <data name="lblErrIncorrectCode" xml:space="preserve">
-	  <value>Incorrect Code</value>
+    <value>Incorrect Code</value>
   </data>
   <data name="lblErrInvalidMessage" xml:space="preserve">
     <value>Your message contains invalid characters, only alphanumeric</value>
@@ -304,7 +304,7 @@
     <value>This username already exists</value>
   </data>
   <data name="lblErrUsernameInvalid" xml:space="preserve">
-	  <value>Username can only contain letters, numbers, and underscores.</value>
+    <value>Username can only contain letters, numbers, and underscores.</value>
   </data>
   <data name="lblErrUserNotFound" xml:space="preserve">
     <value>User not found, try again later</value>
@@ -313,7 +313,7 @@
     <value>This Email is invalid or already exists</value>
   </data>
   <data name="lblErrWeakPassword" xml:space="preserve">
-	  <value>Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.</value>
+    <value>Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.</value>
   </data>
   <data name="lblErrWrongLogin" xml:space="preserve">
     <value>Incorrect username or password</value>
@@ -373,7 +373,7 @@
     <value>User ID</value>
   </data>
   <data name="lblViewProfile" xml:space="preserve">
-	  <value>View Profile</value>
+    <value>View Profile</value>
   </data>
   <data name="lblWins" xml:space="preserve">
     <value>Wins: </value>
@@ -448,7 +448,7 @@
     <value>Invalid password</value>
   </data>
   <data name="lblErrShortPassword" xml:space="preserve">
-	  <value>Password must be at least 12 characters long</value>
+    <value>Password must be at least 12 characters long</value>
   </data>
   <data name="lblKicking" xml:space="preserve">
     <value>Kicking</value>
@@ -475,7 +475,7 @@
     <value>Lobby code cannot be empty</value>
   </data>
   <data name="lblErrLobbyCodeTooLong" xml:space="preserve">
-	  <value>Lobby code is too long</value>
+    <value>Lobby code is too long</value>
   </data>
   <data name="lblErrLobbyCodeNotNumeric" xml:space="preserve">
     <value>Lobby code must be a numeric value</value>
@@ -523,60 +523,78 @@
     <value>An error ocurrer while declining the firend request, try again later!</value>
   </data>
   <data name="lblErrEmailTooLong" xml:space="preserve">
-	  <value>Email can't be longer than 255 characters</value>
+    <value>Email can't be longer than 255 characters</value>
   </data>
   <data name="lblErrEmailEmpty" xml:space="preserve">
-	  <value>You left your email empty</value>
+    <value>You left your email empty</value>
   </data>
   <data name="lblErrEmailContainsWhiteSpace" xml:space="preserve">
-	  <value>Email can't have a whitespace dude</value>
+    <value>Email can't have a whitespace dude</value>
   </data>
   <data name="lblErrUsernameTooLong" xml:space="preserve">
-	  <value>Username is too long</value>
+    <value>Username is too long</value>
   </data>
   <data name="lblErrUsernameEmpty" xml:space="preserve">
-	  <value>Username can't be empty</value>
+    <value>Username can't be empty</value>
   </data>
   <data name="lblErrPasswordEmpty" xml:space="preserve">
-	  <value>Password can't be left empty</value>
+    <value>Password can't be left empty</value>
   </data>
   <data name="lblErrPasswordContainsWhiteSpace" xml:space="preserve">
-	  <value>Password can't contain whitespaces</value>
+    <value>Password can't contain whitespaces</value>
   </data>
   <data name="lblErrTimeout" xml:space="preserve">
-	  <value>Oops! The server took too long to respond</value>
+    <value>Oops! The server took too long to respond</value>
   </data>
   <data name="lblNotYourTurn" xml:space="preserve">
-	  <value>It's not your turn</value>
+    <value>It's not your turn</value>
   </data>
   <data name="lblNoActionsRemaining" xml:space="preserve">
-	  <value>No more actions remaining </value>
+    <value>No more actions remaining </value>
   </data>
   <data name="lblDeckEmpty" xml:space="preserve">
-	  <value>Deck is Empty</value>
+    <value>Deck is Empty</value>
   </data>
   <data name="lblInvalidCard" xml:space="preserve">
-	  <value>Invalid Card</value>
+    <value>Invalid Card</value>
   </data>
   <data name="lblTooManyMonsters" xml:space="preserve">
-	  <value>Too Many Monsters</value>
+    <value>Too Many Monsters</value>
   </data>
   <data name="lblNoMonsters" xml:space="preserve">
-	  <value>You have no Monsters</value>
+    <value>You have no Monsters</value>
   </data>
   <data name="lblUnknownCardType" xml:space="preserve">
-	  <value>Unknown card type</value>
+    <value>Unknown card type</value>
   </data>
   <data name="lblPartAlreadyExists" xml:space="preserve">
-	  <value>Monster already has part</value>
+    <value>Monster already has part</value>
   </data>
   <data name="lblInvalidMonsterSelection" xml:space="preserve">
-	  <value>Invalid monster selection</value>
+    <value>Invalid monster selection</value>
   </data>
   <data name="lblYouHaveNoHead" xml:space="preserve">
-	  <value>You have no head</value>
+    <value>You have no head</value>
   </data>
   <data name="lblEmptyBabyPile" xml:space="preserve">
-	  <value>Empty Baby Pile</value>
+    <value>Empty Baby Pile</value>
+  </data>
+  <data name="rbtGreenTheme" xml:space="preserve">
+    <value>Green Theme</value>
+  </data>
+  <data name="rbtBrownTheme" xml:space="preserve">
+    <value>Brown Theme</value>
+  </data>
+  <data name="rbtPurpleTheme" xml:space="preserve">
+    <value>Purple Theme</value>
+  </data>
+  <data name="lblSendMessage" xml:space="preserve">
+    <value>Type something...</value>
+  </data>
+  <data name="lblSelectTheme" xml:space="preserve">
+    <value>Select theme</value>
+  </data>
+  <data name="btnContinue" xml:space="preserve">
+    <value>Continue</value>
   </data>
 </root>

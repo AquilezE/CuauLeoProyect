@@ -25,15 +25,15 @@
         <Label Grid.Column="1" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                FontSize="50" Content="{h:Lang lblManageFriends}" />
         <Button Grid.Column="1" Grid.Row="1" MinWidth="20" MinHeight="120" Margin="5 5 5 5"
-                Content="{h:Lang btnFriendList}" FontSize="40" Background="SaddleBrown" Click="btFriendsList_Click" />
+                Content="{h:Lang btnFriendList}" FontSize="40" Click="btFriendsList_Click" />
         <Button Grid.Column="1" Grid.Row="2" MinWidth="20" MinHeight="120" Margin="5 5 5 5"
-                Content="{h:Lang btnFriendRequest}" FontSize="40" Background="SaddleBrown"
+                Content="{h:Lang btnFriendRequest}" FontSize="40" 
                 Click="btFriendRequests_Click" />
         <Button Grid.Column="1" Grid.Row="3" MinWidth="20" MinHeight="120" Margin="5 5 5 5"
-                Content="{h:Lang btnAddFriend}" FontSize="40" Background="SaddleBrown" Click="btAddFriend_Click" />
+                Content="{h:Lang btnAddFriend}" FontSize="40" Click="btAddFriend_Click" />
         <Button Grid.Column="1" Grid.Row="4" MinWidth="20" MinHeight="120" Margin="5 5 5 5"
-                Content="{h:Lang btnBlockLists}" FontSize="40" Background="SaddleBrown" Click="btBlockList_Click" />
+                Content="{h:Lang btnBlockLists}" FontSize="40" Click="btBlockList_Click" />
         <Button Grid.Column="1" Grid.Row="5" Width="200" Height="60" Margin="15 5 5 15" Content="{h:Lang btnGoBack}"
-                FontSize="25" Background="LightGoldenrodYellow" Foreground="Coral" Click="btGoBack_Click" />
+                FontSize="25" Click="btGoBack_Click" />
     </Grid>
 </UserControl>

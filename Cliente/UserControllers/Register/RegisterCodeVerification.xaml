@@ -31,7 +31,5 @@
             </StackPanel>
 
         </StackPanel>
-
-        <Label Grid.Row="1" Content="AQUI VA LA IMAGEN" />
     </Grid>
 </UserControl>

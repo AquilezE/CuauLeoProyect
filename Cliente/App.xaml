@@ -9,10 +9,16 @@
             <ResourceDictionary.MergedDictionaries>
                 <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="Purple" SecondaryColor="Lime" />
                 <ResourceDictionary
-                    Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign2.Defaults.xaml" />
+                Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign2.Defaults.xaml" />
                 <ResourceDictionary
-                    Source="pack://application:,,,/ToastNotifications.Messages;component/Themes/Default.xaml" />
+                Source="pack://application:,,,/ToastNotifications.Messages;component/Themes/Default.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <!-- Override Foreground Brushes -->
+            <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="White" />
+            <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="White" />
+            <SolidColorBrush x:Key="SecondaryHueLightForegroundBrush" Color="White" />
+            <SolidColorBrush x:Key="SecondaryHueDarkForegroundBrush" Color="White" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

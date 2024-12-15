@@ -27,6 +27,5 @@
                    Foreground="Red" FontSize="12" HorizontalContentAlignment="Center" />
             <Button x:Name="btVerify" Content="{h:Lang btnVerify}" Click="btVerify_Click" Margin="0 30 0 0" Width="100" />
         </StackPanel>
-        <Label Grid.Row="1" Content="AQUI VA LA IMAGEN" />
     </Grid>
 </UserControl>

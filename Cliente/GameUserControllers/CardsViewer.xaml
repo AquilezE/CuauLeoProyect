@@ -6,22 +6,19 @@
              xmlns:local="clr-namespace:Cliente.GameUserControllers"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="600">
-    <!-- Define Resources -->
     <UserControl.Resources>
-        <!-- Custom Style for ScrollViewer with Horizontal ScrollBar at the Top -->
         <Style x:Key="TopScrollViewerStyle" TargetType="{x:Type ScrollViewer}">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ScrollViewer}">
                         <Grid Background="{TemplateBinding Background}">
                             <Grid.RowDefinitions>
-                                <!-- Row for Horizontal ScrollBar -->
+
                                 <RowDefinition Height="Auto" />
-                                <!-- Row for Content -->
+
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
 
-                            <!-- Horizontal ScrollBar at the Top -->
                             <ScrollBar
                                 Orientation="Horizontal"
                                 Grid.Row="0"
@@ -32,7 +29,7 @@
                                 SmallChange="1"
                                 LargeChange="10" />
 
-                            <!-- Content Presenter -->
+
                             <ScrollContentPresenter
                                 Grid.Row="1"
                                 CanContentScroll="{TemplateBinding CanContentScroll}"
@@ -48,23 +45,18 @@
         </Style>
     </UserControl.Resources>
 
-    <!-- Main Grid -->
     <Grid Background="BurlyWood">
-        <!-- ScrollViewer with Custom Style -->
         <ScrollViewer Style="{StaticResource TopScrollViewerStyle}"
                       HorizontalScrollBarVisibility="Auto"
                       VerticalScrollBarVisibility="Disabled"
                       PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
-            <!-- ItemsControl to display cards -->
             <ItemsControl ItemsSource="{Binding CardListViewer}">
-                <!-- Define the ItemTemplate -->
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <!-- Assuming 'Card' is a UserControl that represents a single card -->
                         <local:CardUserController />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
-                <!-- Use a Horizontal StackPanel for layout -->
+                
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal" />

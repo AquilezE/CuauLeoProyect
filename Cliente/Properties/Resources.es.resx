@@ -448,7 +448,7 @@
     <value>Contraseña invalida</value>
   </data>
   <data name="lblErrShortPassword" xml:space="preserve">
-	  <value>La contraseña debe tener al menos 12 caracteres</value>
+    <value>La contraseña debe tener al menos 12 caracteres</value>
   </data>
   <data name="lblKicking" xml:space="preserve">
     <value>Expulsando a</value>
@@ -523,60 +523,78 @@
     <value>Ocurrió un error al rechazar la solicitud de amistad, intentalo de nuevo más tarde!</value>
   </data>
   <data name="lblErrEmailTooLong" xml:space="preserve">
-	  <value>Tu correo electronico es muy grande!</value>
+    <value>Tu correo electronico es muy grande!</value>
   </data>
   <data name="lblErrEmailEmpty" xml:space="preserve">
-	  <value>Dejaste tu correo vacio</value>
+    <value>Dejaste tu correo vacio</value>
   </data>
   <data name="lblErrEmailContainsWhiteSpace" xml:space="preserve">
-	  <value>El correo no puede tener espacios</value>
+    <value>El correo no puede tener espacios</value>
   </data>
   <data name="lblErrUsernameTooLong" xml:space="preserve">
-	  <value>Nombre de usuario es muy largo</value>
+    <value>Nombre de usuario es muy largo</value>
   </data>
   <data name="lblErrUsernameEmpty" xml:space="preserve">
-	  <value>Nombre de usuario no puede estar vacio</value>
+    <value>Nombre de usuario no puede estar vacio</value>
   </data>
   <data name="lblErrPasswordEmpty" xml:space="preserve">
-	  <value>La contraseña no puede estar vacia</value>
+    <value>La contraseña no puede estar vacia</value>
   </data>
   <data name="lblErrPasswordContainsWhiteSpace" xml:space="preserve">
-	  <value>Contraseña no puede tener espacios</value>
+    <value>Contraseña no puede tener espacios</value>
   </data>
   <data name="lblErrTimeout" xml:space="preserve">
-	  <value>Uju! El servidor tardo mucho en responder</value>
+    <value>Uju! El servidor tardo mucho en responder</value>
   </data>
   <data name="lblNotYourTurn" xml:space="preserve">
-	  <value>No es tu turno</value>
+    <value>No es tu turno</value>
   </data>
   <data name="lblNoActionsRemaining" xml:space="preserve">
-	  <value>Ya no tienes acciones</value>
+    <value>Ya no tienes acciones</value>
   </data>
   <data name="lblDeckEmpty" xml:space="preserve">
-	  <value>Mazo esta vacio</value>
+    <value>Mazo esta vacio</value>
   </data>
   <data name="lblInvalidCard" xml:space="preserve">
-	  <value>Carta Invalida</value>
+    <value>Carta Invalida</value>
   </data>
   <data name="lblTooManyMonsters" xml:space="preserve">
-	  <value>Tienes muchos monstruos</value>
+    <value>Tienes muchos monstruos</value>
   </data>
   <data name="lblNoMonsters" xml:space="preserve">
-	  <value>No tienes Monstruos</value>
+    <value>No tienes Monstruos</value>
   </data>
   <data name="lblUnknownCardType" xml:space="preserve">
-	  <value>Carta de tipo desconocido</value>
+    <value>Carta de tipo desconocido</value>
   </data>
   <data name="lblPartAlreadyExists" xml:space="preserve">
-	  <value>El monstruo ya tiene esta parte</value>
+    <value>El monstruo ya tiene esta parte</value>
   </data>
   <data name="lblInvalidMonsterSelection" xml:space="preserve">
-	  <value>Seleccion de monstruo invalido</value>
+    <value>Seleccion de monstruo invalido</value>
   </data>
   <data name="lblYouHaveNoHead" xml:space="preserve">
-	  <value>No tienes cabeza</value>
+    <value>No tienes cabeza</value>
   </data>
   <data name="lblEmptyBabyPile" xml:space="preserve">
-	  <value>Pila de bebes vacía</value>
+    <value>Pila de bebes vacía</value>
+  </data>
+  <data name="rbtGreenTheme" xml:space="preserve">
+    <value>Tema Verde</value>
+  </data>
+  <data name="rbtBrownTheme" xml:space="preserve">
+    <value>Tema Marrón</value>
+  </data>
+  <data name="rbtPurpleTheme" xml:space="preserve">
+    <value>Tema Morado</value>
+  </data>
+  <data name="lblSendMessage" xml:space="preserve">
+    <value>Escribe algo..</value>
+  </data>
+  <data name="lblSelectTheme" xml:space="preserve">
+    <value>Seleccionar tema</value>
+  </data>
+  <data name="btnContinue" xml:space="preserve">
+    <value>Continuar</value>
   </data>
 </root>

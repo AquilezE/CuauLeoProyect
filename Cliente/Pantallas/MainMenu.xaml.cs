@@ -95,6 +95,8 @@ namespace Cliente.Pantallas
 
         private void btnOptions_Click(object sender, RoutedEventArgs e)
         {
+            var main = (MainWindow)Application.Current.MainWindow;
+            main.NavigateToView(new Options());
         }
     }
 }
