@@ -10,9 +10,7 @@ using Haley.Utils;
 
 namespace Cliente.UserControllers.ChangePassword
 {
-    /// <summary>
-    /// Lógica de interacción para ChangePassword.xaml
-    /// </summary>
+
     public partial class ChangePassword : UserControl, IProfileManagerCallback
     {
         private ProfileManagerClient _service;

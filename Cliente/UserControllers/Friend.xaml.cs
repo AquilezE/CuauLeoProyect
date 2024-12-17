@@ -4,9 +4,7 @@ using System.Windows.Controls;
 
 namespace Cliente.UserControllers
 {
-    /// <summary>
-    /// Lógica de interacción para Friend.xaml
-    /// </summary>
+
     public partial class Friend : UserControl
     {
         public event EventHandler<Cliente.Friend> deleteFriend;

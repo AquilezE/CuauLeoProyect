@@ -8,9 +8,7 @@ using System.Windows;
 
 namespace Cliente.UserControllers
 {
-    /// <summary>
-    /// Interaction logic for InviteFriends.xaml
-    /// </summary>
+
     public partial class InviteFriends : Window, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;

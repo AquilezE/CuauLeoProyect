@@ -10,9 +10,7 @@ using System.Windows.Controls;
 
 namespace Cliente.UserControllers.FriendsList
 {
-    /// <summary>
-    /// Lógica de interacción para FriendRequests.xaml
-    /// </summary>
+
     public partial class FriendRequests : UserControl
     {
         private ObservableCollection<Cliente.FriendRequest> _friendRequests;

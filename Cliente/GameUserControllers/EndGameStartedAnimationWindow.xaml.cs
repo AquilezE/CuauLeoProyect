@@ -3,9 +3,7 @@ using System.Windows;
 
 namespace Cliente.GameUserControllers
 {
-    /// <summary>
-    /// Lógica de interacción para EndGameStartedAnimationWindow.xaml
-    /// </summary>
+
     public partial class EndGameStartedAnimationWindow : Window
     {
         public EndGameStartedAnimationWindow()

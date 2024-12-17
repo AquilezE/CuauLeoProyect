@@ -4,9 +4,7 @@ using System.Windows.Controls;
 
 namespace Cliente.Pantallas
 {
-    /// <summary>
-    /// Interaction logic for RecoverPassword.xaml
-    /// </summary>
+
     public partial class RecoverPassword : UserControl
     {
         private string _email;

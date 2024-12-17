@@ -10,7 +10,6 @@
         ShowInTaskbar="False">
     <Grid>
         <Grid Background="#20000000">
-            <!-- Semi-transparent background -->
             <Image gif:ImageBehavior.AnimatedSource="pack://application:,,,/Images/kanye-west-wtf.gif"
                    gif:ImageBehavior.AnimationCompleted="EndGameStarted_AnimationCompleted"
                    gif:ImageBehavior.RepeatBehavior="1x"

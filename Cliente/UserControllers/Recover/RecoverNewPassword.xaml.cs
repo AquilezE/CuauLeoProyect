@@ -8,10 +8,7 @@ using System.Windows.Controls;
 
 namespace Cliente.UserControllers.Recover
 {
-    /// <summary>
-    /// Interaction logic for RecoverNewPassword.xaml
-    /// </summary>
-    /// 
+
     public partial class RecoverNewPassword : UserControl
     {
         public event EventHandler PasswordChanged;

@@ -4,9 +4,7 @@ using System.Windows.Controls;
 
 namespace Cliente.GameUserControllers
 {
-    /// <summary>
-    /// Lógica de interacción para MonstersViewerPlayer3.xaml
-    /// </summary>
+
     public partial class MonstersViewerPlayer3 : UserControl
     {
         public EventHandler<MonstersViewerPlayer3> closePanel;

@@ -14,7 +14,6 @@ namespace Cliente.Converters
                 values[1] is int currentUserId &&
                 values[2] is int userId)
             {
-                // Show the Kick button only if the current user is the leader and not the same as the user in the control
                 if (isLeader && currentUserId != userId) return Visibility.Visible;
             }
 

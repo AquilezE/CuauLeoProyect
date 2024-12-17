@@ -4,9 +4,7 @@ using System.Windows.Input;
 
 namespace Cliente.GameUserControllers
 {
-    /// <summary>
-    /// Lógica de interacción para Card.xaml
-    /// </summary>
+
     public partial class CardUserController : UserControl
     {
         public static readonly RoutedEvent CardClickedEvent = EventManager.RegisterRoutedEvent(

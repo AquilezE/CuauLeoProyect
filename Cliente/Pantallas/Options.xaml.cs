@@ -10,9 +10,7 @@ using System.Windows.Media;
 
 namespace Cliente.Pantallas
 {
-    /// <summary>
-    /// Lógica de interacción para Options.xaml
-    /// </summary>
+
     public partial class Options : UserControl
     {
         private bool _isLoaded;

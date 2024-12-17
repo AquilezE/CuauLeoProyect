@@ -4,9 +4,7 @@ using System.Windows.Controls;
 
 namespace Cliente.UserControllers
 {
-    /// <summary>
-    /// Lógica de interacción para FriendRequest.xaml
-    /// </summary>
+
     public partial class FriendRequest : UserControl
     {
         public event EventHandler<Cliente.FriendRequest> acceptFriend;

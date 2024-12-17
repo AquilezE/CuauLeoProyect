@@ -2,9 +2,7 @@
 
 namespace Cliente.GameUserControllers
 {
-    /// <summary>
-    /// Interaction logic for ProvokeAnimationWindow.xaml
-    /// </summary>
+
     public partial class ProvokeAnimationWindow : Window
     {
         public ProvokeAnimationWindow()

@@ -4,9 +4,7 @@ using System.Windows.Controls;
 
 namespace Cliente.UserControllers
 {
-    /// <summary>
-    /// Lógica de interacción para FindUserItem.xaml
-    /// </summary>
+
     public partial class FindUserItem : UserControl
     {
         public event EventHandler<UserFound> sendFriendRequest;

@@ -8,9 +8,7 @@ using System.Windows.Controls;
 
 namespace Cliente.UserControllers
 {
-    /// <summary>
-    /// Interaction logic for RegisterCodeVerification.xaml
-    /// </summary>
+
     public partial class RegisterCodeVerification : UserControl
     {
         public event EventHandler VerificationCompleted;

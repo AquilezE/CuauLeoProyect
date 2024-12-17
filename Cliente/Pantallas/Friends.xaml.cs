@@ -4,9 +4,7 @@ using System.Windows.Controls;
 
 namespace Cliente.Pantallas
 {
-    /// <summary>
-    /// Lógica de interacción para Friends.xaml
-    /// </summary>
+
     public partial class Friends : UserControl
     {
         public Friends()

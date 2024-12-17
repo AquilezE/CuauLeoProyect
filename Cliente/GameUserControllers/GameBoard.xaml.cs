@@ -12,9 +12,7 @@ using Haley.Utils;
 
 namespace Cliente.GameUserControllers
 {
-    /// <summary>
-    /// Interaction logic for GameBoard.xaml
-    /// </summary>
+
     public partial class GameBoard : UserControl
     {
         public GameManagerClient gameManagerClient;

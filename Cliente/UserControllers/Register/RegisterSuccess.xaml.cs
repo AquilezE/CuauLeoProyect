@@ -4,9 +4,7 @@ using System.Windows.Controls;
 
 namespace Cliente.UserControllers
 {
-    /// <summary>
-    /// Interaction logic for RegisterSuccess.xaml
-    /// </summary>
+
     public partial class RegisterSuccess : UserControl
     {
         public RegisterSuccess()

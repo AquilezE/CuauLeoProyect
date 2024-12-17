@@ -10,9 +10,7 @@ using System.Windows.Controls;
 
 namespace Cliente.UserControllers.FriendsList
 {
-    /// <summary>
-    /// Lógica de interacción para BlockedUsersList.xaml
-    /// </summary>
+
     public partial class BlockedUsersList : UserControl
     {
         private ObservableCollection<Blocked> _blockedList;

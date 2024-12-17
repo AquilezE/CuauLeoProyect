@@ -6,9 +6,7 @@ using System.Windows.Media;
 
 namespace Cliente.GameUserControllers
 {
-    /// <summary>
-    /// Interaction logic for MonsterSelectionWindow.xaml
-    /// </summary>
+
     public partial class MonsterSelectionWindow : Window
     {
         public int SelectedMonsterIndex { get; private set; } = -1;

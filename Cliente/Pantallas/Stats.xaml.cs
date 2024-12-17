@@ -4,9 +4,7 @@ using System.Windows.Controls;
 
 namespace Cliente.Pantallas
 {
-    /// <summary>
-    /// Lógica de interacción para Stats.xaml
-    /// </summary>
+
     public partial class Stats : UserControl, IStatsManagerCallback
     {
         public StatsManagerClient statsManagerClient;

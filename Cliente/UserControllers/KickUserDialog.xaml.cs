@@ -3,9 +3,7 @@ using System.Windows;
 
 namespace Cliente.UserControllers
 {
-    /// <summary>
-    /// Interaction logic for KickUserDialog.xaml
-    /// </summary>
+
     public partial class KickUserDialog : Window
     {
         public string KickReason { get; private set; }

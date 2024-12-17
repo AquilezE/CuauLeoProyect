@@ -11,10 +11,7 @@ using System.Windows.Media.Imaging;
 
 namespace Cliente.Pantallas
 {
-    ///
-    /// <summary>
-    /// Lógica de interacción para Profile.xaml
-    /// </summary>
+
     public partial class Profile : UserControl, IProfileManagerCallback
     {
         private ProfileManagerClient _service;
@@ -114,8 +111,7 @@ namespace Cliente.Pantallas
 
             if (User.Instance.ProfilePictureId != 1 || User.Instance.ProfilePictureId != 0)
                 imgProfilePicture.Source =
-                    new BitmapImage(new Uri("pack://application:,,,/Images/pfp" + User.Instance.ProfilePictureId +
-                                            ".jpg"));
+                    new BitmapImage(new Uri("pack://application:,,,/Images/pfp" + User.Instance.ProfilePictureId + ".jpg"));
         }
 
         private void SetNewUserName()

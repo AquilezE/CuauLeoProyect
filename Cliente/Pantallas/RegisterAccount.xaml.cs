@@ -4,12 +4,7 @@ using System.Windows.Controls;
 
 namespace Cliente.Pantallas
 {
-    /// <summary>
-    /// Interaction logic for RegisterAccount.xaml
-    /// </summary>
-    /// 
 
-    //this will implement the IRegisterAccountService interface
     public partial class RegisterAccount : UserControl
     {
         private string _username;

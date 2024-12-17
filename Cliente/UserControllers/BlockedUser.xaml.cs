@@ -4,9 +4,7 @@ using System.Windows.Controls;
 
 namespace Cliente.UserControllers
 {
-    /// <summary>
-    /// Lógica de interacción para BlockedUser.xaml
-    /// </summary>
+
     public partial class BlockedUser : UserControl
     {
         public event EventHandler<Blocked> unblockUser;

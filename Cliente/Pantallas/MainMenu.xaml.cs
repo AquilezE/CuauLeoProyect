@@ -9,9 +9,7 @@ using System.Windows.Controls;
 
 namespace Cliente.Pantallas
 {
-    /// <summary>
-    /// Lógica de interacción para MainMenu.xaml
-    /// </summary>
+
     public partial class MainMenu : UserControl
     {
         public MainMenu()

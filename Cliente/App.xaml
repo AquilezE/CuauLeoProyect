@@ -14,7 +14,6 @@
                 Source="pack://application:,,,/ToastNotifications.Messages;component/Themes/Default.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <!-- Override Foreground Brushes -->
             <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="White" />
             <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="White" />
             <SolidColorBrush x:Key="SecondaryHueLightForegroundBrush" Color="White" />

@@ -4,9 +4,7 @@ using Cliente.Pantallas;
 
 namespace Cliente.UserControllers.Recover
 {
-    /// <summary>
-    /// Interaction logic for RecoverSuccesful.xaml
-    /// </summary>
+
     public partial class RecoverSuccesful : UserControl
     {
         public RecoverSuccesful()

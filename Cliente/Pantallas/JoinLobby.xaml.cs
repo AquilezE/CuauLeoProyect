@@ -10,9 +10,7 @@ using System.Windows.Controls;
 
 namespace Cliente.Pantallas
 {
-    /// <summary>
-    /// Lógica de interacción para JoinLobby.xaml
-    /// </summary>
+
     public partial class JoinLobby : UserControl
     {
         private readonly LobbyCheckerClient _lobbyCheckerClient;

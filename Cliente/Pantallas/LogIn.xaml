@@ -25,7 +25,6 @@
                 <RowDefinition Height="25*" />
             </Grid.RowDefinitions>
 
-            <!-- Make sure the languages work -->
             <StackPanel Grid.Row="0" Orientation="Horizontal">
                 <Label Content="Bevosos" FontSize="40" Margin="50 0 150 0" />
                 <ComboBox x:Name="cbLanguage" SelectedIndex="0" SelectionChanged="cbLanguage_SelectionChanged">
@@ -64,9 +63,6 @@
                 <Button Grid.Column="0" Content="{h:Lang globalsRegister}" Click="btRegister_Click" Margin="10 0 0 0" />
                 <Button Grid.Column="2" Content="{h:Lang btnPlayAsGuest}" Click="btPlayAsGuest_Click" Margin="0 0 10 0" />
             </Grid>
-
-            <!-- Rest of the code -->
-
         </Grid>
     </Grid>
 </UserControl>

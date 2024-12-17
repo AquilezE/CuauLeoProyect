@@ -10,9 +10,7 @@ using Cliente.Utils;
 
 namespace Cliente.Pantallas
 {
-    /// <summary>
-    /// Interaction logic for LogIn.xaml
-    /// </summary>
+
     public partial class LogIn : UserControl
     {
         private UsersManagerClient _servicio;

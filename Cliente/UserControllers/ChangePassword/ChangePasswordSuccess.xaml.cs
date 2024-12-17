@@ -4,9 +4,7 @@ using System.Windows.Controls;
 
 namespace Cliente.UserControllers.ChangePassword
 {
-    /// <summary>
-    /// Lógica de interacción para ChangePasswordSuccess.xaml
-    /// </summary>
+
     public partial class ChangePasswordSuccess : UserControl
     {
         public ChangePasswordSuccess()

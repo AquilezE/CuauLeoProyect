@@ -4,9 +4,7 @@ using System.Windows.Controls;
 
 namespace Cliente.GameUserControllers
 {
-    /// <summary>
-    /// Lógica de interacción para EndGame.xaml
-    /// </summary>
+
     public partial class EndGame : UserControl
     {
         public EndGame()
