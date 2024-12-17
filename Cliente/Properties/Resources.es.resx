@@ -316,7 +316,7 @@
     <value>La contraseña debe tener una mayúscula, una minúscula, un número y un caracter especial</value>
   </data>
   <data name="lblErrWrongLogin" xml:space="preserve">
-    <value>Nombre de usuario o Contraseña fueron incorrectos</value>
+	  <value>Correo o Contraseña fueron incorrectos</value>
   </data>
   <data name="lblFindUser" xml:space="preserve">
     <value>Encontrar usuario</value>

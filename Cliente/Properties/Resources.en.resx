@@ -316,7 +316,7 @@
     <value>Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.</value>
   </data>
   <data name="lblErrWrongLogin" xml:space="preserve">
-    <value>Incorrect username or password</value>
+	  <value>Incorrect email or password</value>
   </data>
   <data name="lblFindUser" xml:space="preserve">
     <value>Find User</value>
