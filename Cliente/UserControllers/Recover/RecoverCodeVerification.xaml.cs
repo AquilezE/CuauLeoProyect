@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using Haley.Utils;
 using System.ServiceModel;
 using Cliente.Utils;
+using Cliente.Pantallas;
 
 namespace Cliente.UserControllers.Recover
 {
@@ -20,7 +21,7 @@ namespace Cliente.UserControllers.Recover
 
 
         private int _retryCounter = 0;
-        private const int MAX_RETRIES = 3;
+        private const int MaxRetries = 3;
 
         public RecoverCodeVerification(string email)
         {
@@ -99,7 +100,7 @@ namespace Cliente.UserControllers.Recover
 
             _retryCounter++;
 
-            if (_retryCounter >= MAX_RETRIES)
+            if (_retryCounter >= MaxRetries)
             {
                 lbErrVerificactionCode.Content = LangUtils.Translate("lblErrCodeManyAttempts");
                 btVerify.IsEnabled = false;
@@ -127,11 +128,11 @@ namespace Cliente.UserControllers.Recover
             return true;
         }
 
-        private async void ResendEmail_Click(object sender, RoutedEventArgs e)
+        private async void btResendEmail_Click(object sender, RoutedEventArgs e)
         {
-            tbVerificactionCode.IsEnabled = false;
+            btResendEmail.IsEnabled = false;
 
-            tbVerificactionCode.Text = LangUtils.Translate("lblSending");
+            btResendEmail.Content = LangUtils.Translate("lblSending");
 
             try
             {
@@ -139,7 +140,7 @@ namespace Cliente.UserControllers.Recover
 
                 if (emailSent)
                 {
-                    lbErrVerificactionCode.Content = LangUtils.Translate("lblCodeResent");
+                    btResendEmail.Content = LangUtils.Translate("lblCodeResent");
                 }
                 else
                 {
@@ -184,8 +185,8 @@ namespace Cliente.UserControllers.Recover
                 {
                     Dispatcher.Invoke(() =>
                     {
-                        tbVerificactionCode.IsEnabled = true;
-                        tbVerificactionCode.Text = LangUtils.Translate("lblClickHereResend");
+                        btResendEmail.IsEnabled = true;
+                        btResendEmail.Content = LangUtils.Translate("lblClickHereResend");
                     });
                     timer.Stop();
                     timer.Dispose();
@@ -194,6 +195,11 @@ namespace Cliente.UserControllers.Recover
             }
         }
 
+        private void btCancel_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.NavigateToView(new LogIn());
+        }
     }
 
 }

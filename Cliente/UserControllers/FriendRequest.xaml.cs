@@ -8,8 +8,8 @@ namespace Cliente.UserControllers
     public partial class FriendRequest : UserControl
     {
 
-        public event EventHandler<Cliente.FriendRequest> acceptFriend;
-        public event EventHandler<Cliente.FriendRequest> declineFriend;
+        public event EventHandler<Cliente.FriendRequest> AcceptFriend;
+        public event EventHandler<Cliente.FriendRequest> DeclineFriend;
 
         public FriendRequest()
         {
@@ -18,12 +18,12 @@ namespace Cliente.UserControllers
 
         private void btAccept_Click(object sender, RoutedEventArgs e)
         {
-            acceptFriend?.Invoke(this, DataContext as Cliente.FriendRequest);
+            AcceptFriend?.Invoke(this, DataContext as Cliente.FriendRequest);
         }
 
         private void btDecline_Click(object sender, RoutedEventArgs e)
         {
-            declineFriend?.Invoke(this, DataContext as Cliente.FriendRequest);
+            DeclineFriend?.Invoke(this, DataContext as Cliente.FriendRequest);
         }
 
     }

@@ -16,8 +16,8 @@ namespace Cliente.Pantallas
     {
 
         private ProfileManagerClient _service;
-        private static string newUsername;
-        private static int newProfilePictureId = 0;
+        private static string _newUsername;
+        private static int _newProfilePictureId = 0;
 
         public Profile()
         {
@@ -29,7 +29,7 @@ namespace Cliente.Pantallas
 
         private void imgPfp1_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            newProfilePictureId = 2;
+            _newProfilePictureId = 2;
             ResetAllBorders();
             Console.WriteLine(imgPfp1.Source);
             brdKanye.BorderBrush = Brushes.Red;
@@ -37,7 +37,7 @@ namespace Cliente.Pantallas
 
         private void imgPfp2_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            newProfilePictureId = 3;
+            _newProfilePictureId = 3;
             ResetAllBorders();
             Console.WriteLine(imgPfp2.Source);
             brdTravis.BorderBrush = Brushes.Red;
@@ -45,7 +45,7 @@ namespace Cliente.Pantallas
 
         private void imgPfp3_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            newProfilePictureId = 4;
+            _newProfilePictureId = 4;
             ResetAllBorders();
             Console.WriteLine(imgPfp3.Source);
             brdCarti.BorderBrush = Brushes.Red;
@@ -53,7 +53,7 @@ namespace Cliente.Pantallas
 
         private void imgPfp4_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            newProfilePictureId = 5;
+            _newProfilePictureId = 5;
             ResetAllBorders();
             Console.WriteLine(imgPfp4.Source);
             brdKendrick.BorderBrush = Brushes.Red;
@@ -61,7 +61,7 @@ namespace Cliente.Pantallas
 
         private void imgPfp5_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            newProfilePictureId = 6;
+            _newProfilePictureId = 6;
             ResetAllBorders();
             Console.WriteLine(imgPfp5.Source);
             brdKitty.BorderBrush = Brushes.Red;
@@ -69,7 +69,7 @@ namespace Cliente.Pantallas
 
         private void imgPfp6_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            newProfilePictureId = 7;
+            _newProfilePictureId = 7;
             ResetAllBorders();
             Console.WriteLine(imgPfp6.Source);
             brdMelody.BorderBrush = Brushes.Red;
@@ -77,7 +77,7 @@ namespace Cliente.Pantallas
 
         private void imgPfp7_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            newProfilePictureId = 8;
+            _newProfilePictureId = 8;
             ResetAllBorders();
             Console.WriteLine(imgPfp7.Source);
             brdKuromi.BorderBrush = Brushes.Red;
@@ -85,7 +85,7 @@ namespace Cliente.Pantallas
 
         private void imgPfp8_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            newProfilePictureId = 9;
+            _newProfilePictureId = 9;
             ResetAllBorders();
             Console.WriteLine(imgPfp8.Source);
             brdCinamon.BorderBrush = Brushes.Red;
@@ -120,7 +120,7 @@ namespace Cliente.Pantallas
 
         private void SetNewUserName()
         {
-            newUsername = tbNewUsername.Text;
+            _newUsername = tbNewUsername.Text;
         }
 
 
@@ -130,21 +130,21 @@ namespace Cliente.Pantallas
             lbErrInvalidUsername.Content = "";
             lbErrNothingChanged.Content = "";
 
-            if (newUsername == "" && newProfilePictureId == 0)
+            if (_newUsername == "" && _newProfilePictureId == 0)
             {
                 lbErrNothingChanged.Content = LangUtils.Translate("lblErrProfileNothingChanged");
             }
-            else if (newUsername != "" && newProfilePictureId != 0)
+            else if (_newUsername != "" && _newProfilePictureId != 0)
             {
-                _service.UpdateProfile(User.Instance.ID, newUsername, newProfilePictureId);
+                _service.UpdateProfile(User.Instance.ID, _newUsername, _newProfilePictureId);
             }
-            else if (newUsername == "" && newProfilePictureId != 0)
+            else if (_newUsername == "" && _newProfilePictureId != 0)
             {
-                _service.UpdateProfile(User.instance.ID, "Not changed", newProfilePictureId);
+                _service.UpdateProfile(User.instance.ID, "Not changed", _newProfilePictureId);
             }
-            else if (newUsername != "" && newProfilePictureId == 0)
+            else if (_newUsername != "" && _newProfilePictureId == 0)
             {
-                _service.UpdateProfile(User.instance.ID, newUsername, User.Instance.ProfilePictureId);
+                _service.UpdateProfile(User.instance.ID, _newUsername, User.Instance.ProfilePictureId);
             }
         }
 
@@ -159,8 +159,8 @@ namespace Cliente.Pantallas
             LoadUserInfo();
             ResetAllBorders();
 
-            newUsername = "";
-            newProfilePictureId = 0;
+            _newUsername = "";
+            _newProfilePictureId = 0;
             lbErrInvalidUsername.Content = error;
         }
 

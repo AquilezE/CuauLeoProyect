@@ -21,7 +21,7 @@ namespace Cliente.UserControllers
         private string _password;
 
         private int _retryCounter = 0;
-        private const int MAX_RETRIES = 3;
+        private const int MaxRetries = 3;
 
 
         public RegisterCodeVerification(string email, string username, string password)
@@ -84,7 +84,7 @@ namespace Cliente.UserControllers
 
             _retryCounter++;
 
-            if (_retryCounter >= MAX_RETRIES)
+            if (_retryCounter >= MaxRetries)
             {
                 lbErrVerificactionCode.Content = LangUtils.Translate("lblErrManyCodeAttempts");
                 btRegister.IsEnabled = false;

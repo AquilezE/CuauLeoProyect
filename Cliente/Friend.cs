@@ -9,7 +9,7 @@ namespace Cliente
     {
 
         public event PropertyChangedEventHandler PropertyChanged;
-        private bool isConnected;
+        private bool _isConnected;
 
         public string FriendName { get; set; }
         public int FriendShipId { get; set; }
@@ -18,12 +18,12 @@ namespace Cliente
 
         public bool IsConnected
         {
-            get => isConnected;
+            get => _isConnected;
             set
             {
-                if (isConnected != value)
+                if (_isConnected != value)
                 {
-                    isConnected = value;
+                    _isConnected = value;
                     OnPropertyChanged(nameof(IsConnected));
                 }
             }

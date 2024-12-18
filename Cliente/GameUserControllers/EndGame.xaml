@@ -16,34 +16,34 @@
             <RowDefinition Height="10*" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Content="Final Scores" Foreground="Lime" HorizontalAlignment="Center"
+        <Label Grid.Row="0" Content="Final Scores"  HorizontalAlignment="Center"
                VerticalAlignment="Center" FontSize="50" />
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Label Content="{Binding Player1Username}" Foreground="Lime" VerticalAlignment="Center"
+            <Label Content="{Binding Player1Username}"  VerticalAlignment="Center"
                    HorizontalAlignment="Center" />
-            <Label Content="{Binding Player1Score}" Foreground="Lime" HorizontalAlignment="Center"
+            <Label Content="{Binding Player1Score}"  HorizontalAlignment="Center"
                    VerticalAlignment="Center" />
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Label Content="{Binding Player2Username}" Foreground="Lime" VerticalAlignment="Center"
+            <Label Content="{Binding Player2Username}"  VerticalAlignment="Center"
                    HorizontalAlignment="Center" />
-            <Label Content="{Binding Player2Score}" Foreground="Lime" HorizontalAlignment="Center"
+            <Label Content="{Binding Player2Score}"  HorizontalAlignment="Center"
                    VerticalAlignment="Center" />
         </StackPanel>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Label Content="{Binding Player3Username}" Foreground="Lime" VerticalAlignment="Center"
+            <Label Content="{Binding Player3Username}" VerticalAlignment="Center"
                    HorizontalAlignment="Center" />
-            <Label Content="{Binding Player3Score}" Foreground="Lime" HorizontalAlignment="Center"
+            <Label Content="{Binding Player3Score}" HorizontalAlignment="Center"
                    VerticalAlignment="Center" />
         </StackPanel>
 
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Label Content="{Binding Player4Username}" Foreground="Lime" VerticalAlignment="Center"
+            <Label Content="{Binding Player4Username}"  VerticalAlignment="Center"
                    HorizontalAlignment="Center" />
-            <Label Content="{Binding Player4Score}" Foreground="Lime" HorizontalAlignment="Center"
+            <Label Content="{Binding Player4Score}"  HorizontalAlignment="Center"
                    VerticalAlignment="Center" />
         </StackPanel>
 

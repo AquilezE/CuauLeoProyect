@@ -124,7 +124,7 @@ namespace Cliente.Pantallas
                 var social = Social.Instance;
 
 
-                if (Social.Instance.socialManagerClient.IsConnected(email))
+                if (Social.Instance.SocialManagerClient.IsConnected(email))
                 {
                     Social.Instance = null;
                     return false;
@@ -144,7 +144,7 @@ namespace Cliente.Pantallas
                 currentUser.ProfilePictureId = userDto.ProfilePictureId;
 
 
-                Social.Instance.socialManagerClient.Connect(currentUser.ID);
+                Social.Instance.SocialManagerClient.Connect(currentUser.ID);
                 RefreshSocialData(social);
 
                 return true;

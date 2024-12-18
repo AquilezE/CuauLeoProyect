@@ -34,8 +34,8 @@ namespace Cliente.UserControllers.FriendsList
         {
             if (sender is FriendRequest friendRequestUserControl)
             {
-                friendRequestUserControl.acceptFriend += OnFriendRequestAccept;
-                friendRequestUserControl.declineFriend += OnFriendRequestDecline;
+                friendRequestUserControl.AcceptFriend += OnFriendRequestAccept;
+                friendRequestUserControl.DeclineFriend += OnFriendRequestDecline;
             }
         }
 
@@ -46,7 +46,7 @@ namespace Cliente.UserControllers.FriendsList
                 try
                 {
                     bool result =
-                        await Social.Instance.socialManagerClient.AcceptFriendRequestAsync(User.Instance.ID, e.SenderId,
+                        await Social.Instance.SocialManagerClient.AcceptFriendRequestAsync(User.Instance.ID, e.SenderId,
                             e.FriendRequestId);
                     if (result)
                     {
@@ -98,7 +98,7 @@ namespace Cliente.UserControllers.FriendsList
                 try
                 {
                     bool result =
-                        await Social.Instance.socialManagerClient.DeclineFriendRequestAsync(e.FriendRequestId);
+                        await Social.Instance.SocialManagerClient.DeclineFriendRequestAsync(e.FriendRequestId);
 
                     if (result)
                     {

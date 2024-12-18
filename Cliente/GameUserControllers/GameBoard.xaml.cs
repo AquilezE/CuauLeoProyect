@@ -16,7 +16,7 @@ namespace Cliente.GameUserControllers
     public partial class GameBoard : UserControl
     {
 
-        public GameManagerClient gameManagerClient;
+        public GameManagerClient GameManagerClient;
 
         public GameBoard()
         {
@@ -52,7 +52,7 @@ namespace Cliente.GameUserControllers
 
         private void GameBoard_Loaded(object sender, RoutedEventArgs e)
         {
-            gameManagerClient = new GameManagerClient(new InstanceContext(GameLogic.Instance));
+            GameManagerClient = new GameManagerClient(new InstanceContext(GameLogic.Instance));
 
             try
             {
@@ -62,7 +62,7 @@ namespace Cliente.GameUserControllers
                 user.Email = User.Instance.Email;
                 user.ProfilePictureId = User.Instance.ProfilePictureId;
 
-                gameManagerClient.JoinGame(GameLogic.Instance.GameId, user);
+                GameManagerClient.JoinGame(GameLogic.Instance.GameId, user);
             }
             catch (EndpointNotFoundException ex)
             {
@@ -87,13 +87,13 @@ namespace Cliente.GameUserControllers
 
                 var card = cardData as GameCard;
 
-                gameManagerClient.PlayCard(User.Instance.ID, GameLogic.Instance.GameId, card.CardId);
+                GameManagerClient.PlayCard(User.Instance.ID, GameLogic.Instance.GameId, card.CardId);
             }
         }
 
         private void DrawCard(object sender, RoutedEventArgs e)
         {
-            gameManagerClient.DrawCard(GameLogic.Instance.GameId, User.Instance.ID);
+            GameManagerClient.DrawCard(GameLogic.Instance.GameId, User.Instance.ID);
         }
 
 
@@ -101,7 +101,7 @@ namespace Cliente.GameUserControllers
         {
             if (extensiblePanelMonstersPlayer1.Content is MonstersViewerPlayer1 monstersViewer)
             {
-                monstersViewer.closePanel += OnClosePanelPlayer1;
+                monstersViewer.ClosePanel += OnClosePanelPlayer1;
             }
             else
             {
@@ -113,7 +113,7 @@ namespace Cliente.GameUserControllers
         {
             if (extensiblePanelMonstersPlayer2.Content is MonstersViewerPlayer2 monstersViewerVertical)
             {
-                monstersViewerVertical.closePanel += OnClosePanelPLayer2;
+                monstersViewerVertical.ClosePanel += OnClosePanelPLayer2;
             }
             else
             {
@@ -125,7 +125,7 @@ namespace Cliente.GameUserControllers
         {
             if (extensiblePanelMonstersPlayer3.Content is MonstersViewerPlayer3 monstersViewerVertical)
             {
-                monstersViewerVertical.closePanel += OnClosePanelPlayer3;
+                monstersViewerVertical.ClosePanel += OnClosePanelPlayer3;
             }
             else
             {
@@ -137,7 +137,7 @@ namespace Cliente.GameUserControllers
         {
             if (extensiblePanelMonstersPlayer4.Content is MonstersViewerPlayer4 monstersViewerVertical)
             {
-                monstersViewerVertical.closePanel += OnClosePanelPlayer4;
+                monstersViewerVertical.ClosePanel += OnClosePanelPlayer4;
             }
             else
             {
@@ -153,7 +153,7 @@ namespace Cliente.GameUserControllers
                 if (selectionWindow.ShowDialog() == true)
                 {
                     int selectedMonsterIndex = selectionWindow.SelectedMonsterIndex;
-                    gameManagerClient.ExecuteToolPlacement(User.Instance.ID, GameLogic.Instance.GameId, card.CardId,
+                    GameManagerClient.ExecuteToolPlacement(User.Instance.ID, GameLogic.Instance.GameId, card.CardId,
                         selectedMonsterIndex);
                 }
             });
@@ -167,7 +167,7 @@ namespace Cliente.GameUserControllers
                 if (selectionWindow.ShowDialog() == true)
                 {
                     int selectedMonsterIndex = selectionWindow.SelectedMonsterIndex;
-                    gameManagerClient.ExecuteBodyPartPlacement(User.Instance.ID, GameLogic.Instance.GameId, card.CardId,
+                    GameManagerClient.ExecuteBodyPartPlacement(User.Instance.ID, GameLogic.Instance.GameId, card.CardId,
                         selectedMonsterIndex);
                 }
             });
@@ -181,7 +181,7 @@ namespace Cliente.GameUserControllers
                 if (selectionWindow.ShowDialog() == true)
                 {
                     int selectedMonsterIndex = selectionWindow.SelectedMonsterIndex;
-                    gameManagerClient.ExecuteHatPlacement(User.Instance.ID, GameLogic.Instance.GameId, card.CardId,
+                    GameManagerClient.ExecuteHatPlacement(User.Instance.ID, GameLogic.Instance.GameId, card.CardId,
                         selectedMonsterIndex);
                 }
             });
@@ -255,19 +255,19 @@ namespace Cliente.GameUserControllers
 
         private async void btnProvokeEarth_Click(object sender, RoutedEventArgs e)
         {
-            await gameManagerClient.PlayProvokeAsync(User.Instance.ID, GameLogic.Instance.GameId, 0);
+            await GameManagerClient.PlayProvokeAsync(User.Instance.ID, GameLogic.Instance.GameId, 0);
             Console.WriteLine("Provoke Water");
         }
 
         private async void btnProvokeWater_Click(object sender, RoutedEventArgs e)
         {
-            await gameManagerClient.PlayProvokeAsync(User.Instance.ID, GameLogic.Instance.GameId, 1);
+            await GameManagerClient.PlayProvokeAsync(User.Instance.ID, GameLogic.Instance.GameId, 1);
             Console.WriteLine("Provoke Water");
         }
 
         private async void btnProvokeSky_Click(object sender, RoutedEventArgs e)
         {
-            await gameManagerClient.PlayProvokeAsync(User.Instance.ID, GameLogic.Instance.GameId, 2);
+            await GameManagerClient.PlayProvokeAsync(User.Instance.ID, GameLogic.Instance.GameId, 2);
             Console.WriteLine("Provoke Water");
         }
 

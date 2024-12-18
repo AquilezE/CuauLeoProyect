@@ -34,7 +34,7 @@ namespace Cliente.UserControllers.FriendsList
         {
             if (sender is BlockedUser blockedUserControl)
             {
-                blockedUserControl.unblockUser += OnUnblockUser;
+                blockedUserControl.UnblockUser += OnUnblockUser;
             }
         }
 
@@ -47,7 +47,7 @@ namespace Cliente.UserControllers.FriendsList
 
             try
             {
-                bool result = await Social.Instance.socialManagerClient.UnblockUserAsync(User.Instance.ID, e.BlockedId);
+                bool result = await Social.Instance.SocialManagerClient.UnblockUserAsync(User.Instance.ID, e.BlockedId);
                 if (result)
                 {
                     Social.Instance.BlockedUsersList.Remove(e);

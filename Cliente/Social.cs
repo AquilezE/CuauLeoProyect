@@ -16,7 +16,7 @@ namespace Cliente
     public class Social : ISocialManagerCallback, INotifyPropertyChanged
     {
 
-        public SocialManagerClient socialManagerClient;
+        public SocialManagerClient SocialManagerClient;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -28,9 +28,9 @@ namespace Cliente
 
         public Social()
         {
-            socialManagerClient = new SocialManagerClient(new InstanceContext(this));
+            SocialManagerClient = new SocialManagerClient(new InstanceContext(this));
 
-            var clientChannel = (ICommunicationObject)socialManagerClient;
+            var clientChannel = (ICommunicationObject)SocialManagerClient;
             clientChannel.Closed += ClientChannel_Closed;
             clientChannel.Faulted += ClientChannel_Faulted;
 
@@ -58,8 +58,8 @@ namespace Cliente
                 mainWindow.NavigateToView(new LogIn());
             });
 
-            socialManagerClient.Abort();
-            socialManagerClient = null;
+            SocialManagerClient.Abort();
+            SocialManagerClient = null;
 
             instance = null;
         }
@@ -184,11 +184,11 @@ namespace Cliente
         {
             try
             {
-                if (socialManagerClient != null)
+                if (SocialManagerClient != null)
                 {
                     try
                     {
-                        socialManagerClient.Disconnect(User.Instance.ID);
+                        SocialManagerClient.Disconnect(User.Instance.ID);
                     }
                     catch (EndpointNotFoundException ex)
                     {
@@ -212,23 +212,23 @@ namespace Cliente
                         HandleChannelTermination();
                     }
 
-                    if (socialManagerClient.State == CommunicationState.Faulted)
+                    if (SocialManagerClient.State == CommunicationState.Faulted)
                     {
-                        socialManagerClient.Abort();
+                        SocialManagerClient.Abort();
                     }
                     else
                     {
-                        socialManagerClient.Close();
+                        SocialManagerClient.Close();
                     }
                 }
             }
             catch (Exception ex)
             {
-                socialManagerClient?.Abort();
+                SocialManagerClient?.Abort();
             }
             finally
             {
-                socialManagerClient = null;
+                SocialManagerClient = null;
             }
 
             FriendList.Clear();
@@ -241,7 +241,7 @@ namespace Cliente
         {
             try
             {
-                FriendDTO[] friends = socialManagerClient.GetFriends(User.Instance.ID);
+                FriendDTO[] friends = SocialManagerClient.GetFriends(User.Instance.ID);
                 foreach (FriendDTO friend in friends)
                 {
                     Console.WriteLine(friend.FriendName);
@@ -279,7 +279,7 @@ namespace Cliente
         {
             try
             {
-                FriendRequestDTO[] friendRequests = socialManagerClient.GetFriendRequests(User.Instance.ID);
+                FriendRequestDTO[] friendRequests = SocialManagerClient.GetFriendRequests(User.Instance.ID);
                 foreach (FriendRequestDTO friendRequest in friendRequests)
                 {
                     Console.WriteLine(friendRequest.SenderName);
@@ -316,7 +316,7 @@ namespace Cliente
         {
             try
             {
-                BlockedDTO[] blockedUsers = socialManagerClient.GetBlockedUsers(User.Instance.ID);
+                BlockedDTO[] blockedUsers = SocialManagerClient.GetBlockedUsers(User.Instance.ID);
                 foreach (BlockedDTO blockedUser in blockedUsers)
                 {
                     Console.WriteLine(blockedUser.BlockerUsername);

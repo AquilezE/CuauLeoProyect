@@ -15,14 +15,14 @@ namespace Cliente.GameUserControllers
     public partial class EndGame : UserControl
     {
 
-        private GameManagerClient gameManagerClient;
+        private GameManagerClient _gameManagerClient;
         private StatsDTO[] _matchStats;
 
         public EndGame(StatsDTO[] matchStats)
         {
             InitializeComponent();
             DataContext = GameLogic.Instance;
-            gameManagerClient = new GameManagerClient(new InstanceContext(GameLogic.Instance));
+            _gameManagerClient = new GameManagerClient(new InstanceContext(GameLogic.Instance));
             _matchStats = matchStats;
         }
 
@@ -34,7 +34,7 @@ namespace Cliente.GameUserControllers
             {
                 if (User.Instance.ID > 0)
                 {
-                    gameManagerClient.SaveStatsForPLayer(userStats, User.Instance.ID);
+                    _gameManagerClient.SaveStatsForPLayer(userStats, User.Instance.ID);
                     var mainWindow = (MainWindow)Application.Current.MainWindow;
                     mainWindow.NavigateToView(new MainMenu());
                 }

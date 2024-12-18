@@ -69,8 +69,8 @@ namespace Cliente.UserControllers.FriendsList
         {
             if (sender is Friend friendUserControl)
             {
-                friendUserControl.deleteFriend += OnFriendDelete;
-                friendUserControl.blockUser += OnBlockUser;
+                friendUserControl.DeleteFriend += OnFriendDelete;
+                friendUserControl.BlockUser += OnBlockUser;
             }
         }
 
@@ -81,7 +81,7 @@ namespace Cliente.UserControllers.FriendsList
                 try
                 {
                     bool result =
-                        await Social.Instance.socialManagerClient.BlockFriendAsync(User.Instance.ID, e.FriendId);
+                        await Social.Instance.SocialManagerClient.BlockFriendAsync(User.Instance.ID, e.FriendId);
                     if (result)
                     {
                         Social.Instance.FriendList.Remove(e);
@@ -133,7 +133,7 @@ namespace Cliente.UserControllers.FriendsList
                 try
                 {
                     bool result =
-                        await Social.Instance.socialManagerClient.DeleteFriendAsync(User.Instance.ID, e.FriendId);
+                        await Social.Instance.SocialManagerClient.DeleteFriendAsync(User.Instance.ID, e.FriendId);
                     if (result)
                     {
                         Social.Instance.FriendList.Remove(e);

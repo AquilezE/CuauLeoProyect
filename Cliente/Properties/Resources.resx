@@ -268,7 +268,7 @@
     <value>Passwords must be the same</value>
   </data>
   <data name="lblErrEmailInvalid" xml:space="preserve">
-    <value>Email is invalid or already exists</value>
+	  <value>Email is invalid</value>
   </data>
   <data name="lblErrEmptyMessage" xml:space="preserve">
     <value>You must type something to send a message</value>

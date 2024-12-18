@@ -8,7 +8,7 @@ namespace Cliente.GameUserControllers
     public partial class MonstersViewerPlayer1 : UserControl
     {
 
-        public EventHandler<MonstersViewerPlayer1> closePanel;
+        public EventHandler<MonstersViewerPlayer1> ClosePanel;
 
         public MonstersViewerPlayer1()
         {
@@ -18,7 +18,7 @@ namespace Cliente.GameUserControllers
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            closePanel?.Invoke(sender, this);
+            ClosePanel?.Invoke(sender, this);
         }
 
     }

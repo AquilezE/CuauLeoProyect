@@ -8,8 +8,8 @@ namespace Cliente.UserControllers
     public partial class Friend : UserControl
     {
 
-        public event EventHandler<Cliente.Friend> deleteFriend;
-        public event EventHandler<Cliente.Friend> blockUser;
+        public event EventHandler<Cliente.Friend> DeleteFriend;
+        public event EventHandler<Cliente.Friend> BlockUser;
 
         public Friend()
         {
@@ -18,12 +18,12 @@ namespace Cliente.UserControllers
 
         private void btDelete_Click(object sender, RoutedEventArgs e)
         {
-            deleteFriend?.Invoke(this, DataContext as Cliente.Friend);
+            DeleteFriend?.Invoke(this, DataContext as Cliente.Friend);
         }
 
         private void btBlockUser_Click(object sender, RoutedEventArgs e)
         {
-            blockUser?.Invoke(this, DataContext as Cliente.Friend);
+            BlockUser?.Invoke(this, DataContext as Cliente.Friend);
         }
 
     }

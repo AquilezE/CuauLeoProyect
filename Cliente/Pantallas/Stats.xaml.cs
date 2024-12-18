@@ -13,7 +13,7 @@ namespace Cliente.Pantallas
     public partial class Stats : UserControl
     {
 
-        public StatsManagerClient statsManagerClient;
+        public StatsManagerClient StatsManagerClient;
 
         public Stats()
         {
@@ -25,7 +25,7 @@ namespace Cliente.Pantallas
         {
             try
             {
-                StatsDTO userStats = statsManagerClient.GetCurrentUserStats(User.instance.ID);
+                StatsDTO userStats = StatsManagerClient.GetCurrentUserStats(User.instance.ID);
                 lbWinsCounter.Content = userStats.Wins;
                 lbMonstersCounter.Content = userStats.MonstersCreated;
                 lbBabiesCounter.Content = userStats.AnihilatedBabies;
@@ -70,7 +70,7 @@ namespace Cliente.Pantallas
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            statsManagerClient = new StatsManagerClient();
+            StatsManagerClient = new StatsManagerClient();
             FillUserStats();
         }
 

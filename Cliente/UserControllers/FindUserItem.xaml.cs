@@ -8,8 +8,8 @@ namespace Cliente.UserControllers
     public partial class FindUserItem : UserControl
     {
 
-        public event EventHandler<UserFound> sendFriendRequest;
-        public event EventHandler<UserFound> blockUser;
+        public event EventHandler<UserFound> SendFriendRequest;
+        public event EventHandler<UserFound> BlockUser;
 
         public FindUserItem()
         {
@@ -18,12 +18,12 @@ namespace Cliente.UserControllers
 
         private void btSendFriendRequest_Click(object sender, RoutedEventArgs e)
         {
-            sendFriendRequest?.Invoke(this, DataContext as UserFound);
+            SendFriendRequest?.Invoke(this, DataContext as UserFound);
         }
 
         private void btBlock_Click(object sender, RoutedEventArgs e)
         {
-            blockUser?.Invoke(this, DataContext as UserFound);
+            BlockUser?.Invoke(this, DataContext as UserFound);
         }
 
     }

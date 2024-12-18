@@ -33,7 +33,7 @@ namespace Cliente.Pantallas
 
             try
             {
-                lobbyWindow._servicio.NewLobbyCreated(userDto);
+                lobbyWindow.Servicio.NewLobbyCreated(userDto);
 
                 var main = (MainWindow)Application.Current.MainWindow;
                 main.NavigateToView(lobbyWindow);

@@ -36,8 +36,8 @@ namespace Cliente.UserControllers.FriendsList
         {
             if (sender is FindUserItem findUserItem)
             {
-                findUserItem.sendFriendRequest += OnSendFriendRequest;
-                findUserItem.blockUser += OnBlockUser;
+                findUserItem.SendFriendRequest += OnSendFriendRequest;
+                findUserItem.BlockUser += OnBlockUser;
             }
         }
 
@@ -47,7 +47,7 @@ namespace Cliente.UserControllers.FriendsList
             {
                 try
                 {
-                    bool result = await Social.Instance.socialManagerClient.BlockUserAsync(User.Instance.ID, e.ID);
+                    bool result = await Social.Instance.SocialManagerClient.BlockUserAsync(User.Instance.ID, e.ID);
                     if (result)
                     {
                         UsersFound.Remove(e);
@@ -99,7 +99,7 @@ namespace Cliente.UserControllers.FriendsList
                 try
                 {
                     bool result =
-                        await Social.Instance.socialManagerClient.SendFriendRequestAsync(User.Instance.ID, e.ID);
+                        await Social.Instance.SocialManagerClient.SendFriendRequestAsync(User.Instance.ID, e.ID);
                     if (result)
                     {
                         UsersFound.Remove(e);
@@ -169,7 +169,7 @@ namespace Cliente.UserControllers.FriendsList
                 try
                 {
                     UserDTO[] usersFound =
-                        Social.Instance.socialManagerClient.GetUsersFoundByName(User.Instance.ID, search);
+                        Social.Instance.SocialManagerClient.GetUsersFoundByName(User.Instance.ID, search);
                     foreach (UserDTO userFound in usersFound)
                     {
                         Console.WriteLine(userFound.Username);

@@ -13,20 +13,20 @@ namespace Cliente.UserControllers
     {
 
         public event PropertyChangedEventHandler PropertyChanged;
-        private int currentLobbyId;
+        private int _currentLobbyId;
 
         public InviteFriends(int currentLobbyId)
         {
             InitializeComponent();
             DataContext = Social.Instance;
-            this.currentLobbyId = currentLobbyId;
+            this._currentLobbyId = currentLobbyId;
         }
 
         private void FriendLoaded(object sender, RoutedEventArgs e)
         {
             if (sender is FriendToInvite friendToInviteUserControl)
             {
-                friendToInviteUserControl.inviteFriend += OnFriendInvite;
+                friendToInviteUserControl.InviteFriend += OnFriendInvite;
             }
         }
 
@@ -34,8 +34,8 @@ namespace Cliente.UserControllers
         {
             try
             {
-                Social.Instance.socialManagerClient.InviteFriendToLobby(User.Instance.Username, friend.FriendId,
-                    currentLobbyId);
+                Social.Instance.SocialManagerClient.InviteFriendToLobby(User.Instance.Username, friend.FriendId,
+                    _currentLobbyId);
             }
             catch (EndpointNotFoundException ex)
             {

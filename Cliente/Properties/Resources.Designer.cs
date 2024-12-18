@@ -682,7 +682,7 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email is invalid or already exists.
+        ///   Looks up a localized string similar to Email is invalid.
         /// </summary>
         public static string lblErrEmailInvalid {
             get {

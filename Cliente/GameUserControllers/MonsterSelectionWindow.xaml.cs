@@ -73,18 +73,18 @@ namespace Cliente.GameUserControllers
             }
         }
 
-        private childItem FindVisualChild<childItem>(DependencyObject obj) where childItem : DependencyObject
+        private TChildItem FindVisualChild<TChildItem>(DependencyObject obj) where TChildItem : DependencyObject
         {
             for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
             {
                 DependencyObject child = VisualTreeHelper.GetChild(obj, i);
-                if (child is childItem)
+                if (child is TChildItem)
                 {
-                    return (childItem)child;
+                    return (TChildItem)child;
                 }
                 else
                 {
-                    var childOfChild = FindVisualChild<childItem>(child);
+                    var childOfChild = FindVisualChild<TChildItem>(child);
                     if (childOfChild != null)
                     {
                         return childOfChild;

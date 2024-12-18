@@ -70,7 +70,7 @@ namespace Cliente.Pantallas
                 try
                 {
                     var lobbyWindow = new Lobby();
-                    lobbyWindow._servicio.JoinLobby(lobbyId, userDto);
+                    lobbyWindow.Servicio.JoinLobby(lobbyId, userDto);
 
                     var mainWindow = (MainWindow)Application.Current.MainWindow;
                     mainWindow.NavigateToView(lobbyWindow);

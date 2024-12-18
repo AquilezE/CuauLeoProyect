@@ -12,15 +12,15 @@ namespace Cliente.Utils
     public sealed class LoggerService
     {
 
-        private const string DATE_FORMAT = "dd-MM-yyyy";
-        private const string ID_FILE_NAME = "Log";
-        private const string CHARACTER_SEPARATOR = "_";
-        private const string FILE_EXTENSION = ".txt";
-        private const string RELATIVE_LOG_FILE_PATH = @"Logs";
+        private const string DateFormat = "dd-MM-yyyy";
+        private const string IdFileName = "Log";
+        private const string CharacterSeparator = "_";
+        private const string FileExtension = ".txt";
+        private const string RelativeLogFilePath = @"Logs";
 
         private static ILogger _logger;
 
-        private static readonly object _lock = new object();
+        private static readonly object Lock = new object();
 
         private LoggerService()
         {
@@ -44,10 +44,10 @@ namespace Cliente.Utils
         private static string BuildLogFilePath()
         {
             DateTime currentDate = DateTime.Now;
-            string date = currentDate.ToString(DATE_FORMAT);
+            string date = currentDate.ToString(DateFormat);
 
-            string logFileName = $"{ID_FILE_NAME}{CHARACTER_SEPARATOR}{date}{FILE_EXTENSION}";
-            string absoluteLogDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, RELATIVE_LOG_FILE_PATH);
+            string logFileName = $"{IdFileName}{CharacterSeparator}{date}{FileExtension}";
+            string absoluteLogDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, RelativeLogFilePath);
 
             if (!Directory.Exists(absoluteLogDirectory))
             {
@@ -73,7 +73,7 @@ namespace Cliente.Utils
 
         public static void CloseAndFlush()
         {
-            lock (_lock)
+            lock (Lock)
             {
                 (_logger as IDisposable)?.Dispose();
                 Log.CloseAndFlush();

@@ -30,7 +30,7 @@ namespace Cliente
         }
 
         private static GameLogic _instance;
-        private static readonly object _lock = new object();
+        private static readonly object Lock = new object();
         private GameStateDTO _currentGameState;
         private string _lastCardDrawn;
         private int _currentPlayerId;
@@ -136,7 +136,7 @@ namespace Cliente
             {
                 if (_instance == null)
                 {
-                    lock (_lock)
+                    lock (Lock)
                     {
                         if (_instance == null)
                         {
@@ -460,7 +460,7 @@ namespace Cliente
                 orderedStats.Add(new Stats(stats));
             }
 
-            orderedStats = orderedStats.OrderByDescending(s => s.points).ToList();
+            orderedStats = orderedStats.OrderByDescending(s => s.Points).ToList();
 
             int playerNumber = 1;
             foreach (Stats player in orderedStats)
@@ -468,25 +468,25 @@ namespace Cliente
                 switch (playerNumber)
                 {
                     case 1:
-                        Player1Username = orderedStats[0].username;
-                        Player1Score = orderedStats[0].points;
+                        Player1Username = orderedStats[0].Username;
+                        Player1Score = orderedStats[0].Points;
 
                         break;
                     case 2:
-                        Player2Username = orderedStats[1].username;
-                        Player2Score = orderedStats[1].points;
+                        Player2Username = orderedStats[1].Username;
+                        Player2Score = orderedStats[1].Points;
 
                         break;
 
                     case 3:
-                        Player3Username = orderedStats[2].username;
-                        Player3Score = orderedStats[2].points;
+                        Player3Username = orderedStats[2].Username;
+                        Player3Score = orderedStats[2].Points;
 
                         break;
 
                     case 4:
-                        Player4Username = orderedStats[3].username;
-                        Player4Score = orderedStats[3].points;
+                        Player4Username = orderedStats[3].Username;
+                        Player4Score = orderedStats[3].Points;
                         break;
 
                     default:

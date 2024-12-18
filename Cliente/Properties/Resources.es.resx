@@ -268,7 +268,7 @@
     <value>Las contraseñas deben coincidir</value>
   </data>
   <data name="lblErrEmailInvalid" xml:space="preserve">
-    <value>Correo electrónico inválido o ya está ocupado</value>
+	  <value>Correo electrónico no es valido</value>
   </data>
   <data name="lblErrEmptyMessage" xml:space="preserve">
     <value>Debes escribir algo para poder mandar un mensaje</value>

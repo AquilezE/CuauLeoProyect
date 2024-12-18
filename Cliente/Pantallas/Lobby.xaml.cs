@@ -29,7 +29,7 @@ namespace Cliente.Pantallas
         private ObservableCollection<UserLobby> _users;
 
 
-        public LobbyManagerClient _servicio;
+        public LobbyManagerClient Servicio;
         private int _lobbyId;
 
         private int _currentLeaderId;
@@ -58,7 +58,7 @@ namespace Cliente.Pantallas
             DataContext = this;
 
             var instanceContext = new InstanceContext(this);
-            _servicio = new LobbyManagerClient(instanceContext);
+            Servicio = new LobbyManagerClient(instanceContext);
             _messages = new ObservableCollection<Message>();
             _users = new ObservableCollection<UserLobby>();
             MessagesListBox.ItemsSource = _messages;
@@ -70,7 +70,7 @@ namespace Cliente.Pantallas
         {
             try
             {
-                _servicio.LeaveLobby(_lobbyId, User.Instance.ID);
+                Servicio.LeaveLobby(_lobbyId, User.Instance.ID);
                 LeaveLobby();
             }
             catch (EndpointNotFoundException ex)
@@ -98,7 +98,7 @@ namespace Cliente.Pantallas
                 return;
             }
 
-            _servicio.SendMessage(_lobbyId, User.Instance.ID, message);
+            Servicio.SendMessage(_lobbyId, User.Instance.ID, message);
             tbMessage.Text = string.Empty;
             lbMessageError.Content = string.Empty;
         }
@@ -138,7 +138,7 @@ namespace Cliente.Pantallas
                     return;
                 }
 
-                _servicio.StartGame(_lobbyId);
+                Servicio.StartGame(_lobbyId);
             }
         }
 
@@ -168,7 +168,7 @@ namespace Cliente.Pantallas
 
                     _users.Remove(userToKick);
 
-                    _servicio.KickUser(_lobbyId, User.Instance.ID, userToKick.ID, reason);
+                    Servicio.KickUser(_lobbyId, User.Instance.ID, userToKick.ID, reason);
                 }
             }
         }
@@ -192,11 +192,11 @@ namespace Cliente.Pantallas
             return false;
         }
 
-        public void OnNewLobbyCreated(int lobbyId, int UserId)
+        public void OnNewLobbyCreated(int lobbyId, int userId)
         {
             _lobbyId = lobbyId;
             _users.Add(new UserLobby(User.Instance));
-            CurrentLeaderId = UserId;
+            CurrentLeaderId = userId;
             Console.WriteLine(_lobbyId);
 
             tbLobbyCode.Text = lobbyId.ToString();
@@ -211,9 +211,9 @@ namespace Cliente.Pantallas
             tbLobbyCode.Text = lobbyId.ToString();
         }
 
-        public void OnLeaveLobby(int lobbyId, int UserId)
+        public void OnLeaveLobby(int lobbyId, int userId)
         {
-            UserLobby user = _users.FirstOrDefault(u => u.ID == UserId);
+            UserLobby user = _users.FirstOrDefault(u => u.ID == userId);
             if (user != null)
             {
                 _users.Remove(user);
@@ -232,9 +232,9 @@ namespace Cliente.Pantallas
             CurrentLeaderId = newLeaderId;
         }
 
-        public void OnSendMessage(int UserId, string message)
+        public void OnSendMessage(int userId, string message)
         {
-            UserLobby user = _users.FirstOrDefault(u => u.ID == UserId);
+            UserLobby user = _users.FirstOrDefault(u => u.ID == userId);
 
             if (user != null)
             {
@@ -243,7 +243,7 @@ namespace Cliente.Pantallas
             }
             else
             {
-                _messages.Add(new Message(LangUtils.Translate("lblUser") + $" {UserId}", message, _lobbyId));
+                _messages.Add(new Message(LangUtils.Translate("lblUser") + $" {userId}", message, _lobbyId));
             }
 
             Dispatcher.BeginInvoke(new Action(() => { ScrollToBottom(); }),
@@ -338,7 +338,7 @@ namespace Cliente.Pantallas
 
         private void btReady_Click(object sender, RoutedEventArgs e)
         {
-            _servicio.ChangeReadyStatus(_lobbyId, User.Instance.ID);
+            Servicio.ChangeReadyStatus(_lobbyId, User.Instance.ID);
         }
 
     }

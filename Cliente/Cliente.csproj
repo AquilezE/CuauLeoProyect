@@ -743,6 +743,9 @@
   <ItemGroup>
     <Resource Include="Images\GameImages\ash-baby.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Cards\Card0.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
