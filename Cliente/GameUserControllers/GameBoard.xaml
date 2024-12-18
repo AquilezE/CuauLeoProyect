@@ -36,7 +36,7 @@
         <Button Grid.Row="0" Grid.Column="1" Height="175" Width="160" HorizontalAlignment="Left"
                 VerticalAlignment="Bottom" Margin="820 0 0 90" Background="Transparent" BorderBrush="Transparent"
                 Click="btnPlayer2Monster_Click" />
-        <Button Grid.Row="1" Grid.Column="2" Height="160" Width="175" Margin="152,79,22,273"
+        <Button Grid.Row="1" Grid.Column="2" Height="160" Width="175" Margin="150,276,24,76"
                 Click="btnPlayer3Monster_Click" Background="Transparent" BorderBrush="Transparent" />
         <Button Grid.Row="1" Grid.Column="0" Height="160" Width="175" Margin="-140 0 0 -80"
                 Click="btnPlayer4Monster_Click" Background="Transparent" BorderBrush="Transparent" />

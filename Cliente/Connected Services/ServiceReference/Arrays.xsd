@@ -1,65 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-
-<xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified"
-           targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
-           xmlns:xs="http://www.w3.org/2001/XMLSchema">
-	<xs:import namespace="http://schemas.datacontract.org/2004/07/BevososService.DTOs" />
-	<xs:complexType name="ArrayOfKeyValueOfintint">
-		<xs:annotation>
-			<xs:appinfo>
-				<IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
-			</xs:appinfo>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfintint">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="Key" type="xs:int" />
-						<xs:element name="Value" type="xs:int" />
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:element name="ArrayOfKeyValueOfintint" nillable="true" type="tns:ArrayOfKeyValueOfintint" />
-	<xs:complexType name="ArrayOfKeyValueOfintPlayerStateDTOc2z18OO1">
-		<xs:annotation>
-			<xs:appinfo>
-				<IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
-			</xs:appinfo>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfintPlayerStateDTOc2z18OO1">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="Key" type="xs:int" />
-						<xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/BevososService.DTOs" name="Value" nillable="true"
-						            type="q1:PlayerStateDTO" />
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:element name="ArrayOfKeyValueOfintPlayerStateDTOc2z18OO1" nillable="true"
-	            type="tns:ArrayOfKeyValueOfintPlayerStateDTOc2z18OO1" />
-	<xs:complexType name="ArrayOfKeyValueOfintGameStatsDTOc2z18OO1">
-		<xs:annotation>
-			<xs:appinfo>
-				<IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
-			</xs:appinfo>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfintGameStatsDTOc2z18OO1">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="Key" type="xs:int" />
-						<xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/BevososService.DTOs" name="Value" nillable="true"
-						            type="q2:GameStatsDTO" />
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:element name="ArrayOfKeyValueOfintGameStatsDTOc2z18OO1" nillable="true"
-	            type="tns:ArrayOfKeyValueOfintGameStatsDTOc2z18OO1" />
+<xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/BevososService.DTOs" />
+  <xs:complexType name="ArrayOfKeyValueOfintint">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfintint">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:int" />
+            <xs:element name="Value" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfintint" nillable="true" type="tns:ArrayOfKeyValueOfintint" />
+  <xs:complexType name="ArrayOfKeyValueOfintPlayerStateDTOc2z18OO1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfintPlayerStateDTOc2z18OO1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:int" />
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/BevososService.DTOs" name="Value" nillable="true" type="q1:PlayerStateDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfintPlayerStateDTOc2z18OO1" nillable="true" type="tns:ArrayOfKeyValueOfintPlayerStateDTOc2z18OO1" />
+  <xs:complexType name="ArrayOfKeyValueOfintGameStatsDTOc2z18OO1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfintGameStatsDTOc2z18OO1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:int" />
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/BevososService.DTOs" name="Value" nillable="true" type="q2:GameStatsDTO" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfintGameStatsDTOc2z18OO1" nillable="true" type="tns:ArrayOfKeyValueOfintGameStatsDTOc2z18OO1" />
 </xs:schema>

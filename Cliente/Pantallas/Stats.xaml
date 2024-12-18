@@ -20,21 +20,21 @@
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="35" Content="{h:Lang lblWins}" />
             <Label x:Name="lbWinsCounter" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20 0 0 0"
-                   FontSize="35" Content="100" />
+                   FontSize="35" Content="0" />
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal">
             <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="35"
                    Content="{h:Lang lblAnihilatedBabies}" />
             <Label x:Name="lbBabiesCounter" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20 0 0 0"
-                   FontSize="35" Content="100" />
+                   FontSize="35" Content="0" />
         </StackPanel>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal">
             <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="35"
                    Content="{h:Lang lblMonstersCreated}" />
             <Label x:Name="lbMonstersCounter" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20 0 0 0"
-                   FontSize="35" Content="100" />
+                   FontSize="35" Content="0" />
         </StackPanel>
 
         <Button Grid.Row="4" Height="45" Width="150" HorizontalAlignment="Right" VerticalAlignment="Bottom"

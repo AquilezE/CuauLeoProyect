@@ -1,11 +1,16 @@
 ﻿using Cliente.ServiceReference;
+using Cliente.UserControllers;
+using Cliente.Utils;
+using Haley.Utils;
+using System.ServiceModel;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace Cliente.Pantallas
 {
 
-    public partial class Stats : UserControl, IStatsManagerCallback
+    public partial class Stats : UserControl
     {
         public StatsManagerClient statsManagerClient;
 
@@ -15,16 +20,45 @@ namespace Cliente.Pantallas
             Loaded += UserControl_Loaded;
         }
 
-        public void FillUserStats()
+        private void FillUserStats()
         {
-            statsManagerClient.GetCurrentUserStats(User.instance.ID);
-        }
-
-        public void OnStatsReceived(int wins, int monsters, int babies)
-        {
-            lbWinsCounter.Content = wins;
-            lbMonstersCounter.Content = monsters;
-            lbBabiesCounter.Content = babies;
+            try
+            {
+                StatsDTO userStats = statsManagerClient.GetCurrentUserStats(User.instance.ID);
+                lbWinsCounter.Content = userStats.Wins;
+                lbMonstersCounter.Content = userStats.MonstersCreated;
+                lbBabiesCounter.Content = userStats.AnihilatedBabies;
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
+            catch (FaultException<BevososServerExceptions> ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+            }
+            catch (Exception ex)
+            {
+                ExceptionManager.LogFatalException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrBlockingException"));
+            }
         }
 
         private void btGoBack_Click(object sender, RoutedEventArgs e)
@@ -35,7 +69,7 @@ namespace Cliente.Pantallas
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            statsManagerClient = new StatsManagerClient(new System.ServiceModel.InstanceContext(this));
+            statsManagerClient = new StatsManagerClient();
             FillUserStats();
         }
     }

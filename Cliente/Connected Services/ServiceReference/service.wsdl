@@ -421,6 +421,15 @@
   <wsdl:message name="IGameManager_ExecuteProvoke_InputMessage">
     <wsdl:part name="parameters" element="tns:ExecuteProvoke" />
   </wsdl:message>
+  <wsdl:message name="IGameManager_SaveStatsForPLayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveStatsForPLayer" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_SaveStatsForPLayer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveStatsForPLayerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_SaveStatsForPLayer_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q20="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q20:BevososServerExceptions" />
+  </wsdl:message>
   <wsdl:message name="IGameManager_ReceiveGameState_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveGameState" />
   </wsdl:message>
@@ -451,8 +460,11 @@
   <wsdl:message name="IStatsManager_GetCurrentUserStats_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCurrentUserStats" />
   </wsdl:message>
-  <wsdl:message name="IStatsManager_OnStatsReceived_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:OnStatsReceived" />
+  <wsdl:message name="IStatsManager_GetCurrentUserStats_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentUserStatsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStatsManager_GetCurrentUserStats_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q21="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q21:BevososServerExceptions" />
   </wsdl:message>
   <wsdl:portType name="IUsersManager">
     <wsdl:operation name="IsUsernameTaken">
@@ -683,6 +695,11 @@
     <wsdl:operation name="ExecuteProvoke">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/ExecuteProvoke" message="tns:IGameManager_ExecuteProvoke_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="SaveStatsForPLayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/SaveStatsForPLayer" message="tns:IGameManager_SaveStatsForPLayer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/SaveStatsForPLayerResponse" message="tns:IGameManager_SaveStatsForPLayer_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGameManager/SaveStatsForPLayerBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:IGameManager_SaveStatsForPLayer_BevososServerExceptionsFault_FaultMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ReceiveGameState">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/ReceiveGameState" message="tns:IGameManager_ReceiveGameState_OutputCallbackMessage" />
     </wsdl:operation>
@@ -714,9 +731,8 @@
   <wsdl:portType name="IStatsManager">
     <wsdl:operation name="GetCurrentUserStats">
       <wsdl:input wsaw:Action="http://tempuri.org/IStatsManager/GetCurrentUserStats" message="tns:IStatsManager_GetCurrentUserStats_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="OnStatsReceived">
-      <wsdl:output wsaw:Action="http://tempuri.org/IStatsManager/OnStatsReceived" message="tns:IStatsManager_OnStatsReceived_OutputCallbackMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStatsManager/GetCurrentUserStatsResponse" message="tns:IStatsManager_GetCurrentUserStats_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IStatsManager/GetCurrentUserStatsBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:IStatsManager_GetCurrentUserStats_BevososServerExceptionsFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUsersManager" type="tns:IUsersManager">
@@ -1225,6 +1241,18 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="SaveStatsForPLayer">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/SaveStatsForPLayer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
     <wsdl:operation name="ReceiveGameState">
       <soap12:operation soapAction="http://tempuri.org/IGameManager/ReceiveGameState" style="document" />
       <wsdl:output>
@@ -1289,12 +1317,12 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="OnStatsReceived">
-      <soap12:operation soapAction="http://tempuri.org/IStatsManager/OnStatsReceived" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="ServiceImplementation">

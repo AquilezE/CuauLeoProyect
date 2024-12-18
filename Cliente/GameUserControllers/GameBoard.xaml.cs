@@ -170,12 +170,12 @@ namespace Cliente.GameUserControllers
             });
         }
 
-        private void OnGameHasEnded(int matchCode)
+        private void OnGameHasEnded(StatsDTO[] matchStats )
         {
             Dispatcher.Invoke(() =>
             {
                 var mainWindow = (MainWindow)Application.Current.MainWindow;
-                mainWindow.NavigateToView(new EndGame(), 800, 750);
+                mainWindow.NavigateToView(new EndGame(matchStats), 800, 750);
             });
         }
 

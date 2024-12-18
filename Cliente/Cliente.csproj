@@ -555,6 +555,9 @@
     <None Include="Connected Services\ServiceReference\Cliente.ServiceReference.FriendRequestDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference\Cliente.ServiceReference.StatsDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference\Cliente.ServiceReference.UserDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

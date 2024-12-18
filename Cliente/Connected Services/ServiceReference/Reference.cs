@@ -480,6 +480,131 @@ namespace Cliente.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StatsDTO", Namespace="http://schemas.datacontract.org/2004/07/BevososService.DTOs")]
+    [System.SerializableAttribute()]
+    public partial class StatsDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AnihilatedBabiesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsWinnerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int MonstersCreatedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PointsThisGameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int WinsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int AnihilatedBabies {
+            get {
+                return this.AnihilatedBabiesField;
+            }
+            set {
+                if ((this.AnihilatedBabiesField.Equals(value) != true)) {
+                    this.AnihilatedBabiesField = value;
+                    this.RaisePropertyChanged("AnihilatedBabies");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsWinner {
+            get {
+                return this.IsWinnerField;
+            }
+            set {
+                if ((this.IsWinnerField.Equals(value) != true)) {
+                    this.IsWinnerField = value;
+                    this.RaisePropertyChanged("IsWinner");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int MonstersCreated {
+            get {
+                return this.MonstersCreatedField;
+            }
+            set {
+                if ((this.MonstersCreatedField.Equals(value) != true)) {
+                    this.MonstersCreatedField = value;
+                    this.RaisePropertyChanged("MonstersCreated");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PointsThisGame {
+            get {
+                return this.PointsThisGameField;
+            }
+            set {
+                if ((this.PointsThisGameField.Equals(value) != true)) {
+                    this.PointsThisGameField = value;
+                    this.RaisePropertyChanged("PointsThisGame");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username {
+            get {
+                return this.UsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Wins {
+            get {
+                return this.WinsField;
+            }
+            set {
+                if ((this.WinsField.Equals(value) != true)) {
+                    this.WinsField = value;
+                    this.RaisePropertyChanged("Wins");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="GameStateDTO", Namespace="http://schemas.datacontract.org/2004/07/BevososService.DTOs")]
     [System.SerializableAttribute()]
     public partial class GameStateDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -849,67 +974,6 @@ namespace Cliente.ServiceReference {
                 if ((object.ReferenceEquals(this.BodyPartsField, value) != true)) {
                     this.BodyPartsField = value;
                     this.RaisePropertyChanged("BodyParts");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StatsDTO", Namespace="http://schemas.datacontract.org/2004/07/BevososService.DTOs")]
-    [System.SerializableAttribute()]
-    public partial class StatsDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PointsThisGameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UsernameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int PointsThisGame {
-            get {
-                return this.PointsThisGameField;
-            }
-            set {
-                if ((this.PointsThisGameField.Equals(value) != true)) {
-                    this.PointsThisGameField = value;
-                    this.RaisePropertyChanged("PointsThisGame");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Username {
-            get {
-                return this.UsernameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
-                    this.UsernameField = value;
-                    this.RaisePropertyChanged("Username");
                 }
             }
         }
@@ -1704,6 +1768,13 @@ namespace Cliente.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/ExecuteProvoke")]
         System.Threading.Tasks.Task ExecuteProvokeAsync(int userId, int matchCode, int babyPileProvoked);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/SaveStatsForPLayer", ReplyAction="http://tempuri.org/IGameManager/SaveStatsForPLayerResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Cliente.ServiceReference.BevososServerExceptions), Action="http://tempuri.org/IGameManager/SaveStatsForPLayerBevososServerExceptionsFault", Name="BevososServerExceptions", Namespace="http://schemas.datacontract.org/2004/07/BevososService.Exceptions")]
+        void SaveStatsForPLayer(Cliente.ServiceReference.StatsDTO userStatsDto, int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/SaveStatsForPLayer", ReplyAction="http://tempuri.org/IGameManager/SaveStatsForPLayerResponse")]
+        System.Threading.Tasks.Task SaveStatsForPLayerAsync(Cliente.ServiceReference.StatsDTO userStatsDto, int userId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1828,24 +1899,26 @@ namespace Cliente.ServiceReference {
         public System.Threading.Tasks.Task ExecuteProvokeAsync(int userId, int matchCode, int babyPileProvoked) {
             return base.Channel.ExecuteProvokeAsync(userId, matchCode, babyPileProvoked);
         }
+        
+        public void SaveStatsForPLayer(Cliente.ServiceReference.StatsDTO userStatsDto, int userId) {
+            base.Channel.SaveStatsForPLayer(userStatsDto, userId);
+        }
+        
+        public System.Threading.Tasks.Task SaveStatsForPLayerAsync(Cliente.ServiceReference.StatsDTO userStatsDto, int userId) {
+            return base.Channel.SaveStatsForPLayerAsync(userStatsDto, userId);
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IStatsManager", CallbackContract=typeof(Cliente.ServiceReference.IStatsManagerCallback))]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IStatsManager")]
     public interface IStatsManager {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IStatsManager/GetCurrentUserStats")]
-        void GetCurrentUserStats(int userId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStatsManager/GetCurrentUserStats", ReplyAction="http://tempuri.org/IStatsManager/GetCurrentUserStatsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Cliente.ServiceReference.BevososServerExceptions), Action="http://tempuri.org/IStatsManager/GetCurrentUserStatsBevososServerExceptionsFault", Name="BevososServerExceptions", Namespace="http://schemas.datacontract.org/2004/07/BevososService.Exceptions")]
+        Cliente.ServiceReference.StatsDTO GetCurrentUserStats(int userId);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IStatsManager/GetCurrentUserStats")]
-        System.Threading.Tasks.Task GetCurrentUserStatsAsync(int userId);
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IStatsManagerCallback {
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IStatsManager/OnStatsReceived")]
-        void OnStatsReceived(int wins, int monsters, int babies);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStatsManager/GetCurrentUserStats", ReplyAction="http://tempuri.org/IStatsManager/GetCurrentUserStatsResponse")]
+        System.Threading.Tasks.Task<Cliente.ServiceReference.StatsDTO> GetCurrentUserStatsAsync(int userId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1854,33 +1927,32 @@ namespace Cliente.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class StatsManagerClient : System.ServiceModel.DuplexClientBase<Cliente.ServiceReference.IStatsManager>, Cliente.ServiceReference.IStatsManager {
+    public partial class StatsManagerClient : System.ServiceModel.ClientBase<Cliente.ServiceReference.IStatsManager>, Cliente.ServiceReference.IStatsManager {
         
-        public StatsManagerClient(System.ServiceModel.InstanceContext callbackInstance) : 
-                base(callbackInstance) {
+        public StatsManagerClient() {
         }
         
-        public StatsManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
-                base(callbackInstance, endpointConfigurationName) {
+        public StatsManagerClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
         }
         
-        public StatsManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
-                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        public StatsManagerClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
         }
         
-        public StatsManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        public StatsManagerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
         }
         
-        public StatsManagerClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(callbackInstance, binding, remoteAddress) {
+        public StatsManagerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
         }
         
-        public void GetCurrentUserStats(int userId) {
-            base.Channel.GetCurrentUserStats(userId);
+        public Cliente.ServiceReference.StatsDTO GetCurrentUserStats(int userId) {
+            return base.Channel.GetCurrentUserStats(userId);
         }
         
-        public System.Threading.Tasks.Task GetCurrentUserStatsAsync(int userId) {
+        public System.Threading.Tasks.Task<Cliente.ServiceReference.StatsDTO> GetCurrentUserStatsAsync(int userId) {
             return base.Channel.GetCurrentUserStatsAsync(userId);
         }
     }

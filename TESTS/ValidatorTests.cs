@@ -129,8 +129,6 @@ namespace TESTS
             Assert.Equal("lblErrUsernameTooLong", result);
         }
 
-
-
         [Theory]
         [InlineData("StrongP@ssw0rd!")]
         [InlineData("Another$trong1")]
@@ -156,23 +154,24 @@ namespace TESTS
         }
 
         [Theory]
-        [InlineData("Short1!")]
         [InlineData("NoSpecialChar123")]
         [InlineData("nouppercase1!")]
-        public void ValidatePassword_ShortOrWeakPasswords_ReturnsAppropriateError(string password)
+        public void ValidatePassword_WeakPassword_ReturnsWeakPasswordError(string password)
         {
-            if (password.Length < 12)
-            {
-                var result = _validator.ValidatePassword(password);
+            var result = _validator.ValidatePassword(password);
 
-                Assert.Equal("lblErrShortPassword", result);
-            }
-            else
-            {
-                var result = _validator.ValidatePassword(password);
+            Assert.Equal("lblErrWeakPassword", result);
+            
+        }
 
-                Assert.Equal("lblErrWeakPassword", result);
-            }
+        [Theory]
+        [InlineData("Short1!")]
+        public void ValidatePassword_ShortPassword_ReturnsShortPasswordError(string shortPassword)
+        {
+
+            var result = _validator.ValidatePassword(shortPassword);
+
+            Assert.Equal("lblErrShortPassword", result);
         }
 
         [Theory]
@@ -231,6 +230,7 @@ namespace TESTS
 
             Assert.Equal("lblErrPasswordEmpty", result);
         }
+        
         [Theory]
         [InlineData("123456")]
         [InlineData("111111")]

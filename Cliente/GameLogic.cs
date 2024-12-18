@@ -17,7 +17,7 @@ namespace Cliente
         public event Action<CardDTO> BodyPartSelectionRequested;
         public event Action<CardDTO> ToolSelectionRequested;
         public event Action<CardDTO> HatSelectionRequested;
-        public event Action<int> GameHasEnded;
+        public event Action<StatsDTO[]> GameHasEnded;
         public event Action<int> GameHasEndedWithoutUsers;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -415,7 +415,7 @@ namespace Cliente
 
         public void OnNotifyGameEnded(int matchCode, StatsDTO[] gameStats)
         {
-            GameHasEnded?.Invoke(matchCode);
+            GameHasEnded?.Invoke(gameStats);
             var orderedStats = new List<Stats>();
             foreach (StatsDTO stats in gameStats) orderedStats.Add(new Stats(stats));
 
