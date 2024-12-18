@@ -13,6 +13,7 @@ namespace Cliente.Pantallas
 
     public partial class LogIn : UserControl
     {
+
         private UsersManagerClient _servicio;
         private bool _isLoaded;
 
@@ -54,10 +55,14 @@ namespace Cliente.Pantallas
                     mainWindow.NavigateToView(new MainMenu());
                 }
                 else
+                {
                     lbErrLabel.Content = LangUtils.Translate("lblErrWrongLogin");
+                }
             }
             else
+            {
                 lbErrLabel.Content = LangUtils.Translate("lblErrNullLogin");
+            }
         }
 
         private bool SetSessionGuestUser()
@@ -65,7 +70,10 @@ namespace Cliente.Pantallas
             try
             {
                 UserDTO userDto = _servicio.GetGuestUser();
-                if (userDto == null) return false;
+                if (userDto == null)
+                {
+                    return false;
+                }
 
                 var currentUser = User.Instance;
                 currentUser.ID = userDto.UserId;
@@ -123,7 +131,10 @@ namespace Cliente.Pantallas
                 }
 
                 UserDTO userDto = _servicio.LogIn(email, password);
-                if (userDto == null) return false;
+                if (userDto == null)
+                {
+                    return false;
+                }
 
 
                 var currentUser = User.Instance;
@@ -227,7 +238,10 @@ namespace Cliente.Pantallas
 
         private void cbLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (!_isLoaded) return;
+            if (!_isLoaded)
+            {
+                return;
+            }
 
             var selectedItem = cbLanguage.SelectedItem as ComboBoxItem;
             if (selectedItem != null)
@@ -262,5 +276,7 @@ namespace Cliente.Pantallas
                 Console.WriteLine("Error changing culture: " + ex.Message);
             }
         }
+
     }
+
 }

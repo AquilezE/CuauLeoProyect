@@ -7,6 +7,7 @@ namespace Cliente.Pantallas
 
     public partial class RecoverPassword : UserControl
     {
+
         private string _email;
 
         public RecoverPassword()
@@ -36,5 +37,7 @@ namespace Cliente.Pantallas
         {
             RecoverPasswordContentControl.Content = new RecoverSuccesful();
         }
+
     }
+
 }

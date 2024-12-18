@@ -4,8 +4,10 @@ using System.Runtime.CompilerServices;
 
 namespace Cliente
 {
+
     public class UserLobby : INotifyPropertyChanged
     {
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -54,5 +56,7 @@ namespace Cliente
             ProfilePictureId = user.ProfilePictureId;
             IsReady = true;
         }
+
     }
+
 }

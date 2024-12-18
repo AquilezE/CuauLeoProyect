@@ -2,8 +2,10 @@
 
 namespace Cliente
 {
+
     public class User
     {
+
         public static User instance;
         public int ID { get; set; }
         public string Username { get; set; }
@@ -27,10 +29,16 @@ namespace Cliente
         {
             get
             {
-                if (instance == null) instance = new User();
+                if (instance == null)
+                {
+                    instance = new User();
+                }
+
                 return instance;
             }
             set => instance = value;
         }
+
     }
+
 }

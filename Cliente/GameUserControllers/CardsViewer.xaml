@@ -56,7 +56,7 @@
                         <local:CardUserController />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
-                
+
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal" />

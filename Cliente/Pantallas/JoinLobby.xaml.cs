@@ -13,6 +13,7 @@ namespace Cliente.Pantallas
 
     public partial class JoinLobby : UserControl
     {
+
         private readonly LobbyCheckerClient _lobbyCheckerClient;
 
         public JoinLobby()
@@ -90,7 +91,9 @@ namespace Cliente.Pantallas
                 }
             }
             else
+            {
                 lbErrLobbyCode.Content = LangUtils.Translate("lblErrLobbyCodeFullOrNotExists");
+            }
         }
 
         private UserDTO GetCurrentUserDto()
@@ -106,20 +109,37 @@ namespace Cliente.Pantallas
 
         private string ValidateLobbyCode(string lobbyCode)
         {
-            if (string.IsNullOrEmpty(lobbyCode)) return "lblErrLobbyCodeNull";
+            if (string.IsNullOrEmpty(lobbyCode))
+            {
+                return "lblErrLobbyCodeNull";
+            }
 
-            if (lobbyCode.Length > 10) return "lblErrLobbyCodeTooLong";
+            if (lobbyCode.Length > 10)
+            {
+                return "lblErrLobbyCodeTooLong";
+            }
 
-            if (!lobbyCode.All(char.IsDigit)) return "lblErrLobbyCodeNotNumeric";
+            if (!lobbyCode.All(char.IsDigit))
+            {
+                return "lblErrLobbyCodeNotNumeric";
+            }
 
             if (int.TryParse(lobbyCode, out int lobbyId))
             {
-                if (lobbyId <= 4) return "lblErrLobbyCodeNotInRange";
+                if (lobbyId <= 4)
+                {
+                    return "lblErrLobbyCodeNotInRange";
+                }
 
-                if (lobbyId > 1000000) return "lblErrLobbyCodeExceedRange";
+                if (lobbyId > 1000000)
+                {
+                    return "lblErrLobbyCodeExceedRange";
+                }
             }
             else
+            {
                 return "lblErrInvalidCodeFormat";
+            }
 
             return null;
         }
@@ -139,5 +159,7 @@ namespace Cliente.Pantallas
                 mainWindow.NavigateToView(new LogIn());
             }
         }
+
     }
+
 }

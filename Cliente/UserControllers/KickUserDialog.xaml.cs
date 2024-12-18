@@ -6,6 +6,7 @@ namespace Cliente.UserControllers
 
     public partial class KickUserDialog : Window
     {
+
         public string KickReason { get; private set; }
 
         public KickUserDialog(string username)
@@ -35,5 +36,7 @@ namespace Cliente.UserControllers
             DialogResult = true;
             Close();
         }
+
     }
+
 }

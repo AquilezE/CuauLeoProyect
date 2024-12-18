@@ -7,6 +7,7 @@ namespace Cliente.UserControllers.Recover
 
     public partial class RecoverSuccesful : UserControl
     {
+
         public RecoverSuccesful()
         {
             InitializeComponent();
@@ -17,5 +18,7 @@ namespace Cliente.UserControllers.Recover
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new LogIn());
         }
+
     }
+
 }

@@ -11,6 +11,7 @@ namespace Cliente.UserControllers
 
     public partial class RegisterCodeVerification : UserControl
     {
+
         public event EventHandler VerificationCompleted;
         private UsersManagerClient _service;
         private Validator _validator = new Validator();
@@ -47,15 +48,23 @@ namespace Cliente.UserControllers
                         bool isRegistered = await _service.RegisterUserAsync(_email, _username, _password);
 
                         if (isRegistered)
+                        {
                             OnVerificationCompleted(EventArgs.Empty);
+                        }
                         else
+                        {
                             lbErrVerificactionCode.Content = LangUtils.Translate("lblErrUserOrEmailTaken");
+                        }
                     }
                     else
+                    {
                         HandleFailedVerification();
+                    }
                 }
                 else
+                {
                     lbErrVerificactionCode.Content = LangUtils.Translate("lblErrIncorrectCode");
+                }
             }
             catch (Exception ex)
             {
@@ -82,7 +91,9 @@ namespace Cliente.UserControllers
             }
 
             else
+            {
                 lbErrVerificactionCode.Content = LangUtils.Translate("lblErrIncorrectCode");
+            }
         }
 
         protected virtual void OnVerificationCompleted(EventArgs e)
@@ -102,9 +113,13 @@ namespace Cliente.UserControllers
                 bool emailSent = await _service.SendTokenAsync(_email);
 
                 if (emailSent)
+                {
                     lbErrVerificactionCode.Content = LangUtils.Translate("lblCodeResent");
+                }
                 else
+                {
                     lbErrVerificactionCode.Content = LangUtils.Translate("lblErrFailedResendEmail");
+                }
             }
             catch (Exception ex)
             {
@@ -133,5 +148,7 @@ namespace Cliente.UserControllers
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new LogIn());
         }
+
     }
+
 }

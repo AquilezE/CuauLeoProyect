@@ -5,12 +5,14 @@ using System.Windows.Media;
 
 namespace Cliente.Utils
 {
+
     internal class ThemeManagerService
     {
+
         public static void ChangePrimaryColor(MaterialDesignColor newPrimaryColor)
         {
             var paletteHelper = new PaletteHelper();
-            var theme = paletteHelper.GetTheme();
+            Theme theme = paletteHelper.GetTheme();
 
             theme.SetPrimaryColor(SwatchHelper.Lookup[newPrimaryColor]);
             paletteHelper.SetTheme(theme);
@@ -19,7 +21,7 @@ namespace Cliente.Utils
         public static void ChangeSecondaryColor(MaterialDesignColor newSecondaryColor)
         {
             var paletteHelper = new PaletteHelper();
-            var theme = paletteHelper.GetTheme();
+            Theme theme = paletteHelper.GetTheme();
 
             theme.SetSecondaryColor(SwatchHelper.Lookup[newSecondaryColor]);
             paletteHelper.SetTheme(theme);
@@ -41,7 +43,9 @@ namespace Cliente.Utils
             Application.Current.Resources["TextForeground"] = brush;
             Application.Current.Resources["MaterialDesignTextAreaForeground"] = brush;
             Application.Current.Resources["MaterialDesignTextBoxForeground"] = brush;
-            Application.Current.Resources["MaterialDesignLabelForeground"] = brush; 
+            Application.Current.Resources["MaterialDesignLabelForeground"] = brush;
         }
+
     }
+
 }

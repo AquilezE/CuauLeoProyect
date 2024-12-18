@@ -7,6 +7,7 @@ namespace Cliente.Pantallas
 
     public partial class Friends : UserControl
     {
+
         public Friends()
         {
             InitializeComponent();
@@ -41,5 +42,7 @@ namespace Cliente.Pantallas
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new MainMenu());
         }
+
     }
+
 }

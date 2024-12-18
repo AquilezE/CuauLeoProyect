@@ -14,6 +14,7 @@ namespace Cliente.Pantallas
 
     public partial class Profile : UserControl, IProfileManagerCallback
     {
+
         private ProfileManagerClient _service;
         private static string newUsername;
         private static int newProfilePictureId = 0;
@@ -110,8 +111,11 @@ namespace Cliente.Pantallas
             tbNewUsername.Text = "";
 
             if (User.Instance.ProfilePictureId != 1 || User.Instance.ProfilePictureId != 0)
+            {
                 imgProfilePicture.Source =
-                    new BitmapImage(new Uri("pack://application:,,,/Images/pfp" + User.Instance.ProfilePictureId + ".jpg"));
+                    new BitmapImage(new Uri("pack://application:,,,/Images/pfp" + User.Instance.ProfilePictureId +
+                                            ".jpg"));
+            }
         }
 
         private void SetNewUserName()
@@ -127,18 +131,30 @@ namespace Cliente.Pantallas
             lbErrNothingChanged.Content = "";
 
             if (newUsername == "" && newProfilePictureId == 0)
+            {
                 lbErrNothingChanged.Content = LangUtils.Translate("lblErrProfileNothingChanged");
+            }
             else if (newUsername != "" && newProfilePictureId != 0)
+            {
                 _service.UpdateProfile(User.Instance.ID, newUsername, newProfilePictureId);
+            }
             else if (newUsername == "" && newProfilePictureId != 0)
+            {
                 _service.UpdateProfile(User.instance.ID, "Not changed", newProfilePictureId);
+            }
             else if (newUsername != "" && newProfilePictureId == 0)
+            {
                 _service.UpdateProfile(User.instance.ID, newUsername, User.Instance.ProfilePictureId);
+            }
         }
 
         public void OnProfileUpdate(string username, int profilePictureId, string error)
         {
-            if (username != "Not changed") User.instance.Username = username;
+            if (username != "Not changed")
+            {
+                User.instance.Username = username;
+            }
+
             User.instance.ProfilePictureId = profilePictureId;
             LoadUserInfo();
             ResetAllBorders();
@@ -164,5 +180,7 @@ namespace Cliente.Pantallas
         {
             throw new NotImplementedException();
         }
+
     }
+
 }

@@ -9,8 +9,10 @@ using Cliente.UserControllers;
 
 namespace Cliente.Pantallas
 {
+
     public partial class RegisterAccountFields : UserControl
     {
+
         public event Action<string, string, string> RegistrationFilled;
         private readonly UsersManagerClient _service;
         private readonly Validator _validator = new Validator();
@@ -54,7 +56,9 @@ namespace Cliente.Pantallas
                 !string.IsNullOrEmpty(emailError) ||
                 !string.IsNullOrEmpty(passwordError) ||
                 !string.IsNullOrEmpty(confirmPasswordError))
+            {
                 return;
+            }
 
             try
             {
@@ -156,5 +160,7 @@ namespace Cliente.Pantallas
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new LogIn());
         }
+
     }
+
 }

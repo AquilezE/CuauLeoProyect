@@ -7,6 +7,7 @@ namespace Cliente.UserControllers
 
     public partial class RegisterSuccess : UserControl
     {
+
         public RegisterSuccess()
         {
             InitializeComponent();
@@ -17,5 +18,7 @@ namespace Cliente.UserControllers
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new LogIn());
         }
+
     }
+
 }

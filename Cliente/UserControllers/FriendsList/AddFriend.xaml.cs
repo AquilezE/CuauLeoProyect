@@ -11,8 +11,10 @@ using Cliente.Utils;
 
 namespace Cliente.UserControllers.FriendsList
 {
+
     public partial class AddFriend : UserControl, INotifyPropertyChanged
     {
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private ObservableCollection<UserFound> _usersFound;
@@ -99,7 +101,9 @@ namespace Cliente.UserControllers.FriendsList
                     bool result =
                         await Social.Instance.socialManagerClient.SendFriendRequestAsync(User.Instance.ID, e.ID);
                     if (result)
+                    {
                         UsersFound.Remove(e);
+                    }
                     else
                     {
                         var notificationDialog = new NotificationDialog();
@@ -206,5 +210,7 @@ namespace Cliente.UserControllers.FriendsList
 
             tbSearchUser.Text = "";
         }
+
     }
+
 }

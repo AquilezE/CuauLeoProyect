@@ -6,6 +6,7 @@ namespace Cliente.GameUserControllers
 
     public partial class CardsViewer : UserControl
     {
+
         public CardsViewer()
         {
             InitializeComponent();
@@ -20,13 +21,19 @@ namespace Cliente.GameUserControllers
                 double newOffset = scrollViewer.HorizontalOffset + scrollAmount;
 
                 if (newOffset < 0)
+                {
                     newOffset = 0;
+                }
                 else if (newOffset > scrollViewer.ScrollableWidth)
+                {
                     newOffset = scrollViewer.ScrollableWidth;
+                }
 
                 scrollViewer.ScrollToHorizontalOffset(newOffset);
-                e.Handled = true; 
+                e.Handled = true;
             }
         }
+
     }
+
 }

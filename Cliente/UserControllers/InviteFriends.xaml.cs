@@ -11,6 +11,7 @@ namespace Cliente.UserControllers
 
     public partial class InviteFriends : Window, INotifyPropertyChanged
     {
+
         public event PropertyChangedEventHandler PropertyChanged;
         private int currentLobbyId;
 
@@ -24,7 +25,9 @@ namespace Cliente.UserControllers
         private void FriendLoaded(object sender, RoutedEventArgs e)
         {
             if (sender is FriendToInvite friendToInviteUserControl)
+            {
                 friendToInviteUserControl.inviteFriend += OnFriendInvite;
+            }
         }
 
         private void OnFriendInvite(object sender, Cliente.Friend friend)
@@ -65,5 +68,7 @@ namespace Cliente.UserControllers
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
             }
         }
+
     }
+
 }

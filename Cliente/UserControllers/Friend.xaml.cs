@@ -7,6 +7,7 @@ namespace Cliente.UserControllers
 
     public partial class Friend : UserControl
     {
+
         public event EventHandler<Cliente.Friend> deleteFriend;
         public event EventHandler<Cliente.Friend> blockUser;
 
@@ -24,5 +25,7 @@ namespace Cliente.UserControllers
         {
             blockUser?.Invoke(this, DataContext as Cliente.Friend);
         }
+
     }
+
 }

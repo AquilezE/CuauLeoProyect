@@ -5,6 +5,7 @@ namespace Cliente.GameUserControllers
 
     public partial class ProvokeAnimationWindow : Window
     {
+
         public ProvokeAnimationWindow()
         {
             InitializeComponent();
@@ -14,5 +15,7 @@ namespace Cliente.GameUserControllers
         {
             Close();
         }
+
     }
+
 }

@@ -4,8 +4,10 @@ using System.ComponentModel;
 
 namespace Cliente
 {
+
     public class Friend : INotifyPropertyChanged
     {
+
         public event PropertyChangedEventHandler PropertyChanged;
         private bool isConnected;
 
@@ -49,5 +51,7 @@ namespace Cliente
             ProfilePicturePath = "pack://application:,,,/Images/pfp" + friendDto.ProfilePictureId + ".jpg";
             IsConnected = friendDto.IsConnected;
         }
+
     }
+
 }

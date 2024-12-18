@@ -2,8 +2,10 @@
 
 namespace Cliente
 {
+
     public class FriendRequest
     {
+
         public int FriendRequestId { get; set; }
         public string SenderName { get; set; }
         public int SenderId { get; set; }
@@ -24,5 +26,7 @@ namespace Cliente
             SenderName = friendRequestDto.SenderName;
             SenderProfilePicturePath = "pack://application:,,,/Images/pfp" + friendRequestDto.ProfilePictureId + ".jpg";
         }
+
     }
+
 }

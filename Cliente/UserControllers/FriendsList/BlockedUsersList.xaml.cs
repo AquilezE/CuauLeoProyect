@@ -13,6 +13,7 @@ namespace Cliente.UserControllers.FriendsList
 
     public partial class BlockedUsersList : UserControl
     {
+
         private ObservableCollection<Blocked> _blockedList;
 
         public BlockedUsersList()
@@ -31,18 +32,26 @@ namespace Cliente.UserControllers.FriendsList
 
         private void BlockedUserLoaded(object sender, RoutedEventArgs e)
         {
-            if (sender is BlockedUser blockedUserControl) blockedUserControl.unblockUser += OnUnblockUser;
+            if (sender is BlockedUser blockedUserControl)
+            {
+                blockedUserControl.unblockUser += OnUnblockUser;
+            }
         }
 
         private async void OnUnblockUser(object sender, Blocked e)
         {
-            if (e == null) return;
+            if (e == null)
+            {
+                return;
+            }
 
             try
             {
                 bool result = await Social.Instance.socialManagerClient.UnblockUserAsync(User.Instance.ID, e.BlockedId);
                 if (result)
+                {
                     Social.Instance.BlockedUsersList.Remove(e);
+                }
                 else
                 {
                     var notificationDialog = new NotificationDialog();
@@ -80,5 +89,7 @@ namespace Cliente.UserControllers.FriendsList
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrUnblockingException"));
             }
         }
+
     }
+
 }

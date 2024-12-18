@@ -1,135 +1,141 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BevososService.DTOs" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BevososService.DTOs" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:complexType name="UserDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IsReady" type="xs:boolean" />
-      <xs:element minOccurs="0" name="ProfilePictureId" type="xs:int" />
-      <xs:element minOccurs="0" name="UserId" type="xs:int" />
-      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="UserDTO" nillable="true" type="tns:UserDTO" />
-  <xs:complexType name="ArrayOfUserDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserDTO" nillable="true" type="tns:UserDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfUserDTO" nillable="true" type="tns:ArrayOfUserDTO" />
-  <xs:complexType name="ArrayOfFriendDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="FriendDTO" nillable="true" type="tns:FriendDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfFriendDTO" nillable="true" type="tns:ArrayOfFriendDTO" />
-  <xs:complexType name="FriendDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="FriendId" type="xs:int" />
-      <xs:element minOccurs="0" name="FriendName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FriendshipId" type="xs:int" />
-      <xs:element minOccurs="0" name="IsConnected" type="xs:boolean" />
-      <xs:element minOccurs="0" name="ProfilePictureId" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="FriendDTO" nillable="true" type="tns:FriendDTO" />
-  <xs:complexType name="ArrayOfBlockedDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="BlockedDTO" nillable="true" type="tns:BlockedDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfBlockedDTO" nillable="true" type="tns:ArrayOfBlockedDTO" />
-  <xs:complexType name="BlockedDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="BlockId" type="xs:int" />
-      <xs:element minOccurs="0" name="BlockedId" type="xs:int" />
-      <xs:element minOccurs="0" name="BlockerUsername" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ProfilePictureId" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="BlockedDTO" nillable="true" type="tns:BlockedDTO" />
-  <xs:complexType name="ArrayOfFriendRequestDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="FriendRequestDTO" nillable="true" type="tns:FriendRequestDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfFriendRequestDTO" nillable="true" type="tns:ArrayOfFriendRequestDTO" />
-  <xs:complexType name="FriendRequestDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="FriendRequestId" type="xs:int" />
-      <xs:element minOccurs="0" name="ProfilePictureId" type="xs:int" />
-      <xs:element minOccurs="0" name="SenderId" type="xs:int" />
-      <xs:element minOccurs="0" name="SenderName" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="FriendRequestDTO" nillable="true" type="tns:FriendRequestDTO" />
-  <xs:complexType name="StatsDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="AnihilatedBabies" type="xs:int" />
-      <xs:element minOccurs="0" name="IsWinner" type="xs:boolean" />
-      <xs:element minOccurs="0" name="MonstersCreated" type="xs:int" />
-      <xs:element minOccurs="0" name="PointsThisGame" type="xs:int" />
-      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Wins" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="StatsDTO" nillable="true" type="tns:StatsDTO" />
-  <xs:complexType name="GameStateDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="BabyDeck" nillable="true" type="tns:ArrayOfCardDTO" />
-      <xs:element minOccurs="0" name="CardsRemainingInDeck" type="xs:int" />
-      <xs:element minOccurs="0" name="CurrentPlayerId" type="xs:int" />
-      <xs:element minOccurs="0" name="GameStateId" type="xs:int" />
-      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PlayerActionsRemaining" nillable="true" type="q1:ArrayOfKeyValueOfintint" />
-      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PlayerState" nillable="true" type="q2:ArrayOfKeyValueOfintPlayerStateDTOc2z18OO1" />
-      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PlayerStatistics" nillable="true" type="q3:ArrayOfKeyValueOfintGameStatsDTOc2z18OO1" />
-      <xs:element minOccurs="0" name="TurnTimeRemainingInSeconds" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="GameStateDTO" nillable="true" type="tns:GameStateDTO" />
-  <xs:complexType name="ArrayOfCardDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="CardDTO" nillable="true" type="tns:CardDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfCardDTO" nillable="true" type="tns:ArrayOfCardDTO" />
-  <xs:complexType name="CardDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CardId" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="CardDTO" nillable="true" type="tns:CardDTO" />
-  <xs:complexType name="PlayerStateDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Hand" nillable="true" type="tns:ArrayOfCardDTO" />
-      <xs:element minOccurs="0" name="Monsters" nillable="true" type="tns:ArrayOfMonsterDTO" />
-      <xs:element minOccurs="0" name="User" nillable="true" type="tns:UserDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="PlayerStateDTO" nillable="true" type="tns:PlayerStateDTO" />
-  <xs:complexType name="ArrayOfMonsterDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="MonsterDTO" nillable="true" type="tns:MonsterDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfMonsterDTO" nillable="true" type="tns:ArrayOfMonsterDTO" />
-  <xs:complexType name="MonsterDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="BodyParts" nillable="true" type="tns:ArrayOfCardDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="MonsterDTO" nillable="true" type="tns:MonsterDTO" />
-  <xs:complexType name="GameStatsDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="BabiesKilled" type="xs:int" />
-      <xs:element minOccurs="0" name="Points" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="GameStatsDTO" nillable="true" type="tns:GameStatsDTO" />
-  <xs:complexType name="ArrayOfStatsDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="StatsDTO" nillable="true" type="tns:StatsDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfStatsDTO" nillable="true" type="tns:ArrayOfStatsDTO" />
+
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BevososService.DTOs" elementFormDefault="qualified"
+           targetNamespace="http://schemas.datacontract.org/2004/07/BevososService.DTOs"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+	<xs:complexType name="UserDTO">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+			<xs:element minOccurs="0" name="IsReady" type="xs:boolean" />
+			<xs:element minOccurs="0" name="ProfilePictureId" type="xs:int" />
+			<xs:element minOccurs="0" name="UserId" type="xs:int" />
+			<xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="UserDTO" nillable="true" type="tns:UserDTO" />
+	<xs:complexType name="ArrayOfUserDTO">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="UserDTO" nillable="true" type="tns:UserDTO" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfUserDTO" nillable="true" type="tns:ArrayOfUserDTO" />
+	<xs:complexType name="ArrayOfFriendDTO">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="FriendDTO" nillable="true" type="tns:FriendDTO" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfFriendDTO" nillable="true" type="tns:ArrayOfFriendDTO" />
+	<xs:complexType name="FriendDTO">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="FriendId" type="xs:int" />
+			<xs:element minOccurs="0" name="FriendName" nillable="true" type="xs:string" />
+			<xs:element minOccurs="0" name="FriendshipId" type="xs:int" />
+			<xs:element minOccurs="0" name="IsConnected" type="xs:boolean" />
+			<xs:element minOccurs="0" name="ProfilePictureId" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="FriendDTO" nillable="true" type="tns:FriendDTO" />
+	<xs:complexType name="ArrayOfBlockedDTO">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="BlockedDTO" nillable="true" type="tns:BlockedDTO" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfBlockedDTO" nillable="true" type="tns:ArrayOfBlockedDTO" />
+	<xs:complexType name="BlockedDTO">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="BlockId" type="xs:int" />
+			<xs:element minOccurs="0" name="BlockedId" type="xs:int" />
+			<xs:element minOccurs="0" name="BlockerUsername" nillable="true" type="xs:string" />
+			<xs:element minOccurs="0" name="ProfilePictureId" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="BlockedDTO" nillable="true" type="tns:BlockedDTO" />
+	<xs:complexType name="ArrayOfFriendRequestDTO">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="FriendRequestDTO" nillable="true" type="tns:FriendRequestDTO" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfFriendRequestDTO" nillable="true" type="tns:ArrayOfFriendRequestDTO" />
+	<xs:complexType name="FriendRequestDTO">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="FriendRequestId" type="xs:int" />
+			<xs:element minOccurs="0" name="ProfilePictureId" type="xs:int" />
+			<xs:element minOccurs="0" name="SenderId" type="xs:int" />
+			<xs:element minOccurs="0" name="SenderName" nillable="true" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="FriendRequestDTO" nillable="true" type="tns:FriendRequestDTO" />
+	<xs:complexType name="StatsDTO">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="AnihilatedBabies" type="xs:int" />
+			<xs:element minOccurs="0" name="IsWinner" type="xs:boolean" />
+			<xs:element minOccurs="0" name="MonstersCreated" type="xs:int" />
+			<xs:element minOccurs="0" name="PointsThisGame" type="xs:int" />
+			<xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+			<xs:element minOccurs="0" name="Wins" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StatsDTO" nillable="true" type="tns:StatsDTO" />
+	<xs:complexType name="GameStateDTO">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="BabyDeck" nillable="true" type="tns:ArrayOfCardDTO" />
+			<xs:element minOccurs="0" name="CardsRemainingInDeck" type="xs:int" />
+			<xs:element minOccurs="0" name="CurrentPlayerId" type="xs:int" />
+			<xs:element minOccurs="0" name="GameStateId" type="xs:int" />
+			<xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0"
+			            name="PlayerActionsRemaining" nillable="true" type="q1:ArrayOfKeyValueOfintint" />
+			<xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PlayerState"
+			            nillable="true" type="q2:ArrayOfKeyValueOfintPlayerStateDTOc2z18OO1" />
+			<xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0"
+			            name="PlayerStatistics" nillable="true" type="q3:ArrayOfKeyValueOfintGameStatsDTOc2z18OO1" />
+			<xs:element minOccurs="0" name="TurnTimeRemainingInSeconds" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="GameStateDTO" nillable="true" type="tns:GameStateDTO" />
+	<xs:complexType name="ArrayOfCardDTO">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="CardDTO" nillable="true" type="tns:CardDTO" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfCardDTO" nillable="true" type="tns:ArrayOfCardDTO" />
+	<xs:complexType name="CardDTO">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="CardId" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CardDTO" nillable="true" type="tns:CardDTO" />
+	<xs:complexType name="PlayerStateDTO">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="Hand" nillable="true" type="tns:ArrayOfCardDTO" />
+			<xs:element minOccurs="0" name="Monsters" nillable="true" type="tns:ArrayOfMonsterDTO" />
+			<xs:element minOccurs="0" name="User" nillable="true" type="tns:UserDTO" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PlayerStateDTO" nillable="true" type="tns:PlayerStateDTO" />
+	<xs:complexType name="ArrayOfMonsterDTO">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="MonsterDTO" nillable="true" type="tns:MonsterDTO" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfMonsterDTO" nillable="true" type="tns:ArrayOfMonsterDTO" />
+	<xs:complexType name="MonsterDTO">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="BodyParts" nillable="true" type="tns:ArrayOfCardDTO" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MonsterDTO" nillable="true" type="tns:MonsterDTO" />
+	<xs:complexType name="GameStatsDTO">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="BabiesKilled" type="xs:int" />
+			<xs:element minOccurs="0" name="Points" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="GameStatsDTO" nillable="true" type="tns:GameStatsDTO" />
+	<xs:complexType name="ArrayOfStatsDTO">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="StatsDTO" nillable="true" type="tns:StatsDTO" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ArrayOfStatsDTO" nillable="true" type="tns:ArrayOfStatsDTO" />
 </xs:schema>

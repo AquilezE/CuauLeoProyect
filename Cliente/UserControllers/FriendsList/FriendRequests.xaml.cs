@@ -13,6 +13,7 @@ namespace Cliente.UserControllers.FriendsList
 
     public partial class FriendRequests : UserControl
     {
+
         private ObservableCollection<Cliente.FriendRequest> _friendRequests;
 
         public FriendRequests()
@@ -48,7 +49,9 @@ namespace Cliente.UserControllers.FriendsList
                         await Social.Instance.socialManagerClient.AcceptFriendRequestAsync(User.Instance.ID, e.SenderId,
                             e.FriendRequestId);
                     if (result)
+                    {
                         Social.Instance.FriendRequests.Remove(e);
+                    }
                     else
                     {
                         var notificationDialog = new NotificationDialog();
@@ -98,7 +101,9 @@ namespace Cliente.UserControllers.FriendsList
                         await Social.Instance.socialManagerClient.DeclineFriendRequestAsync(e.FriendRequestId);
 
                     if (result)
+                    {
                         Social.Instance.FriendRequests.Remove(e);
+                    }
                     else
                     {
                         var notificationDialog = new NotificationDialog();
@@ -137,5 +142,7 @@ namespace Cliente.UserControllers.FriendsList
                 }
             }
         }
+
     }
+
 }

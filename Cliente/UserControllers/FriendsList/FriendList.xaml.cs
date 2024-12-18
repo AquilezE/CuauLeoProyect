@@ -11,8 +11,10 @@ using System.Windows.Data;
 
 namespace Cliente.UserControllers.FriendsList
 {
+
     public partial class FriendList : UserControl, INotifyPropertyChanged
     {
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private ICollectionView _friendsFiltered;
@@ -45,7 +47,9 @@ namespace Cliente.UserControllers.FriendsList
             if (filteredFriend is Cliente.Friend friend)
             {
                 if (string.IsNullOrEmpty(FilterSearchName))
+                {
                     return true;
+                }
 
                 string filterCriteria = FilterSearchName.ToLower();
                 return friend.FriendName.ToLower().Contains(filterCriteria);
@@ -131,7 +135,9 @@ namespace Cliente.UserControllers.FriendsList
                     bool result =
                         await Social.Instance.socialManagerClient.DeleteFriendAsync(User.Instance.ID, e.FriendId);
                     if (result)
+                    {
                         Social.Instance.FriendList.Remove(e);
+                    }
                     else
                     {
                         var notificationDialog = new NotificationDialog();
@@ -175,5 +181,7 @@ namespace Cliente.UserControllers.FriendsList
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
     }
+
 }

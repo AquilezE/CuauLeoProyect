@@ -2,8 +2,10 @@
 
 namespace Cliente
 {
+
     public class Blocked
     {
+
         public int BlockId { get; set; }
         public int BlockedId { get; set; }
         public string BlockerUsername { get; set; }
@@ -24,5 +26,7 @@ namespace Cliente
             BlockerUsername = blockedDto.BlockerUsername;
             BlockedProfilePicturePath = "pack://application:,,,/Images/pfp" + blockedDto.ProfilePictureId + ".jpg";
         }
+
     }
+
 }

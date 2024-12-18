@@ -12,8 +12,10 @@ using Cliente.Utils;
 
 namespace Cliente
 {
+
     public class Social : ISocialManagerCallback, INotifyPropertyChanged
     {
+
         public SocialManagerClient socialManagerClient;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -98,7 +100,11 @@ namespace Cliente
         {
             get
             {
-                if (instance == null) instance = new Social();
+                if (instance == null)
+                {
+                    instance = new Social();
+                }
+
                 return instance;
             }
             set => instance = value;
@@ -115,7 +121,10 @@ namespace Cliente
             Application.Current.Dispatcher.Invoke(() =>
             {
                 Friend friend = FriendList.FirstOrDefault(f => f.FriendId == friendId);
-                if (friend != null) friend.IsConnected = true;
+                if (friend != null)
+                {
+                    friend.IsConnected = true;
+                }
             });
         }
 
@@ -124,7 +133,10 @@ namespace Cliente
             Application.Current.Dispatcher.Invoke(() =>
             {
                 Friend friend = FriendList.FirstOrDefault(f => f.FriendId == friendId);
-                if (friend != null) friend.IsConnected = false;
+                if (friend != null)
+                {
+                    friend.IsConnected = false;
+                }
             });
         }
 
@@ -162,7 +174,10 @@ namespace Cliente
         public void OnFriendshipDeleted(int userId)
         {
             object friend = FriendList.FirstOrDefault(f => f.FriendId == userId);
-            if (friend != null) FriendList.Remove((Friend)friend);
+            if (friend != null)
+            {
+                FriendList.Remove((Friend)friend);
+            }
         }
 
         public void Logout()
@@ -198,9 +213,13 @@ namespace Cliente
                     }
 
                     if (socialManagerClient.State == CommunicationState.Faulted)
+                    {
                         socialManagerClient.Abort();
+                    }
                     else
+                    {
                         socialManagerClient.Close();
+                    }
                 }
             }
             catch (Exception ex)
@@ -329,5 +348,7 @@ namespace Cliente
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
             }
         }
+
     }
+
 }

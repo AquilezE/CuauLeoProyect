@@ -14,8 +14,10 @@ using Cliente.Utils;
 
 namespace Cliente.Pantallas
 {
+
     public partial class Lobby : UserControl, ILobbyManagerCallback, INotifyPropertyChanged
     {
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(string propertyName)
@@ -91,7 +93,10 @@ namespace Cliente.Pantallas
         {
             string message = tbMessage.Text.Trim();
 
-            if (!IsValidMessage(message)) return;
+            if (!IsValidMessage(message))
+            {
+                return;
+            }
 
             _servicio.SendMessage(_lobbyId, User.Instance.ID, message);
             tbMessage.Text = string.Empty;
@@ -140,7 +145,10 @@ namespace Cliente.Pantallas
 
         private void UserLobby_Loaded(object sender, RoutedEventArgs e)
         {
-            if (sender is UserControllers.UserLobby userLobbyControl) userLobbyControl.KickRequested += OnKickRequested;
+            if (sender is UserControllers.UserLobby userLobbyControl)
+            {
+                userLobbyControl.KickRequested += OnKickRequested;
+            }
         }
 
         private void OnKickRequested(object sender, UserLobby userToKick)
@@ -206,7 +214,10 @@ namespace Cliente.Pantallas
         public void OnLeaveLobby(int lobbyId, int UserId)
         {
             UserLobby user = _users.FirstOrDefault(u => u.ID == UserId);
-            if (user != null) _users.Remove(user);
+            if (user != null)
+            {
+                _users.Remove(user);
+            }
         }
 
         public void OnKicked(int lobbyId, string reason)
@@ -231,7 +242,9 @@ namespace Cliente.Pantallas
                 _messages.Add(new Message(username, message, _lobbyId));
             }
             else
+            {
                 _messages.Add(new Message(LangUtils.Translate("lblUser") + $" {UserId}", message, _lobbyId));
+            }
 
             Dispatcher.BeginInvoke(new Action(() => { ScrollToBottom(); }),
                 System.Windows.Threading.DispatcherPriority.Background);
@@ -249,16 +262,26 @@ namespace Cliente.Pantallas
                 _users.Add(user);
             }
 
-            foreach (UserLobby userDto in _users) Console.WriteLine(userDto.Username);
+            foreach (UserLobby userDto in _users)
+            {
+                Console.WriteLine(userDto.Username);
+            }
 
-            if (!_users.Any(u => u.ID == User.Instance.ID)) _users.Add(new UserLobby(User.Instance));
+            if (!_users.Any(u => u.ID == User.Instance.ID))
+            {
+                _users.Add(new UserLobby(User.Instance));
+            }
 
             tbLobbyCode.Text = lobbyId.ToString();
         }
 
         private void btInviteFriend_Click(object sender, RoutedEventArgs e)
         {
-            if (!IsLeader) return;
+            if (!IsLeader)
+            {
+                return;
+            }
+
             var inviteFriends = new InviteFriends(_lobbyId);
             inviteFriends.ShowDialog();
         }
@@ -266,7 +289,10 @@ namespace Cliente.Pantallas
         private void ScrollToBottom()
         {
             var scrollViewer = FindVisualChild<ScrollViewer>(MessagesListBox);
-            if (scrollViewer != null) scrollViewer.ScrollToEnd();
+            if (scrollViewer != null)
+            {
+                scrollViewer.ScrollToEnd();
+            }
         }
 
         private T FindVisualChild<T>(DependencyObject obj) where T : DependencyObject
@@ -275,12 +301,16 @@ namespace Cliente.Pantallas
             {
                 DependencyObject child = VisualTreeHelper.GetChild(obj, i);
                 if (child is T)
+                {
                     return (T)child;
+                }
                 else
                 {
                     var childOfChild = FindVisualChild<T>(child);
                     if (childOfChild != null)
+                    {
                         return childOfChild;
+                    }
                 }
             }
 
@@ -310,5 +340,7 @@ namespace Cliente.Pantallas
         {
             _servicio.ChangeReadyStatus(_lobbyId, User.Instance.ID);
         }
+
     }
+
 }

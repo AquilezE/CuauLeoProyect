@@ -27,7 +27,7 @@
         <Button Grid.Column="1" Grid.Row="1" MinWidth="20" MinHeight="120" Margin="5 5 5 5"
                 Content="{h:Lang btnFriendList}" FontSize="40" Click="btFriendsList_Click" />
         <Button Grid.Column="1" Grid.Row="2" MinWidth="20" MinHeight="120" Margin="5 5 5 5"
-                Content="{h:Lang btnFriendRequest}" FontSize="40" 
+                Content="{h:Lang btnFriendRequest}" FontSize="40"
                 Click="btFriendRequests_Click" />
         <Button Grid.Column="1" Grid.Row="3" MinWidth="20" MinHeight="120" Margin="5 5 5 5"
                 Content="{h:Lang btnAddFriend}" FontSize="40" Click="btAddFriend_Click" />

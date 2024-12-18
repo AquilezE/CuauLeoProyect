@@ -7,6 +7,7 @@ namespace Cliente.UserControllers
 
     public partial class FriendToInvite : UserControl
     {
+
         public event EventHandler<Cliente.Friend> inviteFriend;
 
         public FriendToInvite()
@@ -18,5 +19,7 @@ namespace Cliente.UserControllers
         {
             inviteFriend?.Invoke(this, DataContext as Cliente.Friend);
         }
+
     }
+
 }

@@ -14,6 +14,7 @@ namespace Cliente.GameUserControllers
 
     public partial class EndGame : UserControl
     {
+
         private GameManagerClient gameManagerClient;
         private StatsDTO[] _matchStats;
 
@@ -23,7 +24,6 @@ namespace Cliente.GameUserControllers
             DataContext = GameLogic.Instance;
             gameManagerClient = new GameManagerClient(new InstanceContext(GameLogic.Instance));
             _matchStats = matchStats;
-
         }
 
         private void btContinue_Click(object sender, RoutedEventArgs e)
@@ -75,5 +75,7 @@ namespace Cliente.GameUserControllers
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrBlockingException"));
             }
         }
+
     }
+
 }

@@ -6,6 +6,7 @@ namespace Cliente.GameUserControllers
 
     public partial class EndGameStartedAnimationWindow : Window
     {
+
         public EndGameStartedAnimationWindow()
         {
             InitializeComponent();
@@ -15,5 +16,7 @@ namespace Cliente.GameUserControllers
         {
             Close();
         }
+
     }
+
 }

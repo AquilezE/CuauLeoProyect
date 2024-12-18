@@ -3,8 +3,10 @@ using System.Windows.Threading;
 
 namespace Cliente
 {
+
     public partial class App : Application
     {
+
         public static Dispatcher AppDispatcher { get; private set; }
 
         private App()
@@ -17,5 +19,7 @@ namespace Cliente
             base.OnStartup(e);
             AppDispatcher = Dispatcher.CurrentDispatcher;
         }
+
     }
+
 }

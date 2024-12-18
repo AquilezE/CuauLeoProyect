@@ -11,6 +11,7 @@ namespace Cliente.UserControllers.Recover
 
     public partial class RecoverNewPassword : UserControl
     {
+
         public event EventHandler PasswordChanged;
         private UsersManagerClient _service;
         private string _email;
@@ -53,7 +54,9 @@ namespace Cliente.UserControllers.Recover
 
 
                 if (passwordChanged)
+                {
                     OnPasswordChanged(e);
+                }
                 else
                 {
                     lbErrPassword.Content = LangUtils.Translate("lblErrErrorChangingPassword");
@@ -108,5 +111,7 @@ namespace Cliente.UserControllers.Recover
             string error = _validator.ValidateConfirmPassword(password, confirmPassword);
             lbErrPasswordConfirmation.Content = error;
         }
+
     }
+
 }

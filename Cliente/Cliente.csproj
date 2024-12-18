@@ -155,16 +155,6 @@
     <Compile Include="Blocked.cs" />
     <Compile Include="Converters\ReadyCheckVisibilityConverter.cs" />
     <Compile Include="GameCard.cs" />
-    <Compile Include="Connected Services\LobbyService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\LogInService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Connected Services\ServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -582,29 +572,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <None Include="Connected Services\LobbyService\service.wsdl" />
-    <None Include="Connected Services\LobbyService\service.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\LobbyService\service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\LobbyService\Servicio.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\LogInService\Cliente.LogInService.User.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\LogInService\service.wsdl" />
-    <None Include="Connected Services\LogInService\service.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\LogInService\service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\LogInService\Servicio.Clases.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\ServiceReference\service.wsdl" />
     <None Include="Connected Services\ServiceReference\service.xsd">
       <SubType>Designer</SubType>
@@ -632,33 +599,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\LobbyService\" />
-    <WCFMetadataStorage Include="Connected Services\LogInService\" />
     <WCFMetadataStorage Include="Connected Services\ServiceReference\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\LobbyService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\LobbyService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\LobbyService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\LogInService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\LogInService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\LogInService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\pfp2.jpg" />

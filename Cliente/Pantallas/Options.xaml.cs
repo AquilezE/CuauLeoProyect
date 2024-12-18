@@ -13,19 +13,26 @@ namespace Cliente.Pantallas
 
     public partial class Options : UserControl
     {
+
         private bool _isLoaded;
+
         public Options()
         {
             InitializeComponent();
             Loaded += OnLoaded;
         }
+
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             _isLoaded = true;
         }
+
         private void cbLanguageOptions_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (!_isLoaded) return;
+            if (!_isLoaded)
+            {
+                return;
+            }
 
             var selectedItem = cbLanguageOptions.SelectedItem as ComboBoxItem;
             if (selectedItem != null)
@@ -62,7 +69,7 @@ namespace Cliente.Pantallas
         {
             if (sender is RadioButton radioButton)
             {
-                var selectedColor = "Green";
+                string selectedColor = "Green";
                 var materialColor = (MaterialDesignColor)Enum.Parse(typeof(MaterialDesignColor), selectedColor);
                 ThemeManagerService.ChangePrimaryColor(materialColor);
             }
@@ -78,7 +85,7 @@ namespace Cliente.Pantallas
         {
             if (sender is RadioButton radioButton)
             {
-                var selectedColor = "Purple";
+                string selectedColor = "Purple";
                 var materialColor = (MaterialDesignColor)Enum.Parse(typeof(MaterialDesignColor), selectedColor);
                 ThemeManagerService.ChangePrimaryColor(materialColor);
                 ThemeManagerService.ChangeDefaultForeground(Colors.Indigo);
@@ -89,7 +96,7 @@ namespace Cliente.Pantallas
         {
             if (sender is RadioButton radioButton)
             {
-                var selectedColor = "Brown";
+                string selectedColor = "Brown";
                 var materialColor = (MaterialDesignColor)Enum.Parse(typeof(MaterialDesignColor), selectedColor);
                 ThemeManagerService.ChangePrimaryColor(materialColor);
                 ThemeManagerService.ChangeDefaultForeground(Colors.SaddleBrown);
@@ -100,11 +107,13 @@ namespace Cliente.Pantallas
         {
             if (sender is RadioButton radioButton)
             {
-                var selectedColor = "Green";
+                string selectedColor = "Green";
                 var materialColor = (MaterialDesignColor)Enum.Parse(typeof(MaterialDesignColor), selectedColor);
                 ThemeManagerService.ChangePrimaryColor(materialColor);
                 ThemeManagerService.ChangeDefaultForeground(Colors.ForestGreen);
             }
         }
+
     }
+
 }

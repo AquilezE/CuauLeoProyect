@@ -9,6 +9,7 @@ namespace Cliente.GameUserControllers
 
     public partial class MonsterSelectionWindow : Window
     {
+
         public int SelectedMonsterIndex { get; private set; } = -1;
 
         public MonsterSelectionWindow(ObservableCollection<MonsterDTO> monsters)
@@ -19,7 +20,11 @@ namespace Cliente.GameUserControllers
             foreach (MonsterDTO monster in monsters)
             {
                 var gameCards = new ObservableCollection<GameCard>();
-                foreach (CardDTO cardDto in monster.BodyParts) gameCards.Add(new GameCard(cardDto));
+                foreach (CardDTO cardDto in monster.BodyParts)
+                {
+                    gameCards.Add(new GameCard(cardDto));
+                }
+
                 gameCardMonsters.Add(gameCards);
             }
 
@@ -36,7 +41,10 @@ namespace Cliente.GameUserControllers
                 if (container != null)
                 {
                     var cardControl = FindVisualChild<CardUserController>(container);
-                    if (cardControl != null) cardControl.CardClicked += CardControl_CardClicked;
+                    if (cardControl != null)
+                    {
+                        cardControl.CardClicked += CardControl_CardClicked;
+                    }
                 }
             }
         }
@@ -71,15 +79,22 @@ namespace Cliente.GameUserControllers
             {
                 DependencyObject child = VisualTreeHelper.GetChild(obj, i);
                 if (child is childItem)
+                {
                     return (childItem)child;
+                }
                 else
                 {
                     var childOfChild = FindVisualChild<childItem>(child);
-                    if (childOfChild != null) return childOfChild;
+                    if (childOfChild != null)
+                    {
+                        return childOfChild;
+                    }
                 }
             }
 
             return null;
         }
+
     }
+
 }

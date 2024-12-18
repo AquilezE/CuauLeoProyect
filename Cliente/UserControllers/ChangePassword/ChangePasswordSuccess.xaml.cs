@@ -7,6 +7,7 @@ namespace Cliente.UserControllers.ChangePassword
 
     public partial class ChangePasswordSuccess : UserControl
     {
+
         public ChangePasswordSuccess()
         {
             InitializeComponent();
@@ -17,5 +18,7 @@ namespace Cliente.UserControllers.ChangePassword
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new MainMenu());
         }
+
     }
+
 }

@@ -12,6 +12,7 @@ namespace Cliente.Pantallas
 
     public partial class Stats : UserControl
     {
+
         public StatsManagerClient statsManagerClient;
 
         public Stats()
@@ -72,5 +73,7 @@ namespace Cliente.Pantallas
             statsManagerClient = new StatsManagerClient();
             FillUserStats();
         }
+
     }
+
 }

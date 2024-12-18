@@ -12,8 +12,10 @@ using System.Windows.Threading;
 
 namespace Cliente
 {
+
     public class GameLogic : INotifyPropertyChanged, IGameManagerCallback
     {
+
         public event Action<CardDTO> BodyPartSelectionRequested;
         public event Action<CardDTO> ToolSelectionRequested;
         public event Action<CardDTO> HatSelectionRequested;
@@ -136,7 +138,10 @@ namespace Cliente
                 {
                     lock (_lock)
                     {
-                        if (_instance == null) _instance = new GameLogic();
+                        if (_instance == null)
+                        {
+                            _instance = new GameLogic();
+                        }
                     }
                 }
 
@@ -259,7 +264,10 @@ namespace Cliente
             {
                 Player1Score = gameState.PlayerStatistics[User.Instance.ID].Points;
                 Player1Username = playerState.User.Username;
-                foreach (MonsterDTO monster in playerState.Monsters) Player1Monsters.Add(new GameMonster(monster));
+                foreach (MonsterDTO monster in playerState.Monsters)
+                {
+                    Player1Monsters.Add(new GameMonster(monster));
+                }
             }
 
 
@@ -274,7 +282,9 @@ namespace Cliente
 
 
                 if (playerId == User.Instance.ID)
+                {
                     continue;
+                }
 
                 switch (playerNumber)
                 {
@@ -282,21 +292,30 @@ namespace Cliente
                         Player2Score = gameState.PlayerStatistics[playerId].Points;
                         Player2Username = player.Value.User.Username;
                         foreach (MonsterDTO monster in player.Value.Monsters)
+                        {
                             Player2Monsters.Add(new GameMonster(monster));
+                        }
+
                         break;
 
                     case 3:
                         Player3Score = gameState.PlayerStatistics[playerId].Points;
                         Player3Username = player.Value.User.Username;
                         foreach (MonsterDTO monster in player.Value.Monsters)
+                        {
                             Player3Monsters.Add(new GameMonster(monster));
+                        }
+
                         break;
 
                     case 4:
                         Player4Score = gameState.PlayerStatistics[playerId].Points;
                         Player4Username = player.Value.User.Username;
                         foreach (MonsterDTO monster in player.Value.Monsters)
+                        {
                             Player4Monsters.Add(new GameMonster(monster));
+                        }
+
                         break;
 
                     default:
@@ -306,14 +325,18 @@ namespace Cliente
                 playerNumber++;
 
                 if (playerNumber > 4)
+                {
                     break;
+                }
             }
         }
 
         private void UpdatePropertiesFromGameState(GameStateDTO gameState)
         {
             if (gameState == null)
+            {
                 return;
+            }
 
             GameId = gameState.GameStateId;
             CurrentPlayerId = gameState.CurrentPlayerId;
@@ -326,7 +349,10 @@ namespace Cliente
 
 
             BabyDeck.Clear();
-            foreach (CardDTO card in gameState.BabyDeck) BabyDeck.Add(new GameCard(card));
+            foreach (CardDTO card in gameState.BabyDeck)
+            {
+                BabyDeck.Add(new GameCard(card));
+            }
 
 
             CardDTO newCard = gameState.PlayerState.FirstOrDefault(ps => ps.Key == User.Instance.ID).Value.Hand.Last();
@@ -336,17 +362,27 @@ namespace Cliente
 
             CardListViewer.Clear();
             foreach (CardDTO card in gameState.PlayerState[User.Instance.ID].Hand)
+            {
                 CardListViewer.Add(new GameCard(card));
+            }
 
             Monster.Clear();
             if (gameState.PlayerState.TryGetValue(User.Instance.ID, out PlayerStateDTO playerState))
+            {
                 foreach (MonsterDTO monster in playerState.Monsters)
+                {
                     Monster.Add(monster);
+                }
+            }
 
             if (gameState.PlayerActionsRemaining.TryGetValue(User.Instance.ID, out int actionsRemaining))
+            {
                 PlayerActionsRemaining = actionsRemaining;
+            }
             else
+            {
                 PlayerActionsRemaining = 0;
+            }
 
 
             CardsRemainingInDeck = gameState.CardsRemainingInDeck;
@@ -386,7 +422,9 @@ namespace Cliente
         private void TurnTimer_Tick(object sender, EventArgs e)
         {
             if (TurnTimeRemainingInSeconds > 0)
+            {
                 TurnTimeRemainingInSeconds--;
+            }
             else
             {
                 var notification = new NotificationDialog();
@@ -417,7 +455,10 @@ namespace Cliente
         {
             GameHasEnded?.Invoke(gameStats);
             var orderedStats = new List<Stats>();
-            foreach (StatsDTO stats in gameStats) orderedStats.Add(new Stats(stats));
+            foreach (StatsDTO stats in gameStats)
+            {
+                orderedStats.Add(new Stats(stats));
+            }
 
             orderedStats = orderedStats.OrderByDescending(s => s.points).ToList();
 
@@ -460,5 +501,7 @@ namespace Cliente
         {
             GameHasEndedWithoutUsers?.Invoke(matchCode);
         }
+
     }
+
 }

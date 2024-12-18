@@ -13,6 +13,7 @@ namespace Cliente.UserControllers.ChangePassword
 
     public partial class ChangePassword : UserControl, IProfileManagerCallback
     {
+
         private ProfileManagerClient _service;
         private Validator _validator = new Validator();
 
@@ -36,7 +37,9 @@ namespace Cliente.UserControllers.ChangePassword
             if (!string.IsNullOrEmpty(errorCurrent) ||
                 !string.IsNullOrEmpty(errorNewPassword) ||
                 !string.IsNullOrEmpty(errorConfirmNewPassword))
+            {
                 return;
+            }
 
             try
             {
@@ -87,7 +90,9 @@ namespace Cliente.UserControllers.ChangePassword
         public void OnPasswordChange(string error)
         {
             if (error != null)
+            {
                 lbErrCuerrentPassword.Content = error;
+            }
             else
             {
                 var mainWindow = (MainWindow)Application.Current.MainWindow;
@@ -101,5 +106,7 @@ namespace Cliente.UserControllers.ChangePassword
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new Profile(), 800, 700);
         }
+
     }
+
 }

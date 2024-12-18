@@ -7,6 +7,7 @@ namespace Cliente.GameUserControllers
 
     public partial class CardUserController : UserControl
     {
+
         public static readonly RoutedEvent CardClickedEvent = EventManager.RegisterRoutedEvent(
             "CardClicked", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(CardUserController));
 
@@ -32,5 +33,7 @@ namespace Cliente.GameUserControllers
         {
             OnCardClicked();
         }
+
     }
+
 }

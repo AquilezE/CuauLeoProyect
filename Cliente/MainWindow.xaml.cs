@@ -8,6 +8,7 @@ namespace Cliente
 
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
@@ -41,7 +42,11 @@ namespace Cliente
                 SizeToContent = SizeToContent.Manual;
             }
             else
+            {
                 SizeToContent = SizeToContent.WidthAndHeight;
+            }
         }
+
     }
+
 }

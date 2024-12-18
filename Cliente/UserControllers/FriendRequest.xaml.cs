@@ -7,6 +7,7 @@ namespace Cliente.UserControllers
 
     public partial class FriendRequest : UserControl
     {
+
         public event EventHandler<Cliente.FriendRequest> acceptFriend;
         public event EventHandler<Cliente.FriendRequest> declineFriend;
 
@@ -24,5 +25,7 @@ namespace Cliente.UserControllers
         {
             declineFriend?.Invoke(this, DataContext as Cliente.FriendRequest);
         }
+
     }
+
 }

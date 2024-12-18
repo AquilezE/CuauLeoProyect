@@ -10,8 +10,10 @@ using Haley.Utils;
 
 namespace Cliente.UserControllers.Recover
 {
+
     public partial class RecoverEmail : UserControl
     {
+
         public event Action<string> EmailFilled;
         private UsersManagerClient _service;
         private Validator _validator = new Validator();
@@ -36,7 +38,10 @@ namespace Cliente.UserControllers.Recover
 
             lbErrEmailCode.Content = error;
 
-            if (error != string.Empty) return;
+            if (error != string.Empty)
+            {
+                return;
+            }
 
             try
             {
@@ -46,7 +51,9 @@ namespace Cliente.UserControllers.Recover
                     OnEmailFilled(email);
                 }
                 else
+                {
                     lbErrEmailCode.Content = LangUtils.Translate("lblErrEmailNotFound");
+                }
             }
             catch (EndpointNotFoundException ex)
             {
@@ -86,5 +93,7 @@ namespace Cliente.UserControllers.Recover
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new LogIn());
         }
+
     }
+
 }

@@ -7,6 +7,7 @@ namespace Cliente.UserControllers
 
     public partial class BlockedUser : UserControl
     {
+
         public event EventHandler<Blocked> unblockUser;
 
         public BlockedUser()
@@ -18,5 +19,7 @@ namespace Cliente.UserControllers
         {
             unblockUser?.Invoke(this, DataContext as Blocked);
         }
+
     }
+
 }

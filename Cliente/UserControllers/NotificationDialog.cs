@@ -7,8 +7,10 @@ using ToastNotifications.Position;
 
 namespace Cliente.UserControllers
 {
+
     public class NotificationDialog
     {
+
         private Notifier _notifier;
 
         public NotificationDialog()
@@ -53,5 +55,7 @@ namespace Cliente.UserControllers
         {
             _notifier.Dispose();
         }
+
     }
+
 }

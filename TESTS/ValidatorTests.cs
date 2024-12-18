@@ -8,8 +8,10 @@ using Xunit;
 
 namespace TESTS
 {
+
     public class ValidatorTests
     {
+
         private readonly Validator _validator;
 
         public ValidatorTests()
@@ -23,8 +25,7 @@ namespace TESTS
         [InlineData("user.name+tag+sorting@example.com")]
         public void ValidateEmail_ValidEmails_ReturnsEmpty(string email)
         {
-            
-            var result = _validator.ValidateEmail(email);
+            string result = _validator.ValidateEmail(email);
 
             Assert.Equal(string.Empty, result);
         }
@@ -35,8 +36,7 @@ namespace TESTS
         [InlineData(null)]
         public void ValidateEmail_EmptyOrWhitespace_ReturnsEmptyError(string email)
         {
-            
-            var result = _validator.ValidateEmail(email);
+            string result = _validator.ValidateEmail(email);
 
             Assert.Equal("lblErrEmailEmpty", result);
         }
@@ -47,8 +47,7 @@ namespace TESTS
         [InlineData("user @example.com")]
         public void ValidateEmail_EmailContainsWhitespace_ReturnsWhitespaceError(string email)
         {
-
-            var result = _validator.ValidateEmail(email);
+            string result = _validator.ValidateEmail(email);
 
             Assert.Equal("lblErrEmailContainsWhiteSpace", result);
         }
@@ -61,8 +60,7 @@ namespace TESTS
         [InlineData("user@com,com.com")]
         public void ValidateEmail_InvalidFormat_ReturnsInvalidError(string email)
         {
-
-            var result = _validator.ValidateEmail(email);
+            string result = _validator.ValidateEmail(email);
 
             Assert.Equal("lblErrEmailInvalid", result);
         }
@@ -70,10 +68,9 @@ namespace TESTS
         [Fact]
         public void ValidateEmail_EmailTooLong_ReturnsTooLongError()
         {
+            string longEmail = new string('a', 256 - "@example.com".Length) + "@example.com";
 
-            var longEmail = new string('a', 256 - "@example.com".Length) + "@example.com";
-
-            var result = _validator.ValidateEmail(longEmail);
+            string result = _validator.ValidateEmail(longEmail);
 
             Assert.Equal("lblErrEmailTooLong", result);
         }
@@ -86,8 +83,7 @@ namespace TESTS
         [InlineData("user123_NAME")]
         public void ValidateUsername_ValidUsernames_ReturnsEmpty(string username)
         {
-
-            var result = _validator.ValidateUsername(username);
+            string result = _validator.ValidateUsername(username);
 
             Assert.Equal(string.Empty, result);
         }
@@ -98,8 +94,7 @@ namespace TESTS
         [InlineData(null)]
         public void ValidateUsername_EmptyOrWhitespace_ReturnsEmptyError(string username)
         {
-
-            var result = _validator.ValidateUsername(username);
+            string result = _validator.ValidateUsername(username);
 
             Assert.Equal("lblErrUsernameEmpty", result);
         }
@@ -112,8 +107,7 @@ namespace TESTS
         [InlineData("user#name")]
         public void ValidateUsername_InvalidCharacters_ReturnsInvalidCharactersError(string username)
         {
-
-            var result = _validator.ValidateUsername(username);
+            string result = _validator.ValidateUsername(username);
 
             Assert.Equal("lblErrUsernameInvalid", result);
         }
@@ -121,10 +115,9 @@ namespace TESTS
         [Fact]
         public void ValidateUsername_UsernameTooLong_ReturnsTooLongError()
         {
+            string longUsername = new string('a', 256);
 
-            var longUsername = new string('a', 256);
-
-            var result = _validator.ValidateUsername(longUsername);
+            string result = _validator.ValidateUsername(longUsername);
 
             Assert.Equal("lblErrUsernameTooLong", result);
         }
@@ -135,8 +128,7 @@ namespace TESTS
         [InlineData("ValidPass#1234")]
         public void ValidatePassword_ValidPasswords_ReturnsEmpty(string password)
         {
-
-            var result = _validator.ValidatePassword(password);
+            string result = _validator.ValidatePassword(password);
 
             Assert.Equal(string.Empty, result);
         }
@@ -147,8 +139,7 @@ namespace TESTS
         [InlineData(null)]
         public void ValidatePassword_EmptyOrWhitespace_ReturnsEmptyError(string password)
         {
-
-            var result = _validator.ValidatePassword(password);
+            string result = _validator.ValidatePassword(password);
 
             Assert.Equal("lblErrPasswordEmpty", result);
         }
@@ -158,18 +149,16 @@ namespace TESTS
         [InlineData("nouppercase1!")]
         public void ValidatePassword_WeakPassword_ReturnsWeakPasswordError(string password)
         {
-            var result = _validator.ValidatePassword(password);
+            string result = _validator.ValidatePassword(password);
 
             Assert.Equal("lblErrWeakPassword", result);
-            
         }
 
         [Theory]
         [InlineData("Short1!")]
         public void ValidatePassword_ShortPassword_ReturnsShortPasswordError(string shortPassword)
         {
-
-            var result = _validator.ValidatePassword(shortPassword);
+            string result = _validator.ValidatePassword(shortPassword);
 
             Assert.Equal("lblErrShortPassword", result);
         }
@@ -179,8 +168,7 @@ namespace TESTS
         [InlineData("Another Strong1!")]
         public void ValidatePassword_PasswordContainsWhitespace_ReturnsWhitespaceError(string password)
         {
-
-            var result = _validator.ValidatePassword(password);
+            string result = _validator.ValidatePassword(password);
 
             Assert.Equal("lblErrPasswordContainsWhiteSpace", result);
         }
@@ -188,10 +176,9 @@ namespace TESTS
         [Fact]
         public void ValidatePassword_PasswordTooLongButValid_ReturnsEmpty()
         {
+            string longPassword = new string('A', 12) + "!a1";
 
-            var longPassword = new string('A', 12) + "!a1";
-
-            var result = _validator.ValidatePassword(longPassword);
+            string result = _validator.ValidatePassword(longPassword);
 
             Assert.Equal(string.Empty, result);
         }
@@ -202,8 +189,7 @@ namespace TESTS
         [InlineData("AnotherP@ssw0rd", "AnotherP@ssw0rd")]
         public void ValidateConfirmPassword_MatchingPasswords_ReturnsEmpty(string password, string confirmPassword)
         {
-
-            var result = _validator.ValidateConfirmPassword(password, confirmPassword);
+            string result = _validator.ValidateConfirmPassword(password, confirmPassword);
 
             Assert.Equal(string.Empty, result);
         }
@@ -211,10 +197,10 @@ namespace TESTS
         [Theory]
         [InlineData("Password123!", "Password123")]
         [InlineData("AnotherP@ssw0rd", "AnotherP@ssw0rD")]
-        public void ValidateConfirmPassword_NonMatchingPasswords_ReturnsDifferentPasswordError(string password, string confirmPassword)
+        public void ValidateConfirmPassword_NonMatchingPasswords_ReturnsDifferentPasswordError(string password,
+            string confirmPassword)
         {
-
-            var result = _validator.ValidateConfirmPassword(password, confirmPassword);
+            string result = _validator.ValidateConfirmPassword(password, confirmPassword);
 
             Assert.Equal("lblErrDiferentPassword", result);
         }
@@ -225,19 +211,17 @@ namespace TESTS
         [InlineData("Password123!", null)]
         public void ValidateConfirmPassword_EmptyOrWhitespace_ReturnsEmptyError(string password, string confirmPassword)
         {
-
-            var result = _validator.ValidateConfirmPassword(password, confirmPassword);
+            string result = _validator.ValidateConfirmPassword(password, confirmPassword);
 
             Assert.Equal("lblErrPasswordEmpty", result);
         }
-        
+
         [Theory]
         [InlineData("123456")]
         [InlineData("111111")]
         public void IsTokenValidFormat_ValidTokens_ReturnsTrue(string code)
         {
-
-            var result = _validator.IsTokenValidFormat(code);
+            bool result = _validator.IsTokenValidFormat(code);
 
             Assert.True(result);
         }
@@ -252,11 +236,11 @@ namespace TESTS
         [InlineData("1a2b3c4")]
         public void IsTokenValidFormat_InvalidTokens_ReturnsFalse(string code)
         {
-
-            var result = _validator.IsTokenValidFormat(code);
+            bool result = _validator.IsTokenValidFormat(code);
 
             Assert.False(result);
         }
 
     }
+
 }

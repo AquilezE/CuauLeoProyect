@@ -7,6 +7,7 @@ namespace Cliente.UserControllers
 
     public partial class FindUserItem : UserControl
     {
+
         public event EventHandler<UserFound> sendFriendRequest;
         public event EventHandler<UserFound> blockUser;
 
@@ -24,5 +25,7 @@ namespace Cliente.UserControllers
         {
             blockUser?.Invoke(this, DataContext as UserFound);
         }
+
     }
+
 }

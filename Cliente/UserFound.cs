@@ -2,8 +2,10 @@
 
 namespace Cliente
 {
+
     public class UserFound
     {
+
         public int ID { get; set; }
         public string UserFoundUsername { get; set; }
         public string UserFoundProfilePicturePath { get; set; }
@@ -21,5 +23,7 @@ namespace Cliente
             UserFoundUsername = userDto.Username;
             UserFoundProfilePicturePath = "pack://application:,,,/Images/pfp" + userDto.ProfilePictureId + ".jpg";
         }
+
     }
+
 }

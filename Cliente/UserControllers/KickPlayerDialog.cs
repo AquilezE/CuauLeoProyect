@@ -4,8 +4,10 @@ using Haley.Utils;
 
 namespace Cliente.UserControllers
 {
+
     public class KickPlayerDialog : Window
     {
+
         public string KickReason { get; private set; }
 
         public KickPlayerDialog()
@@ -35,5 +37,7 @@ namespace Cliente.UserControllers
             grid.Children.Add(stackPanel);
             Content = grid;
         }
+
     }
+
 }

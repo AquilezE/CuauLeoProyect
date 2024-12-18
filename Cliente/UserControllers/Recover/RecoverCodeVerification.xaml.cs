@@ -9,8 +9,10 @@ using Cliente.Utils;
 
 namespace Cliente.UserControllers.Recover
 {
+
     public partial class RecoverCodeVerification : UserControl
     {
+
         public event EventHandler VerificationCompleted;
 
         private UsersManagerClient _service = new UsersManagerClient();
@@ -41,12 +43,18 @@ namespace Cliente.UserControllers.Recover
                     bool isCodeValid = await _service.VerifyTokenAsync(_email, tbVerificactionCode.Text);
 
                     if (isCodeValid)
+                    {
                         OnVerificationCompleted(e);
+                    }
                     else
+                    {
                         HandleFailedVerification();
+                    }
                 }
                 else
+                {
                     lbErrVerificactionCode.Content = LangUtils.Translate("lblErrInvalidCodeFormat");
+                }
             }
             catch (EndpointNotFoundException ex)
             {
@@ -98,14 +106,24 @@ namespace Cliente.UserControllers.Recover
             }
 
             else
+            {
                 lbErrVerificactionCode.Content = LangUtils.Translate("lblErrInvalidCode");
+            }
         }
 
         private bool IsTokenValidFormat(string code)
         {
             code = code.Trim();
-            if (code.Length != 6) return false;
-            if (!code.All(char.IsDigit)) return false;
+            if (code.Length != 6)
+            {
+                return false;
+            }
+
+            if (!code.All(char.IsDigit))
+            {
+                return false;
+            }
+
             return true;
         }
 
@@ -120,9 +138,13 @@ namespace Cliente.UserControllers.Recover
                 bool emailSent = await _service.SendTokenAsync(_email);
 
                 if (emailSent)
+                {
                     lbErrVerificactionCode.Content = LangUtils.Translate("lblCodeResent");
+                }
                 else
+                {
                     lbErrVerificactionCode.Content = LangUtils.Translate("lblErrFailedResendEmail");
+                }
             }
             catch (EndpointNotFoundException ex)
             {
@@ -171,5 +193,7 @@ namespace Cliente.UserControllers.Recover
                 timer.Start();
             }
         }
+
     }
+
 }

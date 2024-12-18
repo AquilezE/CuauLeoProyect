@@ -15,6 +15,7 @@ namespace Cliente.GameUserControllers
 
     public partial class GameBoard : UserControl
     {
+
         public GameManagerClient gameManagerClient;
 
         public GameBoard()
@@ -99,33 +100,49 @@ namespace Cliente.GameUserControllers
         private void extensiblePanelMonstersPlayer1_Loaded(object sender, RoutedEventArgs e)
         {
             if (extensiblePanelMonstersPlayer1.Content is MonstersViewerPlayer1 monstersViewer)
+            {
                 monstersViewer.closePanel += OnClosePanelPlayer1;
+            }
             else
+            {
                 Console.WriteLine("Content not initialized or not of type MonstersViewerVertical.");
+            }
         }
 
         private void extensiblePanelMonstersPlayer2_Loaded(object sender, RoutedEventArgs e)
         {
             if (extensiblePanelMonstersPlayer2.Content is MonstersViewerPlayer2 monstersViewerVertical)
+            {
                 monstersViewerVertical.closePanel += OnClosePanelPLayer2;
+            }
             else
+            {
                 Console.WriteLine("Content not initialized or not of type MonstersViewerVertical.");
+            }
         }
 
         private void extensiblePanelMonstersPlayer3_Loaded(object sender, RoutedEventArgs e)
         {
             if (extensiblePanelMonstersPlayer3.Content is MonstersViewerPlayer3 monstersViewerVertical)
+            {
                 monstersViewerVertical.closePanel += OnClosePanelPlayer3;
+            }
             else
+            {
                 Console.WriteLine("Content not initialized or not of type MonstersViewerVertical.");
+            }
         }
 
         private void extensiblePanelMonstersPlayer4_Loaded(object sender, RoutedEventArgs e)
         {
             if (extensiblePanelMonstersPlayer4.Content is MonstersViewerPlayer4 monstersViewerVertical)
+            {
                 monstersViewerVertical.closePanel += OnClosePanelPlayer4;
+            }
             else
+            {
                 Console.WriteLine("Content not initialized or not of type MonstersViewerVertical.");
+            }
         }
 
         private void OnToolSelectionRequested(CardDTO card)
@@ -170,7 +187,7 @@ namespace Cliente.GameUserControllers
             });
         }
 
-        private void OnGameHasEnded(StatsDTO[] matchStats )
+        private void OnGameHasEnded(StatsDTO[] matchStats)
         {
             Dispatcher.Invoke(() =>
             {
@@ -253,5 +270,7 @@ namespace Cliente.GameUserControllers
             await gameManagerClient.PlayProvokeAsync(User.Instance.ID, GameLogic.Instance.GameId, 2);
             Console.WriteLine("Provoke Water");
         }
+
     }
+
 }

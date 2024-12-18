@@ -2,8 +2,10 @@
 
 namespace Cliente
 {
+
     public class GameCard
     {
+
         public int CardId { get; set; }
         public string CardPath { get; set; }
 
@@ -17,5 +19,7 @@ namespace Cliente
             CardId = cardDto.CardId;
             CardPath = "pack://application:,,,/Cards/Card" + cardDto.CardId + ".png";
         }
+
     }
+
 }

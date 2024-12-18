@@ -2,8 +2,10 @@
 
 namespace Cliente
 {
+
     public class Stats
     {
+
         public string username { get; set; }
         public int points { get; set; }
 
@@ -18,5 +20,7 @@ namespace Cliente
             username = statsDto.Username;
             points = statsDto.PointsThisGame;
         }
+
     }
+
 }

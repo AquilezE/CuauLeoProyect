@@ -7,6 +7,7 @@ namespace Cliente.Pantallas
 
     public partial class RegisterAccount : UserControl
     {
+
         private string _username;
         private string _password;
         private string _email;
@@ -34,5 +35,7 @@ namespace Cliente.Pantallas
         {
             RegisterAccountContentControl.Content = new RegisterSuccess();
         }
+
     }
+
 }

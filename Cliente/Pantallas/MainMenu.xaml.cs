@@ -12,6 +12,7 @@ namespace Cliente.Pantallas
 
     public partial class MainMenu : UserControl
     {
+
         public MainMenu()
         {
             InitializeComponent();
@@ -96,5 +97,7 @@ namespace Cliente.Pantallas
             var main = (MainWindow)Application.Current.MainWindow;
             main.NavigateToView(new Options());
         }
+
     }
+
 }
