@@ -72,6 +72,11 @@ namespace Cliente.Utils
             {
                 return LangUtils.Translate("lblErrShortPassword");
             }
+            
+            if (password.Length > 255)
+            {
+                return LangUtils.Translate("lblErrPasswordTooLong");
+            }
 
             if (password.Contains(' '))
             {

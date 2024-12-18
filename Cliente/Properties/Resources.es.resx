@@ -597,4 +597,7 @@
   <data name="btnContinue" xml:space="preserve">
     <value>Continuar</value>
   </data>
+  <data name="lblErrPasswordTooLong " xml:space="preserve">
+	  <value>Tu contraseña es muy larga!</value>
+  </data>
 </root>

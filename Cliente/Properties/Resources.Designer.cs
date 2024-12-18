@@ -961,6 +961,15 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your password is too long!.
+        /// </summary>
+        public static string lblErrPasswordTooLong_ {
+            get {
+                return ResourceManager.GetString("lblErrPasswordTooLong ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You didn&apos;t made any change.
         /// </summary>
         public static string lblErrProfileNothingChanged {

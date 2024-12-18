@@ -1,4 +1,4 @@
-﻿using Cliente.Utils;
+﻿    using Cliente.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -174,13 +174,13 @@ namespace TESTS
         }
 
         [Fact]
-        public void ValidatePassword_PasswordTooLongButValid_ReturnsEmpty()
+        public void ValidatePassword_PasswordTooLongButValid_ReturnsLongPasswordError()
         {
             string longPassword = new string('A', 12) + "!a1";
 
             string result = _validator.ValidatePassword(longPassword);
 
-            Assert.Equal(string.Empty, result);
+            Assert.Equal("lblErrPasswordTooLong", result);
         }
 
 
