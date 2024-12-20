@@ -1365,30 +1365,15 @@ namespace Cliente.ServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IProfileManager", CallbackContract=typeof(Cliente.ServiceReference.IProfileManagerCallback))]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IProfileManager")]
     public interface IProfileManager {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IProfileManager/UpdateProfile")]
-        void UpdateProfile(int userId, string username, int profilePictureId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfileManager/UpdateProfile", ReplyAction="http://tempuri.org/IProfileManager/UpdateProfileResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Cliente.ServiceReference.BevososServerExceptions), Action="http://tempuri.org/IProfileManager/UpdateProfileBevososServerExceptionsFault", Name="BevososServerExceptions", Namespace="http://schemas.datacontract.org/2004/07/BevososService.Exceptions")]
+        int UpdateProfile(int userId, string username, int profilePictureId);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IProfileManager/UpdateProfile")]
-        System.Threading.Tasks.Task UpdateProfileAsync(int userId, string username, int profilePictureId);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IProfileManager/ChangePassword")]
-        void ChangePassword(int userId, string oldPassword, string newPassword);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IProfileManager/ChangePassword")]
-        System.Threading.Tasks.Task ChangePasswordAsync(int userId, string oldPassword, string newPassword);
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IProfileManagerCallback {
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IProfileManager/OnProfileUpdate")]
-        void OnProfileUpdate(string username, int profilePictureId, string message);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IProfileManager/OnPasswordChange")]
-        void OnPasswordChange(string result);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProfileManager/UpdateProfile", ReplyAction="http://tempuri.org/IProfileManager/UpdateProfileResponse")]
+        System.Threading.Tasks.Task<int> UpdateProfileAsync(int userId, string username, int profilePictureId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1397,42 +1382,33 @@ namespace Cliente.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ProfileManagerClient : System.ServiceModel.DuplexClientBase<Cliente.ServiceReference.IProfileManager>, Cliente.ServiceReference.IProfileManager {
+    public partial class ProfileManagerClient : System.ServiceModel.ClientBase<Cliente.ServiceReference.IProfileManager>, Cliente.ServiceReference.IProfileManager {
         
-        public ProfileManagerClient(System.ServiceModel.InstanceContext callbackInstance) : 
-                base(callbackInstance) {
+        public ProfileManagerClient() {
         }
         
-        public ProfileManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
-                base(callbackInstance, endpointConfigurationName) {
+        public ProfileManagerClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
         }
         
-        public ProfileManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
-                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        public ProfileManagerClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
         }
         
-        public ProfileManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        public ProfileManagerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
         }
         
-        public ProfileManagerClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(callbackInstance, binding, remoteAddress) {
+        public ProfileManagerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
         }
         
-        public void UpdateProfile(int userId, string username, int profilePictureId) {
-            base.Channel.UpdateProfile(userId, username, profilePictureId);
+        public int UpdateProfile(int userId, string username, int profilePictureId) {
+            return base.Channel.UpdateProfile(userId, username, profilePictureId);
         }
         
-        public System.Threading.Tasks.Task UpdateProfileAsync(int userId, string username, int profilePictureId) {
+        public System.Threading.Tasks.Task<int> UpdateProfileAsync(int userId, string username, int profilePictureId) {
             return base.Channel.UpdateProfileAsync(userId, username, profilePictureId);
-        }
-        
-        public void ChangePassword(int userId, string oldPassword, string newPassword) {
-            base.Channel.ChangePassword(userId, oldPassword, newPassword);
-        }
-        
-        public System.Threading.Tasks.Task ChangePasswordAsync(int userId, string oldPassword, string newPassword) {
-            return base.Channel.ChangePasswordAsync(userId, oldPassword, newPassword);
         }
     }
     

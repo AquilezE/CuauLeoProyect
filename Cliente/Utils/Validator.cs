@@ -47,7 +47,7 @@ namespace Cliente.Utils
                 return LangUtils.Translate("lblErrUsernameEmpty");
             }
 
-            if (username.Length > 255)
+            if (username.Length > 50)
             {
                 return LangUtils.Translate("lblErrUsernameTooLong");
             }

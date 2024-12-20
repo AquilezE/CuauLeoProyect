@@ -202,11 +202,15 @@ namespace Cliente.GameUserControllers
             {
                 if (User.Instance.ID > 0)
                 {
+                    var notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblEndGameWhitoutUsers"));
                     var mainWindow = (MainWindow)Application.Current.MainWindow;
                     mainWindow.NavigateToView(new MainMenu());
                 }
                 else if (User.Instance.ID < 0)
                 {
+                    var notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblEndGameWhitoutUsers"));
                     var mainWindow = (MainWindow)Application.Current.MainWindow;
                     mainWindow.NavigateToView(new JoinLobby(), 650, 800);
                 }

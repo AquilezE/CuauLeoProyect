@@ -1,8 +1,11 @@
 ﻿using Cliente.ServiceReference;
+using Cliente.UserControllers;
 using Cliente.UserControllers.ChangePassword;
+using Cliente.Utils;
 using Haley.Utils;
 using System;
 using System.ServiceModel;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -12,17 +15,18 @@ using System.Windows.Media.Imaging;
 namespace Cliente.Pantallas
 {
 
-    public partial class Profile : UserControl, IProfileManagerCallback
+    public partial class Profile : UserControl
     {
 
         private ProfileManagerClient _service;
-        private static string _newUsername;
-        private static int _newProfilePictureId = 0;
+        private static string _newUsername = User.Instance.Username;
+        private static int _newProfilePictureId = User.Instance.ProfilePictureId;
+        private readonly Validator _validator = new Validator();
+
 
         public Profile()
         {
-            var instanceContext = new InstanceContext(this);
-            _service = new ProfileManagerClient(instanceContext);
+            _service = new ProfileManagerClient();
             InitializeComponent();
             LoadUserInfo();
         }
@@ -120,7 +124,7 @@ namespace Cliente.Pantallas
 
         private void SetNewUserName()
         {
-            _newUsername = tbNewUsername.Text;
+             _newUsername = tbNewUsername.Text;
         }
 
 
@@ -130,39 +134,75 @@ namespace Cliente.Pantallas
             lbErrInvalidUsername.Content = "";
             lbErrNothingChanged.Content = "";
 
-            if (_newUsername == "" && _newProfilePictureId == 0)
+            string usernameError = _validator.ValidateUsername(_newUsername);
+            if(usernameError!= string.Empty)
+            {
+                lbErrInvalidUsername.Content = LangUtils.Translate(usernameError);
+                tbNewUsername.Text = string.Empty;
+                return;
+            }
+
+            if (_newUsername == User.Instance.Username && _newProfilePictureId == User.Instance.ProfilePictureId)
             {
                 lbErrNothingChanged.Content = LangUtils.Translate("lblErrProfileNothingChanged");
             }
-            else if (_newUsername != "" && _newProfilePictureId != 0)
+            else if (usernameError == string.Empty)
             {
-                _service.UpdateProfile(User.Instance.ID, _newUsername, _newProfilePictureId);
+                try
+                {
+                    int result = _service.UpdateProfile(User.Instance.ID, _newUsername, _newProfilePictureId);
+
+                    if (result == 1)
+                    {
+                        lbErrInvalidUsername.Content = LangUtils.Translate("lblErrProfileUsernameTaken");
+                        _newUsername = User.Instance.Username;
+                        return;
+                    }
+                    else if (result ==0)
+                    {
+                        User.instance.Username = _newUsername;
+                        User.instance.ProfilePictureId = _newProfilePictureId;
+                        LoadUserInfo();
+                        ResetAllBorders();
+                    }
+                }
+                catch (EndpointNotFoundException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    var notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                }
+                catch (FaultException<BevososServerExceptions> ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    var notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+                }
+                catch (CommunicationException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    var notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                }
+                catch (TimeoutException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    var notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                }
+                catch (Exception ex)
+                {
+                    ExceptionManager.LogFatalException(ex);
+                    var notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrBlockingException"));
+                }
             }
-            else if (_newUsername == "" && _newProfilePictureId != 0)
+            else
             {
-                _service.UpdateProfile(User.instance.ID, "Not changed", _newProfilePictureId);
-            }
-            else if (_newUsername != "" && _newProfilePictureId == 0)
-            {
-                _service.UpdateProfile(User.instance.ID, _newUsername, User.Instance.ProfilePictureId);
+                lbErrInvalidUsername.Content = LangUtils.Translate(usernameError);
             }
         }
 
-        public void OnProfileUpdate(string username, int profilePictureId, string error)
-        {
-            if (username != "Not changed")
-            {
-                User.instance.Username = username;
-            }
-
-            User.instance.ProfilePictureId = profilePictureId;
-            LoadUserInfo();
-            ResetAllBorders();
-
-            _newUsername = "";
-            _newProfilePictureId = 0;
-            lbErrInvalidUsername.Content = error;
-        }
 
         private void btChangePassword_Click(object sender, RoutedEventArgs e)
         {
@@ -174,11 +214,6 @@ namespace Cliente.Pantallas
         {
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new MainMenu());
-        }
-
-        public void OnPasswordChange(string error)
-        {
-            throw new NotImplementedException();
         }
 
     }

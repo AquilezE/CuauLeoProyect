@@ -44,7 +44,7 @@
                                      RelativeSource="{RelativeSource AncestorType={x:Type local:UserLobby}}" />
                             <Binding Path="CurrentUserId"
                                      RelativeSource="{RelativeSource AncestorType={x:Type local:UserLobby}}" />
-                            <Binding Path="Id" />
+                            <Binding Path="ID" />
                         </MultiBinding>
                     </Button.Visibility>
                 </Button>

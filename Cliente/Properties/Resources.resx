@@ -268,7 +268,7 @@
     <value>Passwords must be the same</value>
   </data>
   <data name="lblErrEmailInvalid" xml:space="preserve">
-	  <value>Email is invalid</value>
+    <value>Email is invalid</value>
   </data>
   <data name="lblErrEmptyMessage" xml:space="preserve">
     <value>You must type something to send a message</value>
@@ -292,7 +292,7 @@
     <value>Oops, we couldn't reach our server, check your conection or try again later!</value>
   </data>
   <data name="lblErrNoDataBase" xml:space="preserve">
-    <value>Oops!, our database is not working, try again later!</value>
+    <value>Oops!, we couldn't establish conection with our database , try again later!</value>
   </data>
   <data name="lblErrNoFriends" xml:space="preserve">
     <value>Oops! looks like you have no friends :(</value>
@@ -316,7 +316,7 @@
     <value>Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.</value>
   </data>
   <data name="lblErrWrongLogin" xml:space="preserve">
-	  <value>Incorrect email or password</value>
+    <value>Incorrect email or password</value>
   </data>
   <data name="lblFindUser" xml:space="preserve">
     <value>Find User</value>
@@ -598,6 +598,12 @@
     <value>Continue</value>
   </data>
   <data name="lblErrPasswordTooLong " xml:space="preserve">
-	  <value>Your password is too long!</value>
+    <value>Your password is too long!</value>
+  </data>
+  <data name="lblErrProfileUsernameTaken" xml:space="preserve">
+    <value>This username is taken</value>
+  </data>
+  <data name="lblEndGameWhitoutUsers" xml:space="preserve">
+    <value>Game finished due to a lack of players</value>
   </data>
 </root>

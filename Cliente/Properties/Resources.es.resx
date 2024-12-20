@@ -268,7 +268,7 @@
     <value>Las contraseñas deben coincidir</value>
   </data>
   <data name="lblErrEmailInvalid" xml:space="preserve">
-	  <value>Correo electrónico no es valido</value>
+    <value>Correo electrónico no es valido</value>
   </data>
   <data name="lblErrEmptyMessage" xml:space="preserve">
     <value>Debes escribir algo para poder mandar un mensaje</value>
@@ -292,7 +292,7 @@
     <value>Uju, no encontramos nuestro servidor, verifica tu coneccion o intentalo de nuevo despues!</value>
   </data>
   <data name="lblErrNoDataBase" xml:space="preserve">
-    <value>Uju, nuestra base de datos no está funcionando, intentalo más tarde</value>
+    <value>Uju, no se pudo establecer un conexión con la base de datos, intentalo más tarde</value>
   </data>
   <data name="lblErrNoFriends" xml:space="preserve">
     <value>Uju, Parece que no tienes amigos :(</value>
@@ -316,7 +316,7 @@
     <value>La contraseña debe tener una mayúscula, una minúscula, un número y un caracter especial</value>
   </data>
   <data name="lblErrWrongLogin" xml:space="preserve">
-	  <value>Correo o Contraseña fueron incorrectos</value>
+    <value>Correo o Contraseña fueron incorrectos</value>
   </data>
   <data name="lblFindUser" xml:space="preserve">
     <value>Encontrar usuario</value>
@@ -598,6 +598,9 @@
     <value>Continuar</value>
   </data>
   <data name="lblErrPasswordTooLong " xml:space="preserve">
-	  <value>Tu contraseña es muy larga!</value>
+    <value>Tu contraseña es muy larga!</value>
+  </data>
+  <data name="lblEndGameWhitoutUsers" xml:space="preserve">
+    <value>Partida terminada debido a que no hay más jugadores para continuar</value>
   </data>
 </root>

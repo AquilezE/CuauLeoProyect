@@ -11,7 +11,7 @@ using Haley.Utils;
 namespace Cliente.UserControllers.ChangePassword
 {
 
-    public partial class ChangePassword : UserControl, IProfileManagerCallback
+    public partial class ChangePassword : UserControl/* IProfileManagerCallback*/
     {
 
         private ProfileManagerClient _service;
@@ -20,7 +20,7 @@ namespace Cliente.UserControllers.ChangePassword
         public ChangePassword()
         {
             var instanceContext = new InstanceContext(this);
-            _service = new ProfileManagerClient(instanceContext);
+            //_service = new ProfileManagerClient(instanceContext);
             InitializeComponent();
         }
 
@@ -43,7 +43,7 @@ namespace Cliente.UserControllers.ChangePassword
 
             try
             {
-                _service.ChangePassword(User.Instance.ID, pbCurrentPassword.Password, pbNewPassword.Password);
+                //_service.ChangePassword(User.Instance.ID, pbCurrentPassword.Password, pbNewPassword.Password);
             }
             catch (EndpointNotFoundException ex)
             {
