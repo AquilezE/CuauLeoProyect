@@ -1,0 +1,1350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="ServiceImplementation" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_IUsersManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="90000">
+          </wsrm:InactivityTimeout>
+          <wsrm:AcknowledgementInterval Milliseconds="200">
+          </wsrm:AcknowledgementInterval>
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1">
+        </msb:BinaryEncoding>
+        <wsaw:UsingAddressing>
+        </wsaw:UsingAddressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ILobbyManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="90000">
+          </wsrm:InactivityTimeout>
+          <wsrm:AcknowledgementInterval Milliseconds="200">
+          </wsrm:AcknowledgementInterval>
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1">
+        </msb:BinaryEncoding>
+        <wsaw:UsingAddressing>
+        </wsaw:UsingAddressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ILobbyChecker_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="90000">
+          </wsrm:InactivityTimeout>
+          <wsrm:AcknowledgementInterval Milliseconds="200">
+          </wsrm:AcknowledgementInterval>
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1">
+        </msb:BinaryEncoding>
+        <wsaw:UsingAddressing>
+        </wsaw:UsingAddressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IProfileManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="90000">
+          </wsrm:InactivityTimeout>
+          <wsrm:AcknowledgementInterval Milliseconds="200">
+          </wsrm:AcknowledgementInterval>
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1">
+        </msb:BinaryEncoding>
+        <wsaw:UsingAddressing>
+        </wsaw:UsingAddressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ISocialManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="90000">
+          </wsrm:InactivityTimeout>
+          <wsrm:AcknowledgementInterval Milliseconds="200">
+          </wsrm:AcknowledgementInterval>
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1">
+        </msb:BinaryEncoding>
+        <wsaw:UsingAddressing>
+        </wsaw:UsingAddressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IGameManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="90000">
+          </wsrm:InactivityTimeout>
+          <wsrm:AcknowledgementInterval Milliseconds="200">
+          </wsrm:AcknowledgementInterval>
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1">
+        </msb:BinaryEncoding>
+        <wsaw:UsingAddressing>
+        </wsaw:UsingAddressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IStatsManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="90000">
+          </wsrm:InactivityTimeout>
+          <wsrm:AcknowledgementInterval Milliseconds="200">
+          </wsrm:AcknowledgementInterval>
+        </wsrm:RMAssertion>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1">
+        </msb:BinaryEncoding>
+        <wsaw:UsingAddressing>
+        </wsaw:UsingAddressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/BevososService.DTOs" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IUsersManager_IsUsernameTaken_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsUsernameTaken" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_IsUsernameTaken_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsUsernameTakenResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_IsUsernameTaken_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q1:BevososServerExceptions" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_IsEmailTaken_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsEmailTaken" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_IsEmailTaken_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsEmailTakenResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_IsEmailTaken_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q2:BevososServerExceptions" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_SendToken_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendToken" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_SendToken_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendTokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_SendToken_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q3:BevososServerExceptions" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_VerifyToken_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyToken" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_VerifyToken_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyTokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_VerifyToken_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q4:BevososServerExceptions" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_RegisterUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterUser" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_RegisterUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_RegisterUser_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q5:BevososServerExceptions" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_LogIn_InputMessage">
+    <wsdl:part name="parameters" element="tns:LogIn" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_LogIn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogInResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_LogIn_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q6:BevososServerExceptions" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_GetGuestUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGuestUser" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_GetGuestUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGuestUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_RecoverPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecoverPassword" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_RecoverPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecoverPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUsersManager_RecoverPassword_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q7:BevososServerExceptions" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_NewLobbyCreated_InputMessage">
+    <wsdl:part name="parameters" element="tns:NewLobbyCreated" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_JoinLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:JoinLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_LeaveLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:LeaveLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_SendMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMessage" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_KickUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:KickUser" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_StartGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartGame" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_ChangeReadyStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeReadyStatus" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_OnNewLobbyCreated_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnNewLobbyCreated" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_OnLobbyUsersUpdate_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnLobbyUsersUpdate" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_OnLeaderChanged_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnLeaderChanged" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_OnJoinLobby_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnJoinLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_OnLeaveLobby_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnLeaveLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_OnKicked_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnKicked" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_OnSendMessage_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnSendMessage" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_OnReadyStatusChanged_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnReadyStatusChanged" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManager_GameStarted_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GameStarted" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyChecker_IsLobbyOpen_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsLobbyOpen" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyChecker_IsLobbyOpen_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsLobbyOpenResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyChecker_IsLobbyFull_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsLobbyFull" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyChecker_IsLobbyFull_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsLobbyFullResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProfileManager_UpdateProfile_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProfile" />
+  </wsdl:message>
+  <wsdl:message name="IProfileManager_UpdateProfile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProfileManager_UpdateProfile_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q8:BevososServerExceptions" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_Connect_InputMessage">
+    <wsdl:part name="parameters" element="tns:Connect" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_Disconnect_InputMessage">
+    <wsdl:part name="parameters" element="tns:Disconnect" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_IsConnected_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsConnected" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_IsConnected_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsConnectedResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_IsConnected_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q9:BevososServerExceptions" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_SendFriendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_SendFriendRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendFriendRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_SendFriendRequest_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q10:BevososServerExceptions" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_AcceptFriendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:AcceptFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_AcceptFriendRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AcceptFriendRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_AcceptFriendRequest_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q11:BevososServerExceptions" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_DeclineFriendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeclineFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_DeclineFriendRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeclineFriendRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_DeclineFriendRequest_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q12:BevososServerExceptions" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_DeleteFriend_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFriend" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_DeleteFriend_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFriendResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_DeleteFriend_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q13:BevososServerExceptions" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_GetFriends_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFriends" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_GetFriends_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFriendsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_GetFriends_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q14:BevososServerExceptions" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_BlockFriend_InputMessage">
+    <wsdl:part name="parameters" element="tns:BlockFriend" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_BlockFriend_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BlockFriendResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_BlockFriend_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q15:BevososServerExceptions" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_UnblockUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnblockUser" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_UnblockUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UnblockUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_UnblockUser_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q16:BevososServerExceptions" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_BlockUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:BlockUser" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_BlockUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BlockUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_BlockUser_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q17:BevososServerExceptions" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_GetBlockedUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBlockedUsers" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_GetBlockedUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBlockedUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_GetBlockedUsers_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q18:BevososServerExceptions" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_GetFriendRequests_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFriendRequests" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_GetFriendRequests_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFriendRequestsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_GetFriendRequests_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q19="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q19:BevososServerExceptions" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_GetUsersFoundByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersFoundByName" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_GetUsersFoundByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersFoundByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_GetUsersFoundByName_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q20="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q20:BevososServerExceptions" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_InviteFriendToLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:InviteFriendToLobby" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_OnFriendOnline_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnFriendOnline" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_OnFriendOffline_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnFriendOffline" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_OnNewFriend_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnNewFriend" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_OnFriendshipDeleted_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnFriendshipDeleted" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_OnNewFriendRequest_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnNewFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_NotifyGameInvited_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyGameInvited" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_JoinGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:JoinGame" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_DrawCard_InputMessage">
+    <wsdl:part name="parameters" element="tns:DrawCard" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_PlayCard_InputMessage">
+    <wsdl:part name="parameters" element="tns:PlayCard" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_PlayProvoke_InputMessage">
+    <wsdl:part name="parameters" element="tns:PlayProvoke" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_ExecuteBodyPartPlacement_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteBodyPartPlacement" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_ExecuteToolPlacement_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteToolPlacement" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_ExecuteHatPlacement_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteHatPlacement" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_ExecuteProvoke_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteProvoke" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_SaveStatsForPLayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveStatsForPLayer" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_SaveStatsForPLayer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveStatsForPLayerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_SaveStatsForPLayer_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q21="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q21:BevososServerExceptions" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_ReceiveGameState_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveGameState" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_RequestBodyPartSelection_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:RequestBodyPartSelection" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_RequestToolSelection_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:RequestToolSelection" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_RequestHatSelection_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:RequestHatSelection" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_NotifyActionInvalid_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyActionInvalid" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_OnProvoke_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnProvoke" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_OnNotifyEndGamePhase_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnNotifyEndGamePhase" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_OnNotifyGameEnded_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnNotifyGameEnded" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_OnNotifyGameEndedWithoutUsers_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnNotifyGameEndedWithoutUsers" />
+  </wsdl:message>
+  <wsdl:message name="IStatsManager_GetCurrentUserStats_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentUserStats" />
+  </wsdl:message>
+  <wsdl:message name="IStatsManager_GetCurrentUserStats_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentUserStatsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStatsManager_GetCurrentUserStats_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q22="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q22:BevososServerExceptions" />
+  </wsdl:message>
+  <wsdl:portType name="IUsersManager">
+    <wsdl:operation name="IsUsernameTaken">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/IsUsernameTaken" message="tns:IUsersManager_IsUsernameTaken_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/IsUsernameTakenResponse" message="tns:IUsersManager_IsUsernameTaken_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUsersManager/IsUsernameTakenBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:IUsersManager_IsUsernameTaken_BevososServerExceptionsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsEmailTaken">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/IsEmailTaken" message="tns:IUsersManager_IsEmailTaken_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/IsEmailTakenResponse" message="tns:IUsersManager_IsEmailTaken_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUsersManager/IsEmailTakenBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:IUsersManager_IsEmailTaken_BevososServerExceptionsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendToken">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/SendToken" message="tns:IUsersManager_SendToken_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/SendTokenResponse" message="tns:IUsersManager_SendToken_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUsersManager/SendTokenBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:IUsersManager_SendToken_BevososServerExceptionsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyToken">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/VerifyToken" message="tns:IUsersManager_VerifyToken_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/VerifyTokenResponse" message="tns:IUsersManager_VerifyToken_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUsersManager/VerifyTokenBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:IUsersManager_VerifyToken_BevososServerExceptionsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/RegisterUser" message="tns:IUsersManager_RegisterUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/RegisterUserResponse" message="tns:IUsersManager_RegisterUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUsersManager/RegisterUserBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:IUsersManager_RegisterUser_BevososServerExceptionsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LogIn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/LogIn" message="tns:IUsersManager_LogIn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/LogInResponse" message="tns:IUsersManager_LogIn_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUsersManager/LogInBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:IUsersManager_LogIn_BevososServerExceptionsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGuestUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/GetGuestUser" message="tns:IUsersManager_GetGuestUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/GetGuestUserResponse" message="tns:IUsersManager_GetGuestUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecoverPassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUsersManager/RecoverPassword" message="tns:IUsersManager_RecoverPassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUsersManager/RecoverPasswordResponse" message="tns:IUsersManager_RecoverPassword_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUsersManager/RecoverPasswordBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:IUsersManager_RecoverPassword_BevososServerExceptionsFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ILobbyManager">
+    <wsdl:operation name="NewLobbyCreated">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/NewLobbyCreated" message="tns:ILobbyManager_NewLobbyCreated_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="JoinLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/JoinLobby" message="tns:ILobbyManager_JoinLobby_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LeaveLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/LeaveLobby" message="tns:ILobbyManager_LeaveLobby_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/SendMessage" message="tns:ILobbyManager_SendMessage_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="KickUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/KickUser" message="tns:ILobbyManager_KickUser_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StartGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/StartGame" message="tns:ILobbyManager_StartGame_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeReadyStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManager/ChangeReadyStatus" message="tns:ILobbyManager_ChangeReadyStatus_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnNewLobbyCreated">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnNewLobbyCreated" message="tns:ILobbyManager_OnNewLobbyCreated_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnLobbyUsersUpdate">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnLobbyUsersUpdate" message="tns:ILobbyManager_OnLobbyUsersUpdate_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnLeaderChanged">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnLeaderChanged" message="tns:ILobbyManager_OnLeaderChanged_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnJoinLobby">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnJoinLobby" message="tns:ILobbyManager_OnJoinLobby_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnLeaveLobby">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnLeaveLobby" message="tns:ILobbyManager_OnLeaveLobby_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnKicked">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnKicked" message="tns:ILobbyManager_OnKicked_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnSendMessage">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnSendMessage" message="tns:ILobbyManager_OnSendMessage_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnReadyStatusChanged">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/OnReadyStatusChanged" message="tns:ILobbyManager_OnReadyStatusChanged_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GameStarted">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManager/GameStarted" message="tns:ILobbyManager_GameStarted_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ILobbyChecker">
+    <wsdl:operation name="IsLobbyOpen">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyChecker/IsLobbyOpen" message="tns:ILobbyChecker_IsLobbyOpen_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyChecker/IsLobbyOpenResponse" message="tns:ILobbyChecker_IsLobbyOpen_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsLobbyFull">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyChecker/IsLobbyFull" message="tns:ILobbyChecker_IsLobbyFull_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyChecker/IsLobbyFullResponse" message="tns:ILobbyChecker_IsLobbyFull_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IProfileManager">
+    <wsdl:operation name="UpdateProfile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProfileManager/UpdateProfile" message="tns:IProfileManager_UpdateProfile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProfileManager/UpdateProfileResponse" message="tns:IProfileManager_UpdateProfile_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IProfileManager/UpdateProfileBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:IProfileManager_UpdateProfile_BevososServerExceptionsFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ISocialManager">
+    <wsdl:operation name="Connect">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/Connect" message="tns:ISocialManager_Connect_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Disconnect">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/Disconnect" message="tns:ISocialManager_Disconnect_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsConnected">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/IsConnected" message="tns:ISocialManager_IsConnected_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/IsConnectedResponse" message="tns:ISocialManager_IsConnected_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISocialManager/IsConnectedBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:ISocialManager_IsConnected_BevososServerExceptionsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/SendFriendRequest" message="tns:ISocialManager_SendFriendRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/SendFriendRequestResponse" message="tns:ISocialManager_SendFriendRequest_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISocialManager/SendFriendRequestBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:ISocialManager_SendFriendRequest_BevososServerExceptionsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AcceptFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/AcceptFriendRequest" message="tns:ISocialManager_AcceptFriendRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/AcceptFriendRequestResponse" message="tns:ISocialManager_AcceptFriendRequest_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISocialManager/AcceptFriendRequestBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:ISocialManager_AcceptFriendRequest_BevososServerExceptionsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeclineFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/DeclineFriendRequest" message="tns:ISocialManager_DeclineFriendRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/DeclineFriendRequestResponse" message="tns:ISocialManager_DeclineFriendRequest_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISocialManager/DeclineFriendRequestBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:ISocialManager_DeclineFriendRequest_BevososServerExceptionsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFriend">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/DeleteFriend" message="tns:ISocialManager_DeleteFriend_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/DeleteFriendResponse" message="tns:ISocialManager_DeleteFriend_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISocialManager/DeleteFriendBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:ISocialManager_DeleteFriend_BevososServerExceptionsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFriends">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/GetFriends" message="tns:ISocialManager_GetFriends_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/GetFriendsResponse" message="tns:ISocialManager_GetFriends_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISocialManager/GetFriendsBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:ISocialManager_GetFriends_BevososServerExceptionsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BlockFriend">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/BlockFriend" message="tns:ISocialManager_BlockFriend_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/BlockFriendResponse" message="tns:ISocialManager_BlockFriend_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISocialManager/BlockFriendBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:ISocialManager_BlockFriend_BevososServerExceptionsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnblockUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/UnblockUser" message="tns:ISocialManager_UnblockUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/UnblockUserResponse" message="tns:ISocialManager_UnblockUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISocialManager/UnblockUserBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:ISocialManager_UnblockUser_BevososServerExceptionsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BlockUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/BlockUser" message="tns:ISocialManager_BlockUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/BlockUserResponse" message="tns:ISocialManager_BlockUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISocialManager/BlockUserBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:ISocialManager_BlockUser_BevososServerExceptionsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBlockedUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/GetBlockedUsers" message="tns:ISocialManager_GetBlockedUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/GetBlockedUsersResponse" message="tns:ISocialManager_GetBlockedUsers_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISocialManager/GetBlockedUsersBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:ISocialManager_GetBlockedUsers_BevososServerExceptionsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFriendRequests">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/GetFriendRequests" message="tns:ISocialManager_GetFriendRequests_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/GetFriendRequestsResponse" message="tns:ISocialManager_GetFriendRequests_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISocialManager/GetFriendRequestsBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:ISocialManager_GetFriendRequests_BevososServerExceptionsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersFoundByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/GetUsersFoundByName" message="tns:ISocialManager_GetUsersFoundByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/GetUsersFoundByNameResponse" message="tns:ISocialManager_GetUsersFoundByName_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISocialManager/GetUsersFoundByNameBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:ISocialManager_GetUsersFoundByName_BevososServerExceptionsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InviteFriendToLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/InviteFriendToLobby" message="tns:ISocialManager_InviteFriendToLobby_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnFriendOnline">
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/OnFriendOnline" message="tns:ISocialManager_OnFriendOnline_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnFriendOffline">
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/OnFriendOffline" message="tns:ISocialManager_OnFriendOffline_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnNewFriend">
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/OnNewFriend" message="tns:ISocialManager_OnNewFriend_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnFriendshipDeleted">
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/OnFriendshipDeleted" message="tns:ISocialManager_OnFriendshipDeleted_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnNewFriendRequest">
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/OnNewFriendRequest" message="tns:ISocialManager_OnNewFriendRequest_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NotifyGameInvited">
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/NotifyGameInvited" message="tns:ISocialManager_NotifyGameInvited_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IGameManager">
+    <wsdl:operation name="JoinGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/JoinGame" message="tns:IGameManager_JoinGame_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DrawCard">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/DrawCard" message="tns:IGameManager_DrawCard_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PlayCard">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/PlayCard" message="tns:IGameManager_PlayCard_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PlayProvoke">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/PlayProvoke" message="tns:IGameManager_PlayProvoke_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteBodyPartPlacement">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/ExecuteBodyPartPlacement" message="tns:IGameManager_ExecuteBodyPartPlacement_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteToolPlacement">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/ExecuteToolPlacement" message="tns:IGameManager_ExecuteToolPlacement_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteHatPlacement">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/ExecuteHatPlacement" message="tns:IGameManager_ExecuteHatPlacement_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteProvoke">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/ExecuteProvoke" message="tns:IGameManager_ExecuteProvoke_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveStatsForPLayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/SaveStatsForPLayer" message="tns:IGameManager_SaveStatsForPLayer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/SaveStatsForPLayerResponse" message="tns:IGameManager_SaveStatsForPLayer_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IGameManager/SaveStatsForPLayerBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:IGameManager_SaveStatsForPLayer_BevososServerExceptionsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveGameState">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/ReceiveGameState" message="tns:IGameManager_ReceiveGameState_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestBodyPartSelection">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/RequestBodyPartSelection" message="tns:IGameManager_RequestBodyPartSelection_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestToolSelection">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/RequestToolSelection" message="tns:IGameManager_RequestToolSelection_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestHatSelection">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/RequestHatSelection" message="tns:IGameManager_RequestHatSelection_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NotifyActionInvalid">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/NotifyActionInvalid" message="tns:IGameManager_NotifyActionInvalid_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnProvoke">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/OnProvoke" message="tns:IGameManager_OnProvoke_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnNotifyEndGamePhase">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/OnNotifyEndGamePhase" message="tns:IGameManager_OnNotifyEndGamePhase_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnNotifyGameEnded">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/OnNotifyGameEnded" message="tns:IGameManager_OnNotifyGameEnded_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnNotifyGameEndedWithoutUsers">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/OnNotifyGameEndedWithoutUsers" message="tns:IGameManager_OnNotifyGameEndedWithoutUsers_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IStatsManager">
+    <wsdl:operation name="GetCurrentUserStats">
+      <wsdl:input wsaw:Action="http://tempuri.org/IStatsManager/GetCurrentUserStats" message="tns:IStatsManager_GetCurrentUserStats_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IStatsManager/GetCurrentUserStatsResponse" message="tns:IStatsManager_GetCurrentUserStats_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IStatsManager/GetCurrentUserStatsBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:IStatsManager_GetCurrentUserStats_BevososServerExceptionsFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetTcpBinding_IUsersManager" type="tns:IUsersManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IUsersManager_policy">
+    </wsp:PolicyReference>
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="IsUsernameTaken">
+      <soap12:operation soapAction="http://tempuri.org/IUsersManager/IsUsernameTaken" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="IsEmailTaken">
+      <soap12:operation soapAction="http://tempuri.org/IUsersManager/IsEmailTaken" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SendToken">
+      <soap12:operation soapAction="http://tempuri.org/IUsersManager/SendToken" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyToken">
+      <soap12:operation soapAction="http://tempuri.org/IUsersManager/VerifyToken" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUser">
+      <soap12:operation soapAction="http://tempuri.org/IUsersManager/RegisterUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="LogIn">
+      <soap12:operation soapAction="http://tempuri.org/IUsersManager/LogIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetGuestUser">
+      <soap12:operation soapAction="http://tempuri.org/IUsersManager/GetGuestUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecoverPassword">
+      <soap12:operation soapAction="http://tempuri.org/IUsersManager/RecoverPassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ILobbyManager" type="tns:ILobbyManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_ILobbyManager_policy">
+    </wsp:PolicyReference>
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="NewLobbyCreated">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/NewLobbyCreated" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="JoinLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/JoinLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="LeaveLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/LeaveLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/SendMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="KickUser">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/KickUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="StartGame">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/StartGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeReadyStatus">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/ChangeReadyStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="OnNewLobbyCreated">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnNewLobbyCreated" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnLobbyUsersUpdate">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnLobbyUsersUpdate" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnLeaderChanged">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnLeaderChanged" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnJoinLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnJoinLobby" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnLeaveLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnLeaveLobby" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnKicked">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnKicked" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnSendMessage">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnSendMessage" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnReadyStatusChanged">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/OnReadyStatusChanged" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GameStarted">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManager/GameStarted" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ILobbyChecker" type="tns:ILobbyChecker">
+    <wsp:PolicyReference URI="#NetTcpBinding_ILobbyChecker_policy">
+    </wsp:PolicyReference>
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="IsLobbyOpen">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyChecker/IsLobbyOpen" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsLobbyFull">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyChecker/IsLobbyFull" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IProfileManager" type="tns:IProfileManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IProfileManager_policy">
+    </wsp:PolicyReference>
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="UpdateProfile">
+      <soap12:operation soapAction="http://tempuri.org/IProfileManager/UpdateProfile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ISocialManager" type="tns:ISocialManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_ISocialManager_policy">
+    </wsp:PolicyReference>
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="Connect">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/Connect" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="Disconnect">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/Disconnect" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="IsConnected">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/IsConnected" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SendFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/SendFriendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AcceptFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/AcceptFriendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeclineFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/DeclineFriendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFriend">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/DeleteFriend" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFriends">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/GetFriends" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="BlockFriend">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/BlockFriend" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UnblockUser">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/UnblockUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="BlockUser">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/BlockUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetBlockedUsers">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/GetBlockedUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFriendRequests">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/GetFriendRequests" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersFoundByName">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/GetUsersFoundByName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="InviteFriendToLobby">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/InviteFriendToLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="OnFriendOnline">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/OnFriendOnline" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnFriendOffline">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/OnFriendOffline" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnNewFriend">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/OnNewFriend" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnFriendshipDeleted">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/OnFriendshipDeleted" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnNewFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/OnNewFriendRequest" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NotifyGameInvited">
+      <soap12:operation soapAction="http://tempuri.org/ISocialManager/NotifyGameInvited" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IGameManager" type="tns:IGameManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IGameManager_policy">
+    </wsp:PolicyReference>
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="JoinGame">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/JoinGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="DrawCard">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/DrawCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="PlayCard">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/PlayCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="PlayProvoke">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/PlayProvoke" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteBodyPartPlacement">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/ExecuteBodyPartPlacement" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteToolPlacement">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/ExecuteToolPlacement" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteHatPlacement">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/ExecuteHatPlacement" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteProvoke">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/ExecuteProvoke" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SaveStatsForPLayer">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/SaveStatsForPLayer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveGameState">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/ReceiveGameState" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestBodyPartSelection">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/RequestBodyPartSelection" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestToolSelection">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/RequestToolSelection" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestHatSelection">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/RequestHatSelection" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NotifyActionInvalid">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/NotifyActionInvalid" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnProvoke">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/OnProvoke" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnNotifyEndGamePhase">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/OnNotifyEndGamePhase" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnNotifyGameEnded">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/OnNotifyGameEnded" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnNotifyGameEndedWithoutUsers">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/OnNotifyGameEndedWithoutUsers" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IStatsManager" type="tns:IStatsManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IStatsManager_policy">
+    </wsp:PolicyReference>
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GetCurrentUserStats">
+      <soap12:operation soapAction="http://tempuri.org/IStatsManager/GetCurrentUserStats" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceImplementation">
+    <wsdl:port name="NetTcpBinding_IUsersManager" binding="tns:NetTcpBinding_IUsersManager">
+      <soap12:address location="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ILobbyManager" binding="tns:NetTcpBinding_ILobbyManager">
+      <soap12:address location="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ILobbyChecker" binding="tns:NetTcpBinding_ILobbyChecker">
+      <soap12:address location="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IProfileManager" binding="tns:NetTcpBinding_IProfileManager">
+      <soap12:address location="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ISocialManager" binding="tns:NetTcpBinding_ISocialManager">
+      <soap12:address location="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IGameManager" binding="tns:NetTcpBinding_IGameManager">
+      <soap12:address location="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IStatsManager" binding="tns:NetTcpBinding_IStatsManager">
+      <soap12:address location="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

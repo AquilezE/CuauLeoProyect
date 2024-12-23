@@ -1453,10 +1453,10 @@ namespace Cliente.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/DeclineFriendRequest", ReplyAction="http://tempuri.org/ISocialManager/DeclineFriendRequestResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(Cliente.ServiceReference.BevososServerExceptions), Action="http://tempuri.org/ISocialManager/DeclineFriendRequestBevososServerExceptionsFaul" +
             "t", Name="BevososServerExceptions", Namespace="http://schemas.datacontract.org/2004/07/BevososService.Exceptions")]
-        bool DeclineFriendRequest(int requestId);
+        bool DeclineFriendRequest(int userId, int requestId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/DeclineFriendRequest", ReplyAction="http://tempuri.org/ISocialManager/DeclineFriendRequestResponse")]
-        System.Threading.Tasks.Task<bool> DeclineFriendRequestAsync(int requestId);
+        System.Threading.Tasks.Task<bool> DeclineFriendRequestAsync(int userId, int requestId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/DeleteFriend", ReplyAction="http://tempuri.org/ISocialManager/DeleteFriendResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(Cliente.ServiceReference.BevososServerExceptions), Action="http://tempuri.org/ISocialManager/DeleteFriendBevososServerExceptionsFault", Name="BevososServerExceptions", Namespace="http://schemas.datacontract.org/2004/07/BevososService.Exceptions")]
@@ -1612,12 +1612,12 @@ namespace Cliente.ServiceReference {
             return base.Channel.AcceptFriendRequestAsync(userId, friendId, requestId);
         }
         
-        public bool DeclineFriendRequest(int requestId) {
-            return base.Channel.DeclineFriendRequest(requestId);
+        public bool DeclineFriendRequest(int userId, int requestId) {
+            return base.Channel.DeclineFriendRequest(userId, requestId);
         }
         
-        public System.Threading.Tasks.Task<bool> DeclineFriendRequestAsync(int requestId) {
-            return base.Channel.DeclineFriendRequestAsync(requestId);
+        public System.Threading.Tasks.Task<bool> DeclineFriendRequestAsync(int userId, int requestId) {
+            return base.Channel.DeclineFriendRequestAsync(userId, requestId);
         }
         
         public bool DeleteFriend(int userId, int friendId) {

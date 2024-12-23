@@ -98,7 +98,7 @@ namespace Cliente.UserControllers.FriendsList
                 try
                 {
                     bool result =
-                        await Social.Instance.SocialManagerClient.DeclineFriendRequestAsync(e.FriendRequestId);
+                        await Social.Instance.SocialManagerClient.DeclineFriendRequestAsync(User.Instance.ID, e.FriendRequestId);
 
                     if (result)
                     {

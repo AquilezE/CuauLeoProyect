@@ -173,10 +173,10 @@ namespace Cliente
 
         public void OnFriendshipDeleted(int userId)
         {
-            object friend = FriendList.FirstOrDefault(f => f.FriendId == userId);
+            Friend friend = FriendList.FirstOrDefault(f => f.FriendId == userId);
             if (friend != null)
             {
-                FriendList.Remove((Friend)friend);
+                FriendList.Remove(friend);
             }
         }
 

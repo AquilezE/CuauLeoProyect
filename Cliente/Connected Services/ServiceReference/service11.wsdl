@@ -1305,45 +1305,45 @@
   </wsdl:binding>
   <wsdl:service name="ServiceImplementation">
     <wsdl:port name="NetTcpBinding_IUsersManager" binding="tns:NetTcpBinding_IUsersManager">
-      <soap12:address location="net.tcp://10.82.157.102:8000/ServiceImplementation/Service" />
+      <soap12:address location="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://10.82.157.102:8000/ServiceImplementation/Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ILobbyManager" binding="tns:NetTcpBinding_ILobbyManager">
-      <soap12:address location="net.tcp://10.82.157.102:8000/ServiceImplementation/Service" />
+      <soap12:address location="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://10.82.157.102:8000/ServiceImplementation/Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ILobbyChecker" binding="tns:NetTcpBinding_ILobbyChecker">
-      <soap12:address location="net.tcp://10.82.157.102:8000/ServiceImplementation/Service" />
+      <soap12:address location="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://10.82.157.102:8000/ServiceImplementation/Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IProfileManager" binding="tns:NetTcpBinding_IProfileManager">
-      <soap12:address location="net.tcp://10.82.157.102:8000/ServiceImplementation/Service" />
+      <soap12:address location="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://10.82.157.102:8000/ServiceImplementation/Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ISocialManager" binding="tns:NetTcpBinding_ISocialManager">
-      <soap12:address location="net.tcp://10.82.157.102:8000/ServiceImplementation/Service" />
+      <soap12:address location="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://10.82.157.102:8000/ServiceImplementation/Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IGameManager" binding="tns:NetTcpBinding_IGameManager">
-      <soap12:address location="net.tcp://10.82.157.102:8000/ServiceImplementation/Service" />
+      <soap12:address location="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://10.82.157.102:8000/ServiceImplementation/Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IStatsManager" binding="tns:NetTcpBinding_IStatsManager">
-      <soap12:address location="net.tcp://10.82.157.102:8000/ServiceImplementation/Service" />
+      <soap12:address location="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://10.82.157.102:8000/ServiceImplementation/Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>
