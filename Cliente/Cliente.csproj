@@ -249,6 +249,9 @@
     <Compile Include="UserControllers\BlockedUser.xaml.cs">
       <DependentUpon>BlockedUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControllers\BlockFriendDialog.xaml.cs">
+      <DependentUpon>BlockFriendDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControllers\ChangePassword\ChangePassword.xaml.cs">
       <DependentUpon>ChangePassword.xaml</DependentUpon>
     </Compile>
@@ -418,6 +421,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControllers\BlockedUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControllers\BlockFriendDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

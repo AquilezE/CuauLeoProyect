@@ -43,12 +43,30 @@ namespace Cliente.UserControllers.FriendsList
 
         private async void OnBlockUser(object sender, UserFound e)
         {
+
+            
+
             if (e != null)
             {
+
+                var blockFriendDialog = new BlockFriendDialog(e.UserFoundUsername)
+                {
+                    Owner = Window.GetWindow(this)
+                };
+
+                bool? dialogResult = blockFriendDialog.ShowDialog();
+
+                if (dialogResult != true)
+                {
+                    return;
+                }
+
+                string blockReason = blockFriendDialog.BlockReason;
+
                 try
                 {
-                    bool result = await Social.Instance.SocialManagerClient.BlockUserAsync(User.Instance.ID, e.ID);
-                    if (result)
+                    bool blockResult = await Social.Instance.SocialManagerClient.BlockUserAsync(User.Instance.ID, e.ID, blockReason);
+                    if (blockResult)
                     {
                         UsersFound.Remove(e);
                         Social.Instance.GetBlockedUsers();

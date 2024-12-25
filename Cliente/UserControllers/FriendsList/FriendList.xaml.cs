@@ -78,10 +78,25 @@ namespace Cliente.UserControllers.FriendsList
         {
             if (e != null)
             {
+                var blockFriendDialog = new BlockFriendDialog(e.FriendName)
+                {
+                    Owner = Window.GetWindow(this)
+                };
+
+                bool? dialogResult = blockFriendDialog.ShowDialog();
+
+                if (dialogResult != true)
+                {
+                    return;
+                }
+
+                string blockReason = blockFriendDialog.BlockReason;
+
+
                 try
                 {
                     bool result =
-                        await Social.Instance.SocialManagerClient.BlockFriendAsync(User.Instance.ID, e.FriendId);
+                        await Social.Instance.SocialManagerClient.BlockFriendAsync(User.Instance.ID, e.FriendId, blockReason);
                     if (result)
                     {
                         Social.Instance.FriendList.Remove(e);
