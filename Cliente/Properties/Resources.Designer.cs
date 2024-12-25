@@ -619,6 +619,15 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a An error ocurred while accpeting the friend request, try again later!.
+        /// </summary>
+        public static string lblErrAcceptingFRException {
+            get {
+                return ResourceManager.GetString("lblErrAcceptingFRException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a An error ocurred while blocking the user, try again later!.
         /// </summary>
         public static string lblErrBlockingException {
@@ -993,6 +1002,15 @@ namespace Cliente.Properties {
         public static string lblErrProfileUsernameTaken {
             get {
                 return ResourceManager.GetString("lblErrProfileUsernameTaken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a An error has ocurred while sending friend request, try again later!.
+        /// </summary>
+        public static string lblErrSendingFriendRequest {
+            get {
+                return ResourceManager.GetString("lblErrSendingFriendRequest", resourceCulture);
             }
         }
         
