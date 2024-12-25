@@ -23,7 +23,7 @@
                    HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" />
             <TextBlock Grid.Column="1" Text="{Binding SenderName}" Margin="10 0 0 0" TextWrapping="Wrap"
                        VerticalAlignment="Center" HorizontalAlignment="Left" Width="376" />
-            <Button Grid.Column="2" Content="{h:Lang btnAccept}" Width="100" Background="SpringGreen"
+            <Button x:Name="btAcceptFriendRequest" Grid.Column="2" Content="{h:Lang btnAccept}" Width="100" Background="SpringGreen"
                     Click="btAccept_Click" />
             <Button Grid.Column="3" Content="{h:Lang btnDelete}" Width="100" Background="IndianRed"
                     Click="btDecline_Click" />

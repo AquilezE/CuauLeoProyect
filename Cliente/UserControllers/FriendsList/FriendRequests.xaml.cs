@@ -4,6 +4,7 @@ using Cliente.Utils;
 using Haley.Utils;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.ServiceModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -34,6 +35,12 @@ namespace Cliente.UserControllers.FriendsList
         {
             if (sender is FriendRequest friendRequestUserControl)
             {
+                var friendRequest = friendRequestUserControl.DataContext as Cliente.FriendRequest;
+
+                bool isBlocked = Social.Instance.BlockedUsersList.Any(b => b.BlockedId == friendRequest.SenderId);
+                
+                friendRequestUserControl.btAcceptFriendRequest.IsEnabled = !isBlocked ;
+                
                 friendRequestUserControl.AcceptFriend += OnFriendRequestAccept;
                 friendRequestUserControl.DeclineFriend += OnFriendRequestDecline;
             }
@@ -56,6 +63,7 @@ namespace Cliente.UserControllers.FriendsList
                     {
                         var notificationDialog = new NotificationDialog();
                         notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrAcceptingFRException"));
+                        Social.Instance.FriendRequests.Remove(e);
                     }
                 }
                 catch (EndpointNotFoundException ex)

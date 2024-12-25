@@ -606,4 +606,10 @@
   <data name="lblEndGameWhitoutUsers" xml:space="preserve">
     <value>Game finished due to a lack of players</value>
   </data>
+  <data name="lblErrSendingFriendRequest" xml:space="preserve">
+    <value>An error has ocurred while sending friend request, try again later!</value>
+  </data>
+  <data name="lblErrAcceptingFRException" xml:space="preserve">
+    <value>An error ocurred while accpeting the friend request, try again later!</value>
+  </data>
 </root>

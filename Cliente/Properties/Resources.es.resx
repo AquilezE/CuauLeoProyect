@@ -600,7 +600,16 @@
   <data name="lblErrPasswordTooLong " xml:space="preserve">
     <value>Tu contraseña es muy larga!</value>
   </data>
+  <data name="lblErrProfileUsernameTaken" xml:space="preserve">
+    <value>Esta nombre de usuario está ocupado</value>
+  </data>
   <data name="lblEndGameWhitoutUsers" xml:space="preserve">
     <value>Partida terminada debido a que no hay más jugadores para continuar</value>
+  </data>
+  <data name="lblErrSendingFriendRequest" xml:space="preserve">
+    <value>Ocurrio un error al enviar la solicitud de amistad, intentalo de nuevo más tarde!</value>
+  </data>
+  <data name="lblErrAcceptingFRException" xml:space="preserve">
+    <value>Ocurrió un error al aceptar la solicitud de amistad, intentalo de nuevo más tarde!</value>
   </data>
 </root>
