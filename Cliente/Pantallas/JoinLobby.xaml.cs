@@ -61,7 +61,21 @@ namespace Cliente.Pantallas
             {
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
-                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrConnectionTimeout"));
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                return;
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                return;
+            }
+            catch (Exception ex)
+            {
+                ExceptionManager.LogFatalException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrJoiningLobby"));
                 return;
             }
 
@@ -80,14 +94,26 @@ namespace Cliente.Pantallas
                     ExceptionManager.LogErrorException(ex);
                     var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
-                    lbErrLobbyCode.Content = LangUtils.Translate("lblErrJoiningLobby");
                 }
                 catch (TimeoutException ex)
                 {
                     ExceptionManager.LogErrorException(ex);
                     var notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                }
+                catch (CommunicationException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
-                    lbErrLobbyCode.Content = LangUtils.Translate("lblErrJoiningLobby");
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionManager.LogFatalException(ex);
+                    var notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrJoiningLobby"));
+                    return;
                 }
             }
             else

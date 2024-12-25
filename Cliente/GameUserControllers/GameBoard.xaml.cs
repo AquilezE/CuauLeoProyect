@@ -9,6 +9,7 @@ using UserDTO = Cliente.ServiceReference.UserDTO;
 using Cliente.UserControllers;
 using Cliente.Utils;
 using Haley.Utils;
+using System.Linq.Expressions;
 
 namespace Cliente.GameUserControllers
 {
@@ -53,7 +54,9 @@ namespace Cliente.GameUserControllers
         private void GameBoard_Loaded(object sender, RoutedEventArgs e)
         {
             GameManagerClient = new GameManagerClient(new InstanceContext(GameLogic.Instance));
-
+            var clientChannel = (ICommunicationObject)GameManagerClient;
+            clientChannel.Closed += ClientChannel_Closed;
+            clientChannel.Faulted += ClientChannel_Faulted;
             try
             {
                 var user = new UserDTO();
@@ -70,12 +73,66 @@ namespace Cliente.GameUserControllers
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
             }
-            catch (TimeoutException ex)
+            catch (CommunicationException ex)
             {
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
             }
+            catch (TimeoutException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+            }
+            catch (Exception ex)
+            {
+                ExceptionManager.LogFatalException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
+        }
+
+        private void ClientChannel_Faulted(object sender, EventArgs e)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                if (User.Instance.ID > 0)
+                {
+                    var notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrLostGameConnection"));
+                    var mainWindow = (MainWindow)Application.Current.MainWindow;
+                    mainWindow.NavigateToView(new MainMenu());
+                }
+                else if (User.Instance.ID < 0)
+                {
+                    var notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrLostGameConnection"));
+                    var mainWindow = (MainWindow)Application.Current.MainWindow;
+                    mainWindow.NavigateToView(new JoinLobby(), 650, 800);
+                }
+            });
+        }
+
+        private void ClientChannel_Closed(object sender, EventArgs e)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                if (User.Instance.ID > 0)
+                {
+                    var notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrLostGameConnection"));
+                    var mainWindow = (MainWindow)Application.Current.MainWindow;
+                    mainWindow.NavigateToView(new MainMenu());
+                }
+                else if (User.Instance.ID < 0)
+                {
+                    var notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrLostGameConnection"));
+                    var mainWindow = (MainWindow)Application.Current.MainWindow;
+                    mainWindow.NavigateToView(new JoinLobby(), 650, 800);
+                }
+            });
         }
 
         private void Card_Clicked(object sender, RoutedEventArgs e)
@@ -83,17 +140,71 @@ namespace Cliente.GameUserControllers
             var cardControl = e.OriginalSource as CardUserController;
             if (cardControl != null)
             {
-                object cardData = cardControl.DataContext;
+                try
+                {
+                    object cardData = cardControl.DataContext;
 
-                var card = cardData as GameCard;
+                    var card = cardData as GameCard;
 
-                GameManagerClient.PlayCard(User.Instance.ID, GameLogic.Instance.GameId, card.CardId);
+                    GameManagerClient.PlayCard(User.Instance.ID, GameLogic.Instance.GameId, card.CardId);
+                }
+                catch (EndpointNotFoundException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    var notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                }
+                catch (CommunicationException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    var notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                }
+                catch (TimeoutException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    var notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                }
+                catch (Exception ex)
+                {
+                    ExceptionManager.LogFatalException(ex);
+                    var notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                }
             }
         }
 
         private void DrawCard(object sender, RoutedEventArgs e)
         {
-            GameManagerClient.DrawCard(GameLogic.Instance.GameId, User.Instance.ID);
+            try
+            {
+                GameManagerClient.DrawCard(GameLogic.Instance.GameId, User.Instance.ID);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+            }
+            catch (Exception ex)
+            {
+                ExceptionManager.LogFatalException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
         }
 
 
@@ -152,9 +263,36 @@ namespace Cliente.GameUserControllers
                 var selectionWindow = new MonsterSelectionWindow(GameLogic.Instance.Monster);
                 if (selectionWindow.ShowDialog() == true)
                 {
-                    int selectedMonsterIndex = selectionWindow.SelectedMonsterIndex;
-                    GameManagerClient.ExecuteToolPlacement(User.Instance.ID, GameLogic.Instance.GameId, card.CardId,
-                        selectedMonsterIndex);
+                    try
+                    {
+                        int selectedMonsterIndex = selectionWindow.SelectedMonsterIndex;
+                        GameManagerClient.ExecuteToolPlacement(User.Instance.ID, GameLogic.Instance.GameId, card.CardId,
+                            selectedMonsterIndex);
+                    }
+                    catch (EndpointNotFoundException ex)
+                    {
+                        ExceptionManager.LogErrorException(ex);
+                        var notificationDialog = new NotificationDialog();
+                        notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                    }
+                    catch (CommunicationException ex)
+                    {
+                        ExceptionManager.LogErrorException(ex);
+                        var notificationDialog = new NotificationDialog();
+                        notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                    }
+                    catch (TimeoutException ex)
+                    {
+                        ExceptionManager.LogErrorException(ex);
+                        var notificationDialog = new NotificationDialog();
+                        notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionManager.LogFatalException(ex);
+                        var notificationDialog = new NotificationDialog();
+                        notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                    }
                 }
             });
         }
@@ -166,9 +304,36 @@ namespace Cliente.GameUserControllers
                 var selectionWindow = new MonsterSelectionWindow(GameLogic.Instance.Monster);
                 if (selectionWindow.ShowDialog() == true)
                 {
-                    int selectedMonsterIndex = selectionWindow.SelectedMonsterIndex;
-                    GameManagerClient.ExecuteBodyPartPlacement(User.Instance.ID, GameLogic.Instance.GameId, card.CardId,
-                        selectedMonsterIndex);
+                    try
+                    {
+                        int selectedMonsterIndex = selectionWindow.SelectedMonsterIndex;
+                        GameManagerClient.ExecuteBodyPartPlacement(User.Instance.ID, GameLogic.Instance.GameId, card.CardId,
+                            selectedMonsterIndex);
+                    }
+                    catch (EndpointNotFoundException ex)
+                    {
+                        ExceptionManager.LogErrorException(ex);
+                        var notificationDialog = new NotificationDialog();
+                        notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                    }
+                    catch (CommunicationException ex)
+                    {
+                        ExceptionManager.LogErrorException(ex);
+                        var notificationDialog = new NotificationDialog();
+                        notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                    }
+                    catch (TimeoutException ex)
+                    {
+                        ExceptionManager.LogErrorException(ex);
+                        var notificationDialog = new NotificationDialog();
+                        notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionManager.LogFatalException(ex);
+                        var notificationDialog = new NotificationDialog();
+                        notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                    }
                 }
             });
         }
@@ -180,9 +345,36 @@ namespace Cliente.GameUserControllers
                 var selectionWindow = new MonsterSelectionWindow(GameLogic.Instance.Monster);
                 if (selectionWindow.ShowDialog() == true)
                 {
-                    int selectedMonsterIndex = selectionWindow.SelectedMonsterIndex;
-                    GameManagerClient.ExecuteHatPlacement(User.Instance.ID, GameLogic.Instance.GameId, card.CardId,
-                        selectedMonsterIndex);
+                    try
+                    {
+                        int selectedMonsterIndex = selectionWindow.SelectedMonsterIndex;
+                        GameManagerClient.ExecuteHatPlacement(User.Instance.ID, GameLogic.Instance.GameId, card.CardId,
+                            selectedMonsterIndex);
+                    }
+                    catch (EndpointNotFoundException ex)
+                    {
+                        ExceptionManager.LogErrorException(ex);
+                        var notificationDialog = new NotificationDialog();
+                        notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                    }
+                    catch (CommunicationException ex)
+                    {
+                        ExceptionManager.LogErrorException(ex);
+                        var notificationDialog = new NotificationDialog();
+                        notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                    }
+                    catch (TimeoutException ex)
+                    {
+                        ExceptionManager.LogErrorException(ex);
+                        var notificationDialog = new NotificationDialog();
+                        notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionManager.LogFatalException(ex);
+                        var notificationDialog = new NotificationDialog();
+                        notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                    }
                 }
             });
         }
@@ -191,6 +383,9 @@ namespace Cliente.GameUserControllers
         {
             Dispatcher.Invoke(() =>
             {
+                var channelClient = (ICommunicationObject)GameManagerClient;
+                channelClient.Closed -= ClientChannel_Closed;
+                channelClient.Faulted -= ClientChannel_Faulted;
                 var mainWindow = (MainWindow)Application.Current.MainWindow;
                 mainWindow.NavigateToView(new EndGame(matchStats), 800, 750);
             });
@@ -202,6 +397,9 @@ namespace Cliente.GameUserControllers
             {
                 if (User.Instance.ID > 0)
                 {
+                    var channelClient = (ICommunicationObject)GameManagerClient;
+                    channelClient.Closed -= ClientChannel_Closed;
+                    channelClient.Faulted -= ClientChannel_Faulted;
                     var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblEndGameWhitoutUsers"));
                     var mainWindow = (MainWindow)Application.Current.MainWindow;
@@ -209,6 +407,9 @@ namespace Cliente.GameUserControllers
                 }
                 else if (User.Instance.ID < 0)
                 {
+                    var channelClient = (ICommunicationObject)GameManagerClient;
+                    channelClient.Closed -= ClientChannel_Closed;
+                    channelClient.Faulted -= ClientChannel_Faulted;
                     var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblEndGameWhitoutUsers"));
                     var mainWindow = (MainWindow)Application.Current.MainWindow;
@@ -259,20 +460,102 @@ namespace Cliente.GameUserControllers
 
         private async void btnProvokeEarth_Click(object sender, RoutedEventArgs e)
         {
-            await GameManagerClient.PlayProvokeAsync(User.Instance.ID, GameLogic.Instance.GameId, 0);
-            Console.WriteLine("Provoke Water");
+            try 
+            {
+                await GameManagerClient.PlayProvokeAsync(User.Instance.ID, GameLogic.Instance.GameId, 0);
+                Console.WriteLine("Provoke Water");
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+            }
+            catch (Exception ex)
+            {
+                ExceptionManager.LogFatalException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
         }
+        
 
         private async void btnProvokeWater_Click(object sender, RoutedEventArgs e)
         {
-            await GameManagerClient.PlayProvokeAsync(User.Instance.ID, GameLogic.Instance.GameId, 1);
-            Console.WriteLine("Provoke Water");
+            try
+            {
+                await GameManagerClient.PlayProvokeAsync(User.Instance.ID, GameLogic.Instance.GameId, 1);
+                Console.WriteLine("Provoke Water");
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+            }
+            catch (Exception ex)
+            {
+                ExceptionManager.LogFatalException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
         }
 
         private async void btnProvokeSky_Click(object sender, RoutedEventArgs e)
         {
-            await GameManagerClient.PlayProvokeAsync(User.Instance.ID, GameLogic.Instance.GameId, 2);
-            Console.WriteLine("Provoke Water");
+            try
+            {
+                await GameManagerClient.PlayProvokeAsync(User.Instance.ID, GameLogic.Instance.GameId, 2);
+                Console.WriteLine("Provoke Water");
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+            }
+            catch (Exception ex)
+            {
+                ExceptionManager.LogFatalException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
         }
 
     }

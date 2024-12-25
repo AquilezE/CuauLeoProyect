@@ -396,6 +396,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="userId" type="xs:int" />
         <xs:element minOccurs="0" name="friendId" type="xs:int" />
+        <xs:element minOccurs="0" name="blockReason" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -426,6 +427,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="userId" type="xs:int" />
         <xs:element minOccurs="0" name="blockeeId" type="xs:int" />
+        <xs:element minOccurs="0" name="blockReason" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -612,4 +612,19 @@
   <data name="lblErrAcceptingFRException" xml:space="preserve">
     <value>An error ocurred while accpeting the friend request, try again later!</value>
   </data>
+  <data name="lblSureBlockUser" xml:space="preserve">
+    <value>Are you sure you want to block this user?</value>
+  </data>
+  <data name="lblTypeBlockReason" xml:space="preserve">
+    <value>Type a reason to block this user</value>
+  </data>
+  <data name="lblBlocking" xml:space="preserve">
+    <value>Blocking</value>
+  </data>
+  <data name="lblErrJoiningLobby" xml:space="preserve">
+    <value>An error ocurred while joining the lobby, try again later!</value>
+  </data>
+  <data name="lblErrLostGameConnection" xml:space="preserve">
+    <value>We've lost connection to the game so we disconnected you from the game</value>
+  </data>
 </root>

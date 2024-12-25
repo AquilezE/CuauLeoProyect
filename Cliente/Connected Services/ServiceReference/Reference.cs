@@ -1474,10 +1474,10 @@ namespace Cliente.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/BlockFriend", ReplyAction="http://tempuri.org/ISocialManager/BlockFriendResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(Cliente.ServiceReference.BevososServerExceptions), Action="http://tempuri.org/ISocialManager/BlockFriendBevososServerExceptionsFault", Name="BevososServerExceptions", Namespace="http://schemas.datacontract.org/2004/07/BevososService.Exceptions")]
-        bool BlockFriend(int userId, int friendId);
+        bool BlockFriend(int userId, int friendId, string blockReason);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/BlockFriend", ReplyAction="http://tempuri.org/ISocialManager/BlockFriendResponse")]
-        System.Threading.Tasks.Task<bool> BlockFriendAsync(int userId, int friendId);
+        System.Threading.Tasks.Task<bool> BlockFriendAsync(int userId, int friendId, string blockReason);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/UnblockUser", ReplyAction="http://tempuri.org/ISocialManager/UnblockUserResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(Cliente.ServiceReference.BevososServerExceptions), Action="http://tempuri.org/ISocialManager/UnblockUserBevososServerExceptionsFault", Name="BevososServerExceptions", Namespace="http://schemas.datacontract.org/2004/07/BevososService.Exceptions")]
@@ -1488,10 +1488,10 @@ namespace Cliente.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/BlockUser", ReplyAction="http://tempuri.org/ISocialManager/BlockUserResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(Cliente.ServiceReference.BevososServerExceptions), Action="http://tempuri.org/ISocialManager/BlockUserBevososServerExceptionsFault", Name="BevososServerExceptions", Namespace="http://schemas.datacontract.org/2004/07/BevososService.Exceptions")]
-        bool BlockUser(int userId, int blockeeId);
+        bool BlockUser(int userId, int blockeeId, string blockReason);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/BlockUser", ReplyAction="http://tempuri.org/ISocialManager/BlockUserResponse")]
-        System.Threading.Tasks.Task<bool> BlockUserAsync(int userId, int blockeeId);
+        System.Threading.Tasks.Task<bool> BlockUserAsync(int userId, int blockeeId, string blockReason);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/GetBlockedUsers", ReplyAction="http://tempuri.org/ISocialManager/GetBlockedUsersResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(Cliente.ServiceReference.BevososServerExceptions), Action="http://tempuri.org/ISocialManager/GetBlockedUsersBevososServerExceptionsFault", Name="BevososServerExceptions", Namespace="http://schemas.datacontract.org/2004/07/BevososService.Exceptions")]
@@ -1636,12 +1636,12 @@ namespace Cliente.ServiceReference {
             return base.Channel.GetFriendsAsync(userId);
         }
         
-        public bool BlockFriend(int userId, int friendId) {
-            return base.Channel.BlockFriend(userId, friendId);
+        public bool BlockFriend(int userId, int friendId, string blockReason) {
+            return base.Channel.BlockFriend(userId, friendId, blockReason);
         }
         
-        public System.Threading.Tasks.Task<bool> BlockFriendAsync(int userId, int friendId) {
-            return base.Channel.BlockFriendAsync(userId, friendId);
+        public System.Threading.Tasks.Task<bool> BlockFriendAsync(int userId, int friendId, string blockReason) {
+            return base.Channel.BlockFriendAsync(userId, friendId, blockReason);
         }
         
         public bool UnblockUser(int userId, int blockedId) {
@@ -1652,12 +1652,12 @@ namespace Cliente.ServiceReference {
             return base.Channel.UnblockUserAsync(userId, blockedId);
         }
         
-        public bool BlockUser(int userId, int blockeeId) {
-            return base.Channel.BlockUser(userId, blockeeId);
+        public bool BlockUser(int userId, int blockeeId, string blockReason) {
+            return base.Channel.BlockUser(userId, blockeeId, blockReason);
         }
         
-        public System.Threading.Tasks.Task<bool> BlockUserAsync(int userId, int blockeeId) {
-            return base.Channel.BlockUserAsync(userId, blockeeId);
+        public System.Threading.Tasks.Task<bool> BlockUserAsync(int userId, int blockeeId, string blockReason) {
+            return base.Channel.BlockUserAsync(userId, blockeeId, blockReason);
         }
         
         public Cliente.ServiceReference.BlockedDTO[] GetBlockedUsers(int userId) {

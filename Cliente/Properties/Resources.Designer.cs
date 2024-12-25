@@ -475,6 +475,15 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Blocking.
+        /// </summary>
+        public static string lblBlocking {
+            get {
+                return ResourceManager.GetString("lblBlocking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Change password.
         /// </summary>
         public static string lblChange {
@@ -808,6 +817,15 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a An error ocurred while joining the lobby, try again later!.
+        /// </summary>
+        public static string lblErrJoiningLobby {
+            get {
+                return ResourceManager.GetString("lblErrJoiningLobby", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Lobby code exceeds the maximum allowed value.
         /// </summary>
         public static string lblErrLobbyCodeExceedRange {
@@ -867,6 +885,15 @@ namespace Cliente.Properties {
         public static string lblErrLobbyNotFound {
             get {
                 return ResourceManager.GetString("lblErrLobbyNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a We&apos;ve lost connection to the game so we disconnected you from the game.
+        /// </summary>
+        public static string lblErrLostGameConnection {
+            get {
+                return ResourceManager.GetString("lblErrLostGameConnection", resourceCulture);
             }
         }
         
@@ -1420,6 +1447,15 @@ namespace Cliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Are you sure you want to block this user?.
+        /// </summary>
+        public static string lblSureBlockUser {
+            get {
+                return ResourceManager.GetString("lblSureBlockUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Are you sure you want to kick this user?.
         /// </summary>
         public static string lblSureKickUser {
@@ -1434,6 +1470,15 @@ namespace Cliente.Properties {
         public static string lblTooManyMonsters {
             get {
                 return ResourceManager.GetString("lblTooManyMonsters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Type a reason to block this user.
+        /// </summary>
+        public static string lblTypeBlockReason {
+            get {
+                return ResourceManager.GetString("lblTypeBlockReason", resourceCulture);
             }
         }
         

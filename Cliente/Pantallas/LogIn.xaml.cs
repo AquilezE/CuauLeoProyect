@@ -80,13 +80,14 @@ namespace Cliente.Pantallas
                 currentUser.Username = userDto.Username;
                 currentUser.Email = userDto.Email;
                 currentUser.ProfilePictureId = userDto.ProfilePictureId;
+                return true;
             }
             catch (EndpointNotFoundException ex)
             {
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
-
+                
                 ResetClientGuest();
             }
             catch (TimeoutException ex)
@@ -114,7 +115,7 @@ namespace Cliente.Pantallas
                 ResetClientGuest();
             }
 
-            return true;
+            return false;
         }
 
         private bool SetSessionUser(string email, string password)

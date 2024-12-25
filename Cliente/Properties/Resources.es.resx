@@ -612,4 +612,19 @@
   <data name="lblErrAcceptingFRException" xml:space="preserve">
     <value>Ocurrió un error al aceptar la solicitud de amistad, intentalo de nuevo más tarde!</value>
   </data>
+  <data name="lblSureBlockUser" xml:space="preserve">
+    <value>¿Estas seguro de que quieres bloquear a este usuario?</value>
+  </data>
+  <data name="lblTypeBlockReason" xml:space="preserve">
+    <value>Escribe la razón para bloquear a este usuario</value>
+  </data>
+  <data name="lblBlocking" xml:space="preserve">
+    <value>Bloqueando a</value>
+  </data>
+  <data name="lblErrJoiningLobby" xml:space="preserve">
+    <value>Ocurrió un error al unirse a la sala, intentalo de nuevo más tarde!</value>
+  </data>
+  <data name="lblErrLostGameConnection" xml:space="preserve">
+    <value>Se perdió la conexión con el juego, así que te desconectamos de la partida</value>
+  </data>
 </root>
