@@ -159,6 +159,7 @@ namespace Cliente.UserControllers.FriendsList
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrSendingFriendRequest"));
                 }
             }
+            UsersFound.Remove(e);
         }
 
 

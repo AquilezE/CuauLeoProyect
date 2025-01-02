@@ -19,15 +19,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="net.tcp://192.168.1.65:8000/ServiceImplementation/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="net.tcp://192.168.1.71:8000/ServiceImplementation/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service12.wsdl" MetadataType="Wsdl" ID="99875743-59f3-4970-b3d7-89d391d2d413" SourceId="1" SourceUrl="net.tcp://192.168.1.65:8000/ServiceImplementation/mex" />
-    <MetadataFile FileName="service24.xsd" MetadataType="Schema" ID="ec34064e-921c-479d-9290-83322d91277f" SourceId="1" SourceUrl="net.tcp://192.168.1.65:8000/ServiceImplementation/mex" />
-    <MetadataFile FileName="service25.xsd" MetadataType="Schema" ID="adfb8934-ae97-40a8-bd6d-eebee8f0c1aa" SourceId="1" SourceUrl="net.tcp://192.168.1.65:8000/ServiceImplementation/mex" />
-    <MetadataFile FileName="BevososService.Exceptions12.xsd" MetadataType="Schema" ID="836b1776-7f31-4c2b-96ba-2b596625d951" SourceId="1" SourceUrl="net.tcp://192.168.1.65:8000/ServiceImplementation/mex" />
-    <MetadataFile FileName="BevososService.DTOs12.xsd" MetadataType="Schema" ID="a731c236-43ae-4d9e-b090-a0ef70f16830" SourceId="1" SourceUrl="net.tcp://192.168.1.65:8000/ServiceImplementation/mex" />
-    <MetadataFile FileName="Arrays12.xsd" MetadataType="Schema" ID="08db4c57-5e6b-415e-803b-0b9d3aa2b9e7" SourceId="1" SourceUrl="net.tcp://192.168.1.65:8000/ServiceImplementation/mex" />
+    <MetadataFile FileName="service12.wsdl" MetadataType="Wsdl" ID="07f56e53-440f-4b26-bdf6-1ec68d317ca5" SourceId="1" SourceUrl="net.tcp://192.168.1.71:8000/ServiceImplementation/mex" />
+    <MetadataFile FileName="service24.xsd" MetadataType="Schema" ID="8d5f48a5-10c6-4b00-ab1e-0cb353651dfa" SourceId="1" SourceUrl="net.tcp://192.168.1.71:8000/ServiceImplementation/mex" />
+    <MetadataFile FileName="service25.xsd" MetadataType="Schema" ID="c885a252-a1a7-4204-8daf-6cc21ad840d1" SourceId="1" SourceUrl="net.tcp://192.168.1.71:8000/ServiceImplementation/mex" />
+    <MetadataFile FileName="BevososService.Exceptions12.xsd" MetadataType="Schema" ID="562d0485-2b86-4953-9e66-9d6c967fd7f1" SourceId="1" SourceUrl="net.tcp://192.168.1.71:8000/ServiceImplementation/mex" />
+    <MetadataFile FileName="BevososService.DTOs12.xsd" MetadataType="Schema" ID="f7f074e2-06d8-49be-97bf-b716ab5e0b0d" SourceId="1" SourceUrl="net.tcp://192.168.1.71:8000/ServiceImplementation/mex" />
+    <MetadataFile FileName="Arrays12.xsd" MetadataType="Schema" ID="f75df17a-943d-489f-9adc-f20c69579dc0" SourceId="1" SourceUrl="net.tcp://192.168.1.71:8000/ServiceImplementation/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -59,11 +59,18 @@ namespace Cliente.Pantallas
 
             var instanceContext = new InstanceContext(this);
             Servicio = new LobbyManagerClient(instanceContext);
+            var channelLobby = (ICommunicationObject)Servicio;
+            channelLobby.Faulted += OnFaultedChannel;
             _messages = new ObservableCollection<Message>();
             _users = new ObservableCollection<UserLobby>();
             MessagesListBox.ItemsSource = _messages;
             UsersListBox.ItemsSource = _users;
             lbUserName.Content = User.Instance.Username;
+        }
+
+        private void OnFaultedChannel(object sender, EventArgs e)
+        {
+            LeaveLobby();
         }
 
         private void btLeaveLobby_Click(object sender, RoutedEventArgs e)
@@ -175,21 +182,26 @@ namespace Cliente.Pantallas
 
         public bool LeaveLobby()
         {
-            if (User.Instance.ID > 0)
+            Application.Current.Dispatcher.Invoke(() =>
             {
-                var mainWindow = (MainWindow)Application.Current.MainWindow;
-                mainWindow.NavigateToView(new MainMenu());
-                return true;
-            }
+                if (User.Instance.ID > 0)
+                {
+                    var mainWindow = (MainWindow)Application.Current.MainWindow;
+                    mainWindow.NavigateToView(new MainMenu());
+                    return true;
+                }
 
-            if (User.Instance.ID < 0)
-            {
-                var mainWindow = (MainWindow)Application.Current.MainWindow;
-                mainWindow.NavigateToView(new JoinLobby(), 650, 800);
-                return true;
-            }
+                if (User.Instance.ID < 0)
+                {
+                    var mainWindow = (MainWindow)Application.Current.MainWindow;
+                    mainWindow.NavigateToView(new JoinLobby(), 650, 800);
+                    return true;
+                }
+                return false;
 
+            });
             return false;
+
         }
 
         public void OnNewLobbyCreated(int lobbyId, int userId)
@@ -338,9 +350,16 @@ namespace Cliente.Pantallas
 
         private void btReady_Click(object sender, RoutedEventArgs e)
         {
-            Servicio.ChangeReadyStatus(_lobbyId, User.Instance.ID);
+            try
+            {
+                Servicio.ChangeReadyStatus(_lobbyId, User.Instance.ID);
+            }
+            catch (Exception ex)
+            {
+                var mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.NavigateToView(new MainMenu());
+            }
         }
-
     }
 
 }

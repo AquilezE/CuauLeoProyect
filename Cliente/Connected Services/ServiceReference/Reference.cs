@@ -1515,10 +1515,12 @@ namespace Cliente.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/GetUsersFoundByName", ReplyAction="http://tempuri.org/ISocialManager/GetUsersFoundByNameResponse")]
         System.Threading.Tasks.Task<Cliente.ServiceReference.UserDTO[]> GetUsersFoundByNameAsync(int userId, string name);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ISocialManager/InviteFriendToLobby")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/InviteFriendToLobby", ReplyAction="http://tempuri.org/ISocialManager/InviteFriendToLobbyResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Cliente.ServiceReference.BevososServerExceptions), Action="http://tempuri.org/ISocialManager/InviteFriendToLobbyBevososServerExceptionsFault" +
+            "", Name="BevososServerExceptions", Namespace="http://schemas.datacontract.org/2004/07/BevososService.Exceptions")]
         void InviteFriendToLobby(string inviterName, int userId, int lobbyId);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ISocialManager/InviteFriendToLobby")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialManager/InviteFriendToLobby", ReplyAction="http://tempuri.org/ISocialManager/InviteFriendToLobbyResponse")]
         System.Threading.Tasks.Task InviteFriendToLobbyAsync(string inviterName, int userId, int lobbyId);
     }
     

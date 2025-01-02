@@ -4,7 +4,7 @@
     <wsp:ExactlyOne>
       <wsp:All>
         <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
-          <wsrm:InactivityTimeout Milliseconds="65000">
+          <wsrm:InactivityTimeout Milliseconds="30000">
           </wsrm:InactivityTimeout>
           <wsrm:AcknowledgementInterval Milliseconds="200">
           </wsrm:AcknowledgementInterval>
@@ -20,7 +20,7 @@
     <wsp:ExactlyOne>
       <wsp:All>
         <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
-          <wsrm:InactivityTimeout Milliseconds="65000">
+          <wsrm:InactivityTimeout Milliseconds="30000">
           </wsrm:InactivityTimeout>
           <wsrm:AcknowledgementInterval Milliseconds="200">
           </wsrm:AcknowledgementInterval>
@@ -36,7 +36,7 @@
     <wsp:ExactlyOne>
       <wsp:All>
         <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
-          <wsrm:InactivityTimeout Milliseconds="65000">
+          <wsrm:InactivityTimeout Milliseconds="30000">
           </wsrm:InactivityTimeout>
           <wsrm:AcknowledgementInterval Milliseconds="200">
           </wsrm:AcknowledgementInterval>
@@ -52,7 +52,7 @@
     <wsp:ExactlyOne>
       <wsp:All>
         <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
-          <wsrm:InactivityTimeout Milliseconds="65000">
+          <wsrm:InactivityTimeout Milliseconds="30000">
           </wsrm:InactivityTimeout>
           <wsrm:AcknowledgementInterval Milliseconds="200">
           </wsrm:AcknowledgementInterval>
@@ -68,7 +68,7 @@
     <wsp:ExactlyOne>
       <wsp:All>
         <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
-          <wsrm:InactivityTimeout Milliseconds="65000">
+          <wsrm:InactivityTimeout Milliseconds="120000">
           </wsrm:InactivityTimeout>
           <wsrm:AcknowledgementInterval Milliseconds="200">
           </wsrm:AcknowledgementInterval>
@@ -84,7 +84,7 @@
     <wsp:ExactlyOne>
       <wsp:All>
         <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
-          <wsrm:InactivityTimeout Milliseconds="65000">
+          <wsrm:InactivityTimeout Milliseconds="30000">
           </wsrm:InactivityTimeout>
           <wsrm:AcknowledgementInterval Milliseconds="200">
           </wsrm:AcknowledgementInterval>
@@ -100,7 +100,7 @@
     <wsp:ExactlyOne>
       <wsp:All>
         <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
-          <wsrm:InactivityTimeout Milliseconds="65000">
+          <wsrm:InactivityTimeout Milliseconds="30000">
           </wsrm:InactivityTimeout>
           <wsrm:AcknowledgementInterval Milliseconds="200">
           </wsrm:AcknowledgementInterval>
@@ -376,6 +376,12 @@
   <wsdl:message name="ISocialManager_InviteFriendToLobby_InputMessage">
     <wsdl:part name="parameters" element="tns:InviteFriendToLobby" />
   </wsdl:message>
+  <wsdl:message name="ISocialManager_InviteFriendToLobby_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InviteFriendToLobbyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISocialManager_InviteFriendToLobby_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q21="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q21:BevososServerExceptions" />
+  </wsdl:message>
   <wsdl:message name="ISocialManager_OnFriendOnline_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnFriendOnline" />
   </wsdl:message>
@@ -425,7 +431,7 @@
     <wsdl:part name="parameters" element="tns:SaveStatsForPLayerResponse" />
   </wsdl:message>
   <wsdl:message name="IGameManager_SaveStatsForPLayer_BevososServerExceptionsFault_FaultMessage">
-    <wsdl:part xmlns:q21="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q21:BevososServerExceptions" />
+    <wsdl:part xmlns:q22="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q22:BevososServerExceptions" />
   </wsdl:message>
   <wsdl:message name="IGameManager_ReceiveGameState_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveGameState" />
@@ -461,7 +467,7 @@
     <wsdl:part name="parameters" element="tns:GetCurrentUserStatsResponse" />
   </wsdl:message>
   <wsdl:message name="IStatsManager_GetCurrentUserStats_BevososServerExceptionsFault_FaultMessage">
-    <wsdl:part xmlns:q22="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q22:BevososServerExceptions" />
+    <wsdl:part xmlns:q23="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q23:BevososServerExceptions" />
   </wsdl:message>
   <wsdl:portType name="IUsersManager">
     <wsdl:operation name="IsUsernameTaken">
@@ -640,6 +646,8 @@
     </wsdl:operation>
     <wsdl:operation name="InviteFriendToLobby">
       <wsdl:input wsaw:Action="http://tempuri.org/ISocialManager/InviteFriendToLobby" message="tns:ISocialManager_InviteFriendToLobby_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/InviteFriendToLobbyResponse" message="tns:ISocialManager_InviteFriendToLobby_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISocialManager/InviteFriendToLobbyBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:ISocialManager_InviteFriendToLobby_BevososServerExceptionsFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="OnFriendOnline">
       <wsdl:output wsaw:Action="http://tempuri.org/ISocialManager/OnFriendOnline" message="tns:ISocialManager_OnFriendOnline_OutputCallbackMessage" />
@@ -1129,6 +1137,12 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="OnFriendOnline">
       <soap12:operation soapAction="http://tempuri.org/ISocialManager/OnFriendOnline" style="document" />
@@ -1305,45 +1319,45 @@
   </wsdl:binding>
   <wsdl:service name="ServiceImplementation">
     <wsdl:port name="NetTcpBinding_IUsersManager" binding="tns:NetTcpBinding_IUsersManager">
-      <soap12:address location="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" />
+      <soap12:address location="net.tcp://192.168.1.71:8000/ServiceImplementation/Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.1.71:8000/ServiceImplementation/Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ILobbyManager" binding="tns:NetTcpBinding_ILobbyManager">
-      <soap12:address location="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" />
+      <soap12:address location="net.tcp://192.168.1.71:8000/ServiceImplementation/Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.1.71:8000/ServiceImplementation/Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ILobbyChecker" binding="tns:NetTcpBinding_ILobbyChecker">
-      <soap12:address location="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" />
+      <soap12:address location="net.tcp://192.168.1.71:8000/ServiceImplementation/Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.1.71:8000/ServiceImplementation/Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IProfileManager" binding="tns:NetTcpBinding_IProfileManager">
-      <soap12:address location="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" />
+      <soap12:address location="net.tcp://192.168.1.71:8000/ServiceImplementation/Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.1.71:8000/ServiceImplementation/Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ISocialManager" binding="tns:NetTcpBinding_ISocialManager">
-      <soap12:address location="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" />
+      <soap12:address location="net.tcp://192.168.1.71:8000/ServiceImplementation/SocialManager" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.1.71:8000/ServiceImplementation/SocialManager</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IGameManager" binding="tns:NetTcpBinding_IGameManager">
-      <soap12:address location="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" />
+      <soap12:address location="net.tcp://192.168.1.71:8000/ServiceImplementation/Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.1.71:8000/ServiceImplementation/Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IStatsManager" binding="tns:NetTcpBinding_IStatsManager">
-      <soap12:address location="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" />
+      <soap12:address location="net.tcp://192.168.1.71:8000/ServiceImplementation/Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.1.71:8000/ServiceImplementation/Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>

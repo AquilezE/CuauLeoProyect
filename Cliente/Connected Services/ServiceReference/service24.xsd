@@ -490,6 +490,11 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="InviteFriendToLobbyResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="OnFriendOnline">
     <xs:complexType>
       <xs:sequence>

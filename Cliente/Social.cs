@@ -42,11 +42,13 @@ namespace Cliente
 
         private void ClientChannel_Closed(object sender, EventArgs e)
         {
+            Console.WriteLine("CLOSED");
             HandleChannelTermination();
         }
 
         private void ClientChannel_Faulted(object sender, EventArgs e)
         {
+            Console.WriteLine("FAULTED");
             HandleChannelTermination();
         }
 
@@ -57,7 +59,7 @@ namespace Cliente
                 var mainWindow = (MainWindow)Application.Current.MainWindow;
                 mainWindow.NavigateToView(new LogIn());
             });
-
+            Console.WriteLine("Mamaste");
             SocialManagerClient.Abort();
             SocialManagerClient = null;
 

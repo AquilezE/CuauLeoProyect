@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="i+sb+IAIxhsyx4DzPzWCMBizWxQ0U05VCSmuomUlt1g=">
+<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="/J59nG84907lG0kiivr4sQ9amH15nckHY8urn/8ty7I=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IUsersManager">
       <properties>
@@ -73,7 +73,7 @@
           <serializedValue>True</serializedValue>
         </property>
         <property path="/reliableSession/inactivityTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>00:01:05</serializedValue>
+          <serializedValue>00:00:30</serializedValue>
         </property>
         <property path="/reliableSession/enabled" isComplexType="false" isExplicitlyDefined="true" clrType="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>True</serializedValue>
@@ -191,7 +191,7 @@
           <serializedValue>True</serializedValue>
         </property>
         <property path="/reliableSession/inactivityTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>00:01:05</serializedValue>
+          <serializedValue>00:00:30</serializedValue>
         </property>
         <property path="/reliableSession/enabled" isComplexType="false" isExplicitlyDefined="true" clrType="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>True</serializedValue>
@@ -309,7 +309,7 @@
           <serializedValue>True</serializedValue>
         </property>
         <property path="/reliableSession/inactivityTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>00:01:05</serializedValue>
+          <serializedValue>00:00:30</serializedValue>
         </property>
         <property path="/reliableSession/enabled" isComplexType="false" isExplicitlyDefined="true" clrType="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>True</serializedValue>
@@ -427,7 +427,7 @@
           <serializedValue>True</serializedValue>
         </property>
         <property path="/reliableSession/inactivityTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>00:01:05</serializedValue>
+          <serializedValue>00:00:30</serializedValue>
         </property>
         <property path="/reliableSession/enabled" isComplexType="false" isExplicitlyDefined="true" clrType="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>True</serializedValue>
@@ -545,7 +545,7 @@
           <serializedValue>True</serializedValue>
         </property>
         <property path="/reliableSession/inactivityTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>00:01:05</serializedValue>
+          <serializedValue>00:02:00</serializedValue>
         </property>
         <property path="/reliableSession/enabled" isComplexType="false" isExplicitlyDefined="true" clrType="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>True</serializedValue>
@@ -663,7 +663,7 @@
           <serializedValue>True</serializedValue>
         </property>
         <property path="/reliableSession/inactivityTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>00:01:05</serializedValue>
+          <serializedValue>00:00:30</serializedValue>
         </property>
         <property path="/reliableSession/enabled" isComplexType="false" isExplicitlyDefined="true" clrType="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>True</serializedValue>
@@ -781,7 +781,7 @@
           <serializedValue>True</serializedValue>
         </property>
         <property path="/reliableSession/inactivityTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>00:01:05</serializedValue>
+          <serializedValue>00:00:30</serializedValue>
         </property>
         <property path="/reliableSession/enabled" isComplexType="false" isExplicitlyDefined="true" clrType="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>True</serializedValue>
@@ -829,10 +829,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="NetTcpBinding_IUsersManager" contract="ServiceReference.IUsersManager" bindingType="netTcpBinding" address="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" bindingConfiguration="NetTcpBinding_IUsersManager">
+    <endpoint name="NetTcpBinding_IUsersManager" contract="ServiceReference.IUsersManager" bindingType="netTcpBinding" address="net.tcp://192.168.1.71:8000/ServiceImplementation/Service" bindingConfiguration="NetTcpBinding_IUsersManager">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</serializedValue>
+          <serializedValue>net.tcp://192.168.1.71:8000/ServiceImplementation/Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -914,10 +914,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_ILobbyManager" contract="ServiceReference.ILobbyManager" bindingType="netTcpBinding" address="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" bindingConfiguration="NetTcpBinding_ILobbyManager">
+    <endpoint name="NetTcpBinding_ILobbyManager" contract="ServiceReference.ILobbyManager" bindingType="netTcpBinding" address="net.tcp://192.168.1.71:8000/ServiceImplementation/Service" bindingConfiguration="NetTcpBinding_ILobbyManager">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</serializedValue>
+          <serializedValue>net.tcp://192.168.1.71:8000/ServiceImplementation/Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -999,10 +999,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_ILobbyChecker" contract="ServiceReference.ILobbyChecker" bindingType="netTcpBinding" address="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" bindingConfiguration="NetTcpBinding_ILobbyChecker">
+    <endpoint name="NetTcpBinding_ILobbyChecker" contract="ServiceReference.ILobbyChecker" bindingType="netTcpBinding" address="net.tcp://192.168.1.71:8000/ServiceImplementation/Service" bindingConfiguration="NetTcpBinding_ILobbyChecker">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</serializedValue>
+          <serializedValue>net.tcp://192.168.1.71:8000/ServiceImplementation/Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1084,10 +1084,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IProfileManager" contract="ServiceReference.IProfileManager" bindingType="netTcpBinding" address="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" bindingConfiguration="NetTcpBinding_IProfileManager">
+    <endpoint name="NetTcpBinding_IProfileManager" contract="ServiceReference.IProfileManager" bindingType="netTcpBinding" address="net.tcp://192.168.1.71:8000/ServiceImplementation/Service" bindingConfiguration="NetTcpBinding_IProfileManager">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</serializedValue>
+          <serializedValue>net.tcp://192.168.1.71:8000/ServiceImplementation/Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1169,10 +1169,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_ISocialManager" contract="ServiceReference.ISocialManager" bindingType="netTcpBinding" address="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" bindingConfiguration="NetTcpBinding_ISocialManager">
+    <endpoint name="NetTcpBinding_ISocialManager" contract="ServiceReference.ISocialManager" bindingType="netTcpBinding" address="net.tcp://192.168.1.71:8000/ServiceImplementation/SocialManager" bindingConfiguration="NetTcpBinding_ISocialManager">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</serializedValue>
+          <serializedValue>net.tcp://192.168.1.71:8000/ServiceImplementation/SocialManager</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1254,10 +1254,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IGameManager" contract="ServiceReference.IGameManager" bindingType="netTcpBinding" address="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" bindingConfiguration="NetTcpBinding_IGameManager">
+    <endpoint name="NetTcpBinding_IGameManager" contract="ServiceReference.IGameManager" bindingType="netTcpBinding" address="net.tcp://192.168.1.71:8000/ServiceImplementation/Service" bindingConfiguration="NetTcpBinding_IGameManager">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</serializedValue>
+          <serializedValue>net.tcp://192.168.1.71:8000/ServiceImplementation/Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1339,10 +1339,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IStatsManager" contract="ServiceReference.IStatsManager" bindingType="netTcpBinding" address="net.tcp://192.168.1.65:8000/ServiceImplementation/Service" bindingConfiguration="NetTcpBinding_IStatsManager">
+    <endpoint name="NetTcpBinding_IStatsManager" contract="ServiceReference.IStatsManager" bindingType="netTcpBinding" address="net.tcp://192.168.1.71:8000/ServiceImplementation/Service" bindingConfiguration="NetTcpBinding_IStatsManager">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.1.65:8000/ServiceImplementation/Service</serializedValue>
+          <serializedValue>net.tcp://192.168.1.71:8000/ServiceImplementation/Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
