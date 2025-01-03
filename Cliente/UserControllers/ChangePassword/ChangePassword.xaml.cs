@@ -11,7 +11,7 @@ using Haley.Utils;
 namespace Cliente.UserControllers.ChangePassword
 {
 
-    public partial class ChangePassword : UserControl/* IProfileManagerCallback*/
+    public partial class ChangePassword : UserControl
     {
 
         private ProfileManagerClient _service;
@@ -19,8 +19,7 @@ namespace Cliente.UserControllers.ChangePassword
 
         public ChangePassword()
         {
-            var instanceContext = new InstanceContext(this);
-            //_service = new ProfileManagerClient(instanceContext);
+            _service = new ProfileManagerClient();
             InitializeComponent();
         }
 
@@ -30,7 +29,7 @@ namespace Cliente.UserControllers.ChangePassword
             string newPassword = pbNewPassword.Password;
             string confirmNewPassword = pbConfirmNewPassword.Password;
 
-            string errorCurrent = _validator.ValidatePassword(newPassword);
+            string errorCurrent = _validator.ValidatePassword(currentPassword);
             string errorNewPassword = _validator.ValidatePassword(confirmNewPassword);
             string errorConfirmNewPassword = _validator.ValidateConfirmPassword(newPassword, confirmNewPassword);
 
@@ -43,19 +42,45 @@ namespace Cliente.UserControllers.ChangePassword
 
             try
             {
-                //_service.ChangePassword(User.Instance.ID, pbCurrentPassword.Password, pbNewPassword.Password);
+
+               int result = _service.ChangePassword(User.Instance.ID, pbCurrentPassword.Password, pbNewPassword.Password);
+
+                switch (result)
+                {
+                    case 0:
+                    {
+                        var mainWindow = (MainWindow)Application.Current.MainWindow;
+                        mainWindow.NavigateToView(new ChangePasswordSuccess(), 800, 700);
+                        break;
+                    }
+                    case 1:
+                        lbErrCuerrentPassword.Content = LangUtils.Translate("lblIncorrectPassword");
+                        break;
+                    case 2:
+                        lbErrCuerrentPassword.Content = LangUtils.Translate("lblErrAccDoesntExist");
+                        break;
+                    case 3:
+                        lbErrCuerrentPassword.Content = LangUtils.Translate("lblErrErrorChangingPassword");
+                        break;
+
+                }
             }
             catch (EndpointNotFoundException ex)
             {
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
-                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConnction"));
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
             }
             catch (FaultException<BevososServerExceptions> ex)
             {
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+            }catch(TimeoutException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
             }
         }
 
@@ -82,29 +107,10 @@ namespace Cliente.UserControllers.ChangePassword
             lbErrConfirmNewPassword.Content = error;
         }
 
-        public void OnProfileUpdate(string username, int profilePictureId, string message)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OnPasswordChange(string error)
-        {
-            if (error != null)
-            {
-                lbErrCuerrentPassword.Content = error;
-            }
-            else
-            {
-                var mainWindow = (MainWindow)Application.Current.MainWindow;
-                mainWindow.NavigateToView(new ChangePasswordSuccess(), 800, 700);
-            }
-        }
-
-
         private void btGoBack_Click(object sender, RoutedEventArgs e)
         {
             var mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.NavigateToView(new Profile(), 800, 700);
+            mainWindow.NavigateToView(new Profile());
         }
 
     }

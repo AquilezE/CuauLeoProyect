@@ -3,6 +3,7 @@ using Cliente.ServiceReference;
 using Cliente.Utils;
 using Haley.Utils;
 using System;
+using System.ServiceModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -66,9 +67,32 @@ namespace Cliente.UserControllers
                     lbErrVerificactionCode.Content = LangUtils.Translate("lblErrIncorrectCode");
                 }
             }
-            catch (Exception ex)
+            catch (EndpointNotFoundException ex)
             {
-                lbErrVerificactionCode.Content = LangUtils.Translate("lblErrNoConection");
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                ResetServiceIfFaulted();
+            }
+            catch (FaultException<BevososServerExceptions> ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                ResetServiceIfFaulted();
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                ResetServiceIfFaulted();
             }
             finally
             {
@@ -101,7 +125,6 @@ namespace Cliente.UserControllers
             VerificationCompleted?.Invoke(this, e);
         }
 
-
         private async void ResendEmail_Click(object sender, RoutedEventArgs e)
         {
             lbResendEmail.IsEnabled = false;
@@ -112,18 +135,34 @@ namespace Cliente.UserControllers
             {
                 bool emailSent = await _service.SendTokenAsync(_email);
 
-                if (emailSent)
-                {
-                    lbErrVerificactionCode.Content = LangUtils.Translate("lblCodeResent");
-                }
-                else
-                {
-                    lbErrVerificactionCode.Content = LangUtils.Translate("lblErrFailedResendEmail");
-                }
+                lbErrVerificactionCode.Content = LangUtils.Translate(emailSent ? "lblCodeResent" : "lblErrFailedResendEmail");
             }
-            catch (Exception ex)
+            catch (EndpointNotFoundException ex)
             {
-                lbErrVerificactionCode.Content = LangUtils.Translate("lblErrNoConection");
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                ResetServiceIfFaulted();
+            }
+            catch (FaultException<BevososServerExceptions> ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                ResetServiceIfFaulted();
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                ResetServiceIfFaulted();
             }
             finally
             {
@@ -148,6 +187,17 @@ namespace Cliente.UserControllers
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new LogIn());
         }
+
+        private void ResetServiceIfFaulted()
+        {
+            if (_service == null) return;
+            ICommunicationObject commObj = _service;
+            if (commObj.State != CommunicationState.Faulted) return;
+            commObj.Abort();
+
+            _service = new UsersManagerClient();
+        }
+
 
     }
 

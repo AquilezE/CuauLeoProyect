@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Label Content="{h:Lang btnFriendRequest}" HorizontalAlignment="Left" VerticalAlignment="Center"
+            <Label Content="{h:Lang lblFindUser}" HorizontalAlignment="Left" VerticalAlignment="Center"
                    Margin="10 10 0 0" FontSize="20" FontWeight="Bold" />
             <TextBox x:Name="tbSearchUser" Width="300" Margin="300 0 0 10" />
             <Button Content="{h:Lang btnSearch}" Width="100" Margin="40 0 0 0"

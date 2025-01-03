@@ -47,8 +47,14 @@ namespace Cliente.Pantallas
 
             if(email == "1" && password == "1")
             {
-                email = "vaomarco052@gmail.com";
-                password = "TeAmoJarvio2003$";
+                email = "pochitaisking@gmail.com";
+                password = "Kekistan404$";
+            }
+
+            if (email == "2" && password == "2")
+            {
+                email = "rincondelopez72@gmail.com";
+                password = "Kekistan404$";
             }
 
             if (email.Length < 256 && !string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password) &&

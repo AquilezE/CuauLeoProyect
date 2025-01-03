@@ -68,6 +68,7 @@ namespace Cliente.UserControllers.Recover
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                ResetServiceIfFaulted();
             }
             catch (FaultException<BevososServerExceptions> ex)
             {
@@ -75,23 +76,27 @@ namespace Cliente.UserControllers.Recover
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
             }
-            catch (CommunicationException ex)
-            {
-                ExceptionManager.LogErrorException(ex);
-                var notificationDialog = new NotificationDialog();
-                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
-            }
             catch (TimeoutException ex)
             {
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                ResetServiceIfFaulted();
             }
+            catch (CommunicationException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                ResetServiceIfFaulted();
+            }
+
             catch (Exception ex)
             {
                 ExceptionManager.LogFatalException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrErrorChangingPassword"));
+                ResetServiceIfFaulted();
             }
         }
 
@@ -110,6 +115,17 @@ namespace Cliente.UserControllers.Recover
 
             string error = _validator.ValidateConfirmPassword(password, confirmPassword);
             lbErrPasswordConfirmation.Content = error;
+            
+        }
+
+        private void ResetServiceIfFaulted()
+        {
+            if (_service == null) return;
+            ICommunicationObject commObj = _service;
+            if (commObj.State != CommunicationState.Faulted) return;
+            commObj.Abort();
+
+            _service = new UsersManagerClient();
         }
 
     }

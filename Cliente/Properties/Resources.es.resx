@@ -310,7 +310,7 @@
     <value>Usuario no encontrado, intentelo de nuevo mas tarde!</value>
   </data>
   <data name="lblErrInvalidEmail" xml:space="preserve">
-    <value>Este correo electrónico es inválido o ya existe</value>
+	  <value>Este correo electrónico es inválido</value>
   </data>
   <data name="lblErrWeakPassword" xml:space="preserve">
     <value>La contraseña debe tener una mayúscula, una minúscula, un número y un caracter especial</value>
@@ -597,7 +597,7 @@
   <data name="btnContinue" xml:space="preserve">
     <value>Continuar</value>
   </data>
-  <data name="lblErrPasswordTooLong " xml:space="preserve">
+  <data name="lblErrPasswordTooLong" xml:space="preserve">
     <value>Tu contraseña es muy larga!</value>
   </data>
   <data name="lblErrProfileUsernameTaken" xml:space="preserve">
@@ -626,5 +626,14 @@
   </data>
   <data name="lblErrLostGameConnection" xml:space="preserve">
     <value>Se perdió la conexión con el juego, así que te desconectamos de la partida</value>
+  </data>
+  <data name="lblIncorrectPassword" xml:space="preserve">
+	  <value>Tu contraseña es incorrecta</value>
+  </data>
+  <data name="lblErrAccDoesntExist" xml:space="preserve">
+	  <value>Esta cuenta no existe</value>
+  </data>
+  <data name="lblErrEmailExists" xml:space="preserve">
+	  <value>Email ya existe</value>
   </data>
 </root>

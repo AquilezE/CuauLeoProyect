@@ -62,30 +62,35 @@ namespace Cliente.UserControllers.Recover
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                ResetServiceIfFaulted();
             }
             catch (FaultException<BevososServerExceptions> ex)
             {
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+                ResetServiceIfFaulted();
             }
             catch (CommunicationException ex)
             {
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                ResetServiceIfFaulted();
             }
             catch (TimeoutException ex)
             {
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                ResetServiceIfFaulted();
             }
             catch (Exception ex)
             {
                 ExceptionManager.LogFatalException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrInvalidCode"));
+                ResetServiceIfFaulted();
             }
             finally
             {
@@ -152,30 +157,35 @@ namespace Cliente.UserControllers.Recover
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                ResetServiceIfFaulted();
             }
             catch (FaultException<BevososServerExceptions> ex)
             {
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+                
             }
             catch (CommunicationException ex)
             {
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                ResetServiceIfFaulted();
             }
             catch (TimeoutException ex)
             {
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                ResetServiceIfFaulted();
             }
             catch (Exception ex)
             {
                 ExceptionManager.LogFatalException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrFailedResendEmail"));
+                ResetServiceIfFaulted();
             }
             finally
             {
@@ -200,6 +210,18 @@ namespace Cliente.UserControllers.Recover
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new LogIn());
         }
+
+
+        private void ResetServiceIfFaulted()
+        {
+            if (_service == null) return;
+            ICommunicationObject commObj = _service;
+            if (commObj.State != CommunicationState.Faulted) return;
+            commObj.Abort();
+
+            _service = new UsersManagerClient();
+        }
+
     }
 
 }

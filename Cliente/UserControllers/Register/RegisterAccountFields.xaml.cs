@@ -14,8 +14,8 @@ namespace Cliente.Pantallas
     {
 
         public event Action<string, string, string> RegistrationFilled;
-        private readonly UsersManagerClient _service;
         private readonly Validator _validator = new Validator();
+        private UsersManagerClient _service;
 
 
         public RegisterAccountFields()
@@ -84,6 +84,7 @@ namespace Cliente.Pantallas
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                ResetServiceIfFaulted();
             }
             catch (FaultException<BevososServerExceptions> ex)
             {
@@ -96,6 +97,14 @@ namespace Cliente.Pantallas
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                ResetServiceIfFaulted();
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                ResetServiceIfFaulted();
             }
         }
 
@@ -111,20 +120,33 @@ namespace Cliente.Pantallas
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                ResetServiceIfFaulted();
             }
             catch (FaultException<BevososServerExceptions> ex)
             {
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+
             }
             catch (TimeoutException ex)
             {
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                ResetServiceIfFaulted();
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                ResetServiceIfFaulted();
             }
         }
+
+
+
 
         private void tbUsername_LostFocus(object sender, RoutedEventArgs e)
         {
@@ -159,6 +181,16 @@ namespace Cliente.Pantallas
         {
             var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToView(new LogIn());
+        }
+
+        private void ResetServiceIfFaulted()
+        {
+            if (_service == null) return;
+            ICommunicationObject commObj = _service;
+            if (commObj.State != CommunicationState.Faulted) return;
+            commObj.Abort();
+
+            _service = new UsersManagerClient();
         }
 
     }

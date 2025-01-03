@@ -259,6 +259,15 @@
   <wsdl:message name="IProfileManager_UpdateProfile_BevososServerExceptionsFault_FaultMessage">
     <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q8:BevososServerExceptions" />
   </wsdl:message>
+  <wsdl:message name="IProfileManager_ChangePassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangePassword" />
+  </wsdl:message>
+  <wsdl:message name="IProfileManager_ChangePassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProfileManager_ChangePassword_BevososServerExceptionsFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q9:BevososServerExceptions" />
+  </wsdl:message>
   <wsdl:message name="ISocialManager_Connect_InputMessage">
     <wsdl:part name="parameters" element="tns:Connect" />
   </wsdl:message>
@@ -272,7 +281,7 @@
     <wsdl:part name="parameters" element="tns:IsConnectedResponse" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_IsConnected_BevososServerExceptionsFault_FaultMessage">
-    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q9:BevososServerExceptions" />
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q10:BevososServerExceptions" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_SendFriendRequest_InputMessage">
     <wsdl:part name="parameters" element="tns:SendFriendRequest" />
@@ -281,7 +290,7 @@
     <wsdl:part name="parameters" element="tns:SendFriendRequestResponse" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_SendFriendRequest_BevososServerExceptionsFault_FaultMessage">
-    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q10:BevososServerExceptions" />
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q11:BevososServerExceptions" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_AcceptFriendRequest_InputMessage">
     <wsdl:part name="parameters" element="tns:AcceptFriendRequest" />
@@ -290,7 +299,7 @@
     <wsdl:part name="parameters" element="tns:AcceptFriendRequestResponse" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_AcceptFriendRequest_BevososServerExceptionsFault_FaultMessage">
-    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q11:BevososServerExceptions" />
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q12:BevososServerExceptions" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_DeclineFriendRequest_InputMessage">
     <wsdl:part name="parameters" element="tns:DeclineFriendRequest" />
@@ -299,7 +308,7 @@
     <wsdl:part name="parameters" element="tns:DeclineFriendRequestResponse" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_DeclineFriendRequest_BevososServerExceptionsFault_FaultMessage">
-    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q12:BevososServerExceptions" />
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q13:BevososServerExceptions" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_DeleteFriend_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteFriend" />
@@ -308,7 +317,7 @@
     <wsdl:part name="parameters" element="tns:DeleteFriendResponse" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_DeleteFriend_BevososServerExceptionsFault_FaultMessage">
-    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q13:BevososServerExceptions" />
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q14:BevososServerExceptions" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_GetFriends_InputMessage">
     <wsdl:part name="parameters" element="tns:GetFriends" />
@@ -317,7 +326,7 @@
     <wsdl:part name="parameters" element="tns:GetFriendsResponse" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_GetFriends_BevososServerExceptionsFault_FaultMessage">
-    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q14:BevososServerExceptions" />
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q15:BevososServerExceptions" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_BlockFriend_InputMessage">
     <wsdl:part name="parameters" element="tns:BlockFriend" />
@@ -326,7 +335,7 @@
     <wsdl:part name="parameters" element="tns:BlockFriendResponse" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_BlockFriend_BevososServerExceptionsFault_FaultMessage">
-    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q15:BevososServerExceptions" />
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q16:BevososServerExceptions" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_UnblockUser_InputMessage">
     <wsdl:part name="parameters" element="tns:UnblockUser" />
@@ -335,7 +344,7 @@
     <wsdl:part name="parameters" element="tns:UnblockUserResponse" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_UnblockUser_BevososServerExceptionsFault_FaultMessage">
-    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q16:BevososServerExceptions" />
+    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q17:BevososServerExceptions" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_BlockUser_InputMessage">
     <wsdl:part name="parameters" element="tns:BlockUser" />
@@ -344,7 +353,7 @@
     <wsdl:part name="parameters" element="tns:BlockUserResponse" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_BlockUser_BevososServerExceptionsFault_FaultMessage">
-    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q17:BevososServerExceptions" />
+    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q18:BevososServerExceptions" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_GetBlockedUsers_InputMessage">
     <wsdl:part name="parameters" element="tns:GetBlockedUsers" />
@@ -353,7 +362,7 @@
     <wsdl:part name="parameters" element="tns:GetBlockedUsersResponse" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_GetBlockedUsers_BevososServerExceptionsFault_FaultMessage">
-    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q18:BevososServerExceptions" />
+    <wsdl:part xmlns:q19="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q19:BevososServerExceptions" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_GetFriendRequests_InputMessage">
     <wsdl:part name="parameters" element="tns:GetFriendRequests" />
@@ -362,7 +371,7 @@
     <wsdl:part name="parameters" element="tns:GetFriendRequestsResponse" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_GetFriendRequests_BevososServerExceptionsFault_FaultMessage">
-    <wsdl:part xmlns:q19="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q19:BevososServerExceptions" />
+    <wsdl:part xmlns:q20="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q20:BevososServerExceptions" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_GetUsersFoundByName_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUsersFoundByName" />
@@ -371,7 +380,7 @@
     <wsdl:part name="parameters" element="tns:GetUsersFoundByNameResponse" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_GetUsersFoundByName_BevososServerExceptionsFault_FaultMessage">
-    <wsdl:part xmlns:q20="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q20:BevososServerExceptions" />
+    <wsdl:part xmlns:q21="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q21:BevososServerExceptions" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_InviteFriendToLobby_InputMessage">
     <wsdl:part name="parameters" element="tns:InviteFriendToLobby" />
@@ -380,7 +389,7 @@
     <wsdl:part name="parameters" element="tns:InviteFriendToLobbyResponse" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_InviteFriendToLobby_BevososServerExceptionsFault_FaultMessage">
-    <wsdl:part xmlns:q21="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q21:BevososServerExceptions" />
+    <wsdl:part xmlns:q22="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q22:BevososServerExceptions" />
   </wsdl:message>
   <wsdl:message name="ISocialManager_OnFriendOnline_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnFriendOnline" />
@@ -431,7 +440,7 @@
     <wsdl:part name="parameters" element="tns:SaveStatsForPLayerResponse" />
   </wsdl:message>
   <wsdl:message name="IGameManager_SaveStatsForPLayer_BevososServerExceptionsFault_FaultMessage">
-    <wsdl:part xmlns:q22="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q22:BevososServerExceptions" />
+    <wsdl:part xmlns:q23="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q23:BevososServerExceptions" />
   </wsdl:message>
   <wsdl:message name="IGameManager_ReceiveGameState_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveGameState" />
@@ -467,7 +476,7 @@
     <wsdl:part name="parameters" element="tns:GetCurrentUserStatsResponse" />
   </wsdl:message>
   <wsdl:message name="IStatsManager_GetCurrentUserStats_BevososServerExceptionsFault_FaultMessage">
-    <wsdl:part xmlns:q23="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q23:BevososServerExceptions" />
+    <wsdl:part xmlns:q24="http://schemas.datacontract.org/2004/07/BevososService.Exceptions" name="detail" element="q24:BevososServerExceptions" />
   </wsdl:message>
   <wsdl:portType name="IUsersManager">
     <wsdl:operation name="IsUsernameTaken">
@@ -575,6 +584,11 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IProfileManager/UpdateProfile" message="tns:IProfileManager_UpdateProfile_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProfileManager/UpdateProfileResponse" message="tns:IProfileManager_UpdateProfile_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IProfileManager/UpdateProfileBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:IProfileManager_UpdateProfile_BevososServerExceptionsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProfileManager/ChangePassword" message="tns:IProfileManager_ChangePassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProfileManager/ChangePasswordResponse" message="tns:IProfileManager_ChangePassword_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IProfileManager/ChangePasswordBevososServerExceptionsFault" name="BevososServerExceptionsFault" message="tns:IProfileManager_ChangePassword_BevososServerExceptionsFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ISocialManager">
@@ -971,6 +985,18 @@
         <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <soap12:operation soapAction="http://tempuri.org/IProfileManager/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BevososServerExceptionsFault">
+        <soap12:fault use="literal" name="BevososServerExceptionsFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_ISocialManager" type="tns:ISocialManager">
     <wsp:PolicyReference URI="#NetTcpBinding_ISocialManager_policy">
@@ -1319,45 +1345,45 @@
   </wsdl:binding>
   <wsdl:service name="ServiceImplementation">
     <wsdl:port name="NetTcpBinding_IUsersManager" binding="tns:NetTcpBinding_IUsersManager">
-      <soap12:address location="net.tcp://192.168.1.71:8000/ServiceImplementation/Service" />
+      <soap12:address location="net.tcp://192.168.1.64:8000/ServiceImplementation/Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.1.71:8000/ServiceImplementation/Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.1.64:8000/ServiceImplementation/Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ILobbyManager" binding="tns:NetTcpBinding_ILobbyManager">
-      <soap12:address location="net.tcp://192.168.1.71:8000/ServiceImplementation/Service" />
+      <soap12:address location="net.tcp://192.168.1.64:8000/ServiceImplementation/Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.1.71:8000/ServiceImplementation/Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.1.64:8000/ServiceImplementation/Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ILobbyChecker" binding="tns:NetTcpBinding_ILobbyChecker">
-      <soap12:address location="net.tcp://192.168.1.71:8000/ServiceImplementation/Service" />
+      <soap12:address location="net.tcp://192.168.1.64:8000/ServiceImplementation/Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.1.71:8000/ServiceImplementation/Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.1.64:8000/ServiceImplementation/Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IProfileManager" binding="tns:NetTcpBinding_IProfileManager">
-      <soap12:address location="net.tcp://192.168.1.71:8000/ServiceImplementation/Service" />
+      <soap12:address location="net.tcp://192.168.1.64:8000/ServiceImplementation/Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.1.71:8000/ServiceImplementation/Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.1.64:8000/ServiceImplementation/Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ISocialManager" binding="tns:NetTcpBinding_ISocialManager">
-      <soap12:address location="net.tcp://192.168.1.71:8000/ServiceImplementation/SocialManager" />
+      <soap12:address location="net.tcp://192.168.1.64:8000/ServiceImplementation/SocialManager" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.1.71:8000/ServiceImplementation/SocialManager</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.1.64:8000/ServiceImplementation/SocialManager</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IGameManager" binding="tns:NetTcpBinding_IGameManager">
-      <soap12:address location="net.tcp://192.168.1.71:8000/ServiceImplementation/Service" />
+      <soap12:address location="net.tcp://192.168.1.64:8000/ServiceImplementation/Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.1.71:8000/ServiceImplementation/Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.1.64:8000/ServiceImplementation/Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IStatsManager" binding="tns:NetTcpBinding_IStatsManager">
-      <soap12:address location="net.tcp://192.168.1.71:8000/ServiceImplementation/Service" />
+      <soap12:address location="net.tcp://192.168.1.64:8000/ServiceImplementation/Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://192.168.1.71:8000/ServiceImplementation/Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.1.64:8000/ServiceImplementation/Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>
