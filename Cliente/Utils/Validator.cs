@@ -52,6 +52,11 @@ namespace Cliente.Utils
                 return LangUtils.Translate("lblErrUsernameTooLong");
             }
 
+            if (username.Contains(' '))
+            {
+                return LangUtils.Translate("lblErrUsernameContainsWhiteSpace");
+            }
+
             if (!IsValidUsername(username))
             {
                 return LangUtils.Translate("lblErrUsernameInvalid");

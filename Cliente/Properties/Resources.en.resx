@@ -310,7 +310,7 @@
     <value>User not found, try again later</value>
   </data>
   <data name="lblErrInvalidEmail" xml:space="preserve">
-	  <value>This Email is invalid</value>
+    <value>This Email is invalid</value>
   </data>
   <data name="lblErrWeakPassword" xml:space="preserve">
     <value>Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.</value>
@@ -529,7 +529,7 @@
     <value>You left your Email empty</value>
   </data>
   <data name="lblErrEmailContainsWhiteSpace" xml:space="preserve">
-    <value>Email can't have a whitespace dude</value>
+    <value>Email can't have a whitespace</value>
   </data>
   <data name="lblErrUsernameTooLong" xml:space="preserve">
     <value>Username is too long</value>
@@ -628,12 +628,18 @@
     <value>We've lost connection to the game so we disconnected you from the game</value>
   </data>
   <data name="lblIncorrectPassword" xml:space="preserve">
-	  <value>Your password is incorrect</value>
+    <value>Your password is incorrect</value>
   </data>
   <data name="lblErrAccDoesntExist" xml:space="preserve">
-	  <value>This account doesn't exist</value>
+    <value>This account doesn't exist</value>
   </data>
   <data name="lblErrEmailExists" xml:space="preserve">
-	  <value>Email already exist</value>
+    <value>Email already exist</value>
+  </data>
+  <data name="lblErrUsernameContainsWhiteSpace" xml:space="preserve">
+    <value>Username can't contain whitespaces</value>
+  </data>
+  <data name="lblErrSocialRequestTimeout" xml:space="preserve">
+    <value>Your request may not have reached the server. We’ll try again once reconnected.</value>
   </data>
 </root>

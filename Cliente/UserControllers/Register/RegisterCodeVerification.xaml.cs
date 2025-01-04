@@ -129,13 +129,13 @@ namespace Cliente.UserControllers
         {
             lbResendEmail.IsEnabled = false;
 
-            lbResendEmail.Content = LangUtils.Translate("lblResendingCode");
+            lbResendEmail.Content = LangUtils.Translate("lblSending");
 
             try
             {
                 bool emailSent = await _service.SendTokenAsync(_email);
 
-                lbErrVerificactionCode.Content = LangUtils.Translate(emailSent ? "lblCodeResent" : "lblErrFailedResendEmail");
+                lbResendEmail.Content = LangUtils.Translate(emailSent ? "lblCodeResent" : "lblErrFailedResendEmail");
             }
             catch (EndpointNotFoundException ex)
             {

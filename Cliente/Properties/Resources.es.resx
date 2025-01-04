@@ -310,7 +310,7 @@
     <value>Usuario no encontrado, intentelo de nuevo mas tarde!</value>
   </data>
   <data name="lblErrInvalidEmail" xml:space="preserve">
-	  <value>Este correo electrónico es inválido</value>
+    <value>Este correo electrónico es inválido</value>
   </data>
   <data name="lblErrWeakPassword" xml:space="preserve">
     <value>La contraseña debe tener una mayúscula, una minúscula, un número y un caracter especial</value>
@@ -628,12 +628,18 @@
     <value>Se perdió la conexión con el juego, así que te desconectamos de la partida</value>
   </data>
   <data name="lblIncorrectPassword" xml:space="preserve">
-	  <value>Tu contraseña es incorrecta</value>
+    <value>Tu contraseña es incorrecta</value>
   </data>
   <data name="lblErrAccDoesntExist" xml:space="preserve">
-	  <value>Esta cuenta no existe</value>
+    <value>Esta cuenta no existe</value>
   </data>
   <data name="lblErrEmailExists" xml:space="preserve">
-	  <value>Email ya existe</value>
+    <value>Email ya existe</value>
+  </data>
+  <data name="lblErrUsernameContainsWhiteSpace" xml:space="preserve">
+    <value>El nombre de usuario no puede tener espacios</value>
+  </data>
+  <data name="lblErrSocialRequestTimeout" xml:space="preserve">
+    <value>Puede que tu petición no llegara al servidor, Lo intetaremos de nuevo cuando te reconectes.</value>
   </data>
 </root>

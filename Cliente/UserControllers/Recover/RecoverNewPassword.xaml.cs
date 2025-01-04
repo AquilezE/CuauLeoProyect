@@ -65,6 +65,7 @@ namespace Cliente.UserControllers.Recover
             }
             catch (EndpointNotFoundException ex)
             {
+                btChangePassword.IsEnabled = true;
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
@@ -72,12 +73,14 @@ namespace Cliente.UserControllers.Recover
             }
             catch (FaultException<BevososServerExceptions> ex)
             {
+                btChangePassword.IsEnabled = true;
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
             }
             catch (TimeoutException ex)
             {
+                btChangePassword.IsEnabled = true;
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
@@ -85,6 +88,7 @@ namespace Cliente.UserControllers.Recover
             }
             catch (CommunicationException ex)
             {
+                btChangePassword.IsEnabled = true;
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
@@ -93,6 +97,7 @@ namespace Cliente.UserControllers.Recover
 
             catch (Exception ex)
             {
+                btChangePassword.IsEnabled = true;
                 ExceptionManager.LogFatalException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrErrorChangingPassword"));

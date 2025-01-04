@@ -80,7 +80,7 @@ namespace Cliente.UserControllers.FriendsList
             {
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
-                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrSocialRequestTimeout"));
             }
             catch (Exception ex)
             {

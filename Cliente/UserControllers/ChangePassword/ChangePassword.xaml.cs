@@ -67,21 +67,40 @@ namespace Cliente.UserControllers.ChangePassword
             }
             catch (EndpointNotFoundException ex)
             {
+                ResetServiceIfFaulted();
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
             }
             catch (FaultException<BevososServerExceptions> ex)
             {
+                ResetServiceIfFaulted();
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
-            }catch(TimeoutException ex)
+            }
+            catch (TimeoutException ex)
             {
+                ResetServiceIfFaulted();
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
             }
+            catch (CommunicationException ex)
+            {
+                ResetServiceIfFaulted();
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+            }
+            catch (Exception ex)
+            {
+                ResetServiceIfFaulted();
+                ExceptionManager.LogFatalException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrErrorChangingPassword"));
+            }
+
         }
 
         private void pbCurrentPassword_LostFocus(object sender, RoutedEventArgs e)
@@ -113,6 +132,15 @@ namespace Cliente.UserControllers.ChangePassword
             mainWindow.NavigateToView(new Profile());
         }
 
+        private void ResetServiceIfFaulted()
+        {
+            if (_service == null) return;
+            ICommunicationObject commObj = _service;
+            if (commObj.State != CommunicationState.Faulted) return;
+            commObj.Abort();
+
+            _service = new ProfileManagerClient();
+        }
     }
 
 }
