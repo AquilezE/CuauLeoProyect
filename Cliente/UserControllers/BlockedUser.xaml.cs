@@ -17,9 +17,20 @@ namespace Cliente.UserControllers
 
         private void btUnblock_Click(object sender, RoutedEventArgs e)
         {
+            DisableButtons();
             UnblockUser?.Invoke(this, DataContext as Blocked);
         }
 
+        public void DisableButtons()
+        {
+            btUnblock.IsEnabled = false;
+        }
+
+        public void EnableButtons()
+        {
+            btUnblock.IsEnabled = true;
+        }
+    
     }
 
 }

@@ -8,6 +8,7 @@ using System.ServiceModel;
 using System.Windows;
 using System.Windows.Controls;
 using Cliente.Utils;
+using System.Threading.Tasks;
 
 namespace Cliente.UserControllers.FriendsList
 {
@@ -44,7 +45,7 @@ namespace Cliente.UserControllers.FriendsList
         private async void OnBlockUser(object sender, UserFound e)
         {
 
-            
+
 
             if (e != null)
             {
@@ -82,30 +83,41 @@ namespace Cliente.UserControllers.FriendsList
                     ExceptionManager.LogErrorException(ex);
                     var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                    UsersFound.Remove(e);
+
                 }
                 catch (FaultException<BevososServerExceptions> ex)
                 {
                     ExceptionManager.LogErrorException(ex);
                     var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
-                }
-                catch (CommunicationException ex)
-                {
-                    ExceptionManager.LogErrorException(ex);
-                    var notificationDialog = new NotificationDialog();
-                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                    (sender as FindUserItem).EnableButtons();
                 }
                 catch (TimeoutException ex)
                 {
                     ExceptionManager.LogErrorException(ex);
                     var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrSocialRequestTimeout"));
+                    UsersFound.Remove(e);
+
+                    Social.Instance.GetBlockedUsers();
+
+                }
+                catch (CommunicationException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    var notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                    UsersFound.Remove(e);
+
                 }
                 catch (Exception ex)
                 {
                     ExceptionManager.LogFatalException(ex);
                     var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrBlockingException"));
+                    UsersFound.Remove(e);
+
                 }
             }
         }
@@ -133,33 +145,39 @@ namespace Cliente.UserControllers.FriendsList
                     ExceptionManager.LogErrorException(ex);
                     var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                    UsersFound.Remove(e);
                 }
+
                 catch (FaultException<BevososServerExceptions> ex)
                 {
                     ExceptionManager.LogErrorException(ex);
                     var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
-                }
-                catch (CommunicationException ex)
-                {
-                    ExceptionManager.LogErrorException(ex);
-                    var notificationDialog = new NotificationDialog();
-                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                    (sender as FindUserItem).EnableButtons();
                 }
                 catch (TimeoutException ex)
                 {
                     ExceptionManager.LogErrorException(ex);
                     var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrSocialRequestTimeout"));
+                    UsersFound.Remove(e);
+                }
+                catch (CommunicationException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    var notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                    UsersFound.Remove(e);
                 }
                 catch (Exception ex)
                 {
                     ExceptionManager.LogFatalException(ex);
                     var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrSendingFriendRequest"));
+                    UsersFound.Remove(e);
                 }
             }
-            UsersFound.Remove(e);
+
         }
 
 

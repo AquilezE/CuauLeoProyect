@@ -18,12 +18,26 @@ namespace Cliente.UserControllers
 
         private void btAccept_Click(object sender, RoutedEventArgs e)
         {
+            DisableButtons();
             AcceptFriend?.Invoke(this, DataContext as Cliente.FriendRequest);
         }
 
         private void btDecline_Click(object sender, RoutedEventArgs e)
         {
+            DisableButtons();
             DeclineFriend?.Invoke(this, DataContext as Cliente.FriendRequest);
+        }
+
+        private void DisableButtons()
+        {
+            btAccept.IsEnabled = false;
+            btDecline.IsEnabled = false;
+        }
+
+        public void EnableButtons()
+        {
+            btAccept.IsEnabled = true;
+            btDecline.IsEnabled = true;
         }
 
     }

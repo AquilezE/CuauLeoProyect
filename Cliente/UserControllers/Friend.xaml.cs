@@ -18,12 +18,26 @@ namespace Cliente.UserControllers
 
         private void btDelete_Click(object sender, RoutedEventArgs e)
         {
+            DisableButtons();
             DeleteFriend?.Invoke(this, DataContext as Cliente.Friend);
         }
 
         private void btBlockUser_Click(object sender, RoutedEventArgs e)
         {
+            DisableButtons();
             BlockUser?.Invoke(this, DataContext as Cliente.Friend);
+        }
+
+        private void DisableButtons()
+        {
+            btDelete.IsEnabled = false;
+            btBlockUser.IsEnabled = false;
+        }
+
+        public void EnableButtons()
+        {
+            btDelete.IsEnabled = true;
+            btBlockUser.IsEnabled = true;
         }
 
     }

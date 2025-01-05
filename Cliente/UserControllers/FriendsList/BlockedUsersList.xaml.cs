@@ -63,24 +63,28 @@ namespace Cliente.UserControllers.FriendsList
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                Social.Instance.BlockedUsersList.Remove(e);
             }
             catch (FaultException<BevososServerExceptions> ex)
             {
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+                (sender as BlockedUser).EnableButtons();
             }
             catch (CommunicationException ex)
             {
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                Social.Instance.BlockedUsersList.Remove(e);
             }
             catch (TimeoutException ex)
             {
                 ExceptionManager.LogErrorException(ex);
                 var notificationDialog = new NotificationDialog();
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrSocialRequestTimeout"));
+                Social.Instance.BlockedUsersList.Remove(e);
             }
             catch (Exception ex)
             {

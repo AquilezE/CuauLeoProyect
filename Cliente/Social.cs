@@ -314,11 +314,11 @@ namespace Cliente
             }
         }
 
-        public void GetBlockedUsers()
+        public async void GetBlockedUsers()
         {
             try
             {
-                BlockedDTO[] blockedUsers = SocialManagerClient.GetBlockedUsers(User.Instance.ID);
+                BlockedDTO[] blockedUsers = await SocialManagerClient.GetBlockedUsersAsync(User.Instance.ID);
                 foreach (BlockedDTO blockedUser in blockedUsers)
                 {
                     Console.WriteLine(blockedUser.BlockerUsername);
@@ -340,8 +340,6 @@ namespace Cliente
             catch (TimeoutException ex)
             {
                 ExceptionManager.LogErrorException(ex);
-                var notificationDialog = new NotificationDialog();
-                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
             }
             catch (CommunicationException ex)
             {

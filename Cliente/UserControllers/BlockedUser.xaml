@@ -23,7 +23,7 @@
                    HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" />
             <TextBlock Grid.Column="1" Text="{Binding BlockerUsername}" Margin="10 0 0 0" TextWrapping="Wrap"
                        VerticalAlignment="Center" HorizontalAlignment="Left" Width="376" />
-            <Button Grid.Column="3" Content="{h:Lang btnUnblock}" Width="100" Background="IndianRed"
+            <Button x:Name="btUnblock" Grid.Column="3" Content="{h:Lang btnUnblock}" Width="100" Background="IndianRed"
                     Click="btUnblock_Click" />
         </Grid>
     </Border>

@@ -18,16 +18,26 @@ namespace Cliente.UserControllers
 
         private void btSendFriendRequest_Click(object sender, RoutedEventArgs e)
         {
-            Button sendFriendRequestButton = (Button)sender;
-            sendFriendRequestButton.IsEnabled = false;
+            DisableButtons();
             SendFriendRequest?.Invoke(this, DataContext as UserFound);
         }
 
         private void btBlock_Click(object sender, RoutedEventArgs e)
         {
-            Button sendFriendRequestButton = (Button)sender;
-            sendFriendRequestButton.IsEnabled = false;
+            DisableButtons();
             BlockUser?.Invoke(this, DataContext as UserFound);
+        }
+
+        private void DisableButtons()
+        {
+            btSendFriendRequest.IsEnabled = false;
+            btBlock.IsEnabled = false;
+        }
+
+        public void EnableButtons()
+        {
+            btSendFriendRequest.IsEnabled = true;
+            btBlock.IsEnabled = true;
         }
 
     }

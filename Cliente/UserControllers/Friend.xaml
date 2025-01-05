@@ -39,9 +39,9 @@
             </TextBlock>
 
 
-            <Button Grid.Column="3" Content="{h:Lang btnDelete}" Width="100" Background="IndianRed"
+            <Button x:Name="btDelete" Grid.Column="3" Content="{h:Lang btnDelete}" Width="100" Background="IndianRed"
                     Click="btDelete_Click" />
-            <Button Grid.Column="4" Content="{h:Lang btnBlockUser}" Width="100" Background="IndianRed"
+            <Button x:Name="btBlockUser"  Grid.Column="4" Content="{h:Lang btnBlockUser}" Width="100" Background="IndianRed"
                     Click="btBlockUser_Click" />
         </Grid>
     </Border>

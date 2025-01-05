@@ -87,8 +87,10 @@ namespace Cliente.UserControllers.FriendsList
 
                 if (dialogResult != true)
                 {
+                    (sender as Friend).EnableButtons();
                     return;
                 }
+
 
                 string blockReason = blockFriendDialog.BlockReason;
 
@@ -119,6 +121,15 @@ namespace Cliente.UserControllers.FriendsList
                     ExceptionManager.LogErrorException(ex);
                     var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+                    (sender as Friend).EnableButtons();
+                }
+                catch (TimeoutException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    var notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrSocialRequestTimeout"));
+                    Social.Instance.FriendList.Remove(e);
+                    Social.Instance.GetBlockedUsers();
                 }
                 catch (CommunicationException ex)
                 {
@@ -126,17 +137,12 @@ namespace Cliente.UserControllers.FriendsList
                     var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
                 }
-                catch (TimeoutException ex)
-                {
-                    ExceptionManager.LogErrorException(ex);
-                    var notificationDialog = new NotificationDialog();
-                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrSocialRequestTimeout"));
-                }
                 catch (Exception ex)
                 {
                     ExceptionManager.LogFatalException(ex);
                     var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrBlockingException"));
+                    Social.Instance.FriendList.Remove(e);
                 }
             }
         }
@@ -151,7 +157,7 @@ namespace Cliente.UserControllers.FriendsList
                         await Social.Instance.SocialManagerClient.DeleteFriendAsync(User.Instance.ID, e.FriendId);
                     if (result)
                     {
-                        Social.Instance.FriendList.Remove(e);
+                        _friendsFiltered.Refresh();
                     }
                     else
                     {
@@ -165,23 +171,25 @@ namespace Cliente.UserControllers.FriendsList
                     var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
                 }
+                catch (TimeoutException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    var notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrSocialRequestTimeout"));
+                    Social.Instance.FriendList.Remove(e);
+                }
                 catch (FaultException<BevososServerExceptions> ex)
                 {
                     ExceptionManager.LogErrorException(ex);
                     var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoDataBase"));
+                    (sender as Friend).EnableButtons();
                 }
                 catch (CommunicationException ex)
                 {
                     ExceptionManager.LogErrorException(ex);
                     var notificationDialog = new NotificationDialog();
                     notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
-                }
-                catch (TimeoutException ex)
-                {
-                    ExceptionManager.LogErrorException(ex);
-                    var notificationDialog = new NotificationDialog();
-                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrSocialRequestTimeout"));
                 }
                 catch (Exception ex)
                 {
