@@ -21,6 +21,7 @@ namespace Cliente
         public event Action<CardDTO> HatSelectionRequested;
         public event Action<StatsDTO[]> GameHasEnded;
         public event Action<int> GameHasEndedWithoutUsers;
+        public event Action<int> CouldNotJoinGame;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -500,6 +501,11 @@ namespace Cliente
         public void OnNotifyGameEndedWithoutUsers(int matchCode)
         {
             GameHasEndedWithoutUsers?.Invoke(matchCode);
+        }
+
+        public void OnNotifyCouldNotJoinGame()
+        {
+            CouldNotJoinGame?.Invoke(1);
         }
 
     }

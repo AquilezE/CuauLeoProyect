@@ -1776,6 +1776,9 @@ namespace Cliente.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/ReceiveGameState")]
         void ReceiveGameState(Cliente.ServiceReference.GameStateDTO gameStateDto);
         
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/OnNotifyCouldNotJoinGame")]
+        void OnNotifyCouldNotJoinGame();
+        
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/RequestBodyPartSelection")]
         void RequestBodyPartSelection(int userId, int matchCode, Cliente.ServiceReference.CardDTO card);
         

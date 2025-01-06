@@ -445,6 +445,9 @@
   <wsdl:message name="IGameManager_ReceiveGameState_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveGameState" />
   </wsdl:message>
+  <wsdl:message name="IGameManager_OnNotifyCouldNotJoinGame_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnNotifyCouldNotJoinGame" />
+  </wsdl:message>
   <wsdl:message name="IGameManager_RequestBodyPartSelection_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RequestBodyPartSelection" />
   </wsdl:message>
@@ -714,6 +717,9 @@
     </wsdl:operation>
     <wsdl:operation name="ReceiveGameState">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/ReceiveGameState" message="tns:IGameManager_ReceiveGameState_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnNotifyCouldNotJoinGame">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/OnNotifyCouldNotJoinGame" message="tns:IGameManager_OnNotifyCouldNotJoinGame_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="RequestBodyPartSelection">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/RequestBodyPartSelection" message="tns:IGameManager_RequestBodyPartSelection_OutputCallbackMessage" />
@@ -1273,6 +1279,12 @@
     </wsdl:operation>
     <wsdl:operation name="ReceiveGameState">
       <soap12:operation soapAction="http://tempuri.org/IGameManager/ReceiveGameState" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnNotifyCouldNotJoinGame">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/OnNotifyCouldNotJoinGame" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

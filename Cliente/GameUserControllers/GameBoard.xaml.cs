@@ -49,6 +49,7 @@ namespace Cliente.GameUserControllers
             GameLogic.Instance.HatSelectionRequested += OnHatSelectionRequested;
             GameLogic.Instance.GameHasEnded += OnGameHasEnded;
             GameLogic.Instance.GameHasEndedWithoutUsers += OnGameHasEndedWithoutUsers;
+            GameLogic.Instance.CouldNotJoinGame += OnGameHasEndedWithoutUsers;
         }
 
         private void GameBoard_Loaded(object sender, RoutedEventArgs e)
@@ -95,6 +96,7 @@ namespace Cliente.GameUserControllers
 
         private void ClientChannel_Faulted(object sender, EventArgs e)
         {
+            (sender as ICommunicationObject).Closed -= ClientChannel_Closed;
             Dispatcher.Invoke(() =>
             {
                 if (User.Instance.ID > 0)
@@ -121,14 +123,12 @@ namespace Cliente.GameUserControllers
                 if (User.Instance.ID > 0)
                 {
                     var notificationDialog = new NotificationDialog();
-                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrLostGameConnection"));
                     var mainWindow = (MainWindow)Application.Current.MainWindow;
                     mainWindow.NavigateToView(new MainMenu());
                 }
                 else if (User.Instance.ID < 0)
                 {
                     var notificationDialog = new NotificationDialog();
-                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrLostGameConnection"));
                     var mainWindow = (MainWindow)Application.Current.MainWindow;
                     mainWindow.NavigateToView(new JoinLobby(), 650, 800);
                 }
@@ -491,7 +491,6 @@ namespace Cliente.GameUserControllers
             }
         }
         
-
         private async void btnProvokeWater_Click(object sender, RoutedEventArgs e)
         {
             try
