@@ -252,6 +252,25 @@ namespace Cliente
             }
         }
 
+        private void ClearMonsters()
+        {
+            Player1Monsters.Clear();
+            Player2Monsters.Clear();
+            Player3Monsters.Clear();
+            Player4Monsters.Clear();
+        }
+
+        private void UpdateMainPlayerUI(PlayerStateDTO playerState, GameStateDTO gameState)
+        {
+            // Player 1 is always the "main" user (yourself)
+            Player1Score = gameState.PlayerStatistics[User.Instance.ID].Points;
+            Player1Username = playerState.User.Username;
+
+            foreach (MonsterDTO monster in playerState.Monsters)
+            {
+                Player1Monsters.Add(new GameMonster(monster));
+            }
+        }
 
         public void ReceiveGameState(GameStateDTO gameState)
         {
@@ -260,77 +279,73 @@ namespace Cliente
             Console.WriteLine(gameState.CurrentPlayerId);
 
 
-            Player1Monsters.Clear();
-            if (gameState.PlayerState.TryGetValue(User.Instance.ID, out PlayerStateDTO playerState))
+            ClearMonsters();
+
+            if (gameState.PlayerState.TryGetValue(User.Instance.ID, out PlayerStateDTO mainPlayerState))
             {
-                Player1Score = gameState.PlayerStatistics[User.Instance.ID].Points;
-                Player1Username = playerState.User.Username;
-                foreach (MonsterDTO monster in playerState.Monsters)
-                {
-                    Player1Monsters.Add(new GameMonster(monster));
-                }
+                UpdateMainPlayerUI(mainPlayerState, gameState);
             }
 
+            UpdateOtherPlayersUI(gameState);
+        }
 
-            Player2Monsters.Clear();
-            Player3Monsters.Clear();
-            Player4Monsters.Clear();
+        private void UpdateOtherPlayersUI(GameStateDTO gameState)
+        {
+            int playerNumber = 2; 
 
-            int playerNumber = 2;
-            foreach (KeyValuePair<int, PlayerStateDTO> player in gameState.PlayerState)
+            foreach (var kvp in gameState.PlayerState)
             {
-                int playerId = player.Key;
-
+                int playerId = kvp.Key;
+                PlayerStateDTO pState = kvp.Value;
 
                 if (playerId == User.Instance.ID)
                 {
-                    continue;
+                    continue;  
                 }
-
-                switch (playerNumber)
-                {
-                    case 2:
-                        Player2Score = gameState.PlayerStatistics[playerId].Points;
-                        Player2Username = player.Value.User.Username;
-                        foreach (MonsterDTO monster in player.Value.Monsters)
-                        {
-                            Player2Monsters.Add(new GameMonster(monster));
-                        }
-
-                        break;
-
-                    case 3:
-                        Player3Score = gameState.PlayerStatistics[playerId].Points;
-                        Player3Username = player.Value.User.Username;
-                        foreach (MonsterDTO monster in player.Value.Monsters)
-                        {
-                            Player3Monsters.Add(new GameMonster(monster));
-                        }
-
-                        break;
-
-                    case 4:
-                        Player4Score = gameState.PlayerStatistics[playerId].Points;
-                        Player4Username = player.Value.User.Username;
-                        foreach (MonsterDTO monster in player.Value.Monsters)
-                        {
-                            Player4Monsters.Add(new GameMonster(monster));
-                        }
-
-                        break;
-
-                    default:
-                        break;
-                }
-
-                playerNumber++;
 
                 if (playerNumber > 4)
                 {
                     break;
                 }
+
+                int points = gameState.PlayerStatistics[playerId].Points;
+                string uname = pState.User.Username;
+                var monsters = pState.Monsters;
+
+                switch (playerNumber)
+                {
+                    case 2:
+                        Player2Score = points;
+                        Player2Username = uname;
+                        foreach (var m in monsters)
+                        {
+                            Player2Monsters.Add(new GameMonster(m));
+                        }
+                        break;
+
+                    case 3:
+                        Player3Score = points;
+                        Player3Username = uname;
+                        foreach (var m in monsters)
+                        {
+                            Player3Monsters.Add(new GameMonster(m));
+                        }
+                        break;
+
+                    case 4:
+                        Player4Score = points;
+                        Player4Username = uname;
+                        foreach (var m in monsters)
+                        {
+                            Player4Monsters.Add(new GameMonster(m));
+                        }
+                        break;
+                }
+
+                playerNumber++;
             }
         }
+
 
         private void UpdatePropertiesFromGameState(GameStateDTO gameState)
         {

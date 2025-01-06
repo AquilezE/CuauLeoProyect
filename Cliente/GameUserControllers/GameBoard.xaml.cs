@@ -463,7 +463,6 @@ namespace Cliente.GameUserControllers
             try 
             {
                 await GameManagerClient.PlayProvokeAsync(User.Instance.ID, GameLogic.Instance.GameId, 0);
-                Console.WriteLine("Provoke Water");
             }
             catch (EndpointNotFoundException ex)
             {
@@ -496,7 +495,6 @@ namespace Cliente.GameUserControllers
             try
             {
                 await GameManagerClient.PlayProvokeAsync(User.Instance.ID, GameLogic.Instance.GameId, 1);
-                Console.WriteLine("Provoke Water");
             }
             catch (EndpointNotFoundException ex)
             {
@@ -529,7 +527,6 @@ namespace Cliente.GameUserControllers
             try
             {
                 await GameManagerClient.PlayProvokeAsync(User.Instance.ID, GameLogic.Instance.GameId, 2);
-                Console.WriteLine("Provoke Water");
             }
             catch (EndpointNotFoundException ex)
             {
