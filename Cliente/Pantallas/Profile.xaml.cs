@@ -114,7 +114,7 @@ namespace Cliente.Pantallas
             lbUserId.Content = User.Instance.ID;
             tbNewUsername.Text = "";
 
-            if (User.Instance.ProfilePictureId != 1 || User.Instance.ProfilePictureId != 0)
+            if (User.Instance.ProfilePictureId != 1 && User.Instance.ProfilePictureId != 0)
             {
                 imgProfilePicture.Source =
                     new BitmapImage(new Uri("pack://application:,,,/Images/pfp" + User.Instance.ProfilePictureId +
@@ -125,6 +125,10 @@ namespace Cliente.Pantallas
         private void SetNewUserName()
         {
              _newUsername = tbNewUsername.Text;
+             if (string.IsNullOrWhiteSpace(_newUsername))
+             {
+                 _newUsername = User.Instance.Username;
+             }
         }
 
 
@@ -158,7 +162,7 @@ namespace Cliente.Pantallas
                         _newUsername = User.Instance.Username;
                         return;
                     }
-                    else if (result ==0)
+                    if (result ==0)
                     {
                         User.instance.Username = _newUsername;
                         User.instance.ProfilePictureId = _newProfilePictureId;

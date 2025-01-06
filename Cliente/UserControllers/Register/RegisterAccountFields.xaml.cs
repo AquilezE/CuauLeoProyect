@@ -166,7 +166,7 @@ namespace Cliente.Pantallas
         {
             string password = pbPassword.Password;
             string error = _validator.ValidatePassword(password);
-            lbErrPassword.Content = error;
+            lbErrPassword.Text = error;
         }
 
         private void pbConfirmPassword_LostFocus(object sender, RoutedEventArgs e)

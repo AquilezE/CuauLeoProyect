@@ -14,13 +14,13 @@ namespace Cliente.Pantallas
     public partial class LogIn : UserControl
     {
 
-        private UsersManagerClient _servicio;
+        private UsersManagerClient _service;
         private bool _isLoaded;
 
         public LogIn()
         {
             InitializeComponent();
-            _servicio = new UsersManagerClient();
+            _service = new UsersManagerClient();
             LangUtils.Register();
             ChangeCulture("en");
             Loaded += OnLoaded;
@@ -80,7 +80,7 @@ namespace Cliente.Pantallas
         {
             try
             {
-                UserDTO userDto = _servicio.GetGuestUser();
+                UserDTO userDto = _service.GetGuestUser();
                 if (userDto == null)
                 {
                     return false;
@@ -142,7 +142,7 @@ namespace Cliente.Pantallas
                     return false;
                 }
 
-                UserDTO userDto = _servicio.LogIn(email, password);
+                UserDTO userDto = _service.LogIn(email, password);
                 if (userDto == null)
                 {
                     return false;
@@ -208,19 +208,19 @@ namespace Cliente.Pantallas
             Social.Instance = null;
             Social.Instance = Social.Instance;
 
-            if (_servicio != null)
+            if (_service != null)
             {
-                _servicio.Abort();
-                _servicio = new UsersManagerClient();
+                _service.Abort();
+                _service = new UsersManagerClient();
             }
         }
 
         private void ResetClientGuest()
         {
-            if (_servicio != null)
+            if (_service != null)
             {
-                _servicio.Abort();
-                _servicio = new UsersManagerClient();
+                _service.Abort();
+                _service = new UsersManagerClient();
             }
         }
 

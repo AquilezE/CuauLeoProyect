@@ -642,4 +642,10 @@
   <data name="lblErrSocialRequestTimeout" xml:space="preserve">
     <value>Your request may not have reached the server. We’ll try again once reconnected.</value>
   </data>
+  <data name="lblInviteFriendError" xml:space="preserve">
+	  <value>Log In to invite your friends to play!</value>
+  </data>
+  <data name="lblOnlyLeaderStart" xml:space="preserve">
+	  <value>Only the leader can start the game!</value>
+  </data>
 </root>

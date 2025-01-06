@@ -20,7 +20,7 @@ namespace Cliente.Pantallas
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged(string propertyName)
+        private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -147,6 +147,11 @@ namespace Cliente.Pantallas
 
                 Servicio.StartGame(_lobbyId);
             }
+            else
+            {
+                var notification = new NotificationDialog();
+                notification.ShowErrorNotification(LangUtils.Translate("lblOnlyLeaderStart"));
+            }
         }
 
 
@@ -180,7 +185,7 @@ namespace Cliente.Pantallas
             }
         }
 
-        public bool LeaveLobby()
+        private bool LeaveLobby()
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
@@ -289,8 +294,10 @@ namespace Cliente.Pantallas
 
         private void btInviteFriend_Click(object sender, RoutedEventArgs e)
         {
-            if (!IsLeader)
+            if (User.Instance.ID < 0)
             {
+                var notification = new NotificationDialog();
+                notification.ShowErrorNotification(LangUtils.Translate("lblInviteFriendError"));
                 return;
             }
 
