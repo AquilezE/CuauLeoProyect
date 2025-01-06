@@ -11,6 +11,8 @@ using Haley.Utils;
 using System.ComponentModel;
 using Cliente.GameUserControllers;
 using Cliente.Utils;
+using System.Runtime.CompilerServices;
+using System.Linq.Expressions;
 
 namespace Cliente.Pantallas
 {
@@ -71,6 +73,12 @@ namespace Cliente.Pantallas
         private void OnFaultedChannel(object sender, EventArgs e)
         {
             LeaveLobby();
+
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrLostConectionLobby"));
+            }));
         }
 
         private void btLeaveLobby_Click(object sender, RoutedEventArgs e)
@@ -78,7 +86,7 @@ namespace Cliente.Pantallas
             try
             {
                 Servicio.LeaveLobby(_lobbyId, User.Instance.ID);
-                LeaveLobby();
+                Console.WriteLine("DISTE CLICK A SALIR");
             }
             catch (EndpointNotFoundException ex)
             {
@@ -94,6 +102,20 @@ namespace Cliente.Pantallas
                 notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
                 LeaveLobby();
             }
+            catch (CommunicationException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                LeaveLobby();
+            }
+            catch (Exception ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                LeaveLobby();
+            }
         }
 
         private void btSendMessage_Click(object sender, RoutedEventArgs e)
@@ -105,7 +127,39 @@ namespace Cliente.Pantallas
                 return;
             }
 
+            try 
+            { 
             Servicio.SendMessage(_lobbyId, User.Instance.ID, message);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                LeaveLobby();
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                LeaveLobby();
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                LeaveLobby();
+            }
+            catch (Exception ex)
+            {
+                ExceptionManager.LogErrorException(ex);
+                var notificationDialog = new NotificationDialog();
+                notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                LeaveLobby();
+            }
+
             tbMessage.Text = string.Empty;
             lbMessageError.Content = string.Empty;
         }
@@ -145,7 +199,39 @@ namespace Cliente.Pantallas
                     return;
                 }
 
-                Servicio.StartGame(_lobbyId);
+                try
+                {
+                    Servicio.StartGame(_lobbyId);
+                }
+                catch (EndpointNotFoundException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    var notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                    LeaveLobby();
+                }
+                catch (TimeoutException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    var notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                    LeaveLobby();
+                }
+                catch (CommunicationException ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    var notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                    LeaveLobby();
+                }
+                catch (Exception ex)
+                {
+                    ExceptionManager.LogErrorException(ex);
+                    var notificationDialog = new NotificationDialog();
+                    notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                    LeaveLobby();
+                }
+
             }
             else
             {
@@ -180,7 +266,38 @@ namespace Cliente.Pantallas
 
                     _users.Remove(userToKick);
 
-                    Servicio.KickUser(_lobbyId, User.Instance.ID, userToKick.ID, reason);
+                    try
+                    {
+                        Servicio.KickUser(_lobbyId, User.Instance.ID, userToKick.ID, reason);
+                    }
+                    catch (EndpointNotFoundException ex)
+                    {
+                        ExceptionManager.LogErrorException(ex);
+                        var notificationDialog = new NotificationDialog();
+                        notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                        LeaveLobby();
+                    }
+                    catch (TimeoutException ex)
+                    {
+                        ExceptionManager.LogErrorException(ex);
+                        var notificationDialog = new NotificationDialog();
+                        notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrTimeout"));
+                        LeaveLobby();
+                    }
+                    catch (CommunicationException ex)
+                    {
+                        ExceptionManager.LogErrorException(ex);
+                        var notificationDialog = new NotificationDialog();
+                        notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                        LeaveLobby();
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionManager.LogErrorException(ex);
+                        var notificationDialog = new NotificationDialog();
+                        notificationDialog.ShowErrorNotification(LangUtils.Translate("lblErrNoConection"));
+                        LeaveLobby();
+                    }
                 }
             }
         }
@@ -230,6 +347,12 @@ namespace Cliente.Pantallas
 
         public void OnLeaveLobby(int lobbyId, int userId)
         {
+
+            if (userId == User.Instance.ID)
+            {
+                LeaveLobby();
+            }
+
             UserLobby user = _users.FirstOrDefault(u => u.ID == userId);
             if (user != null)
             {

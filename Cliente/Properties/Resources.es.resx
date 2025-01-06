@@ -373,7 +373,7 @@
     <value>ID Usuario</value>
   </data>
   <data name="lblViewProfile" xml:space="preserve">
-	  <value>Ver Perfil</value>
+    <value>Ver Perfil</value>
   </data>
   <data name="lblWins" xml:space="preserve">
     <value>Victorias: </value>
@@ -643,9 +643,12 @@
     <value>Puede que tu petición no llegara al servidor, Lo intetaremos de nuevo cuando te reconectes.</value>
   </data>
   <data name="lblInviteFriendError" xml:space="preserve">
-	  <value>Inicia sesión para invitar a tus amigos!</value>
+    <value>Inicia sesión para invitar a tus amigos!</value>
   </data>
   <data name="lblOnlyLeaderStart" xml:space="preserve">
-	  <value>Solo el líder puede iniciar el juego!</value>
+    <value>Solo el líder puede iniciar el juego!</value>
+  </data>
+  <data name="lblErrLostConectionLobby" xml:space="preserve">
+    <value>Perdiste la conexión con el lobby, intenta unirte nuevamente.</value>
   </data>
 </root>
